@@ -37,7 +37,7 @@
       @apply p-0 m-0 box-border;
     }
     body {
-      @apply bg-white dark:bg-zinc-800 text-sabzlearnBlack font-Dana text-base leading-7 overflow-x-hidden scroll-smooth scrollbar scrollbar-thumb-orange-200 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-100 dark:scrollbar-track-gray-400;
+      @apply bg-white dark:bg-zinc-800 text-sabzlearnBlack font-Dana text-base leading-7 overflow-x-hidden scroll-smooth scrollbar scrollbar-thumb-sabzlearnGreen dark:scrollbar-thumb-gray-700 scrollbar-track-gray-100 dark:scrollbar-track-gray-400;
     }
     a{
         @apply transition-colors
