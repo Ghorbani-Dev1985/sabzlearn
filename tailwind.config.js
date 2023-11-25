@@ -24,6 +24,7 @@ module.exports = {
         },
         sabzlearnGreen : "#2bc356",
         sabzlearnBlack : "#464749",
+        hoverText : "#1e83f0",
       },
       boxShadow: {
         normal: "0px 1px 10px 0px rgba(0, 0, 0, 0.05)",
