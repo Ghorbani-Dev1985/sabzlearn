@@ -14,10 +14,6 @@ module.exports = {
       backgroundImage: {
           'sm' : 'url("../../assets/Images/headerBgMobile.webp")',
           'xl' : 'url("../../assets/Images/headerBgDesktop.webp")',
-          'products' : 'url("../../assets/Images/product-bg.png")',
-          'products-linear' : 'linear-gradient(rgba(243,244,246,0.65), rgba(243,244,246,0.65)) , url("../../assets/Images/product-bg.png")',
-          'CategoryBannerRight' : 'linear-gradient(270deg, rgba(0, 0, 0, 0.60) 33.85%, rgba(0, 0, 0, 0.10)), url("../../assets/Images/categories/category-right.jpg")',
-          'CategoryBannerLeft' : 'linear-gradient(270deg, rgba(0, 0, 0, 0.60) 33.85%, rgba(0, 0, 0, 0.10)), url("../../assets/Images/categories/category-left.jpg")',
       },
       colors: {
         brown: {
@@ -26,6 +22,8 @@ module.exports = {
           600: "#967259",
           900: "#634832",
         },
+        sabzlearnGreen : "#2bc356",
+        sabzlearnBlack : "#464749",
       },
       boxShadow: {
         normal: "0px 1px 10px 0px rgba(0, 0, 0, 0.05)",
