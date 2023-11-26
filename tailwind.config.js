@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: ["./public/**/*.{html,js}"],
+  content: ["./public/**/*.{html,js}" , "./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {
       container: {
@@ -173,6 +173,7 @@ module.exports = {
       addVariant("child-hover", "& > *:hover");
     },
     require("tailwind-scrollbar"),
+    require('flowbite/plugin')
   ],
 }
 

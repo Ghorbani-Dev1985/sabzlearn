@@ -52,6 +52,9 @@
       direction: ltr;
       text-align: left;
     }
+    .line{
+      @apply w-full h-px bg-gray-300 my-3;
+    }
   }
   
   @layer utilities {

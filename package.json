@@ -1,11 +1,12 @@
 {
   "scripts": {
-    "build": "npx tailwindcss -i ./src/index.css -o ./public/assets/styles/app.css --watch"
+    "dev": "npx tailwindcss -i ./src/index.css -o ./public/assets/styles/app.css --watch"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.5"
   },
   "dependencies": {
+    "flowbite": "^2.2.0",
     "tailwind-scrollbar": "^3.0.5"
   }
 }
