@@ -1247,6 +1247,10 @@ a:hover {
   left: 0px;
 }
 
+.left-1 {
+  left: 0.25rem;
+}
+
 .right-0 {
   right: 0px;
 }
@@ -1277,18 +1281,6 @@ a:hover {
 
 .top-full {
   top: 100%;
-}
-
-.right-6 {
-  right: 1.5rem;
-}
-
-.right-7 {
-  right: 1.75rem;
-}
-
-.right-72 {
-  right: 18rem;
 }
 
 .z-10 {
@@ -1364,6 +1356,14 @@ a:hover {
   height: 2.5rem;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
 .h-3 {
   height: 0.75rem;
 }
@@ -1396,6 +1396,14 @@ a:hover {
   width: 2.5rem;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
 .w-3 {
   width: 0.75rem;
 }
@@ -1422,6 +1430,10 @@ a:hover {
 
 .w-full {
   width: 100%;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
 }
 
 .flex-1 {
@@ -1494,6 +1506,10 @@ a:hover {
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -1561,6 +1577,12 @@ a:hover {
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1623,6 +1645,10 @@ a:hover {
 
 .border-b-4 {
   border-bottom-width: 4px;
+}
+
+.border-none {
+  border-style: none;
 }
 
 .border-blue-600 {
@@ -1707,6 +1733,18 @@ a:hover {
   background-color: rgb(255 255 255 / 0.5);
 }
 
+.bg-landing {
+  background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.60) 33.85%, rgba(0, 0, 0, 0.10)), url("../../assets/images/landing/background_landing.jfif");
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1762,6 +1800,11 @@ a:hover {
   padding-bottom: 0.625rem;
 }
 
+.py-28 {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -1787,6 +1830,23 @@ a:hover {
 
 .text-center {
   text-align: center;
+}
+
+.font-DanaBold {
+  font-family: Dana DemiBold;
+}
+
+.font-DanaMd {
+  font-family: Dana Medium;
+}
+
+.font-MorabbaBold {
+  font-family: Morabba Bold;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .text-base {
@@ -1858,6 +1918,11 @@ a:hover {
 .text-rose-500 {
   --tw-text-opacity: 1;
   color: rgb(244 63 94 / var(--tw-text-opacity));
+}
+
+.text-sabzlearnBlack {
+  --tw-text-opacity: 1;
+  color: rgb(70 71 73 / var(--tw-text-opacity));
 }
 
 .text-sabzlearnGreen {
@@ -1950,20 +2015,16 @@ a:hover {
   transition-delay: 75ms;
 }
 
-.duration-75 {
-  transition-duration: 75ms;
-}
-
 .duration-500 {
   transition-duration: 500ms;
 }
 
-.ease-out {
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+.duration-75 {
+  transition-duration: 75ms;
 }
 
-.ease-linear {
-  transition-timing-function: linear;
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .scrollbar {
@@ -2064,6 +2125,11 @@ a:hover {
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-green-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 108 78 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-sabzlearnGreen:hover {
