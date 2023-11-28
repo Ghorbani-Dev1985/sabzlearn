@@ -12,7 +12,7 @@ module.exports = {
         }
       },
       backgroundImage: {
-          'landing' : 'linear-gradient(270deg, rgba(0, 0, 0, 0.60) 33.85%, rgba(0, 0, 0, 0.10)), url("../../assets/images/landing/background_landing.jfif")',
+          'landing' : 'linear-gradient(270deg, rgba(0, 0, 0, 0.60) 33.85%, rgba(0, 0, 0, 0.6)), url("../../assets/images/landing/background_landing.jfif")',
       },
       colors: {
         brown: {
