@@ -1255,6 +1255,10 @@ a:hover {
   right: 0.25rem;
 }
 
+.right-64 {
+  right: 16rem;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -1273,6 +1277,18 @@ a:hover {
 
 .top-full {
   top: 100%;
+}
+
+.right-6 {
+  right: 1.5rem;
+}
+
+.right-7 {
+  right: 1.75rem;
+}
+
+.right-72 {
+  right: 18rem;
 }
 
 .z-10 {
@@ -1938,8 +1954,16 @@ a:hover {
   transition-duration: 75ms;
 }
 
+.duration-500 {
+  transition-duration: 500ms;
+}
+
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.ease-linear {
+  transition-timing-function: linear;
 }
 
 .scrollbar {

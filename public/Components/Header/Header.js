@@ -179,8 +179,8 @@ template.innerHTML = `
     </section>
     <!-- mobile nav -->
 <!-- drawer component -->
-<div id="drawer-navigation" class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-64 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
-<button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
+<div id="drawer-navigation" class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-all translate-x-full duration-500 shadow-6 bg-white w-64 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
+<button id="CloseDrawer" type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
   <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
   </svg>
@@ -197,16 +197,18 @@ template.innerHTML = `
           </svg>              
         صفحه اصلی</a></li>
     <li>
-        <button type="button" class="flex items-center w-full p-2 mb-1 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="frontEnd" data-collapse-toggle="frontEnd">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-sky-500">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-              </svg>                  
-            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">فرانت اند</span>
+        <button type="button" id="frontEnd" class="flex-between w-full p-2 mb-1 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+           <div class="flex-center">
+           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-sky-500">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+         </svg>                  
+       <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">فرانت اند</span>
+           </div>
             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
             </svg>                
       </button>
-            <ul id="frontEnd" class="hidden p-5 space-y-4 py-4 bg-gray-100 rounded-md child:line-clamp-1">
+            <ul id="frontEndSubmenu" class="hidden p-5 space-y-4 py-4 bg-gray-100 rounded-md child:line-clamp-1">
                <li><a href="">آموزش HTML</a></li>
                <li><a href="">آموزش CSS</a></li>
                <li><a href="">آموزش FlexBox</a></li>
@@ -221,16 +223,18 @@ template.innerHTML = `
             </ul>
     </li>
     <li>
-    <button type="button" class="flex items-center w-full p-2 mb-1 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="security" data-collapse-toggle="security">
+    <button type="button" id="Security" class="flex-between w-full p-2 mb-1 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+        <div class="flex-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-rose-500">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-          </svg>                  
-        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"> امنیت</span>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+      </svg>                  
+    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"> امنیت</span>
+        </div>
         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
         </svg>                
   </button>
-    <ul id="security" class="hidden p-5 space-y-4 py-4 bg-gray-100 rounded-md child:line-clamp-1">
+    <ul id="SecuritySubmenu" class="hidden p-5 space-y-4 py-4 bg-gray-100 rounded-md child:line-clamp-1">
         <li><a href="">نقشه راه ورود به دنیای هک و امنیت</a></li>
         <li><a href="">شبکه با گرایش امنیت</a></li>
         <li><a href="">لینوکس با گرایش امنیت</a></li>
@@ -242,16 +246,18 @@ template.innerHTML = `
      </ul>    
 </li>
 <li>
-<button type="button" class="flex items-center w-full p-2 mb-1 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="blogs" data-collapse-toggle="blogs">
+<button type="button" id="Blogs" class="flex-between w-full p-2 mb-1 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+    <div class="flex-center">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-emerald-500">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-      </svg>                  
-    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"> مقالات</span>
+    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+  </svg>                  
+<span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"> مقالات</span>
+     </div>
     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
     </svg>                
 </button>
-<ul id="blogs" class="hidden p-5 space-y-4 py-4 bg-gray-100 rounded-md child:line-clamp-1">
+<ul id="BlogsSubmenu" class="hidden p-5 space-y-4 py-4 bg-gray-100 rounded-md child:line-clamp-1">
     <li><a href="">اچ تی ام ال</a></li>
     <li><a href="">پروژه های برنامه نویسی</a></li>
     <li><a href="">تست نفوذ و امنیت وب</a></li>
@@ -263,16 +269,18 @@ template.innerHTML = `
  </ul>  
 </li>
 <li>
-<button type="button" class="flex items-center w-full p-2 mb-1 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="python" data-collapse-toggle="python">
+<button type="button" id="Python" class="flex-between w-full p-2 mb-1 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+<div class="flex-center">
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-brown-600">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-  </svg>                  
+<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+</svg>                  
 <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"> پایتون</span>
+</div>
 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
 </svg>                
 </button>
-<ul id="python" class="hidden p-5 space-y-4 py-4 bg-gray-100 rounded-md child:line-clamp-1">
+<ul id="PythonSubmenu" class="hidden p-5 space-y-4 py-4 bg-gray-100 rounded-md child:line-clamp-1">
 <li><a href="">دوره آموزش پایتون</a></li>
 <li><a href="">پروژه های کاربردی با پایتون</a></li>
 <li><a href="">ترفند های کاربردی پایتون</a></li>
@@ -304,9 +312,55 @@ class Header extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
-  connectedCallback() {}
+  connectedCallback() {
+   
+    const MobileNavToggler = this.shadowRoot.querySelector('#MobileNavToggler')
+    const DrawerNavigation = this.shadowRoot.querySelector('#drawer-navigation')
+    const CloseDrawer = this.shadowRoot.querySelector('#CloseDrawer')
+    const frontEnd = this.shadowRoot.querySelector('#frontEnd')
+    const frontEndSubmenu = this.shadowRoot.querySelector('#frontEndSubmenu')
+    const Security = this.shadowRoot.querySelector('#Security')
+    const SecuritySubmenu = this.shadowRoot.querySelector('#SecuritySubmenu')
+    const Blogs = this.shadowRoot.querySelector('#Blogs')
+    const BlogsSubmenu = this.shadowRoot.querySelector('#BlogsSubmenu')
+    const Python = this.shadowRoot.querySelector('#Python')
+    const PythonSubmenu = this.shadowRoot.querySelector('#PythonSubmenu')
+    
+    MobileNavToggler.addEventListener('click' , () => {
+      DrawerNavigation.classList.toggle('right-64')
+    })
+    CloseDrawer.addEventListener('click' , () => {
+      DrawerNavigation.classList.remove('right-64')
+    })
+    frontEnd.addEventListener('click' , () => {
+      frontEndSubmenu.classList.toggle('hidden')
+     SecuritySubmenu.classList.add('hidden')
+     BlogsSubmenu.classList.add('hidden')
+     PythonSubmenu.classList.add('hidden')
+    })
+    Security.addEventListener('click' , () => {
+      SecuritySubmenu.classList.toggle('hidden')
+      frontEndSubmenu.classList.add('hidden')
+     BlogsSubmenu.classList.add('hidden')
+     PythonSubmenu.classList.add('hidden')
+    })
+    Blogs.addEventListener('click' , () => {
+      BlogsSubmenu.classList.toggle('hidden')
+      frontEndSubmenu.classList.add('hidden')
+     SecuritySubmenu.classList.add('hidden')
+     PythonSubmenu.classList.add('hidden')
+    })
+    Python.addEventListener('click' , () => {
+      PythonSubmenu.classList.toggle('hidden')
+      frontEndSubmenu.classList.add('hidden')
+     SecuritySubmenu.classList.add('hidden')
+     BlogsSubmenu.classList.add('hidden')
+    })
+  }
 
-  static observedAttributes() {}
+  static observedAttributes() {
+
+  }
 }
 
 export { Header };
