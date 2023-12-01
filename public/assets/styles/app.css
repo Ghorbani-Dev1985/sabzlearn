@@ -1267,6 +1267,14 @@ a:hover {
   right: 0.25rem;
 }
 
+.right-2 {
+  right: 0.5rem;
+}
+
+.right-2\.5 {
+  right: 0.625rem;
+}
+
 .right-64 {
   right: 16rem;
 }
@@ -1366,6 +1374,13 @@ a:hover {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .block {
@@ -1654,6 +1669,10 @@ a:hover {
   gap: 0.5rem;
 }
 
+.gap-2\.5 {
+  gap: 0.625rem;
+}
+
 .gap-3 {
   gap: 0.75rem;
 }
@@ -1691,6 +1710,18 @@ a:hover {
 
 .gap-y-4 {
   row-gap: 1rem;
+}
+
+.space-x-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-1\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.375rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.375rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2004,6 +2035,10 @@ a:hover {
   background-repeat: no-repeat;
 }
 
+.fill-amber-500 {
+  fill: #f59e0b;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -2088,8 +2123,24 @@ a:hover {
   padding-bottom: 1.5rem;
 }
 
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pb-2\.5 {
+  padding-bottom: 0.625rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
+.pt-3\.5 {
+  padding-top: 0.875rem;
 }
 
 .text-left {
@@ -2146,6 +2197,11 @@ a:hover {
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-medium {
   font-weight: 500;
 }
@@ -2176,6 +2232,11 @@ a:hover {
 
 .tracking-tighter {
   letter-spacing: -0.05em;
+}
+
+.text-amber-500 {
+  --tw-text-opacity: 1;
+  color: rgb(245 158 11 / var(--tw-text-opacity));
 }
 
 .text-blue-600 {
@@ -2246,6 +2307,10 @@ a:hover {
 .text-zinc-700 {
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+.line-through {
+  text-decoration-line: line-through;
 }
 
 .opacity-0 {
@@ -2464,9 +2529,19 @@ a:hover {
   width: 100%;
 }
 
+.before\:max-w-\[110px\]::before {
+  content: var(--tw-content);
+  max-width: 110px;
+}
+
 .before\:max-w-\[165px\]::before {
   content: var(--tw-content);
   max-width: 165px;
+}
+
+.before\:max-w-\[187px\]::before {
+  content: var(--tw-content);
+  max-width: 187px;
 }
 
 .before\:max-w-\[304px\]::before {
