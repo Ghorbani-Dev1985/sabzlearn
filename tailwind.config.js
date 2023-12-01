@@ -13,6 +13,7 @@ module.exports = {
       },
       backgroundImage: {
           'landing' : 'linear-gradient(270deg, rgba(0, 0, 0, 0.60) 33.85%, rgba(0, 0, 0, 0.6)), url("../../assets/images/landing/background_landing.jfif")',
+           'conic-gradient' : 'conic-gradient(from 90deg, var(--tw-gradient-stops))'
       },
       colors: {
         brown: {

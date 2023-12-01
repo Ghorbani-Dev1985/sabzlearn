@@ -12,7 +12,7 @@ template.innerHTML = `
         />
         <!-- Course Card Body -->
         <div class="px-2">
-          <h2 id="CourseTitle" class="font-MorabbaBold my-3"></h2>
+          <h2 id="CourseTitle" class="font-MorabbaBold text-base md:text-xl my-6 line-clamp-1"></h2>
           <div class="flex-between mb-3">
             <div class="flex-center gap-1">
               <svg
