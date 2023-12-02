@@ -1345,6 +1345,11 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -2504,6 +2509,21 @@ a:hover {
   top: 0.75rem;
 }
 
+.before\:top-1::before {
+  content: var(--tw-content);
+  top: 0.25rem;
+}
+
+.before\:top-2::before {
+  content: var(--tw-content);
+  top: 0.5rem;
+}
+
+.before\:-right-5::before {
+  content: var(--tw-content);
+  right: -1.25rem;
+}
+
 .before\:h-2::before {
   content: var(--tw-content);
   height: 0.5rem;
@@ -2512,6 +2532,16 @@ a:hover {
 .before\:h-full::before {
   content: var(--tw-content);
   height: 100%;
+}
+
+.before\:h-3::before {
+  content: var(--tw-content);
+  height: 0.75rem;
+}
+
+.before\:h-3\.5::before {
+  content: var(--tw-content);
+  height: 0.875rem;
 }
 
 .before\:w-2::before {
@@ -2527,6 +2557,16 @@ a:hover {
 .before\:w-full::before {
   content: var(--tw-content);
   width: 100%;
+}
+
+.before\:w-3::before {
+  content: var(--tw-content);
+  width: 0.75rem;
+}
+
+.before\:w-3\.5::before {
+  content: var(--tw-content);
+  width: 0.875rem;
 }
 
 .before\:max-w-\[110px\]::before {
@@ -2549,6 +2589,36 @@ a:hover {
   max-width: 304px;
 }
 
+.before\:max-w-\[1px\]::before {
+  content: var(--tw-content);
+  max-width: 1px;
+}
+
+.before\:max-w-\[140px\]::before {
+  content: var(--tw-content);
+  max-width: 140px;
+}
+
+.before\:max-w-\[1450px\]::before {
+  content: var(--tw-content);
+  max-width: 1450px;
+}
+
+.before\:max-w-\[10px\]::before {
+  content: var(--tw-content);
+  max-width: 10px;
+}
+
+.before\:max-w-\[150px\]::before {
+  content: var(--tw-content);
+  max-width: 150px;
+}
+
+.before\:max-w-\[155px\]::before {
+  content: var(--tw-content);
+  max-width: 155px;
+}
+
 .before\:rotate-12::before {
   content: var(--tw-content);
   --tw-rotate: 12deg;
@@ -2569,6 +2639,36 @@ a:hover {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
   background-color: rgb(43 195 86 / var(--tw-bg-opacity));
+}
+
+.before\:bg-yellow-400::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(227 160 8 / var(--tw-bg-opacity));
+}
+
+.before\:bg-fuchsia-500::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 70 239 / var(--tw-bg-opacity));
+}
+
+.before\:bg-sky-50::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 249 255 / var(--tw-bg-opacity));
+}
+
+.before\:bg-sky-500::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+}
+
+.before\:bg-lime-500::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(132 204 22 / var(--tw-bg-opacity));
 }
 
 .before\:content-\[\'\'\]::before {
