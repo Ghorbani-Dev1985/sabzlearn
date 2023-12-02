@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سبز لرن | خانه</title>
     <link rel="stylesheet" href="./assets/styles/app.css" />
+    <link
+      rel="stylesheet"
+      href="./assets/vendor/swiperSlider/swiper-bundle.min.css">
   </head>
   <body>
     <!-- Header Component -->
@@ -276,54 +279,212 @@
       </div>
     </section>
     <section class="my-10">
-      <div class="container"> 
-            <!-- title -->
-            <div
+      <div class="container">
+        <!-- title -->
+        <div class="w-full flex-between">
+          <div
             class="flex flex-col gap-2 relative before:content-[''] before:absolute before:-right-5 before:top-2 before:w-3.5 before:h-3.5 before:bg-lime-500"
           >
             <p
               class="font-MorabbaBold text-base md:text-2xl relative before:content-[''] before:absolute before:right-0 before:bottom-0 before:top-3 before:bg-green-500/20 before:w-full before:max-w-[155px] before:h-2"
             >
-             
-جدیدترین دوره ها
+              جدیدترین دوره ها
             </p>
             <span> یادگیری و رشد توسعه فردی</span>
           </div>
-           <!-- ‌Body -->
-        <div
-        class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-5"
-      >
-         <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/css.jpg" NewCourseTagOne="فرانت اند" NewCourseTagTwoClass="hidden" NewCourseTitle="مینی پروژه های تخصصی با Html، Css + دیزاین اختصاصی" NewCourseSubtitle="عنوان دوره گویای همه چی هست اما نیازه برخی موارد گفته بشه تا بتونید با دید بهتری تو این دوره" NewCourseTeacher="حمیدرضا عبادی" NewCourseTotalTime="00:00" NewCourseTotalStudents="208" NewCourseDiscountPrice="600,000"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/chatgpt.png" NewCourseFree="flex-center" NewCourseTagOne="هوش مصنوعی" NewCourseTagTwoClass="hidden" NewCourseTitle=" دوره کاربردی chatGPT برای برنامه نویس ها" NewCourseSubtitle="هوش مصنوعی داره جهان رو در بر میگیره و به سرعت درحال پیشرفته و همین پیشرفتش باعث پیشرفت ماهم میشه" NewCourseTeacher=" قدیر یلمه" NewCourseTotalTime="02:12" NewCourseTotalStudents="12201" NewCoursePrice="290,000" NewCourseDiscountPrice="رایگان!" TomanSvg="hidden"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/tailwind.jpg" NewCourseTagOne=" فرانت اند" NewCourseTagTwoClass="hidden" NewCourseTitle=" آموزش جامع و پروژه محور Tailwind css" NewCourseSubtitle="tailwind css یک فریمورک Utility First هست، این فریمورک متشکل از یکسری کلاس های آماده ای هست که شما برای" NewCourseTeacher=" حمیدرضا عبادی " NewCourseTotalTime="21:28" NewCourseTotalStudents="899" NewCourseDiscountPrice="680,000"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/react2.png" NewCourseTagOne=" فرانت اند" NewCourseTagTwoClass="hidden" NewCourseTitle=" آموزش ۲۰ کتابخانه کاربردی ReactJS برای بازارکار" NewCourseSubtitle="‌کتابخانه‌ها باعث افزایش سرعت کدنویسی میشن. در حدی که تو بازار کار هم از کتابخانه های مختلفی برای توسعه پروژه‌ها" NewCourseTeacher=" محمدامین سعیدی راد  " NewCourseTotalTime="14:39" NewCourseTotalStudents="1225" NewCourseDiscountPrice="570,000"
-                  ></new-course>
-                   <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/redux.png" NewCourseTagOne=" فرانت اند" NewCourseTagTwoClass="hidden" NewCourseTitle=" آموزش تخصصی Redux مقدماتی تا پیشرفته" NewCourseSubtitle="‌ریداکس یه کتابخونه پراستفاده واسه مدیریت حالت های مختلف یه برنامه جاوا اسکریپتیه که تو بازار کار ری‌اکت یکی از" NewCourseTeacher=" محمدامین سعیدی راد  " NewCourseTotalTime="12:04" NewCourseTotalStudents="1165" NewCourseDiscountPrice="1,400,000"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/next.png" NewCourseTagOne=" فرانت اند" NewCourseTagTwoClass="hidden" NewCourseTitle=" آموزش Next.js بصورت پروژه محور" NewCourseSubtitle="‌نکست یه فریمورک مبتنی بر ری‌اکت هست که امروزه تو بازار کار یکی از مهم‌ترین تکنولوژی‌ها برای توسعه دهنده های" NewCourseTeacher=" محمدامین سعیدی راد  " NewCourseTotalTime="19:35" NewCourseTotalStudents="1293" NewCourseDiscountPrice="1,290,000"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/Dashboard2.webp" NewCourseTagOne=" فرانت اند" NewCourseTagTwoClass="hidden" NewCourseTitle=" پیاده سازی داشبورد های حرفه ای با CSS و JS" NewCourseSubtitle="  این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست. با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ، ابزارهای پیشرفته و" NewCourseTeacher=" مهرشاد براتی " NewCourseTotalTime="00:00" NewCourseTotalStudents="186" NewCourseDiscountPrice="420,000"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/Telebot.webp" NewCourseTagOne=" بک اند" NewCourseTagTwo="پی اچ پی" NewCourseTitle=" آموزش ساخت ربات تلگرام با PHP" NewCourseSubtitle="  این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست. با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ، ابزارهای پیشرفته و" NewCourseTeacher=" مهرشاد براتی " NewCourseTotalTime="00:00" NewCourseTotalStudents="186" NewCourseDiscountPrice="420,000"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/Algorithm.webp" NewCourseTagOne="  
-                  ارتقای مهارت ها  " NewCourseTagTwoClass="hidden" NewCourseTitle=" آموزش الگوریتم و ساختمان داده به زبان ساده" NewCourseSubtitle=" الگوریتم، یک مهارت ضروری برای ورود به دنیای برنامه نویسیه که دیدگاه شما رو به مسائل مختلف عوض میکنه. این" NewCourseTeacher=" رضا دولتی " NewCourseTotalTime="00:11" NewCourseTotalStudents="263" NewCourseDiscountPrice="1,400,000"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/php.jpg" NewCourseFree="flex-center" NewCourseTagOne=" بک اند" NewCourseTagTwo="پی اچ پی" NewCourseTitle=" پروژه های کاربردی با PHP" NewCourseSubtitle=" مینی پروژه‌های کاربری با PHP یه دوره آموزشی گام به گام هست که برای توسعه‌دهندگان وب، به ویژه کسایی که" NewCourseTeacher="  معین باغشیخی " NewCourseTotalTime="03:01" NewCourseTotalStudents="3450" NewCoursePrice="470,000" NewCourseDiscountPrice="رایگان!" TomanSvg="hidden"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/deploy.jpg" NewCourseTagOne="  
-                  ارتقای مهارت ها  " NewCourseTagTwoClass="hidden" NewCourseTitle="زیر و بَم و منطق دیپلوی برای برنامه نویسان JS" NewCourseSubtitle=" تو هر فیلدی فعالیت بکنی برای پرزنت خودت تو بازار کار و نمایش نمونه کارات نیاز به دپلوی داری. تو" NewCourseTeacher="  محمدامین سعیدی راد " NewCourseTotalTime="00:08" NewCourseTotalStudents="150" NewCourseDiscountPrice="700,000"
-                  ></new-course>
-                  <new-course NewCourseLink="./" NewCourseImg="./assets/images/courses/new/cleanCode.jpg" NewCourseTagOne="  
-                  ارتقای مهارت ها  " NewCourseTagTwoClass="hidden" NewCourseTitle="Clean Code برای برنامه نویسان JS " NewCourseSubtitle="   فرق بین یه برنامه‌نویس تازه‌کار و حرفه‌ای نوع دیدگاه و طرز کدنویسیشونه. برنامه‌نویس حرفه‌ای کدی رو می‌نویسه که تست‌پذیر باشه" NewCourseTeacher="  محمدامین سعیدی راد " NewCourseTotalTime="00:13" NewCourseTotalStudents="166" NewCourseDiscountPrice="900,000"
-                  ></new-course>
-    </div>
-
+          <div class="flex-center gap-1">
+             <button id="swiperPrevBtn" class="flex-center w-10 h-10 bg-white hover:bg-slate-200 transition-colors rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>              
+             </button>
+             <button id="swiperNextBtn" class="flex-center w-10 h-10 bg-white hover:bg-slate-200 transition-colors rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>              
+             </button>
+          </div>
+        </div>
+        <!-- ‌Body -->
+        <!-- Slider main container -->
+        <div class="swiper newCourseSwiper my-4">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                          <!-- Slides -->
+            <div class="swiper-slide"><new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/css.jpg"
+              NewCourseTagOne="فرانت اند"
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle="مینی پروژه های تخصصی با Html، Css + دیزاین اختصاصی"
+              NewCourseSubtitle="عنوان دوره گویای همه چی هست اما نیازه برخی موارد گفته بشه تا بتونید با دید بهتری تو این دوره"
+              NewCourseTeacher="حمیدرضا عبادی"
+              NewCourseTotalTime="00:00"
+              NewCourseTotalStudents="208"
+              NewCourseDiscountPrice="600,000"
+            ></new-course></div>
+            <div class="swiper-slide"><new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/chatgpt.png"
+              NewCourseFree="flex-center"
+              NewCourseTagOne="هوش مصنوعی"
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle=" دوره کاربردی chatGPT برای برنامه نویس ها"
+              NewCourseSubtitle="هوش مصنوعی داره جهان رو در بر میگیره و به سرعت درحال پیشرفته و همین پیشرفتش باعث پیشرفت ماهم میشه"
+              NewCourseTeacher=" قدیر یلمه"
+              NewCourseTotalTime="02:12"
+              NewCourseTotalStudents="12201"
+              NewCoursePrice="290,000"
+              NewCourseDiscountPrice="رایگان!"
+              TomanSvg="hidden"
+            ></new-course></div>
+            <div class="swiper-slide"><new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/tailwind.jpg"
+              NewCourseTagOne=" فرانت اند"
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle=" آموزش جامع و پروژه محور Tailwind css"
+              NewCourseSubtitle="tailwind css یک فریمورک Utility First هست، این فریمورک متشکل از یکسری کلاس های آماده ای هست که شما برای"
+              NewCourseTeacher=" حمیدرضا عبادی "
+              NewCourseTotalTime="21:28"
+              NewCourseTotalStudents="899"
+              NewCourseDiscountPrice="680,000"
+            ></new-course></div>
+            <div class="swiper-slide"> <new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/react2.png"
+              NewCourseTagOne=" فرانت اند"
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle=" آموزش ۲۰ کتابخانه کاربردی ReactJS برای بازارکار"
+              NewCourseSubtitle="‌کتابخانه‌ها باعث افزایش سرعت کدنویسی میشن. در حدی که تو بازار کار هم از کتابخانه های مختلفی برای توسعه پروژه‌ها"
+              NewCourseTeacher=" محمدامین سعیدی راد  "
+              NewCourseTotalTime="14:39"
+              NewCourseTotalStudents="1225"
+              NewCourseDiscountPrice="570,000"
+            ></new-course></div>
+            <div class="swiper-slide"><new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/redux.png"
+              NewCourseTagOne=" فرانت اند"
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle=" آموزش تخصصی Redux مقدماتی تا پیشرفته"
+              NewCourseSubtitle="‌ریداکس یه کتابخونه پراستفاده واسه مدیریت حالت های مختلف یه برنامه جاوا اسکریپتیه که تو بازار کار ری‌اکت یکی از"
+              NewCourseTeacher=" محمدامین سعیدی راد  "
+              NewCourseTotalTime="12:04"
+              NewCourseTotalStudents="1165"
+              NewCourseDiscountPrice="1,400,000"
+            ></new-course></div>
+            <div class="swiper-slide">    <new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/next.png"
+              NewCourseTagOne=" فرانت اند"
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle=" آموزش Next.js بصورت پروژه محور"
+              NewCourseSubtitle="‌نکست یه فریمورک مبتنی بر ری‌اکت هست که امروزه تو بازار کار یکی از مهم‌ترین تکنولوژی‌ها برای توسعه دهنده های"
+              NewCourseTeacher=" محمدامین سعیدی راد  "
+              NewCourseTotalTime="19:35"
+              NewCourseTotalStudents="1293"
+              NewCourseDiscountPrice="1,290,000"
+            ></new-course></div>
+            <div class="swiper-slide">    <new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/Dashboard2.webp"
+              NewCourseTagOne=" فرانت اند"
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle=" پیاده سازی داشبورد های حرفه ای با CSS و JS"
+              NewCourseSubtitle="  این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست. با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ، ابزارهای پیشرفته و"
+              NewCourseTeacher=" مهرشاد براتی "
+              NewCourseTotalTime="00:00"
+              NewCourseTotalStudents="186"
+              NewCourseDiscountPrice="420,000"
+            ></new-course></div>
+            <div class="swiper-slide"><new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/Telebot.webp"
+              NewCourseTagOne=" بک اند"
+              NewCourseTagTwo="پی اچ پی"
+              NewCourseTitle=" آموزش ساخت ربات تلگرام با PHP"
+              NewCourseSubtitle="  این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست. با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ، ابزارهای پیشرفته و"
+              NewCourseTeacher=" مهرشاد براتی "
+              NewCourseTotalTime="00:00"
+              NewCourseTotalStudents="186"
+              NewCourseDiscountPrice="420,000"
+            ></new-course></div>
+            <div class="swiper-slide"><new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/Algorithm.webp"
+              NewCourseTagOne="  
+                ارتقای مهارت ها  "
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle=" آموزش الگوریتم و ساختمان داده به زبان ساده"
+              NewCourseSubtitle=" الگوریتم، یک مهارت ضروری برای ورود به دنیای برنامه نویسیه که دیدگاه شما رو به مسائل مختلف عوض میکنه. این"
+              NewCourseTeacher=" رضا دولتی "
+              NewCourseTotalTime="00:11"
+              NewCourseTotalStudents="263"
+              NewCourseDiscountPrice="1,400,000"
+            ></new-course></div>
+            <div class="swiper-slide"><new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/Algorithm.webp"
+              NewCourseTagOne="  
+                ارتقای مهارت ها  "
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle=" آموزش الگوریتم و ساختمان داده به زبان ساده"
+              NewCourseSubtitle=" الگوریتم، یک مهارت ضروری برای ورود به دنیای برنامه نویسیه که دیدگاه شما رو به مسائل مختلف عوض میکنه. این"
+              NewCourseTeacher=" رضا دولتی "
+              NewCourseTotalTime="00:11"
+              NewCourseTotalStudents="263"
+              NewCourseDiscountPrice="1,400,000"
+            ></new-course></div>
+            <div class="swiper-slide"> <new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/php.jpg"
+              NewCourseFree="flex-center"
+              NewCourseTagOne=" بک اند"
+              NewCourseTagTwo="پی اچ پی"
+              NewCourseTitle=" پروژه های کاربردی با PHP"
+              NewCourseSubtitle=" مینی پروژه‌های کاربری با PHP یه دوره آموزشی گام به گام هست که برای توسعه‌دهندگان وب، به ویژه کسایی که"
+              NewCourseTeacher="  معین باغشیخی "
+              NewCourseTotalTime="03:01"
+              NewCourseTotalStudents="3450"
+              NewCoursePrice="470,000"
+              NewCourseDiscountPrice="رایگان!"
+              TomanSvg="hidden"
+            ></new-course></div>
+            <div class="swiper-slide"> <new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/deploy.jpg"
+              NewCourseTagOne="  
+                ارتقای مهارت ها  "
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle="زیر و بَم و منطق دیپلوی برای برنامه نویسان JS"
+              NewCourseSubtitle=" تو هر فیلدی فعالیت بکنی برای پرزنت خودت تو بازار کار و نمایش نمونه کارات نیاز به دپلوی داری. تو"
+              NewCourseTeacher="  محمدامین سعیدی راد "
+              NewCourseTotalTime="00:08"
+              NewCourseTotalStudents="150"
+              NewCourseDiscountPrice="700,000"
+            ></new-course></div>
+            <div class="swiper-slide">     <new-course
+              NewCourseLink="./"
+              NewCourseImg="./assets/images/courses/new/cleanCode.jpg"
+              NewCourseTagOne="  
+                ارتقای مهارت ها  "
+              NewCourseTagTwoClass="hidden"
+              NewCourseTitle="Clean Code برای برنامه نویسان JS "
+              NewCourseSubtitle="   فرق بین یه برنامه‌نویس تازه‌کار و حرفه‌ای نوع دیدگاه و طرز کدنویسیشونه. برنامه‌نویس حرفه‌ای کدی رو می‌نویسه که تست‌پذیر باشه"
+              NewCourseTeacher="  محمدامین سعیدی راد "
+              NewCourseTotalTime="00:13"
+              NewCourseTotalStudents="166"
+              NewCourseDiscountPrice="900,000"
+            ></new-course></div>
+         
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+            <!-- If we need navigation buttons -->
+            
+          </div>
+        </div>
       </div>
-      
     </section>
     <!-- Instagram Section -->
     <section class="my-10">
@@ -456,6 +617,10 @@
       </div>
     </section>
 
+  
+     <script src="./assets/vendor/swiperSlider/swiper-bundle.min.js"></script>
+      <!-- Initialize Swiper -->
+   <script src="./assets/vendor/swiperSlider/swiper.js"></script>
     <script type="module" src="./assets/scripts/app.js"></script>
     <script src="./../node_modules/flowbite/dist/flowbite.min.js"></script>
   </body>

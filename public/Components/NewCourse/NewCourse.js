@@ -1,6 +1,10 @@
 const template = document.createElement("template");
 template.innerHTML = `
 <link rel="stylesheet" href="./assets/styles/app.css">
+<link
+rel="stylesheet"
+href="./assets/vendor/swiperSlider/swiper-bundle.min.css"
+/>
 <div class="flex flex-col overflow-hidden bg-white shadow-light rounded-xl">
 <div class="relative">
   <a id="NewCourseLink" class="w-full h-full block">
