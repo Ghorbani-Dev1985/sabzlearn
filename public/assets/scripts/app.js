@@ -11,4 +11,4 @@ window.customElements.define('help-card' , HelpCard);
 window.customElements.define('road-map' , Roadmap);
 window.customElements.define('popular-course' , PopularCourse);
 window.customElements.define('new-course' , NewCourse);
-window.customElements.define('blog' , Blog);
+window.customElements.define('blog-card' , Blog);

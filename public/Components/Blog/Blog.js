@@ -5,7 +5,7 @@ template.innerHTML = `
 <div class="before:bg-blog-banner after:bg-blog-banner before:content-[''] before:absolute before:-bottom-3 before:left-0 before:w-full before:h-full after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-full after:h-full relative h-[217px] overflow-hidden">
   <img id="BlogImg" alt="ghorbani-dev.ir" class="block w-full h-full object-cover"/>
 </div>
-<h4 id="BlogTitle" class="font-danaMedium max-h-12 line-clamp-2 text-zinc-700 dark:text-white mb-2.5">
+<h4 id="BlogTitle" class="font-DanaMd h-14 max-h-14 line-clamp-2 text-zinc-700 dark:text-white mb-2.5">
 </h4>
 <p id="BlogSummery" class="font-danaLight text-sm h-20 line-clamp-4 text-slate-500 dark:text-slate-400">  </p>
 <div class="flex gap-2.5 flex-wrap text-slate-500 dark:text-slate-400 text-xs my-2">
