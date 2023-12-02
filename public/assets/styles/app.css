@@ -2455,6 +2455,10 @@ a:hover {
   transition-duration: 75ms;
 }
 
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 .ease-linear {
   transition-timing-function: linear;
 }
@@ -2613,6 +2617,31 @@ a:hover {
   max-width: 304px;
 }
 
+.before\:max-w-\[145px\]::before {
+  content: var(--tw-content);
+  max-width: 145px;
+}
+
+.before\:max-w-\[125px\]::before {
+  content: var(--tw-content);
+  max-width: 125px;
+}
+
+.before\:max-w-\[12px\]::before {
+  content: var(--tw-content);
+  max-width: 12px;
+}
+
+.before\:max-w-\[120px\]::before {
+  content: var(--tw-content);
+  max-width: 120px;
+}
+
+.before\:max-w-\[130px\]::before {
+  content: var(--tw-content);
+  max-width: 130px;
+}
+
 .before\:bg-fuchsia-500::before {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
@@ -2648,6 +2677,12 @@ a:hover {
   background-color: rgb(227 160 8 / var(--tw-bg-opacity));
 }
 
+.before\:bg-rose-500::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 63 94 / var(--tw-bg-opacity));
+}
+
 .before\:content-\[\'\'\]::before {
   --tw-content: '';
   content: var(--tw-content);
@@ -2670,6 +2705,10 @@ a:hover {
 
 .hover\:-mt-2:hover {
   margin-top: -0.5rem;
+}
+
+.hover\:rounded-lg:hover {
+  border-radius: 0.5rem;
 }
 
 .hover\:border:hover {
@@ -2728,6 +2767,26 @@ a:hover {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-sky-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(125 211 252 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-sky-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 242 254 / var(--tw-bg-opacity));
+}
+
+.hover\:px-3:hover {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.hover\:py-2:hover {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .hover\:text-blue-600:hover {
