@@ -1345,17 +1345,16 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
-.my-1 {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-}
-
 .mb-1 {
   margin-bottom: 0.25rem;
 }
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-2\.5 {
+  margin-bottom: 0.625rem;
 }
 
 .mb-3 {
@@ -1458,6 +1457,10 @@ a:hover {
 
 .h-9 {
   height: 2.25rem;
+}
+
+.h-\[46px\] {
+  height: 46px;
 }
 
 .h-full {
@@ -1777,6 +1780,10 @@ a:hover {
   white-space: nowrap;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .rounded-2xl {
   border-radius: 1rem;
 }
@@ -1903,6 +1910,10 @@ a:hover {
 .bg-sabzlearnGreen {
   --tw-bg-opacity: 1;
   background-color: rgb(43 195 86 / var(--tw-bg-opacity));
+}
+
+.bg-sky-500\/10 {
+  background-color: rgb(14 165 233 / 0.1);
 }
 
 .bg-slate-100 {
@@ -2071,6 +2082,16 @@ a:hover {
 
 .p-8 {
   padding: 2rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-1\.5 {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
 }
 
 .px-2 {
@@ -2489,9 +2510,9 @@ a:hover {
   position: absolute;
 }
 
-.before\:-right-4::before {
+.before\:-right-5::before {
   content: var(--tw-content);
-  right: -1rem;
+  right: -1.25rem;
 }
 
 .before\:bottom-0::before {
@@ -2504,34 +2525,19 @@ a:hover {
   right: 0px;
 }
 
-.before\:top-3::before {
-  content: var(--tw-content);
-  top: 0.75rem;
-}
-
-.before\:top-1::before {
-  content: var(--tw-content);
-  top: 0.25rem;
-}
-
 .before\:top-2::before {
   content: var(--tw-content);
   top: 0.5rem;
 }
 
-.before\:-right-5::before {
+.before\:top-3::before {
   content: var(--tw-content);
-  right: -1.25rem;
+  top: 0.75rem;
 }
 
 .before\:h-2::before {
   content: var(--tw-content);
   height: 0.5rem;
-}
-
-.before\:h-full::before {
-  content: var(--tw-content);
-  height: 100%;
 }
 
 .before\:h-3::before {
@@ -2544,21 +2550,6 @@ a:hover {
   height: 0.875rem;
 }
 
-.before\:w-2::before {
-  content: var(--tw-content);
-  width: 0.5rem;
-}
-
-.before\:w-3p::before {
-  content: var(--tw-content);
-  width: 3%;
-}
-
-.before\:w-full::before {
-  content: var(--tw-content);
-  width: 100%;
-}
-
 .before\:w-3::before {
   content: var(--tw-content);
   width: 0.75rem;
@@ -2569,9 +2560,19 @@ a:hover {
   width: 0.875rem;
 }
 
+.before\:w-full::before {
+  content: var(--tw-content);
+  width: 100%;
+}
+
 .before\:max-w-\[110px\]::before {
   content: var(--tw-content);
   max-width: 110px;
+}
+
+.before\:max-w-\[155px\]::before {
+  content: var(--tw-content);
+  max-width: 155px;
 }
 
 .before\:max-w-\[165px\]::before {
@@ -2589,45 +2590,10 @@ a:hover {
   max-width: 304px;
 }
 
-.before\:max-w-\[1px\]::before {
+.before\:bg-fuchsia-500::before {
   content: var(--tw-content);
-  max-width: 1px;
-}
-
-.before\:max-w-\[140px\]::before {
-  content: var(--tw-content);
-  max-width: 140px;
-}
-
-.before\:max-w-\[1450px\]::before {
-  content: var(--tw-content);
-  max-width: 1450px;
-}
-
-.before\:max-w-\[10px\]::before {
-  content: var(--tw-content);
-  max-width: 10px;
-}
-
-.before\:max-w-\[150px\]::before {
-  content: var(--tw-content);
-  max-width: 150px;
-}
-
-.before\:max-w-\[155px\]::before {
-  content: var(--tw-content);
-  max-width: 155px;
-}
-
-.before\:rotate-12::before {
-  content: var(--tw-content);
-  --tw-rotate: 12deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.before\:rounded-lg::before {
-  content: var(--tw-content);
-  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 70 239 / var(--tw-bg-opacity));
 }
 
 .before\:bg-green-500\/20::before {
@@ -2635,28 +2601,10 @@ a:hover {
   background-color: rgb(14 159 110 / 0.2);
 }
 
-.before\:bg-sabzlearnGreen::before {
+.before\:bg-lime-500::before {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
-  background-color: rgb(43 195 86 / var(--tw-bg-opacity));
-}
-
-.before\:bg-yellow-400::before {
-  content: var(--tw-content);
-  --tw-bg-opacity: 1;
-  background-color: rgb(227 160 8 / var(--tw-bg-opacity));
-}
-
-.before\:bg-fuchsia-500::before {
-  content: var(--tw-content);
-  --tw-bg-opacity: 1;
-  background-color: rgb(217 70 239 / var(--tw-bg-opacity));
-}
-
-.before\:bg-sky-50::before {
-  content: var(--tw-content);
-  --tw-bg-opacity: 1;
-  background-color: rgb(240 249 255 / var(--tw-bg-opacity));
+  background-color: rgb(132 204 22 / var(--tw-bg-opacity));
 }
 
 .before\:bg-sky-500::before {
@@ -2665,10 +2613,10 @@ a:hover {
   background-color: rgb(14 165 233 / var(--tw-bg-opacity));
 }
 
-.before\:bg-lime-500::before {
+.before\:bg-yellow-400::before {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
-  background-color: rgb(132 204 22 / var(--tw-bg-opacity));
+  background-color: rgb(227 160 8 / var(--tw-bg-opacity));
 }
 
 .before\:content-\[\'\'\]::before {
@@ -2860,6 +2808,10 @@ a:hover {
   background-color: rgb(17 24 39 / 0.8);
 }
 
+:is(.dark .dark\:bg-yellow-400\/10) {
+  background-color: rgb(227 160 8 / 0.1);
+}
+
 :is(.dark .dark\:bg-zinc-700) {
   --tw-bg-opacity: 1;
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
@@ -2883,6 +2835,11 @@ a:hover {
 :is(.dark .dark\:text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-yellow-400) {
+  --tw-text-opacity: 1;
+  color: rgb(227 160 8 / var(--tw-text-opacity));
 }
 
 :is(.dark .dark\:shadow-none) {
