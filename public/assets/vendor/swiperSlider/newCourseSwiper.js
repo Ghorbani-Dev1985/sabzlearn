@@ -1,12 +1,12 @@
-const swiper = new Swiper(".newCourseSwiper", {
+const newCourseSwiper = new Swiper(".newCourseSwiper", {
     loop: true,
     slidesPerView: 4,
     centeredSlides: true,
     spaceBetween: 20,
     grabCursor: true,
     navigation: {
-      nextEl: '#swiperNextBtn',
-      prevEl: '#swiperPrevBtn',
+      nextEl: '#NewCourseSwiperNextBtn',
+      prevEl: '#NewCourseSwiperPrevBtn',
     },
     autoplay: {
       delay: 2500,
