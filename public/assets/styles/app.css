@@ -1808,12 +1808,20 @@ progress::-webkit-progress-value {
   height: 2.25rem;
 }
 
+.h-\[190px\] {
+  height: 190px;
+}
+
 .h-\[217px\] {
   height: 217px;
 }
 
 .h-\[46px\] {
   height: 46px;
+}
+
+.h-\[90px\] {
+  height: 90px;
 }
 
 .h-auto {
@@ -1832,12 +1840,16 @@ progress::-webkit-progress-value {
   height: 100vh;
 }
 
-.h-\[90px\] {
-  height: 90px;
-}
-
 .max-h-14 {
   max-height: 3.5rem;
+}
+
+.max-h-\[800px\] {
+  max-height: 800px;
+}
+
+.max-h-full {
+  max-height: 100%;
 }
 
 .w-1\/2 {
@@ -1900,6 +1912,10 @@ progress::-webkit-progress-value {
   width: 2.25rem;
 }
 
+.w-\[90px\] {
+  width: 90px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1907,10 +1923,6 @@ progress::-webkit-progress-value {
 .w-min {
   width: -moz-min-content;
   width: min-content;
-}
-
-.w-\[90px\] {
-  width: 90px;
 }
 
 .max-w-2xl {
@@ -2132,6 +2144,11 @@ progress::-webkit-progress-value {
        column-gap: 0.25rem;
 }
 
+.gap-x-1\.5 {
+  -moz-column-gap: 0.375rem;
+       column-gap: 0.375rem;
+}
+
 .gap-x-2 {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
@@ -2145,6 +2162,11 @@ progress::-webkit-progress-value {
 .gap-x-3 {
   -moz-column-gap: 0.75rem;
        column-gap: 0.75rem;
+}
+
+.gap-x-3\.5 {
+  -moz-column-gap: 0.875rem;
+       column-gap: 0.875rem;
 }
 
 .gap-x-4 {
@@ -2163,11 +2185,6 @@ progress::-webkit-progress-value {
 
 .gap-y-4 {
   row-gap: 1rem;
-}
-
-.gap-x-1\.5 {
-  -moz-column-gap: 0.375rem;
-       column-gap: 0.375rem;
 }
 
 .-space-x-px > :not([hidden]) ~ :not([hidden]) {
@@ -2370,6 +2387,11 @@ progress::-webkit-progress-value {
   border-top-color: rgb(110 231 183 / var(--tw-border-opacity));
 }
 
+.bg-amber-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 191 36 / var(--tw-bg-opacity));
+}
+
 .bg-blue-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(28 100 242 / var(--tw-bg-opacity));
@@ -2457,6 +2479,10 @@ progress::-webkit-progress-value {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
+.bg-gradient-to-t {
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
 .bg-gradient-to-tr {
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
@@ -2529,6 +2555,12 @@ progress::-webkit-progress-value {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-white {
+  --tw-gradient-from: #ffffff var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .via-\[\#F71F87\] {
   --tw-gradient-to: rgb(247 31 135 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #F71F87 var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -2590,10 +2622,6 @@ progress::-webkit-progress-value {
   fill: #f59e0b;
 }
 
-.fill-sabzlearnGreen {
-  fill: #2bc356;
-}
-
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -2649,6 +2677,11 @@ progress::-webkit-progress-value {
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
 }
 
 .px-4 {
@@ -2724,6 +2757,10 @@ progress::-webkit-progress-value {
   padding-bottom: 0.625rem;
 }
 
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .pr-7 {
   padding-right: 1.75rem;
 }
@@ -2738,6 +2775,10 @@ progress::-webkit-progress-value {
 
 .pt-3\.5 {
   padding-top: 0.875rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .text-left {
@@ -2823,6 +2864,10 @@ progress::-webkit-progress-value {
 
 .leading-6 {
   line-height: 1.5rem;
+}
+
+.leading-7 {
+  line-height: 1.75rem;
 }
 
 .leading-9 {
@@ -3111,6 +3156,23 @@ progress::-webkit-progress-value {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.button-main {
+  --tw-bg-opacity: 1;
+  background-color: rgb(46 213 115 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.button-lg {
+  height: 3.5rem;
+  -moz-column-gap: 0.5rem;
+  column-gap: 0.5rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .before\:absolute::before {
@@ -3536,6 +3598,11 @@ progress::-webkit-progress-value {
   background-color: transparent;
 }
 
+:is(.dark .dark\:bg-yellow-400) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(227 160 8 / var(--tw-bg-opacity));
+}
+
 :is(.dark .dark\:bg-yellow-400\/10) {
   background-color: rgb(227 160 8 / 0.1);
 }
@@ -3543,6 +3610,12 @@ progress::-webkit-progress-value {
 :is(.dark .dark\:bg-zinc-700) {
   --tw-bg-opacity: 1;
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:from-gray-800) {
+  --tw-gradient-from: #1F2937 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(31 41 55 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 :is(.dark .dark\:text-blue-500) {
@@ -3659,6 +3732,10 @@ progress::-webkit-progress-value {
 
   .sm\:mt-25 {
     margin-top: 6.25rem;
+  }
+
+  .sm\:mt-5 {
+    margin-top: 1.25rem;
   }
 
   .sm\:flex {
@@ -3784,6 +3861,19 @@ progress::-webkit-progress-value {
     gap: 0.75rem;
   }
 
+  .md\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .md\:pb-6 {
+    padding-bottom: 1.5rem;
+  }
+
+  .md\:pt-7 {
+    padding-top: 1.75rem;
+  }
+
   .md\:text-right {
     text-align: right;
   }
@@ -3888,9 +3978,23 @@ progress::-webkit-progress-value {
     padding-left: 1.25rem;
   }
 
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .lg\:text-\[32px\]\/\[48px\] {
     font-size: 32px;
     line-height: 48px;
+  }
+
+  .lg\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .lg\:leading-9 {
+    line-height: 2.25rem;
   }
 }
 

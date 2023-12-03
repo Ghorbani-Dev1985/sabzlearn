@@ -284,4 +284,22 @@
   .flex-between {
     @apply flex justify-between items-center;
   }
+  .button-main {
+    --tw-bg-opacity: 1;
+    background-color: rgb(46 213 115 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+  .button-lg {
+    height: 3.5rem;
+    -moz-column-gap: 0.5rem;
+    column-gap: 0.5rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+
 }
