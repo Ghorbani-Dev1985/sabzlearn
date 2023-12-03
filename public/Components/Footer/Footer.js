@@ -52,7 +52,7 @@ template.innerHTML = `
     <!-- line -->
 <p class="w-full h-px bg-gray-200 my-2"></p>
   <div class="flex justify-center xs:justify-between flex-wrap gap-x-3 gap-y-2 py-6 text-base">
-    <span>ساخته شده با ❤️ در Ghorbani-dev.ir</span>
+    <span>ساخته شده با ❤️ در Ghorbani-dev.ir.هیچ استفاده تجاری صورت نخواهد گرفت</span>
     <p class="dir-ltr text-center">Copyright © 2019-2023 Sabzlearn. All rights reserved.</p>
   </div>
    </div>
