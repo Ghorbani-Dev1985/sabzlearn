@@ -957,6 +957,9 @@ input:checked + .toggle-bg {
 }
 
 body {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: repeat(1, minmax(0, 1fr));
   overflow-x: hidden;
   scroll-behavior: smooth;
   --tw-bg-opacity: 1;
@@ -1761,12 +1764,12 @@ a:hover {
        column-gap: 0.75rem;
 }
 
-.gap-y-4 {
-  row-gap: 1rem;
-}
-
 .gap-y-2 {
   row-gap: 0.5rem;
+}
+
+.gap-y-4 {
+  row-gap: 1rem;
 }
 
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
@@ -1879,29 +1882,12 @@ a:hover {
   border-end-start-radius: 0.5rem;
 }
 
-.rounded-t {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
-
-.rounded-tr {
-  border-top-right-radius: 0.25rem;
-}
-
-.rounded-tr-lg {
-  border-top-right-radius: 0.5rem;
+.rounded-tl-3xl {
+  border-top-left-radius: 1.5rem;
 }
 
 .rounded-tr-3xl {
   border-top-right-radius: 1.5rem;
-}
-
-.rounded-tl {
-  border-top-left-radius: 0.25rem;
-}
-
-.rounded-tl-3xl {
-  border-top-left-radius: 1.5rem;
 }
 
 .border {
@@ -1918,10 +1904,6 @@ a:hover {
 
 .border-b-4 {
   border-bottom-width: 4px;
-}
-
-.border-t {
-  border-top-width: 1px;
 }
 
 .border-t-4 {
@@ -1964,11 +1946,6 @@ a:hover {
 
 .border-transparent {
   border-color: transparent;
-}
-
-.border-t-emerald-200 {
-  --tw-border-opacity: 1;
-  border-top-color: rgb(167 243 208 / var(--tw-border-opacity));
 }
 
 .border-t-emerald-300 {
