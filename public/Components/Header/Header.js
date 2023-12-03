@@ -46,7 +46,8 @@ template.innerHTML = `
         </div>
     </section>
     <!-- main header -->
-    <section class="container">
+    <section class="bg-white">    
+    <div class="container">
         <div class="flex-between gap-4 py-6">
             <div class="flex-center gap-2">
                <!-- right side -->
@@ -146,6 +147,7 @@ template.innerHTML = `
             </div>
         </div>
     </section>
+    </div>
 </header>
 <!-- mobile menu -->
 <header class="block md:hidden">

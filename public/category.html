@@ -1,21 +1,120 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سبز لرن | دسته بندی</title>
-    <link rel="shortcut icon" href="./assets/images/logo/Logo.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo/Logo.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="./assets/styles/app.css" />
+  </head>
+  <body>
+    <!-- Header Component -->
+    <site-header></site-header>
+    <!-- Main Section -->
+    <main>
+      <div class="container">
+        <!-- Section Title -->
+        <h2
+          class="flex items-center gap-x-3 sm:gap-x-5 w-min mx-auto mt-16 dark:text-white font-MorabbaBold text-4xl sm:text-6xl whitespace-nowrap"
+        >
+          <span
+            class="block w-7 sm:w-10 h-2.5 bg-rose-500 shrink-0 rounded-sm"
+          ></span>
+          فرانت اند
+        </h2>
 
-</head>
-<body>
-        <!-- Header Component -->
-        <site-header></site-header>
+        <!-- Content -->
+        <section
+          class="grid items-start grid-rows-1 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5 mt-9 sm:mt-25"
+        >
+          <!-- Sidebar -->
+          <aside class="lg:sticky top-5 space-y-5">
+            <!-- SearchBox -->
+            <form id="archive_filters" class="space-y-5">
+              <div
+                class="h-16 shadow-light dark:shadow-none bg-white dark:bg-gray-800 dark:border border-gray-700 rounded-2xl"
+              >
+                <div
+                  class="h-full flex items-center justify-between text-slate-500 dark:text-gray-500"
+                >
+                  <input
+                    type="text"
+                    name="search"
+                    class="w-full focus:ring-0 focus:border-0 bg-transparent dark:bg-transparent text-sm font-dana pr-7 border-none"
+                    placeholder="در بین دوره ها جستجو کنید"
+                  />
+                  <button class="mr-4 ml-6" type="submit">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-7 h-7"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Category Filter -->
+              <!-- Toggle Box Container -->
+              <div class="hidden sm:grid grid-cols-2 lg:grid-cols-1 gap-5">
+                <div
+                  class="px-7 h-16 shadow-light dark:shadow-none bg-white dark:bg-gray-800 dark:border border-gray-700 rounded-2xl"
+                >
+                  <div class="flex items-center justify-between h-full">
+                    <span
+                      class="text-sm text-zinc-700 dark:text-white select-none"
+                      >فقط دوره های رایگان</span
+                    >
+                    <label class="toggle">
+                      <input
+                        class="toggle__input"
+                        type="checkbox"
+                        name="only_free"
+                        value="yes"
+                      />
+                      <span class="toggle__marker"></span>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  class="px-7 h-16 shadow-light dark:shadow-none bg-white dark:bg-gray-800 dark:border border-gray-700 rounded-2xl"
+                >
+                  <div class="flex items-center justify-between h-full">
+                    <span
+                      class="text-sm text-zinc-700 dark:text-white select-none"
+                      >در حال پیش فروش</span
+                    >
+                    <label class="toggle">
+                      <input
+                        class="toggle__input"
+                        type="checkbox"
+                        name="presell"
+                        value="yes"
+                      />
+                      <span class="toggle__marker"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </aside>
+        </section>
+      </div>
+    </main>
+    <!-- Footer Section -->
+    <site-footer></site-footer>
 
-
-        <!-- Footer Section -->
-<site-footer></site-footer>
-
-<script type="module" src="./assets/scripts/app.js"></script>
-</body>
+    <script type="module" src="./assets/scripts/app.js"></script>
+  </body>
 </html>
