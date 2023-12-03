@@ -246,6 +246,32 @@
   .breadcrumb__link {
     white-space: nowrap;
   }
+  progress {
+    height: 0.625rem;
+    width: 100%;
+  }
+
+  progress::-webkit-progress-bar {
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  }
+
+  :is(.dark progress)::-webkit-progress-bar {
+    --tw-bg-opacity: 1;
+    background-color: rgb(28 28 40 / var(--tw-bg-opacity));
+  }
+
+  progress::-webkit-progress-value {
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+  }
+
+  :is(.dark progress)::-webkit-progress-value {
+    --tw-bg-opacity: 1;
+    background-color: rgb(78 129 251 / var(--tw-bg-opacity));
+  }
 }
 
 @layer utilities {
