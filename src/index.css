@@ -43,7 +43,7 @@
         @apply transition-colors
     }
     a:hover{
-        @apply text-hoverText
+        @apply text-sabzlearnGreen
     }
   }
   
