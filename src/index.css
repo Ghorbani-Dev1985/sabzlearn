@@ -197,7 +197,7 @@
     justify-content: center;
     padding-right: 2.5rem;
     padding-left: 1.25rem;
-    font-family: Dana Light;
+    font-family: "Dana";
   }
 
   .breadcrumb__item:first-child {
@@ -240,7 +240,7 @@
   }
 
   .breadcrumb__item:last-child {
-    font-family: Dana DemiBold;
+    font-family: "Dana DemiBold";
   }
 
   .breadcrumb__link {
