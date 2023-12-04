@@ -526,7 +526,89 @@
                                       </div>
 
             </div>
-            
+            <!-- Course Comments -->
+            <div class="bg-white dark:bg-gray-800 px-3.5 md:px-5 pt-5 md:pt-7 pb-3.5 md:pb-6 shadow-light dark:shadow-none rounded-2xl mt-4 sm:mt-5">
+              <!-- Course Comments Title -->
+              <div class="flex items-center justify-between flex-wrap mb-5">
+                <div class="flex items-center gap-x-3.5">
+                  <span class="block w-2.5 h-10 bg-pink-500 dark:bg-rose-500 rounded-sm"></span>
+                  <h3 class="text-zinc-700 dark:text-white font-morabba text-2xl md:text-3xl">
+                    نظرات
+                  </h3>
+                </div>
+                <!-- New Comment Button -->
+                                                        <button class="button-md button-main" onclick="submitComment(144)" type="button" id="comment-create-btn">
+                                    ایجاد نظر جدید
+                                </button>
+                                      </div>
+                                      <!-- Course Comments Body -->
+                                      <div id="comment-47656" class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
+                                        <!-- Comment Body -->
+                                        <div class="flex gap-x-5 items-start">
+                                            <!-- Comment Right User Picture & flag (desktop version) -->
+                                            <div class="hidden md:flex flex-col gap-y-2">
+                                                <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="https://secure.gravatar.com/avatar/9f8c9ee94bc617eb7c53756677c52824?s=96&amp;d=mm&amp;r=g">
+                                                                <div class="bg-gray-500 text-white px-3 py-0 text-sm rounded-lg">کاربر</div>
+                                            </div>
+                                            <!-- Comment Left Reply comment, text, author, data, flag, reply btn -->
+                                            <div class="w-full">
+                                                <!-- Comment Head -->
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center gap-x-2">
+                                                        <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="https://secure.gravatar.com/avatar/9f8c9ee94bc617eb7c53756677c52824?s=96&amp;d=mm&amp;r=g">
+                                                        <div class="shrink-0">
+                                                            <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">maedeh_n</span>
+                                                            <div class="flex items-center gap-x-1.5 mt-1">
+                                                                <div class="bg-gray-500 text-white px-3 py-0 text-sm rounded-lg md:hidden">کاربر</div>
+                                                                <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/11</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="comment__reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" onclick="replyComment(47656, 'maedeh_n');" type="button">
+                                                        <svg class="w-6 h-5">
+                                                            <use xlink:href="#reply"></use>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <!-- Comment Text -->
+                                                <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">سلام وقت بخیر<br>
+                                <br>
+                                فایل لایه باز Figma در اخیار ما قرار میگیره؟<br>
+                                <br>
+                                یعنی میتونیم ابعاد و جزئیات پروژه رو خودمون مشاهده کنیم؟</div>
+                                                <!-- Comment Replies -->
+                                                                <div class="mt-7 space-y-3.5 md:space-y-5">
+                                                                            <div id="comment-47731" class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
+                                                            <div class="flex gap-x-5 items-start">
+                                                                <!-- Comment Right User Picture & flag (desktop version) -->
+                                                                <div class="hidden md:flex flex-col gap-y-2">
+                                                                    <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="https://secure.gravatar.com/avatar/5872841a47b10069777793cbce83eacf?s=96&amp;d=mm&amp;r=g">
+                                                                                                        <div class="bg-sky-500 text-white text-sm px-2 py-0 rounded-lg">مدرس</div>
+                                                                </div>
+                                                                <!-- Comment Left Text, author, data, flag, reply btn -->
+                                                                <div class="w-full">
+                                                                    <div class="flex items-center justify-between">
+                                                                        <div class="flex items-center gap-x-2">
+                                                                            <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="https://secure.gravatar.com/avatar/5872841a47b10069777793cbce83eacf?s=96&amp;d=mm&amp;r=g">
+                                                                            <div class="shrink-0">
+                                                                                <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">حمیدرضا عبادی</span>
+                                                                                <div class="flex items-center gap-x-1.5 mt-1">
+                                                                                    <div class="bg-sky-500 text-white text-sm px-2 py-0 rounded-lg md:hidden">مدرس</div>
+                                                                                    <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/12</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Comment Text -->
+                                                                    <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">سلام، همینطور که توی ویدیو معرفی گفته شد، به عنوان توسعه دهنده دسترسی به ایمیل شما داده میشه که بتونید از دیزاین استفاده کنید، این دوره بدون دیزاینش عملا کاربرد خاصی برای دانشجو نداره، اصل کاری همون دیزاینه.</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                        </div>
+                                    </div>
+            </div>
           </div>
           <!-- Course Aside Section -->
           <aside class="w-80 xl:w-96 shrink-0 sticky top-5 space-y-5">

@@ -290,7 +290,20 @@
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-
+.button-md {
+  height: 2.5rem;
+  -moz-column-gap: 0.5rem;
+  column-gap: 0.5rem;
+  padding-left: 18px;
+  padding-right: 18px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
   .button-lg {
     height: 3.5rem;
     -moz-column-gap: 0.5rem;
@@ -299,6 +312,11 @@
     padding-right: 1.75rem;
     font-size: 1.25rem;
     line-height: 1.75rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
 }
 
 
