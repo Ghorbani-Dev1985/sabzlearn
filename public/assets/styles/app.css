@@ -3133,6 +3133,10 @@ progress::-webkit-progress-value {
   height: 100vh;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .max-h-14 {
   max-height: 3.5rem;
 }
@@ -4624,6 +4628,12 @@ progress::-webkit-progress-value {
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
 
+.before\:bg-amber-500::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 158 11 / var(--tw-bg-opacity));
+}
+
 .before\:bg-blog-banner::before {
   content: var(--tw-content);
   background-image: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 90%);
@@ -5247,6 +5257,14 @@ progress::-webkit-progress-value {
     position: sticky;
   }
 
+  .lg\:top-5 {
+    top: 1.25rem;
+  }
+
+  .lg\:top-0 {
+    top: 0px;
+  }
+
   .lg\:order-2 {
     order: 2;
   }
@@ -5278,8 +5296,20 @@ progress::-webkit-progress-value {
     height: 270px;
   }
 
+  .lg\:h-\[200px\] {
+    height: 200px;
+  }
+
+  .lg\:h-56 {
+    height: 14rem;
+  }
+
   .lg\:w-\[440px\] {
     width: 440px;
+  }
+
+  .lg\:w-96 {
+    width: 24rem;
   }
 
   .lg\:grid-cols-1 {
