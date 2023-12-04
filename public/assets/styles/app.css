@@ -2988,6 +2988,10 @@ progress::-webkit-progress-value {
   margin-top: 2.25rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .line-clamp-1 {
   overflow: hidden;
   display: -webkit-box;
@@ -3133,10 +3137,6 @@ progress::-webkit-progress-value {
   height: 100vh;
 }
 
-.h-32 {
-  height: 8rem;
-}
-
 .max-h-14 {
   max-height: 3.5rem;
 }
@@ -3228,6 +3228,10 @@ progress::-webkit-progress-value {
 .w-min {
   width: -moz-min-content;
   width: min-content;
+}
+
+.w-28 {
+  width: 7rem;
 }
 
 .max-w-2xl {
@@ -3759,6 +3763,11 @@ progress::-webkit-progress-value {
   background-color: rgb(255 255 255 / 0.3);
 }
 
+.bg-rose-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 113 133 / var(--tw-bg-opacity));
+}
+
 .bg-conic-gradient {
   background-image: conic-gradient(from 90deg, var(--tw-gradient-stops));
 }
@@ -4078,12 +4087,20 @@ progress::-webkit-progress-value {
   padding-top: 1.25rem;
 }
 
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
 .text-left {
   text-align: left;
 }
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .font-Dana {
@@ -4587,6 +4604,12 @@ progress::-webkit-progress-value {
   max-width: 304px;
 }
 
+.before\:bg-amber-500::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 158 11 / var(--tw-bg-opacity));
+}
+
 .before\:bg-fuchsia-500::before {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
@@ -4626,12 +4649,6 @@ progress::-webkit-progress-value {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-
-.before\:bg-amber-500::before {
-  content: var(--tw-content);
-  --tw-bg-opacity: 1;
-  background-color: rgb(245 158 11 / var(--tw-bg-opacity));
 }
 
 .before\:bg-blog-banner::before {
@@ -5261,10 +5278,6 @@ progress::-webkit-progress-value {
     top: 1.25rem;
   }
 
-  .lg\:top-0 {
-    top: 0px;
-  }
-
   .lg\:order-2 {
     order: 2;
   }
@@ -5292,24 +5305,16 @@ progress::-webkit-progress-value {
     height: 9rem;
   }
 
-  .lg\:h-\[270px\] {
-    height: 270px;
-  }
-
-  .lg\:h-\[200px\] {
-    height: 200px;
-  }
-
   .lg\:h-56 {
     height: 14rem;
   }
 
-  .lg\:w-\[440px\] {
-    width: 440px;
+  .lg\:h-\[270px\] {
+    height: 270px;
   }
 
-  .lg\:w-96 {
-    width: 24rem;
+  .lg\:w-\[440px\] {
+    width: 440px;
   }
 
   .lg\:grid-cols-1 {
@@ -5396,6 +5401,10 @@ progress::-webkit-progress-value {
 
   .xl\:w-\[610px\] {
     width: 610px;
+  }
+
+  .xl\:w-full {
+    width: 100%;
   }
 
   .xl\:grid-cols-4 {
