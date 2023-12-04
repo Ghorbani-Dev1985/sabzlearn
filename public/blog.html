@@ -633,13 +633,13 @@ alertModal.style.display = "none";
             </section>
           </section>
           <!-- Blog Sidebar -->
-          <aside class="hidden lg:block lg:sticky lg:h-56 lg:top-5 col-span-1 w-full space-y-5">
+          <aside class="hidden lg:block sticky top-5 w-full col-span-1 space-y-5">
             <!-- Blog Short Link -->
             <div
               class="hidden lg:block bg-white dark:bg-gray-800 px-5 py-6 shadow-light dark:shadow-none rounded-2xl"
             >
               <span
-                class="flex items-center gap-x-2.5 text-zinc-700 mb-5 -mr-5 dark:text-white font-danaDemiBold text-2xl"
+                class="flex items-center gap-x-2.5 text-zinc-700 mb-5 -mr-5 dark:text-white font-DanaBold text-2xl"
               >
                 <span
                   class="block w-7 h-2 bg-amber-400 dark:bg-secondary rounded-l-sm"
@@ -670,13 +670,103 @@ alertModal.style.display = "none";
                 >
               </div>
             </div>
+            <!-- New Blog Section -->
+            <div class="hidden lg:block dark:border border-gray-700 shadow-light dark:shadow-none bg-white dark:bg-gray-800 rounded-2xl py-6 px-6 xl:px-10">
+                <span class="flex items-center gap-x-2.5 mb-5 -mr-6 xl:-mr-10 text-zinc-700 dark:text-white font-DanaBold text-2xl">
+                    <span class="block w-7 h-2 bg-pink-500 dark:bg-rose-500 rounded-l-sm -mr-px"></span>
+                    جدیدترین نوشته ها
+                </span>
+                <div class="flex flex-col font-danaLight text-xl text-zinc-700 dark:text-white last:child:pb-0 last:child:border-b-0 child:py-3 child:border-b child:border-dashed child:border-b-slate-500 dark:child:border-b-gray-500">
+                                                <a href="https://sabzlearn.ir/blog/dictionary-in-python/">دیکشنری در پایتون + تکنیک و ترفندهای متنوع</a>
+                                                <a href="https://sabzlearn.ir/blog/operators-in-python/">عملگرها در پایتون – راهنمای مبتدیان</a>
+                                                <a href="https://sabzlearn.ir/blog/%d9%81%d8%b1%db%8c%d9%85%d9%88%d8%b1%da%a9-%d9%87%d8%a7%db%8c-%d9%be%d8%a7%db%8c%d8%aa%d9%88%d9%86-%d9%85%d8%b9%d8%b1%d9%81%db%8c-%da%a9%d8%a7%d8%b1%d8%a8%d8%b1%d8%af%d9%87%d8%a7/">فریمورک های پایتون + معرفی کاربردها</a>
+                                                <a href="https://sabzlearn.ir/blog/%d9%82%d8%af%d8%b1-%d9%85%d8%b7%d9%84%d9%82-%d8%af%d8%b1-%d9%be%d8%a7%db%8c%d8%aa%d9%88%d9%86/">محاسبات دقیق با قدر مطلق در پایتون – راهنمای عملی برای برنامه‌نویسان</a>
+                                                <a href="https://sabzlearn.ir/blog/%d8%a8%d8%a7%d8%b2%d8%a7%d8%b1-%da%a9%d8%a7%d8%b1-%d9%be%d8%a7%db%8c%d8%aa%d9%88%d9%86-%da%86%d8%b4%d9%85-%d8%a7%d9%86%d8%af%d8%a7%d8%b2%db%8c-%d8%a7%d8%b2-%d8%ad%d8%a7%d9%84-%d8%aa%d8%a7-%d8%a2/">بازار کار پایتون – چشم اندازی از حال تا آینده</a>
+                                        </div>
+            </div>
+            <!-- Blog Category -->
+            <div class=" dark:border border-gray-700 shadow-light dark:shadow-none bg-white dark:bg-gray-800 rounded-2xl py-6 px-6 xl:px-10">
+                <span class="flex items-center gap-x-2.5 mb-5 -mr-6 xl:-mr-10 text-zinc-700 dark:text-white font-danaDemiBold text-2xl">
+                    <span class="block w-7 h-2 bg-slate-800 rounded-l-sm -mr-px"></span>
+                    دسته بندی ها
+                </span>
+                <ul class="flex flex-col gap-y-6 font-danaLight text-xl text-zinc-700 dark:text-white">
+                                                <li class="flex items-center">
+                            <svg fill="currentColor" class="w-3 h-3 text-sabzlearnGreen" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 11.111 12">
+                        <path d="M4.24,3.259a2,2,0,0,1,3.52,0l2.647,4.9a2,2,0,0,1-1.76,2.95H3.353a2,2,0,0,1-1.76-2.95Z"
+                              transform="translate(0 12) rotate(-90)"/>
+                    </svg>
+                            <a href="https://sabzlearn.ir/blog/category/%d8%b7%d8%b1%d8%a7%d8%ad%db%8c-%d8%b3%d8%a7%db%8c%d8%aa/">طراحی سایت</a>
+                        </li>
+                                                <li class="flex items-center">
+                             <svg fill="currentColor" class="w-3 h-3 text-sabzlearnGreen" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 11.111 12">
+                        <path d="M4.24,3.259a2,2,0,0,1,3.52,0l2.647,4.9a2,2,0,0,1-1.76,2.95H3.353a2,2,0,0,1-1.76-2.95Z"
+                              transform="translate(0 12) rotate(-90)"/>
+                    </svg>
+                            <a href="https://sabzlearn.ir/blog/category/%d8%ac%d8%a7%d9%88%d8%a7-%d8%a7%d8%b3%da%a9%d8%b1%db%8c%d9%be%d8%aa/">جاوا اسکریپت</a>
+                        </li>
+                                                <li class="flex items-center">
+                             <svg fill="currentColor" class="w-3 h-3 text-sabzlearnGreen" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 11.111 12">
+                        <path d="M4.24,3.259a2,2,0,0,1,3.52,0l2.647,4.9a2,2,0,0,1-1.76,2.95H3.353a2,2,0,0,1-1.76-2.95Z"
+                              transform="translate(0 12) rotate(-90)"/>
+                    </svg>
+                            <a href="https://sabzlearn.ir/blog/category/%da%a9%d8%b3%d8%a8-%d8%af%d8%b1%d8%a7%d9%85%d8%af-%d8%a7%d8%b2-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87-%d9%86%d9%88%db%8c%d8%b3%db%8c/">کسب درامد از برنامه نویسی</a>
+                        </li>
+                                                <li class="flex items-center">
+                             <svg fill="currentColor" class="w-3 h-3 text-sabzlearnGreen" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 11.111 12">
+                        <path d="M4.24,3.259a2,2,0,0,1,3.52,0l2.647,4.9a2,2,0,0,1-1.76,2.95H3.353a2,2,0,0,1-1.76-2.95Z"
+                              transform="translate(0 12) rotate(-90)"/>
+                    </svg>
+                            <a href="https://sabzlearn.ir/blog/category/%d9%be%d8%a7%db%8c%d8%aa%d9%88%d9%86/">پایتون</a>
+                        </li>
+                                                <li class="flex items-center">
+                             <svg fill="currentColor" class="w-3 h-3 text-sabzlearnGreen" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 11.111 12">
+                        <path d="M4.24,3.259a2,2,0,0,1,3.52,0l2.647,4.9a2,2,0,0,1-1.76,2.95H3.353a2,2,0,0,1-1.76-2.95Z"
+                              transform="translate(0 12) rotate(-90)"/>
+                    </svg>
+                            <a href="https://sabzlearn.ir/blog/category/%d8%b4%d8%b1%d9%88%d8%b9-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87-%d9%86%d9%88%db%8c%d8%b3%db%8c/">شروع برنامه نویسی</a>
+                        </li>
+                                        </ul>
+            </div>
+            <!-- New Course -->
+              <div class="hidden lg:block bg-white dark:bg-gray-800 space-y-3 px-5 py-6 shadow-light dark:shadow-none rounded-2xl"> 
+                <span
+                class="flex items-center gap-x-2.5 text-zinc-700 mb-5 -mr-5 dark:text-white font-DanaBold text-2xl"
+              >
+                <span
+                  class="block w-7 h-2 bg-brown-600 dark:bg-secondary rounded-l-sm"
+                ></span>
+             دوره های جدید
+              </span>
+              <div class="flex-between">
+                  <img src="./assets/images/courses/new/Algorithm.webp" class="w-28 rounded-md" alt="ghorbani-dev.ir"/>
+                  <span class="flex flex-1 mr-2"> الگوریتم به روش ساده</span>
+              </div>
+              <div class="flex-between">
+                <img src="./assets/images/courses/new/cleanCode.jpg" class="w-28 rounded-md" alt="ghorbani-dev.ir"/>
+                <span class="flex flex-1 mr-2"> Clean Code  </span>
+            </div>
+            <div class="flex-between">
+                <img src="./assets/images/courses/new/deploy.jpg" class="w-28 rounded-md" alt="ghorbani-dev.ir"/>
+                <span class="flex flex-1 mr-2">  زیر و بم دیپلوی  </span>
+            </div>
+            <div class="flex-between">
+                <img src="./assets/images/courses/new/next.png" class="w-28 rounded-md" alt="ghorbani-dev.ir"/>
+                <span class="flex flex-1 mr-2"> متخصص Next JS  </span>
+            </div>
+            </div>
             <!-- Popular Course -->
             <div class="hidden lg:block bg-white dark:bg-gray-800 space-y-3 px-5 py-6 shadow-light dark:shadow-none rounded-2xl"> 
                 <span
-                class="flex items-center gap-x-2.5 text-zinc-700 mb-5 -mr-5 dark:text-white font-danaDemiBold text-2xl"
+                class="flex items-center gap-x-2.5 text-zinc-700 mb-5 -mr-5 dark:text-white font-DanaBold text-2xl"
               >
                 <span
-                  class="block w-7 h-2 bg-rose-500 dark:bg-secondary rounded-l-sm"
+                  class="block w-7 h-2 bg-violet-500 dark:bg-secondary rounded-l-sm"
                 ></span>
               پرامتیازترین دوره ها
               </span>
