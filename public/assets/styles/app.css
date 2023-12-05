@@ -3715,6 +3715,10 @@ progress::-webkit-progress-value {
   border-top-width: 4px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -3773,6 +3777,16 @@ progress::-webkit-progress-value {
 .border-t-emerald-300 {
   --tw-border-opacity: 1;
   border-top-color: rgb(110 231 183 / var(--tw-border-opacity));
+}
+
+.border-b-green-300 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(134 239 172 / var(--tw-border-opacity));
+}
+
+.border-b-emerald-300 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(110 231 183 / var(--tw-border-opacity));
 }
 
 .bg-amber-400 {
@@ -4298,6 +4312,11 @@ progress::-webkit-progress-value {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .font-bold {
