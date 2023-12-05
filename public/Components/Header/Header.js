@@ -138,12 +138,18 @@ template.innerHTML = `
                       </svg>
                       <span class="absolute right-1 top-1 flex-center bg-blue-600 text-white w-4 h-4 rounded-full">0</span>
                 </a>
-              <a href="#" class="flex-center text-sabzlearnGreen hover:bg-sabzlearnGreen hover:text-white border-2 border-sabzlearnGreen rounded-md px-3 py-1 transition-colors">
+              <!-- Login & Register -->
+              <div class="relative text-base xl:text-lg text-white hover:text-white md:h-12 md:w-[155px] xl:w-[180px]">
+                <a href="../../login.html" class="absolute right-0 w-25 xl:w-28 hidden md:flex items-center justify-start h-full bg-sky-500/50 hover:bg-sky-400 hover:text-white rounded-full pr-5 transition-colors">ورود</a>
+                <a href="../../signUp.html" class="absolute left-0 w-25 xl:w-28 hidden md:flex items-center justify-center h-full bg-sky-500 hover:bg-sky-600 hover:text-white dark:bg-secondary dark:hover:bg-[#3F6CD8] rounded-full z-10 transition-colors">عضویت</a>
+                <!-- When Screen Smaller Than 475px, Its Display -->
+                <a href="https://sabzlearn.ir/login?after=https%3A%2F%2Fsabzlearn.ir%2Fblog%2Fdictionary-in-python%2F" class="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg>                      
-                ورود / ثبت نام
-              </a>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+              
+                </a>
+            </div>
             </div>
         </div>
     </section>
@@ -366,3 +372,12 @@ class Header extends HTMLElement {
 }
 
 export { Header };
+
+
+
+{/* <a href="#" class="flex-center text-sabzlearnGreen hover:bg-sabzlearnGreen hover:text-white border-2 border-sabzlearnGreen rounded-md px-3 py-1 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>                      
+                ورود / ثبت نام
+              </a> */}

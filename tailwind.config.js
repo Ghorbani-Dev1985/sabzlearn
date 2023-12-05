@@ -61,6 +61,7 @@ module.exports = {
         scrollbar: ["dark"],
       },
       width: {
+        '100' : "25rem",
         "1p": "1%",
         "2p": "2%",
         "3p": "3%",
