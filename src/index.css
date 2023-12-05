@@ -52,6 +52,10 @@
     direction: ltr;
     text-align: left;
   }
+  .en-valueInput{
+    direction: ltr;
+    text-align: right
+  }
   .line {
     @apply w-full h-px bg-gray-300 my-3;
   }
