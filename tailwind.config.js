@@ -177,7 +177,7 @@ module.exports = {
       addVariant("child-hover", "& > *:hover");
     },
     require("tailwind-scrollbar"),
-    require("daisyui")
+    require("daisyui"),
   ],
 }
 

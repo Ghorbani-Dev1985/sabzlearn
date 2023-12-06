@@ -4331,10 +4331,6 @@ progress::-webkit-progress-value {
   line-height: 1.25;
 }
 
-.tracking-\[0\.55rem\] {
-  letter-spacing: 0.55rem;
-}
-
 .tracking-tight {
   letter-spacing: -0.025em;
 }
@@ -5316,16 +5312,8 @@ progress::-webkit-progress-value {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .sm\:flex-col {
-    flex-direction: column;
-  }
-
   .sm\:gap-5 {
     gap: 1.25rem;
-  }
-
-  .sm\:gap-10 {
-    gap: 2.5rem;
   }
 
   .sm\:gap-x-5 {
