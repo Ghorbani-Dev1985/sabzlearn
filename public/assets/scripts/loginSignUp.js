@@ -1,5 +1,5 @@
 const $ = document;
-const LoginPassInput = $.querySelector('#LoginPassInput')
+const PassInput = $.querySelector('.PassInput')
 const HiddenPassSvg = $.querySelector('#HiddenPassSvg')
 const ShowPassSvg = $.querySelector('#ShowPassSvg')
 
