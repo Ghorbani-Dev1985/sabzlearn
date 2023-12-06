@@ -7,6 +7,7 @@ const CoursesTimeCountDown = $.querySelector('.CoursesTimeCountDown')
 let HeaderTitleText = 'ما به هر قیمتی دوره آموزشی تولید نمی کنیم'.split("")
 let i =0;
 
+// Type Sentence Writer
 function TypeWriter() {
     if (i < HeaderTitleText.length) {
         MainPageHeaderTitle.append(HeaderTitleText[i]);
@@ -20,7 +21,7 @@ function TypeWriter() {
 
 TypeWriter();
 
-
+// Counters
 function GenerateCounter(max ,ElementName, delay){
   let counter = 0;
   const CounterInterval = setInterval(() => {

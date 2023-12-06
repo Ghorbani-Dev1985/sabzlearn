@@ -3285,10 +3285,6 @@ progress::-webkit-progress-value {
   width: 2.25rem;
 }
 
-.w-\[28rem\] {
-  width: 28rem;
-}
-
 .w-\[85\%\] {
   width: 85%;
 }
@@ -4255,6 +4251,11 @@ progress::-webkit-progress-value {
   line-height: 42px;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -4336,6 +4337,10 @@ progress::-webkit-progress-value {
 
 .tracking-tighter {
   letter-spacing: -0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
 }
 
 .text-amber-400 {
@@ -4633,6 +4638,33 @@ progress::-webkit-progress-value {
   -moz-border-radius: 1rem;
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+  @media (hover:hover) {
+    .md\:label a:hover {
+      --tw-text-opacity: 1;
+      color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
+    }
+  }
+
+  .md\:label {
+    display: flex;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .btm-nav > * .md\:label {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }
 
 .before\:absolute::before {
@@ -5280,8 +5312,16 @@ progress::-webkit-progress-value {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+
   .sm\:gap-5 {
     gap: 1.25rem;
+  }
+
+  .sm\:gap-10 {
+    gap: 2.5rem;
   }
 
   .sm\:gap-x-5 {
@@ -5412,6 +5452,14 @@ progress::-webkit-progress-value {
     width: 155px;
   }
 
+  .md\:w-\[28rem\] {
+    width: 28rem;
+  }
+
+  .md\:cursor-pointer {
+    cursor: pointer;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -5486,6 +5534,11 @@ progress::-webkit-progress-value {
     line-height: 2.25rem;
   }
 
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -5506,9 +5559,8 @@ progress::-webkit-progress-value {
     line-height: 1.75rem;
   }
 
-  .md\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+  .md\:tracking-\[0\.55rem\] {
+    letter-spacing: 0.55rem;
   }
 
   .md\:flex-between {
