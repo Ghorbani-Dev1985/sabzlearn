@@ -2924,16 +2924,6 @@ progress::-webkit-progress-value {
   margin-bottom: 1.5rem;
 }
 
-.my-7 {
-  margin-top: 1.75rem;
-  margin-bottom: 1.75rem;
-}
-
-.\!my-6 {
-  margin-top: 1.5rem !important;
-  margin-bottom: 1.5rem !important;
-}
-
 .-mr-5 {
   margin-right: -1.25rem;
 }
@@ -3715,10 +3705,6 @@ progress::-webkit-progress-value {
   border-top-width: 4px;
 }
 
-.border-b-2 {
-  border-bottom-width: 2px;
-}
-
 .border-solid {
   border-style: solid;
 }
@@ -3764,6 +3750,11 @@ progress::-webkit-progress-value {
   border-color: transparent;
 }
 
+.border-b-emerald-300 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(110 231 183 / var(--tw-border-opacity));
+}
+
 .border-b-gray-200 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(229 231 235 / var(--tw-border-opacity));
@@ -3777,16 +3768,6 @@ progress::-webkit-progress-value {
 .border-t-emerald-300 {
   --tw-border-opacity: 1;
   border-top-color: rgb(110 231 183 / var(--tw-border-opacity));
-}
-
-.border-b-green-300 {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(134 239 172 / var(--tw-border-opacity));
-}
-
-.border-b-emerald-300 {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(110 231 183 / var(--tw-border-opacity));
 }
 
 .bg-amber-400 {
@@ -4168,24 +4149,19 @@ progress::-webkit-progress-value {
   padding-bottom: 1rem;
 }
 
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
 
-.py-7 {
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
-}
-
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
 }
 
 .pb-2 {
@@ -4224,6 +4200,10 @@ progress::-webkit-progress-value {
   padding-right: 1.75rem;
 }
 
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -4234,10 +4214,6 @@ progress::-webkit-progress-value {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pt-2 {
-  padding-top: 0.5rem;
 }
 
 .text-left {
@@ -4312,11 +4288,6 @@ progress::-webkit-progress-value {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .font-bold {
@@ -4445,11 +4416,6 @@ progress::-webkit-progress-value {
 .text-zinc-700 {
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
-}
-
-.text-primary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
 }
 
 .line-through {
@@ -5027,6 +4993,11 @@ progress::-webkit-progress-value {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
+.hover\:text-green-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(21 128 61 / var(--tw-text-opacity));
+}
+
 .hover\:text-primary:hover {
   --tw-text-opacity: 1;
   color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
@@ -5040,16 +5011,6 @@ progress::-webkit-progress-value {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:text-green-500:hover {
-  --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
-}
-
-.hover\:text-green-700:hover {
-  --tw-text-opacity: 1;
-  color: rgb(21 128 61 / var(--tw-text-opacity));
 }
 
 .focus\:border-0:focus {
@@ -5630,6 +5591,11 @@ progress::-webkit-progress-value {
     line-height: 2.25rem;
   }
 
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .lg\:text-4xl\/\[48px\] {
     font-size: 2.25rem;
     line-height: 48px;
@@ -5643,11 +5609,6 @@ progress::-webkit-progress-value {
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .lg\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
   }
 
   .lg\:leading-9 {

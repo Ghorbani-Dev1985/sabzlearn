@@ -1,18 +1,18 @@
 const $ = document
 const MainPageHeaderTitle = $.querySelector('.MainPageHeaderTitle')
 
-window.addEventListener('load' , () => {
-    let HeaderTitleText = '  ما به هر قیمتی دوره آموزشی تولید نمی کنیم  '
-    let TypeIndex = 0
-    TypeWriter(HeaderTitleText , TypeIndex)
-})
+let HeaderTitleText = 'ما به هر قیمتی دوره آموزشی تولید نمی کنیم'.split("")
+let i =0;
 
-function TypeWriter (text , index){
-    if(index < text.length){
-    MainPageHeaderTitle.innerHTML += text[index]
-    index++
+function TypeWriter() {
+    if (i < HeaderTitleText.length) {
+        MainPageHeaderTitle.append(HeaderTitleText[i]);
+      i++;
+    } else {
+        MainPageHeaderTitle.innerHTML = '';
+      i = 0;
     }
-    setTimeout(() => {
-       TypeWriter(text , index);
-    },100);
+    setTimeout(TypeWriter, 100);
 }
+
+TypeWriter();
