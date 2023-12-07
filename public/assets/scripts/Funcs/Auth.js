@@ -1,4 +1,4 @@
-
+import { ShowSwalAlert } from "./Utils.js";
 const $ = document
 const FullNameInput = $.querySelector('#FullNameInput');
 const UserNameInput = $.querySelector('#UserNameInput')
@@ -20,21 +20,9 @@ const ClearInput = () => {
 
 const Register = () => {
     if(FullNameInput.value === '' || UserNameInput.value === '' || EmailInput.value === '' || PhoneNumberInput.value === '' || PasswordInput.value === '' || RepeatPasswordInput.value === ''){
-        Swal.fire({
-            position: "top-center",
-            icon: "info",
-            title: 'لطفا فرم ثبت نام را تکمیل نمایید',
-            showConfirmButton: false,
-            timer: 2500
-          });
+          ShowSwalAlert("info" , 'لطفا فرم ثبت نام را تکمیل نمایید')
     }else if(PasswordInput.value.trim() !== RepeatPasswordInput.value.trim()){
-        Swal.fire({
-            position: "top-center",
-            icon: "error",
-            title: 'رمز عبور با تکرار رمز عبور مطابقت ندارد',
-            showConfirmButton: false,
-            timer: 2500
-          });
+          ShowSwalAlert("error" , 'رمز عبور با تکرار رمز عبور مطابقت ندارد')
     }else{
         const NewUserInfos = {
             name: FullNameInput.value.trim(),
@@ -54,24 +42,11 @@ const Register = () => {
         .then(res => {
             console.log(res);
             if(res.status === 201){
-                Swal.fire({
-                    position: "top-center",
-                    icon: "success",
-                    title: "ثبت نام با موفقیت انجام شد",
-                    showConfirmButton: false,
-                    timer: 2500
-                  }).then(() => {
-                    location.href = 'index.html'
-                    ClearInput()
-                  })
+                  ShowSwalAlert("success" , 'ثبت نام با موفقیت انجام شد' , 
+                  () => location.href = 'index.html'
+                  )
             }else if(res.status === 409){
-                Swal.fire({
-                    position: "top-center",
-                    icon: "error",
-                    title: 'نام کاربری یا ایمیل از قبل موجود است',
-                    showConfirmButton: false,
-                    timer: 2500
-                  });
+                  ShowSwalAlert("error" , 'نام کاربری یا ایمیل از قبل موجود است')
             }
            return res.json()
         })
