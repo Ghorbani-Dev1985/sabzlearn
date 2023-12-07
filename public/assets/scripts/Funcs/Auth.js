@@ -7,18 +7,12 @@ const PhoneNumberInput = $.querySelector('#PhoneNumberInput')
 const EmailInput = $.querySelector('#EmailInput')
 const PasswordInput = $.querySelector('#PasswordInput')
 const RepeatPasswordInput = $.querySelector('#RepeatPasswordInput')
+const LoginUsernameInput = $.querySelector('#LoginUsernameInput')
+const LoginPassInput = $.querySelector('#LoginPassInput')
+const LoginBtn = $.querySelector('#LoginBtn')
 
 
-const ClearInput = () => {
-    FullNameInput.value = ''
-    UserNameInput.value = ''
-    PhoneNumberInput.value = ''
-    EmailInput.value = ''
-    PasswordInput.value = ''
-    RepeatPasswordInput.value = ''
-}
-
-
+// Register Func
 const Register = () => {
     if(FullNameInput.value === '' || UserNameInput.value === '' || EmailInput.value === '' || PhoneNumberInput.value === '' || PasswordInput.value === '' || RepeatPasswordInput.value === ''){
           ShowSwalAlert("info" , 'لطفا فرم ثبت نام را تکمیل نمایید')
@@ -56,4 +50,34 @@ const Register = () => {
         })
     }
 }
-export { Register }
+
+// Login Func
+const Login = () => {
+  const UserLoginInfos = {
+    identifier : LoginUsernameInput.value.trim(),
+    password : LoginPassInput.value.trim()
+  }
+  fetch(`http://localhost:4000/v1/auth/login` , {
+    method: 'POST',
+    headers: {
+        'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(UserLoginInfos)
+})
+.then(res => {
+    console.log(res);
+    if(res.status === 401){
+        ShowSwalAlert("error" , 'کاربری با چنین اطلاعات یافت نگردید')
+    }else if(res.status === 200){
+        ShowSwalAlert("success" , ' ورود با موفقیت انجام شد' , 
+        () => location.href = 'index.html'
+        )
+  }
+    return res.json()
+})
+.then(result => {
+    SaveIntoLocalStorage('user' , {token : result.accessToken})
+})
+}
+
+export { Register , Login}
