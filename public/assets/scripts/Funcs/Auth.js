@@ -1,4 +1,5 @@
 import { ShowSwalAlert } from "./Utils.js";
+import { SaveIntoLocalStorage } from "./Utils.js"
 const $ = document
 const FullNameInput = $.querySelector('#FullNameInput');
 const UserNameInput = $.querySelector('#UserNameInput')
@@ -51,7 +52,7 @@ const Register = () => {
            return res.json()
         })
         .then(result => {
-            console.log(result);
+            SaveIntoLocalStorage('user' , {token : result.accessToken})
         })
     }
 }

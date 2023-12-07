@@ -9,7 +9,7 @@ const ShowSwalAlert = ( icon, title , callback) => {
 }
 
 const SaveIntoLocalStorage = (key , value) => {
-  return localStorage.setItem(key , value)
+  return localStorage.setItem(key , JSON.stringify(value))
 }
 
 const GetFromLocalStorage = (key) => {
