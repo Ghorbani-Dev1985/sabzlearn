@@ -141,7 +141,7 @@ template.innerHTML = `
                       <span class="absolute right-1 top-1 flex-center bg-blue-600 text-white w-4 h-4 rounded-full">0</span>
                 </a>
               <!-- Login & Register -->
-              <div id="LoginRegisterBody" class="relative flex-center text-base xl:text-lg text-white hover:text-white md:h-12 md:w-[155px] xl:w-[180px]">
+              <div class="LoginRegisterBody relative flex-center text-base xl:text-lg text-white hover:text-white md:h-12 md:w-[155px] xl:w-[180px]">
              
             </div>
         </div>
@@ -167,20 +167,16 @@ template.innerHTML = `
                     <img src="./assets/images/logo/Logo.png" alt="logo" class="object-cover" />
                 </div>
                 <!-- profile icon -->
-                <div>
-                    <p class="flex-center bg-slate-200 rounded-full w-10 h-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                          </svg>                           
-                    </p>
+                <div  class="LoginRegisterBody relative flex-center text-base xl:text-lg text-white hover:text-white md:h-12 md:w-[155px] xl:w-[180px]">
                 </div>
+                
             </div>
 
         </div>
     </section>
     <!-- mobile nav -->
 <!-- drawer component -->
-<div id="drawer-navigation" class="fixed top-0 right-0 h-screen p-4 overflow-y-auto transition-all translate-x-full duration-500 shadow-6 bg-white w-64 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
+<div id="drawer-navigation" class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-all translate-x-full duration-500 shadow-6 bg-white w-64 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
 <button id="CloseDrawer" type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
   <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
@@ -301,7 +297,7 @@ template.innerHTML = `
 </div>
 </div>
 </header>
-
+<section class="Overlay hidden fixed w-full h-full top-0 left-0 bg-black/40 z-30 md:backdrop-blur transition-all cursor-pointer"></section>
 `;
 
 class Header extends HTMLElement {
@@ -323,23 +319,22 @@ class Header extends HTMLElement {
     const Blogs = this.shadowRoot.querySelector("#Blogs");
     const BlogsSubmenu = this.shadowRoot.querySelector("#BlogsSubmenu");
     const Python = this.shadowRoot.querySelector("#Python");
-    const PythonSubmenu = this.shadowRoot.querySelector("#PythonSubmenu"); 
-    const LoginRegisterBody =
-      this.shadowRoot.querySelector("#LoginRegisterBody");
-    const userProfileDropdown = this.shadowRoot.querySelector(
-      "#user-profile-dropdown"
-    );
+    const PythonSubmenu = this.shadowRoot.querySelector("#PythonSubmenu");
+    const Overlay = this.shadowRoot.querySelector('.Overlay'); 
+    const LoginRegisterBody = this.shadowRoot.querySelectorAll(".LoginRegisterBody"); 
 
     const isUserLogin = isLogin();
     if (isUserLogin) {
       const userInfos = GetMe().then(data => {
         console.log(data);
-      LoginRegisterBody.innerHTML = `<button id="ShowProfileDropDown" class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
+
+      LoginRegisterBody.forEach((node) => {
+          node.innerHTML = `<button class="ShowProfileDropDown flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
        <img src="./assets/images/user.png" alt="Ghorbani-dev.ir" class="object-cover w-16 h-12 rounded-full inline-block" loading="lazy" />
       </button>  
-      <section id="Overlay" class="hidden fixed w-full h-full top-0 left-0 bg-black/40 z-40 md:backdrop-blur transition-all"></section>
+      <section id="Overlay" class="hidden fixed w-full h-full top-0 left-0 bg-black/40 z-40 md:backdrop-blur transition-all cursor-pointer"></section>
       <!-- After Login  -->
-      <div class="hidden absolute left-0 top-full pt-4 z-50  transition-all show" id="UserProfileDropdown">
+      <div class="UserProfileDropdown hidden absolute left-0 top-full pt-4 z-50  transition-all show">
          <div class="w-[278px] bg-white shadow-2xl dark:bg-gray-700 py-5 px-6 rounded-2xl border-b-4 border-sabzlearnGreen">
              <!-- User Info -->
              <div class="flex items-center border-b border-b-gray-200 dark:border-b-slate pb-5 mb-2">
@@ -402,20 +397,32 @@ class Header extends HTMLElement {
          </div>
          </div>
       `;
-      const ShowProfileDropDown = this.shadowRoot.querySelector('#ShowProfileDropDown')
-      const UserProfileDropdown = this.shadowRoot.querySelector('#UserProfileDropdown')
-      const Overlay = this.shadowRoot.querySelector("#Overlay");
-      ShowProfileDropDown.addEventListener('click' , ()=> {
-        UserProfileDropdown.classList.toggle('hidden')
-        Overlay.classList.remove('hidden')
+      })  
+    
+      const ShowProfileDropDown = this.shadowRoot.querySelectorAll('.ShowProfileDropDown')
+      const UserProfileDropdown = this.shadowRoot.querySelectorAll('.UserProfileDropdown')
+      const Overlay = this.shadowRoot.querySelectorAll(".Overlay");
+      ShowProfileDropDown.forEach((drop) => {
+        drop.addEventListener('click' , ()=> {
+        UserProfileDropdown[0].classList.toggle('hidden')
+        UserProfileDropdown[1].classList.toggle('hidden')
+        console.log(Overlay);
+       Overlay[0].classList.remove('hidden')
+       Overlay[1].classList.remove('hidden')
       })
-      Overlay.addEventListener('click' , () => {
-        UserProfileDropdown.classList.add('hidden')
-        Overlay.classList.add('hidden')
+      })
+      Overlay.forEach((over) => {
+        over.addEventListener('click' , () => {
+        UserProfileDropdown[0].classList.add('hidden')
+        UserProfileDropdown[1].classList.add('hidden')
+        Overlay[0].classList.add('hidden')
+       Overlay[1].classList.add('hidden')
+      })
       })
     })
     } else {
-      LoginRegisterBody.innerHTML = `<a href="./login.html" class="absolute right-0 w-25 xl:w-28 hidden md:flex items-center justify-start h-full bg-sky-500/50 hover:bg-sky-400 hover:text-white rounded-full pr-5 transition-colors">ورود</a>
+      LoginRegisterBody.forEach((node) => {
+  node.innerHTML = `<a href="./login.html" class="absolute right-0 w-25 xl:w-28 hidden md:flex items-center justify-start h-full bg-sky-500/50 hover:bg-sky-400 hover:text-white rounded-full pr-5 transition-colors">ورود</a>
        <a href="./signUp.html" class="absolute left-0 w-25 xl:w-28 hidden md:flex items-center justify-center h-full bg-sky-500 hover:bg-sky-600 hover:text-white dark:bg-secondary dark:hover:bg-[#3F6CD8] rounded-full z-10 transition-colors">عضویت</a>
        <!-- When Screen Smaller Than 475px, Its Display -->
        <a href="./login.html" class="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
@@ -423,13 +430,23 @@ class Header extends HTMLElement {
        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
      </svg> 
        </a>`;
+        
+      })
+
+    
     }
     MobileNavToggler.addEventListener("click", () => {
       DrawerNavigation.classList.toggle("right-64");
+      Overlay.classList.remove('hidden')
     });
     CloseDrawer.addEventListener("click", () => {
       DrawerNavigation.classList.remove("right-64");
+      Overlay.classList.add('hidden')
     });
+    Overlay.addEventListener('click' , () => {
+      DrawerNavigation.classList.remove("right-64");
+      Overlay.classList.add('hidden')
+    })
     frontEnd.addEventListener("click", () => {
       frontEndSubmenu.classList.toggle("hidden");
       SecuritySubmenu.classList.add("hidden");
