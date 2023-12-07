@@ -7,4 +7,17 @@ const ShowSwalAlert = ( icon, title , callback) => {
         timer: 2500
       }).then(result => callback(result))
 }
-export { ShowSwalAlert } 
+
+const SaveIntoLocalStorage = (key , value) => {
+  return localStorage.setItem(key , value)
+}
+
+const GetFromLocalStorage = (key) => {
+    return JSON.stringify(localStorage.getItem(key))
+}
+
+const GetToken = () => {
+    return JSON.parse(localStorage.getItem('user')).token
+}
+
+export { ShowSwalAlert , SaveIntoLocalStorage , GetFromLocalStorage , GetToken} 
