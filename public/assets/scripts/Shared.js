@@ -1,7 +1,5 @@
-import { GetMe } from "./Funcs/Auth.js";
+import { ShowUserNameInHeader } from './Funcs/Sheared.js'
 
 window.addEventListener('load' , () => {
-    GetMe().then(data => {
-        console.log(data.name);
-    })
+    ShowUserNameInHeader()
 })

@@ -1,3 +1,5 @@
+import { GetMe } from "../../assets/scripts/Funcs/Auth.js";
+import { isLogin } from "../../assets/scripts/Funcs/Utils.js";
 const template = document.createElement("template");
 template.innerHTML = `
 <link rel="stylesheet" href="./assets/styles/app.css">
@@ -48,7 +50,7 @@ template.innerHTML = `
     <!-- main header -->
     <section class="bg-white">    
     <div class="container">
-        <div class="flex-between gap-4 py-6">
+        <div class="flex-between gap-4 py-6 relative z-50">
             <div class="flex-center gap-2">
                <!-- right side -->
                <img src="./assets/images/logo/Logo.png" alt="logo" />
@@ -139,72 +141,8 @@ template.innerHTML = `
                       <span class="absolute right-1 top-1 flex-center bg-blue-600 text-white w-4 h-4 rounded-full">0</span>
                 </a>
               <!-- Login & Register -->
-              <div class="relative text-base xl:text-lg text-white hover:text-white md:h-12 md:w-[155px] xl:w-[180px]">
-                <a href="./login.html" class="absolute right-0 w-25 xl:w-28 hidden md:flex items-center justify-start h-full bg-sky-500/50 hover:bg-sky-400 hover:text-white rounded-full pr-5 transition-colors">ورود</a>
-                <a href="./signUp.html" class="absolute left-0 w-25 xl:w-28 hidden md:flex items-center justify-center h-full bg-sky-500 hover:bg-sky-600 hover:text-white dark:bg-secondary dark:hover:bg-[#3F6CD8] rounded-full z-10 transition-colors">عضویت</a>
-                <!-- When Screen Smaller Than 475px, Its Display -->
-                <a href="https://sabzlearn.ir/login?after=https%3A%2F%2Fsabzlearn.ir%2Fblog%2Fdictionary-in-python%2F" class="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-              
-                </a>
-                 <!-- After Login  -->
-                 <div class="hidden absolute left-0 top-full pt-4 z-10 transition-all show" id="user-profile-dropdown">
-                    <div class="w-[278px] bg-white dark:bg-gray-700 py-5 px-6 rounded-2xl">
-                        <!-- User Info -->
-                        <div class="flex items-center border-b border-b-gray-200 dark:border-b-slate pb-5 mb-2">
-                            <a href="https://sabzlearn.ir/my-account" class="shrink-0">
-                                <img src="https://secure.gravatar.com/avatar/4625566e20315790a5b1868be1bc2bca?s=96&amp;d=mm&amp;r=g" alt="moh1985" class="object-cover w-14 h-14 rounded-full inline-block" loading="lazy">
-                            </a>
-                            <div class="mr-2.5 flex flex-col gap-y-1 overflow-hidden">
-                                <span class="text-lg text-zinc-700 dark:text-white inline-block truncate">moh1985 </span>
-                                <span class="text-sm text-sky-500 dark:text-secondary inline-block font-danaMedium">موجودی: 0 تومان</span>
-                            </div>
-                        </div>
-                        <!-- Dashboard Links -->
-                                                  <a href="https://sabzlearn.ir/my-account" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
-                                <span class="flex items-center gap-x-3">
-                                    <svg class="w-5 h-5">
-                                      <use xlink:href="#home"></use>
-                                    </svg>
-                                    پیشخوان                                </span>
-                                                      </a>
-                                                  <a href="https://sabzlearn.ir/my-account/courses" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
-                                <span class="flex items-center gap-x-3">
-                                    <svg class="w-5 h-5">
-                                      <use xlink:href="#folder"></use>
-                                    </svg>
-                                    دوره های من                                </span>
-                                                      </a>
-                                                  <a href="https://sabzlearn.ir/my-account/tickets" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
-                                <span class="flex items-center gap-x-3">
-                                    <svg class="w-5 h-5">
-                                      <use xlink:href="#chat-bubble"></use>
-                                    </svg>
-                                    تیکت های پشتیبانی                                </span>
-                                                      </a>
-                                                  <a href="https://sabzlearn.ir/my-account/edit-account" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
-                                <span class="flex items-center gap-x-3">
-                                    <svg class="w-5 h-5">
-                                      <use xlink:href="#user"></use>
-                                    </svg>
-                                    جزئیات حساب                                </span>
-                                                      </a>
-                                              <!-- Logout Link -->
-                        <div class="mt-2 pt-2 border-t border-t-gray-200 dark:border-t-slate">
-            </div>
-            <a href="https://sabzlearn.ir/logout" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
-                            <span class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5">
-                                    <use xlink:href="#logout-icon"></use>
-                                </svg>
-                                خروج
-                            </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+              <div id="LoginRegisterBody" class="relative flex-center text-base xl:text-lg text-white hover:text-white md:h-12 md:w-[155px] xl:w-[180px]">
+             
             </div>
         </div>
     </section>
@@ -362,11 +300,10 @@ template.innerHTML = `
   </ul>
 </div>
 </div>
-
 </header>
 `;
-function MobileNavToggler(){
-    console.log("dsd");
+function MobileNavToggler() {
+  console.log("dsd");
 }
 class Header extends HTMLElement {
   constructor() {
@@ -376,64 +313,141 @@ class Header extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
   connectedCallback() {
-   
-    const MobileNavToggler = this.shadowRoot.querySelector('#MobileNavToggler')
-    const DrawerNavigation = this.shadowRoot.querySelector('#drawer-navigation')
-    const CloseDrawer = this.shadowRoot.querySelector('#CloseDrawer')
-    const frontEnd = this.shadowRoot.querySelector('#frontEnd')
-    const frontEndSubmenu = this.shadowRoot.querySelector('#frontEndSubmenu')
-    const Security = this.shadowRoot.querySelector('#Security')
-    const SecuritySubmenu = this.shadowRoot.querySelector('#SecuritySubmenu')
-    const Blogs = this.shadowRoot.querySelector('#Blogs')
-    const BlogsSubmenu = this.shadowRoot.querySelector('#BlogsSubmenu')
-    const Python = this.shadowRoot.querySelector('#Python')
-    const PythonSubmenu = this.shadowRoot.querySelector('#PythonSubmenu')
-    const userProfileDropdown = this.shadowRoot.querySelector('#user-profile-dropdown')
-    
-    MobileNavToggler.addEventListener('click' , () => {
-      DrawerNavigation.classList.toggle('right-64')
+    const MobileNavToggler = this.shadowRoot.querySelector("#MobileNavToggler");
+    const DrawerNavigation =
+      this.shadowRoot.querySelector("#drawer-navigation");
+    const CloseDrawer = this.shadowRoot.querySelector("#CloseDrawer");
+    const frontEnd = this.shadowRoot.querySelector("#frontEnd");
+    const frontEndSubmenu = this.shadowRoot.querySelector("#frontEndSubmenu");
+    const Security = this.shadowRoot.querySelector("#Security");
+    const SecuritySubmenu = this.shadowRoot.querySelector("#SecuritySubmenu");
+    const Blogs = this.shadowRoot.querySelector("#Blogs");
+    const BlogsSubmenu = this.shadowRoot.querySelector("#BlogsSubmenu");
+    const Python = this.shadowRoot.querySelector("#Python");
+    const PythonSubmenu = this.shadowRoot.querySelector("#PythonSubmenu");
+    const LoginRegisterBody =
+      this.shadowRoot.querySelector("#LoginRegisterBody");
+    const userProfileDropdown = this.shadowRoot.querySelector(
+      "#user-profile-dropdown"
+    );
+
+    const isUserLogin = isLogin();
+    if (isUserLogin) {
+      const userInfos = GetMe().then(data => {
+        console.log(data);
+      LoginRegisterBody.innerHTML = `<button id="ShowProfileDropDown" class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
+       <img src="./assets/images/user.png" alt="Ghorbani-dev.ir" class="object-cover w-16 h-12 rounded-full inline-block" loading="lazy" />
+      </button>  
+      <!-- After Login  -->
+      <div class="hidden absolute left-0 top-full pt-4 z-10 transition-all show" id="UserProfileDropdown">
+         <div class="w-[278px] bg-white shadow-2xl dark:bg-gray-700 py-5 px-6 rounded-2xl border-b-4 border-sabzlearnGreen">
+             <!-- User Info -->
+             <div class="flex items-center border-b border-b-gray-200 dark:border-b-slate pb-5 mb-2">
+                 <a href="https://sabzlearn.ir/my-account" class="shrink-0">
+                     <img src="./assets/images/user.png" alt=${data.username} class="object-cover w-14 h-14 rounded-full inline-block" loading="lazy">
+                 </a>
+                 <div class="mr-2.5 flex flex-col gap-y-1 overflow-hidden">
+                     <span class="text-lg text-zinc-700 dark:text-white inline-block font-DanaBold truncate">${data.name} </span>
+                     <span class="text-sm text-sky-500 dark:text-secondary inline-block font-DanaMd">موجودی: 0 تومان</span>
+                 </div>
+             </div>
+             <!-- Dashboard Links -->
+                                       <a href="https://sabzlearn.ir/my-account" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                     <span class="flex items-center gap-x-3">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                   </svg>
+                         پیشخوان                                </span>
+                                           </a>
+                                       <a href="https://sabzlearn.ir/my-account/courses" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                     <span class="flex items-center gap-x-3">
+                   
+                   
+                         دوره های من                                </span>
+                                           </a>
+                                       <a href="https://sabzlearn.ir/my-account/tickets" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                     <span class="flex items-center gap-x-3">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
+</svg>
+
+                   
+                         تیکت های پشتیبانی                                </span>
+                                           </a>
+                                       <a href="https://sabzlearn.ir/my-account/edit-account" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                     <span class="flex items-center gap-x-3">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                   </svg>
+                   
+                         جزئیات حساب                                </span>
+                                           </a>
+                                   <!-- Logout Link -->
+             <div class="mt-2 pt-2 border-t border-t-gray-200 dark:border-t-slate">
+               </div>
+            <a href="https://sabzlearn.ir/logout" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                 <span class="flex items-center gap-x-3">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+               </svg>
+               
+                     خروج
+                 </span>
+                 </a>
+             </div>
+         </div>
+         </div>
+      `;
+      const ShowProfileDropDown = this.shadowRoot.querySelector('#ShowProfileDropDown')
+      const UserProfileDropdown = this.shadowRoot.querySelector('#UserProfileDropdown')
+      ShowProfileDropDown.addEventListener('click' , ()=> {
+        UserProfileDropdown.classList.toggle('hidden')
+      })
     })
-    CloseDrawer.addEventListener('click' , () => {
-      DrawerNavigation.classList.remove('right-64')
-    })
-    frontEnd.addEventListener('click' , () => {
-      frontEndSubmenu.classList.toggle('hidden')
-     SecuritySubmenu.classList.add('hidden')
-     BlogsSubmenu.classList.add('hidden')
-     PythonSubmenu.classList.add('hidden')
-    })
-    Security.addEventListener('click' , () => {
-      SecuritySubmenu.classList.toggle('hidden')
-      frontEndSubmenu.classList.add('hidden')
-     BlogsSubmenu.classList.add('hidden')
-     PythonSubmenu.classList.add('hidden')
-    })
-    Blogs.addEventListener('click' , () => {
-      BlogsSubmenu.classList.toggle('hidden')
-      frontEndSubmenu.classList.add('hidden')
-     SecuritySubmenu.classList.add('hidden')
-     PythonSubmenu.classList.add('hidden')
-    })
-    Python.addEventListener('click' , () => {
-      PythonSubmenu.classList.toggle('hidden')
-      frontEndSubmenu.classList.add('hidden')
-     SecuritySubmenu.classList.add('hidden')
-     BlogsSubmenu.classList.add('hidden')
-    })
+    } else {
+      LoginRegisterBody.innerHTML = `<a href="./login.html" class="absolute right-0 w-25 xl:w-28 hidden md:flex items-center justify-start h-full bg-sky-500/50 hover:bg-sky-400 hover:text-white rounded-full pr-5 transition-colors">ورود</a>
+       <a href="./signUp.html" class="absolute left-0 w-25 xl:w-28 hidden md:flex items-center justify-center h-full bg-sky-500 hover:bg-sky-600 hover:text-white dark:bg-secondary dark:hover:bg-[#3F6CD8] rounded-full z-10 transition-colors">عضویت</a>
+       <!-- When Screen Smaller Than 475px, Its Display -->
+       <a href="./login.html" class="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
+       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+       <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+     </svg> 
+       </a>`;
+    }
+    MobileNavToggler.addEventListener("click", () => {
+      DrawerNavigation.classList.toggle("right-64");
+    });
+    CloseDrawer.addEventListener("click", () => {
+      DrawerNavigation.classList.remove("right-64");
+    });
+    frontEnd.addEventListener("click", () => {
+      frontEndSubmenu.classList.toggle("hidden");
+      SecuritySubmenu.classList.add("hidden");
+      BlogsSubmenu.classList.add("hidden");
+      PythonSubmenu.classList.add("hidden");
+    });
+    Security.addEventListener("click", () => {
+      SecuritySubmenu.classList.toggle("hidden");
+      frontEndSubmenu.classList.add("hidden");
+      BlogsSubmenu.classList.add("hidden");
+      PythonSubmenu.classList.add("hidden");
+    });
+    Blogs.addEventListener("click", () => {
+      BlogsSubmenu.classList.toggle("hidden");
+      frontEndSubmenu.classList.add("hidden");
+      SecuritySubmenu.classList.add("hidden");
+      PythonSubmenu.classList.add("hidden");
+    });
+    Python.addEventListener("click", () => {
+      PythonSubmenu.classList.toggle("hidden");
+      frontEndSubmenu.classList.add("hidden");
+      SecuritySubmenu.classList.add("hidden");
+      BlogsSubmenu.classList.add("hidden");
+    });
   }
 
-  static observedAttributes() {
-
-  }
+  static observedAttributes() {}
 }
 
 export { Header };
 
-
-
-{/* <a href="#" class="flex-center text-sabzlearnGreen hover:bg-sabzlearnGreen hover:text-white border-2 border-sabzlearnGreen rounded-md px-3 py-1 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg>                      
-                ورود / ثبت نام
-              </a> */}

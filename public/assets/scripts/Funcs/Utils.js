@@ -21,4 +21,9 @@ const GetToken = () => {
     return userToken ? userToken.token : null 
 }
 
-export { ShowSwalAlert , SaveIntoLocalStorage , GetFromLocalStorage , GetToken} 
+const isLogin = () => {
+    const userInfos = localStorage.getItem('user');
+    return userInfos ? true : false;
+}
+
+export { ShowSwalAlert , SaveIntoLocalStorage , GetFromLocalStorage , GetToken , isLogin} 
