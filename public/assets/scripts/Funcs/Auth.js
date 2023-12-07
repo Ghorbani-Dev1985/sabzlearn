@@ -27,7 +27,7 @@ const Register = () => {
             showConfirmButton: false,
             timer: 2500
           });
-    }else if(PasswordInput.value.trim() !== RepeatPasswordInput.value.trim){
+    }else if(PasswordInput.value.trim() !== RepeatPasswordInput.value.trim()){
         Swal.fire({
             position: "top-center",
             icon: "error",
@@ -60,8 +60,10 @@ const Register = () => {
                     title: "ثبت نام با موفقیت انجام شد",
                     showConfirmButton: false,
                     timer: 2500
-                  });
-                  ClearInput()
+                  }).then(() => {
+                    location.href = 'index.html'
+                    ClearInput()
+                  })
             }else if(res.status === 409){
                 Swal.fire({
                     position: "top-center",
@@ -70,7 +72,6 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 2500
                   });
-                  ClearInput()
             }
            return res.json()
         })
