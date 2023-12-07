@@ -1,4 +1,4 @@
-import { ShowSwalAlert } from "./Utils.js";
+import { GetToken, ShowSwalAlert } from "./Utils.js";
 import { SaveIntoLocalStorage } from "./Utils.js"
 const $ = document
 const FullNameInput = $.querySelector('#FullNameInput');
@@ -80,4 +80,20 @@ const Login = () => {
 })
 }
 
-export { Register , Login}
+// GetMe Func
+const GetMe = async() => {
+    const token = GetToken();
+    if(!token){
+        return false
+    }
+       const res = await fetch(`http://localhost:4000/v1/auth/me` , {
+            method: 'GET',
+            headers: {
+                'Authorization' : `Bearer ${token}`
+            },
+        })
+        const data = await res.json();
+        return data;
+}
+
+export { Register , Login , GetMe}

@@ -149,7 +149,62 @@ template.innerHTML = `
               </svg>
               
                 </a>
+                 <!-- After Login  -->
+                 <div class="hidden absolute left-0 top-full pt-4 z-10 transition-all show" id="user-profile-dropdown">
+                    <div class="w-[278px] bg-white dark:bg-gray-700 py-5 px-6 rounded-2xl">
+                        <!-- User Info -->
+                        <div class="flex items-center border-b border-b-gray-200 dark:border-b-slate pb-5 mb-2">
+                            <a href="https://sabzlearn.ir/my-account" class="shrink-0">
+                                <img src="https://secure.gravatar.com/avatar/4625566e20315790a5b1868be1bc2bca?s=96&amp;d=mm&amp;r=g" alt="moh1985" class="object-cover w-14 h-14 rounded-full inline-block" loading="lazy">
+                            </a>
+                            <div class="mr-2.5 flex flex-col gap-y-1 overflow-hidden">
+                                <span class="text-lg text-zinc-700 dark:text-white inline-block truncate">moh1985 </span>
+                                <span class="text-sm text-sky-500 dark:text-secondary inline-block font-danaMedium">موجودی: 0 تومان</span>
+                            </div>
+                        </div>
+                        <!-- Dashboard Links -->
+                                                  <a href="https://sabzlearn.ir/my-account" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                                <span class="flex items-center gap-x-3">
+                                    <svg class="w-5 h-5">
+                                      <use xlink:href="#home"></use>
+                                    </svg>
+                                    پیشخوان                                </span>
+                                                      </a>
+                                                  <a href="https://sabzlearn.ir/my-account/courses" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                                <span class="flex items-center gap-x-3">
+                                    <svg class="w-5 h-5">
+                                      <use xlink:href="#folder"></use>
+                                    </svg>
+                                    دوره های من                                </span>
+                                                      </a>
+                                                  <a href="https://sabzlearn.ir/my-account/tickets" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                                <span class="flex items-center gap-x-3">
+                                    <svg class="w-5 h-5">
+                                      <use xlink:href="#chat-bubble"></use>
+                                    </svg>
+                                    تیکت های پشتیبانی                                </span>
+                                                      </a>
+                                                  <a href="https://sabzlearn.ir/my-account/edit-account" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 h-[46px] rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                                <span class="flex items-center gap-x-3">
+                                    <svg class="w-5 h-5">
+                                      <use xlink:href="#user"></use>
+                                    </svg>
+                                    جزئیات حساب                                </span>
+                                                      </a>
+                                              <!-- Logout Link -->
+                        <div class="mt-2 pt-2 border-t border-t-gray-200 dark:border-t-slate">
             </div>
+            <a href="https://sabzlearn.ir/logout" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+                            <span class="flex items-center gap-x-3">
+                                <svg class="w-5 h-5">
+                                    <use xlink:href="#logout-icon"></use>
+                                </svg>
+                                خروج
+                            </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -333,6 +388,7 @@ class Header extends HTMLElement {
     const BlogsSubmenu = this.shadowRoot.querySelector('#BlogsSubmenu')
     const Python = this.shadowRoot.querySelector('#Python')
     const PythonSubmenu = this.shadowRoot.querySelector('#PythonSubmenu')
+    const userProfileDropdown = this.shadowRoot.querySelector('#user-profile-dropdown')
     
     MobileNavToggler.addEventListener('click' , () => {
       DrawerNavigation.classList.toggle('right-64')

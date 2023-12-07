@@ -1,4 +1,4 @@
-import { Login } from './Funcs/Auth.js';
+import { Login , GetMe} from './Funcs/Auth.js';
 const $ = document;
 const LoginPassInput = $.querySelector('#LoginPassInput')
 const HiddenPassSvg = $.querySelector('#HiddenPassSvg')
@@ -20,3 +20,5 @@ LoginBtn.addEventListener('click' , (e) => {
     e.preventDefault()
     Login()
 })
+
+console.log(GetMe());
