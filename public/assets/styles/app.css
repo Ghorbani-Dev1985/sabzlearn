@@ -4823,6 +4823,26 @@ progress::-webkit-progress-value {
   max-width: 304px;
 }
 
+.before\:max-w-\[1\6F6 7px\]::before {
+  content: var(--tw-content);
+  max-width: 1۶7px;
+}
+
+.before\:max-w-\[17px\]::before {
+  content: var(--tw-content);
+  max-width: 17px;
+}
+
+.before\:max-w-\[167px\]::before {
+  content: var(--tw-content);
+  max-width: 167px;
+}
+
+.before\:max-w-\[160px\]::before {
+  content: var(--tw-content);
+  max-width: 160px;
+}
+
 .before\:bg-amber-500::before {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
