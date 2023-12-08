@@ -2,7 +2,6 @@ const GetAndShowAllCourses = async () => {
   const ShowAllCourses = document.querySelector("#ShowAllCourses");
   const res = await fetch(`http://localhost:4000/v1/courses`);
   const Courses = await res.json();
-  console.log(Courses);
   Courses.slice(0, 6).map((course) => {
     ShowAllCourses.insertAdjacentHTML(
       "beforeend",
@@ -101,7 +100,6 @@ const GetAndShowPopularCourses = async () => {
   const ShowAllCourses = document.querySelector("#NewCoursesBody");
   const res = await fetch(`http://localhost:4000/v1/courses/popular`);
   const Courses = await res.json();
-  console.log(Courses);
   Courses.slice(0, 6).map((course) => {
     ShowAllCourses.insertAdjacentHTML(
       "beforeend",
@@ -197,7 +195,6 @@ const GetAndShowPreSellCourses = async () => {
   const ShowAllCourses = document.querySelector("#PreSellCoursesBody");
   const res = await fetch(`http://localhost:4000/v1/courses/presell`);
   const Courses = await res.json();
-  console.log(Courses);
   Courses.slice(0, 6).map((course) => {
     ShowAllCourses.insertAdjacentHTML(
       "beforeend",
@@ -293,7 +290,6 @@ const GetAndShowArticles = async () => {
   const ShowAllArticles = document.querySelector("#ShowArticlesBody");
   const res = await fetch(`http://localhost:4000/v1/articles`);
   const Articles = await res.json();
-  console.log(Articles);
   Articles.slice(0, 4).map((article) => {
     ShowAllArticles.insertAdjacentHTML(
       "beforeend",

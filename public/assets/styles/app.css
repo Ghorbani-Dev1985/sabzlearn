@@ -2884,6 +2884,14 @@ progress::-webkit-progress-value {
   z-index: 50;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
 .order-1 {
   order: 1;
 }

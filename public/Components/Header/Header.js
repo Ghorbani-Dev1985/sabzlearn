@@ -13,7 +13,7 @@ template.innerHTML = `
             <!-- right side -->
             <div>
                <nav>
-                 <ul  class="flex items-center gap-x-3">
+                 <ul class="flex items-center gap-x-3">
                    <div class="flex items-center gap-x-3" id="TopBarMenu">
                    
                    </div>
@@ -47,79 +47,13 @@ template.innerHTML = `
     <!-- main header -->
     <section class="bg-white">    
     <div class="container">
-        <div class="flex-between gap-4 py-6 relative ">
+        <div class="flex-between gap-4 py-6 relative">
             <div class="flex-center gap-2">
                <!-- right side -->
-               <img src="./assets/images/logo/Logo.png" alt="logo" />
+               <a href="./index.html"><img src="./assets/images/logo/Logo.png" alt="logo" /></a>
                <nav>
-                <ul class="flex-center gap-3">
-                    <li><a href="">صفحه اصلی</a></li>
-                    <li class="group relative"><a href="" class="flex-center gap-1">فرانت اند
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                          </svg>                              
-                    </a>
-                     <ul class="w-64 p-5 space-y-4 bg-slate-100 dark:bg-zinc-700 rounded-2xl border-b-4 border-sabzlearnGreen opacity-0 invisible absolute top-full shadow-6 dark:shadow-none group-hover:opacity-100 group-hover:visible transition-all delay-75 child:line-clamp-1">
-                        <li><a href="">آموزش HTML</a></li>
-                        <li><a href="">آموزش CSS</a></li>
-                        <li><a href="">آموزش FlexBox</a></li>
-                        <li><a href="">آموزش CssGrid</a></li>
-                        <li><a href="">مینی پروژه تخصصی با CSS</a></li>
-                        <li><a href="">آموزش TailwindCss</a></li>
-                        <li><a href="">آموزش اصولی طراحی قالب</a></li>
-                        <li><a href="">آموزش جاوااسکریپت </a></li>
-                        <li><a href="">آموزش جامع ریکت ReactJS</a></li>
-                        <li><a href="">  آموزش ویو جی اس </li>
-                        <li><a href="">  آموزش وی اس کد - Vscode </a></li>
-                     </ul>
-                    </li>
-                    <li class="group relative"><a href="" class="flex-center gap-1">امنیت
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                          </svg>  
-                    </a>
-                    <ul class="w-64 p-5 space-y-4 bg-slate-100 dark:bg-zinc-700 rounded-2xl border-b-4 border-sabzlearnGreen opacity-0 invisible absolute top-full shadow-6 dark:shadow-none group-hover:opacity-100 group-hover:visible transition-all delay-75 child:line-clamp-1">
-                        <li><a href="">نقشه راه ورود به دنیای هک و امنیت</a></li>
-                        <li><a href="">شبکه با گرایش امنیت</a></li>
-                        <li><a href="">لینوکس با گرایش امنیت</a></li>
-                        <li><a href="" >آموزش هکر قانونمند - CEH V11 </a></li>
-                        <li><a href=""> آموزش کالی لینوکس   </a></li>
-                        <li><a href="">آموزش پایتون سیاه</a></li>
-                        <li><a href="">آموزش  Burp Suite</a></li>
-                        <li><a href="">آموزش جاوااسکریپت سیاه</a></li>
-                     </ul>    
-                </li>
-                    <li class="group relative"><a href="" class="flex-center gap-1">مقالات
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                          </svg>  
-                    </a>
-                    <ul class="w-64 p-5 space-y-4 bg-slate-100 dark:bg-zinc-700 rounded-2xl border-b-4 border-sabzlearnGreen opacity-0 invisible absolute top-full shadow-6 dark:shadow-none group-hover:opacity-100 group-hover:visible transition-all delay-75 child:line-clamp-1">
-                        <li><a href="">اچ تی ام ال</a></li>
-                        <li><a href="">پروژه های برنامه نویسی</a></li>
-                        <li><a href="">تست نفوذ و امنیت وب</a></li>
-                        <li><a href="" >ریکت جی اس </a></li>
-                        <li><a href="">   سی اس اس   </a></li>
-                        <li><a href="">  شروع برنامه نویسی</a></li>
-                        <li><a href="">طراحی سایت </a></li>
-                        <li><a href="">  ویو جی اس</a></li>
-                     </ul>  
-                </li>
-                    <li class="group relative"><a href="" class="flex-center gap-1">پایتون
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                          </svg>  
-                    </a>
-                    <ul class="w-64 p-5 space-y-4 bg-slate-100 dark:bg-zinc-700 rounded-2xl border-b-4 border-sabzlearnGreen opacity-0 invisible absolute top-full shadow-6 dark:shadow-none group-hover:opacity-100 group-hover:visible transition-all delay-75 child:line-clamp-1">
-                        <li><a href="">دوره آموزش پایتون</a></li>
-                        <li><a href="">پروژه های کاربردی با پایتون</a></li>
-                        <li><a href="">ترفند های کاربردی پایتون</a></li>
-                        <li><a href="" >متخصص جنگو</a></li>
-                        <li><a href=""> مصور سازی داده با پایتون </a></li>
-
-                     </ul> 
-                </li>
-                    <li><a href="">مهارت‌های نرم</a></li>
+                <ul id="DesktopNavBody" class="flex-center gap-3">
+                   
                 </ul>
                </nav>
             </div>
@@ -319,7 +253,30 @@ class Header extends HTMLElement {
     const PythonSubmenu = this.shadowRoot.querySelector("#PythonSubmenu");
     const Overlay = this.shadowRoot.querySelector('.Overlay'); 
     const LoginRegisterBody = this.shadowRoot.querySelectorAll(".LoginRegisterBody"); 
+    const DesktopNavBody = this.shadowRoot.querySelector("#DesktopNavBody");
     
+    const GetAndShowAllDesktopMenus = async () => {
+      const res = await fetch(`http://localhost:4000/v1/menus`)
+      const menus = await res.json()
+      menus.forEach((menu) => {
+        DesktopNavBody.insertAdjacentHTML('beforeend' , `
+        <li class="group relative"><a href="" class="flex-center gap-1">${menu.title}
+          ${menu.submenus.length !== 0 ? `
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg> 
+        <ul class="w-64 p-5 space-y-4 bg-slate-100 dark:bg-zinc-700 rounded-2xl border-b-4 border-sabzlearnGreen opacity-0 invisible absolute z-10 top-full shadow-6 dark:shadow-none group-hover:opacity-100 group-hover:visible transition-all delay-75 child:line-clamp-1">
+         ${
+          menu.submenus.map(submenu => ( `<li><a href=''>${submenu.title}</a></li>`)).join('')}       
+        </ul>` : ""
+          }
+            </a>
+          </li>`
+        )
+      })
+
+    }
+    GetAndShowAllDesktopMenus()
     // Profile Info
     const isUserLogin = isLogin();
     if (isUserLogin) {
@@ -439,7 +396,6 @@ class Header extends HTMLElement {
       const TopBarMenu = this.shadowRoot.querySelector("#TopBarMenu"); 
       const res = await fetch(`http://localhost:4000/v1/menus/topbar`)
     const TopBarMenus = await res.json();
-    console.log([...TopBarMenus]);
     const ShuffledArray = TopBarMenus.sort((a , b) => 0.5 - Math.random());
     ShuffledArray.splice(0 , 5).map((menu) => {
       TopBarMenu.innerHTML += `<li><a href=${menu.href}>${menu.title}</a></li>`
