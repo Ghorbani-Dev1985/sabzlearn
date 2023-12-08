@@ -156,7 +156,7 @@ class Header extends HTMLElement {
       const menus = await res.json()
       menus.forEach((menu) => {
         DesktopNavBody.insertAdjacentHTML('beforeend' , `
-        <li class="group relative"><a href="" class="flex-center gap-1">${menu.title}
+        <li class="group relative"><a href="category.html?cat=${menu.href}" class="flex-center gap-1">${menu.title}
           ${menu.submenus.length !== 0 ? `
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -188,7 +188,7 @@ class Header extends HTMLElement {
       <summary>${menu.title}</summary>
          
        ${
-         menu.submenus.map(submenu => ( `<li><a href=''> ${submenu.title}  </li> `)).join('')}  ` : `  <li><a>${menu.title}</a></li>`      
+         menu.submenus.map(submenu => ( `<li><a href=''> ${submenu.title}  </li> `)).join('')}  ` : `  <li><a href="category.html?cat=${menu.href}">${menu.title}</a></li>`      
           } </ul>
           </details>
           </li>
@@ -201,14 +201,10 @@ class Header extends HTMLElement {
     }
     GetAndShowAllMobileMenus()
 
-
-
     // Profile Info
     const isUserLogin = isLogin();
     if (isUserLogin) {
       const userInfos = GetMe().then(data => {
-        console.log(data);
-
       LoginRegisterBody.forEach((node) => {
           node.innerHTML = `<button class="ShowProfileDropDown flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
        <img src="./assets/images/user.png" alt="Ghorbani-dev.ir" class="object-cover w-16 h-12 rounded-full inline-block" loading="lazy" />

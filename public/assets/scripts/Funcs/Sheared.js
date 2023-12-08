@@ -1,3 +1,6 @@
+import {GetUrlParam} from '../Funcs/Utils.js'
+
+
 const GetAndShowAllCourses = async () => {
   const ShowAllCourses = document.querySelector("#ShowAllCourses");
   const res = await fetch(`http://localhost:4000/v1/courses`);
@@ -331,9 +334,18 @@ const GetAndShowArticles = async () => {
   });
 };
 
+const GetAndShowCategoryCourses = async () => {
+      const categoryUrlName = GetUrlParam('cat');
+     const res = await fetch(`http://localhost:4000/v1/courses/category/${categoryUrlName}`)
+     const courses = await res.json()
+
+     return courses
+}  
+
 export {
   GetAndShowAllCourses,
   GetAndShowPopularCourses,
   GetAndShowPreSellCourses,
   GetAndShowArticles,
+  GetAndShowCategoryCourses,
 };
