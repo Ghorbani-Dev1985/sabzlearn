@@ -1,12 +1,12 @@
-
 const GetAndShowAllCourses = async () => {
-    const ShowAllCourses = document.querySelector('#ShowAllCourses');
-    const res = await fetch(`http://localhost:4000/v1/courses`);
-    const Courses = await res.json();
-    console.log(Courses);
-    Courses.slice(0 , 6).map((course) => {
-      
-      ShowAllCourses.insertAdjacentHTML('beforeend' , `
+  const ShowAllCourses = document.querySelector("#ShowAllCourses");
+  const res = await fetch(`http://localhost:4000/v1/courses`);
+  const Courses = await res.json();
+  console.log(Courses);
+  Courses.slice(0, 6).map((course) => {
+    ShowAllCourses.insertAdjacentHTML(
+      "beforeend",
+      `
       <!-- Courses Box -->
 
       <a id="CourseLink"
@@ -18,7 +18,9 @@ const GetAndShowAllCourses = async () => {
         />
         <!-- Course Card Body -->
         <div class="px-2">
-          <h2 id="CourseTitle" class="font-MorabbaBold text-base md:text-xl my-6 line-clamp-1">${course.name}</h2>
+          <h2 id="CourseTitle" class="font-MorabbaBold text-base md:text-xl my-6 line-clamp-1">${
+            course.name
+          }</h2>
           <div class="flex-between mb-3">
             <div class="flex-center gap-1">
               <svg
@@ -38,21 +40,27 @@ const GetAndShowAllCourses = async () => {
               <span>${course.creator}</span>
             </div>
             <div class="flex-center dir-ltr">
-             ${
-              Array(course.courseAverageScore).fill(0).map(score => `
+             ${Array(course.courseAverageScore)
+               .fill(0)
+               .map(
+                 (score) => `
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f59e0b" class="w-4 h-4">
               <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
             </svg>
-              `).join('')
-             }
-             ${
-              Array(5 - course.courseAverageScore).fill(0).map(score =>`
+              `
+               )
+               .join("")}
+             ${Array(5 - course.courseAverageScore)
+               .fill(0)
+               .map(
+                 (score) => `
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f59e0b" class="w-4 h-4">
               <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
             </svg>
             
-              `).join('')
-             }
+              `
+               )
+               .join("")}
             </div>
           </div>
           <div class="flex-between mb-3">
@@ -63,7 +71,11 @@ const GetAndShowAllCourses = async () => {
                   <span>${course.registers}</span>
             </div>
             <div> 
-            ${course.price === 0 ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>` :  `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`}
+            ${
+              course.price === 0
+                ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>`
+                : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+            }
              
             </div>
           </div>
@@ -80,32 +92,40 @@ const GetAndShowAllCourses = async () => {
             </div>
         </div>
       </a>
-      `)
-    })
-  }
+      `
+    );
+  });
+};
 
 const GetAndShowPopularCourses = async () => {
-  const ShowAllCourses = document.querySelector('#NewCoursesBody');
+  const ShowAllCourses = document.querySelector("#NewCoursesBody");
   const res = await fetch(`http://localhost:4000/v1/courses/popular`);
   const Courses = await res.json();
   console.log(Courses);
-  Courses.slice(0 , 6).map((course) => {
-    
-    ShowAllCourses.insertAdjacentHTML('beforeend' , `
+  Courses.slice(0, 6).map((course) => {
+    ShowAllCourses.insertAdjacentHTML(
+      "beforeend",
+      `
     <div class="swiper-slide">
     <div class="flex flex-col overflow-hidden bg-white shadow-light rounded-xl min-h-[415px]">
     <div class="relative">
       <a id="NewCourseLink" class="w-full h-full block">
         <img src=${course.cover} alt="ghorbani-dev.ir" />
-        <span class="absolute right-2.5 top-2.5 hidden w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-DanaBold text-sm"> ${course.price === 0 && '100%' }</span>
+        <span class="absolute right-2.5 top-2.5 hidden w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-DanaBold text-sm"> ${
+          course.price === 0 && "100%"
+        }</span>
         <div class="px-5 pt-3.5 pb-2.5">
        
         <a id="NewCourseTagOne" href="" class="inline-flex items-center justify-center text-xs text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 py-1 px-1.5 mb-2.5 rounded">
                   </a>
         <a id="NewCourseTagTwo" href="" class="inline-flex items-center justify-center text-xs text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 py-1 px-1.5 mb-2.5 rounded">
                      </a>
-          <h4 id="NewCourseTitle" class="font-DanaBold h-12 line-clamp-2 text-zinc-700 mb-3">${course.name}</h4>
-          <p class="font-Dana text-sm h-10 line-clamp-2 text-slate-500 dark:text-slate-400">${course.description}</p>
+          <h4 id="NewCourseTitle" class="font-DanaBold h-12 line-clamp-2 text-zinc-700 mb-3">${
+            course.name
+          }</h4>
+          <p class="font-Dana text-sm h-10 line-clamp-2 text-slate-500 dark:text-slate-400">${
+            course.description
+          }</p>
           <div class="flex-between gap-2.5 flex-wrap text-slate-500 dark:text-slate-400 text-xs my-3">
                 <div class="flex-center gap-1">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -115,21 +135,27 @@ const GetAndShowPopularCourses = async () => {
                 </div>
 
                 <div class="flex justify-end dir-ltr">
-                ${
-                  Array(course.courseAverageScore).fill(0).map(score => `
+                ${Array(course.courseAverageScore)
+                  .fill(0)
+                  .map(
+                    (score) => `
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f59e0b" class="w-4 h-4">
                   <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
                 </svg>
-                  `).join('')
-                 }
-                 ${
-                  Array(5 - course.courseAverageScore).fill(0).map(score =>`
+                  `
+                  )
+                  .join("")}
+                 ${Array(5 - course.courseAverageScore)
+                   .fill(0)
+                   .map(
+                     (score) => `
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f59e0b" class="w-4 h-4">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
                 
-                  `).join('')
-                 }
+                  `
+                   )
+                   .join("")}
                  </div>
               </div>
               <!-- line -->
@@ -139,13 +165,19 @@ const GetAndShowPopularCourses = async () => {
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                       </svg>
-                      <span class="font-DanaMd text-lg">${course.registers}</span>
+                      <span class="font-DanaMd text-lg">${
+                        course.registers
+                      }</span>
                     </div>
                     <div class="flex flex-col items-center">
                     
                      <div class="flex-center gap-1 ">
                      <span id="NewCourseDiscountPrice" class="text-sabzlearnGreen font-DanaMd text-xl space-x-1.5">
-                     ${course.price === 0 ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>` :  `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`}
+                     ${
+                       course.price === 0
+                         ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>`
+                         : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+                     }
                      </span>
                      </div>
                     </div>
@@ -156,32 +188,40 @@ const GetAndShowPopularCourses = async () => {
     </div>
     </div>
     </div>
-    `)
-  })
-}
+    `
+    );
+  });
+};
 
 const GetAndShowPreSellCourses = async () => {
-  const ShowAllCourses = document.querySelector('#PreSellCoursesBody');
+  const ShowAllCourses = document.querySelector("#PreSellCoursesBody");
   const res = await fetch(`http://localhost:4000/v1/courses/presell`);
   const Courses = await res.json();
   console.log(Courses);
-  Courses.slice(0 , 6).map((course) => {
-    
-    ShowAllCourses.insertAdjacentHTML('beforeend' , `
+  Courses.slice(0, 6).map((course) => {
+    ShowAllCourses.insertAdjacentHTML(
+      "beforeend",
+      `
     <div class="swiper-slide">
     <div class="flex flex-col overflow-hidden bg-white shadow-light rounded-xl min-h-[415px]">
     <div class="relative">
       <a id="NewCourseLink" class="w-full h-full block">
         <img src=${course.cover} alt="ghorbani-dev.ir" />
-        <span class="absolute right-2.5 top-2.5 hidden w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-DanaBold text-sm"> ${course.price === 0 && '100%' }</span>
+        <span class="absolute right-2.5 top-2.5 hidden w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-DanaBold text-sm"> ${
+          course.price === 0 && "100%"
+        }</span>
         <div class="px-5 pt-3.5 pb-2.5">
        
         <a id="NewCourseTagOne" href="" class="inline-flex items-center justify-center text-xs text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 py-1 px-1.5 mb-2.5 rounded">
                   </a>
         <a id="NewCourseTagTwo" href="" class="inline-flex items-center justify-center text-xs text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 py-1 px-1.5 mb-2.5 rounded">
                      </a>
-          <h4 id="NewCourseTitle" class="font-DanaBold h-12 line-clamp-2 text-zinc-700 mb-3">${course.name}</h4>
-          <p class="font-Dana text-sm h-10 line-clamp-2 text-slate-500 dark:text-slate-400">${course.description}</p>
+          <h4 id="NewCourseTitle" class="font-DanaBold h-12 line-clamp-2 text-zinc-700 mb-3">${
+            course.name
+          }</h4>
+          <p class="font-Dana text-sm h-10 line-clamp-2 text-slate-500 dark:text-slate-400">${
+            course.description
+          }</p>
           <div class="flex-between gap-2.5 flex-wrap text-slate-500 dark:text-slate-400 text-xs my-3">
                 <div class="flex-center gap-1">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -191,21 +231,27 @@ const GetAndShowPreSellCourses = async () => {
                 </div>
 
                 <div class="flex justify-end dir-ltr">
-                ${
-                  Array(course.courseAverageScore).fill(0).map(score => `
+                ${Array(course.courseAverageScore)
+                  .fill(0)
+                  .map(
+                    (score) => `
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f59e0b" class="w-4 h-4">
                   <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
                 </svg>
-                  `).join('')
-                 }
-                 ${
-                  Array(5 - course.courseAverageScore).fill(0).map(score =>`
+                  `
+                  )
+                  .join("")}
+                 ${Array(5 - course.courseAverageScore)
+                   .fill(0)
+                   .map(
+                     (score) => `
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f59e0b" class="w-4 h-4">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </svg>
                 
-                  `).join('')
-                 }
+                  `
+                   )
+                   .join("")}
                  </div>
               </div>
               <!-- line -->
@@ -215,13 +261,19 @@ const GetAndShowPreSellCourses = async () => {
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                       </svg>
-                      <span class="font-DanaMd text-lg">${course.registers}</span>
+                      <span class="font-DanaMd text-lg">${
+                        course.registers
+                      }</span>
                     </div>
                     <div class="flex flex-col items-center">
                     
                      <div class="flex-center gap-1 ">
                      <span id="NewCourseDiscountPrice" class="text-sabzlearnGreen font-DanaMd text-xl space-x-1.5">
-                     ${course.price === 0 ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>` :  `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`}
+                     ${
+                       course.price === 0
+                         ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>`
+                         : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+                     }
                      </span>
                      </div>
                     </div>
@@ -232,8 +284,60 @@ const GetAndShowPreSellCourses = async () => {
     </div>
     </div>
     </div>
-    ` )
-  })
-}
+    `
+    );
+  });
+};
 
-export {GetAndShowAllCourses ,GetAndShowPopularCourses , GetAndShowPreSellCourses}
+const GetAndShowArticles = async () => {
+  const ShowAllArticles = document.querySelector("#ShowArticlesBody");
+  const res = await fetch(`http://localhost:4000/v1/articles`);
+  const Articles = await res.json();
+  console.log(Articles);
+  Articles.slice(0, 4).map((article) => {
+    ShowAllArticles.insertAdjacentHTML(
+      "beforeend",
+      `
+    <div class="bg-white rounded-lg shadow-light p-3">
+<div class="before:bg-blog-banner after:bg-blog-banner before:content-[''] before:absolute before:-bottom-3 before:left-0 before:w-full before:h-full after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-full after:h-full relative h-[217px] overflow-hidden">
+  <img src=http://localhost:4000/courses/covers/${article.cover} alt="ghorbani-dev.ir" class="block w-full rounded-lg h-full object-cover"/>
+</div>
+<h4 class="font-DanaMd h-14 max-h-14 line-clamp-2 text-zinc-700 dark:text-white mb-2.5">${article.title}
+</h4>
+<p class="font-danaLight text-sm h-20 line-clamp-4 text-slate-500 dark:text-slate-400">${article.description}</p>
+<div class="flex flex-col items-start gap-2.5 text-slate-500 dark:text-slate-400 text-xs my-2">
+  <div class="flex-center gap-x-1 hover:text-primary transition-colors cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+    </svg>            
+   <span>${article.creator.name}</span> 
+  </div>
+  <div class="w-full flex items-center gap-x-1 dir-ltr">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+  </svg>            
+  <span>${article.createdAt}</span>
+  </div>
+</div>
+<!-- line -->
+<p class="w-full h-px bg-gray-200 my-2"></p>
+<div class="flex-center py-3.5">
+  <a id="BlogLink" class="flex-center gap-1 text-zinc-700 dark:text-white hover:text-sabzlearnGreen dark:hover:text-sabzlearnGreen space-x-2.5 font-DanaMd transition-colors">
+    مطالعه مقاله
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+      <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-4.28 9.22a.75.75 0 000 1.06l3 3a.75.75 0 101.06-1.06l-1.72-1.72h5.69a.75.75 0 000-1.5h-5.69l1.72-1.72a.75.75 0 00-1.06-1.06l-3 3z" clip-rule="evenodd" />
+    </svg>            
+  </a>
+</div>
+</div>
+    `
+    );
+  });
+};
+
+export {
+  GetAndShowAllCourses,
+  GetAndShowPopularCourses,
+  GetAndShowPreSellCourses,
+  GetAndShowArticles,
+};
