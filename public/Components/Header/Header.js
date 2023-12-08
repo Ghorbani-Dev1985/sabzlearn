@@ -13,13 +13,10 @@ template.innerHTML = `
             <!-- right side -->
             <div>
                <nav>
-                 <ul class="flex items-center gap-x-3">
-                    <li><a href="">آموزش HTML</a></li>
-                    <li><a href="">آموزش CSS</a></li>
-                    <li><a href="">آموزش TailwindCss</a></li>
-                    <li><a href="">آموزش جاوااسکریپت</a></li>
-                    <li><a href="">آموزش پایتون</a></li>
-                    <li><a href="">آموزش ریکت</a></li>
+                 <ul  class="flex items-center gap-x-3">
+                   <div class="flex items-center gap-x-3" id="TopBarMenu">
+                   
+                   </div>
                     <li class="flex-center gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-sabzlearnGreen">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" />
@@ -322,7 +319,8 @@ class Header extends HTMLElement {
     const PythonSubmenu = this.shadowRoot.querySelector("#PythonSubmenu");
     const Overlay = this.shadowRoot.querySelector('.Overlay'); 
     const LoginRegisterBody = this.shadowRoot.querySelectorAll(".LoginRegisterBody"); 
-
+    
+    // Profile Info
     const isUserLogin = isLogin();
     if (isUserLogin) {
       const userInfos = GetMe().then(data => {
@@ -435,6 +433,21 @@ class Header extends HTMLElement {
 
     
     }
+
+    // TopBarMenu
+    const RenderTopBarMenus = async () => {
+      const TopBarMenu = this.shadowRoot.querySelector("#TopBarMenu"); 
+      const res = await fetch(`http://localhost:4000/v1/menus/topbar`)
+    const TopBarMenus = await res.json();
+    console.log([...TopBarMenus]);
+    const ShuffledArray = TopBarMenus.sort((a , b) => 0.5 - Math.random());
+    ShuffledArray.splice(0 , 5).map((menu) => {
+      TopBarMenu.innerHTML += `<li><a href=${menu.href}>${menu.title}</a></li>`
+    })
+    }
+    RenderTopBarMenus()
+
+
     MobileNavToggler.addEventListener("click", () => {
       DrawerNavigation.classList.toggle("right-64");
       Overlay.classList.remove('hidden')

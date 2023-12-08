@@ -82,8 +82,19 @@ class CourseCard extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
   connectedCallback() {
+   
+    const GetAndShowAllCourses = async () => {
+      const ShowAllCourses = document.querySelector('#ShowAllCourses');
+      const res = await fetch(`http://localhost:4000/v1/courses`);
+      const Courses = await res.json();
+      console.log(Courses);
+      Courses.map(({name, creator, registers , price}) => {
+        
+        this.shadowRoot.querySelector('#CourseTitle').innerHTML = name
+      })
+    }
+    GetAndShowAllCourses()
    this.shadowRoot.querySelector('#CourseImg').setAttribute( 'src' , this.getAttribute('CourseImg'))
-    this.shadowRoot.querySelector('#CourseTitle').innerHTML = this.getAttribute('CourseTitle')
     this.shadowRoot.querySelector('#CourseTeacherName').innerHTML = this.getAttribute('CourseTeacherName')
     this.shadowRoot.querySelector('#CourseStudentCount').innerHTML = this.getAttribute('CourseStudentCount')
     this.shadowRoot.querySelector('#CoursePrice').innerHTML = this.getAttribute('CoursePrice')
@@ -96,3 +107,6 @@ class CourseCard extends HTMLElement {
 }
 
 export { CourseCard };
+
+
+
