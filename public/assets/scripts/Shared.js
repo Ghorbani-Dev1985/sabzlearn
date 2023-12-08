@@ -1,5 +1,5 @@
-import { ShowUserNameInHeader } from './Funcs/Sheared.js'
+import { GetAndShowAllCourses } from './Funcs/Sheared.js'
 
-window.addEventListener('load' , () => {
-    ShowUserNameInHeader()
+window.addEventListener('load', () => {
+    GetAndShowAllCourses()
 })
