@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: ["./public/**/*.{html,js}" , "./node_modules/flowbite/**/*.js"],
+  content: ["./public/**/*.{html,js}"],
   theme: {
     extend: {
       container: {
@@ -180,4 +180,3 @@ module.exports = {
     require("daisyui"),
   ],
 }
-
