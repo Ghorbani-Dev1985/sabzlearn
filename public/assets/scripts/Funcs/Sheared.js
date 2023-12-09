@@ -1,5 +1,4 @@
-import {GetUrlParam , GetToken} from '../Funcs/Utils.js'
-
+import { GetUrlParam, GetToken } from "../Funcs/Utils.js";
 
 const GetAndShowAllCourses = async () => {
   const ShowAllCourses = document.querySelector("#ShowAllCourses");
@@ -20,7 +19,9 @@ const GetAndShowAllCourses = async () => {
         />
         <!-- Course Card Body -->
         <div class="px-2">
-          <h2 class="font-MorabbaBold text-base md:text-xl my-6 line-clamp-1">${course.name}</h2>
+          <h2 class="font-MorabbaBold text-base md:text-xl my-6 line-clamp-1">${
+            course.name
+          }</h2>
           <div class="flex-between mb-3">
             <div class="flex-center gap-1">
               <svg
@@ -333,19 +334,22 @@ const GetAndShowArticles = async () => {
 };
 
 const GetAndShowCategoryCourses = async () => {
-
-      const categoryUrlName = GetUrlParam('cat');
-      const ShowAllCoursesOfCat = document.querySelector('#ShowAllCoursesOfCat')
-     const res = await fetch(`http://localhost:4000/v1/courses/category/${categoryUrlName}` ,{
-      method: 'GET',
-      headers : {
-        Authorization: `Bearer ${GetToken()}`
-      }
-    })
-     const courses = await res.json()
-     console.log(courses);
-     courses.forEach(course => {
-      ShowAllCoursesOfCat.insertAdjacentHTML('beforeend' , `
+  const categoryUrlName = GetUrlParam("cat");
+  const ShowAllCoursesOfCat = document.querySelector("#ShowAllCoursesOfCat");
+  const res = await fetch(`http://localhost:4000/v1/courses/category/${categoryUrlName}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${GetToken()}`,
+      },
+    }
+  );
+  const courses = await res.json();
+  console.log(courses);
+  courses.forEach((course) => {
+    ShowAllCoursesOfCat.insertAdjacentHTML(
+      "beforeend",
+      `
       <!-- Courses Box -->
 
       <a id="CourseLink"
@@ -431,25 +435,173 @@ const GetAndShowCategoryCourses = async () => {
             </div>
         </div>
       </a>
-      `)
-     })
-     return courses
-}  
+      `
+    );
+  });
+  return courses;
+};
 
 const GetAndShowCourseDetails = async () => {
-  const courseUrlName = GetUrlParam('name');
-  const res = await fetch(`http://localhost:4000/v1/courses/${courseUrlName}` , {
-    method: 'POST',
-    headers : {
-      Authorization: `Bearer ${GetToken()}`
-    }
-  }).then(res => res.json())
-  .then(course => {
-    console.log(course);
+  const courseUrlName = GetUrlParam("name");
+  // Select Elements From Dom
+  const $ = document;
+  const CorseCategoryName = $.querySelector("#CorseCategoryName");
+  const CourseTitle = $.querySelectorAll(".CourseTitle");
+  const CourseDescription = $.querySelectorAll(".CourseDescription");
+  const CoursePrice = $.querySelector("#CoursePrice");
+  const CourseActionBtn = $.querySelector("#CourseActionBtn");
+  const CourseStatus = $.querySelector("#CourseStatus");
+  const CourseSupportWay = $.querySelector("#CourseSupportWay");
+   const CourseLastUpdated = $.querySelector("#CourseLastUpdated");
+   const CourseTime = $.querySelector("#CourseTime");
+   const CourseStudentsCount = $.querySelector("#CourseStudentsCount");
+ const CourseTeacherName = $.querySelector("#CourseTeacherName");
+const CourseTeacherEmail = $.querySelector("#CourseTeacherEmail");
+ const CourseCommentsCount = $.querySelector("#CourseCommentsCount");
+const TopicsCollapse = $.querySelector("#TopicsCollapse");
+
+  const res = await fetch(`http://localhost:4000/v1/courses/${courseUrlName}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${GetToken()}`,
+    },
   })
+    .then((res) => res.json())
+    .then((course) => {
+      console.log(course);
+      CorseCategoryName.innerHTML = course.categoryID.title;
+      CourseTitle.forEach((title) => {
+        title.innerHTML = course.name;
+      });
+      CourseDescription.forEach((desc) => {
+        desc.innerHTML = course.description
+      })
 
-}
+      if (course.price !== 0) {
+        CoursePrice.innerHTML = `
+         <span  class="font-DanaBold font-bold text-base md:text-3xl"
+         >${course.price.toLocaleString()}
+       </span>
+       <img
+         src="./assets/images/svg/toman-black.svg"
+         class="w-6 h-6 object-cover"
+       />
+         `;
+      } else {
+        CoursePrice.innerHTML = `<span class="text-sabzlearnGreen font-DanaBold text-base md:text-3xl space-x-1.5">رایگان!</span>`;
+      }
+      CourseActionBtn.insertAdjacentHTML(
+        "beforeend",
+        course.isUserRegisteredToThisCourse
+          ? `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+</svg>
+مشاهده دوره
+        `
+          : ` <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-10 h-8"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+      />
+    </svg>
+    شرکت در دوره`
+      );
+      CourseStatus.innerHTML = course.isCompleted ?" تکمیل شده" : "در حال برگزاری";
+      CourseSupportWay.innerHTML = course.support;
+      CourseLastUpdated.innerHTML = course.updatedAt.slice(0,10);
+       let sum = 0;
+      course.sessions.forEach((session) => {
+        sum += +session.time.slice(0 , 2)
+      });
+      CourseTime.innerHTML = `${sum} ساعت`;
+      CourseStudentsCount.innerHTML = course.courseStudentsCount;
+      CourseTeacherName.innerHTML = course.creator.name;
+      CourseTeacherEmail.innerHTML = course.creator.email;
+      CourseCommentsCount.innerHTML = course.comments.length;
 
+      let SessionLen = 1;
+
+       course.sessions.length ?       course.sessions.forEach((session) =>{
+        TopicsCollapse.insertAdjacentHTML('beforeend' , ` 
+       <div
+       tabindex="0"
+       class="collapse collapse-arrow bg-gray-100 border border-gray-100 my-3"
+     >
+       <div class="collapse-title flex gap-2 text-xl font-DanaMd font-medium">
+       <span
+       class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-DanaBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-sabzlearnGreen group-hover:text-white rounded-md transition-colors"
+       >${SessionLen++}</span
+     >
+       ${session.title}
+     </div>
+     <div class="collapse-content">
+       <div
+         class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group"
+       >
+         <a
+           href="https://sabzlearn.ir/lesson/48-23816"
+           class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]"
+         >
+          
+           <h4
+             class="text-zinc-700 dark:text-white group-hover:text-sabzlearnGreen text-sm md:text-lg transition-colors"
+           >
+           ${session.title}
+           </h4>
+         </a>
+         <div class="flex items-center w-full justify-between">
+          ${!session.free ? `<span
+             class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-sabzlearnGreen/10 group-hover:text-sabzlearnGreen text-xs rounded transition-colors"
+             >جلسه رایگان</span
+           >`: `<span
+             class="inline-block leading-[25px] px-2.5 py-2 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-sabzlearnGreen/10 group-hover:text-sabzlearnGreen text-xs rounded transition-colors"
+             ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+           </svg>
+           </span
+           >`}
+           
+           <div class="flex items-center gap-x-1.5 md:gap-x-2">
+             <span
+               class="text-slate-500 dark:text-gray-500 text-sm md:text-lg"
+             >
+            ${session.time}
+             </span>
+             <svg
+               xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="1.5"
+               stroke="currentColor"
+               class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-sabzlearnGreen transition-colors"
+             >
+               <path
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+               />
+               <path
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
+               />
+             </svg>
+           </div>
+         </div>
+       </div>
+     </div></div>`)
+      }) : TopicsCollapse.innerHTML= "تاکنون سرفصلی ثبت نگردیده است";
+    });
+};
 
 export {
   GetAndShowAllCourses,
