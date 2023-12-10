@@ -47,6 +47,23 @@ template.innerHTML = `
           </div>
           <a href="https://t.me/sabzlearn" class="text-ltr text-hover font-DanaBold dir-ltr">@sabzlearn</a>
         </div>
+        <!-- Newsletter -->
+        <div class="w-full max-w-2xl flex-center relative z-0 mt-4">
+        <input
+          type="text"
+          id="NewsletterInput"
+          placeholder="عضویت در خبرنامه سبزلرن"
+          class="w-full max-w-2xl bg-gray-100 px-2 py-4 focus:ring-0 focus:border-0 focus:outline-none rounded-lg border-none text-sabzlearnBlack"
+        />
+        <button
+          type="submit"
+          id="AddNewsletterBtn"
+          class="bg-sabzlearnGreen hover:bg-green-700 transition-colors text-white px-4 py-2 rounded-lg absolute left-1"
+        >
+          ثبت
+        </button>
+        </div>
+        <span id="ShowNewsletterAlert" class="my-3 h-1"></span>
       </div>
     </div>
     <!-- line -->
@@ -66,7 +83,44 @@ class Footer extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
   connectedCallback() {
-   
+    const NewsletterInput = this.shadowRoot.querySelector("#NewsletterInput");
+    const AddNewsletterBtn = this.shadowRoot.querySelector("#AddNewsletterBtn");
+    const ShowNewsletterAlert = this.shadowRoot.querySelector("#ShowNewsletterAlert");
+     const AddUserToNewsletter = async () => {
+       const NewsletterEmail = {
+         email : NewsletterInput.value.trim()
+        }
+        if(NewsletterInput.value === ''){
+        ShowNewsletterAlert.classList.add('text-amber-500');
+        ShowNewsletterAlert.innerHTML = 'لطفا ایمیل خود را وارد نمایید';
+      }else{
+        const res = await fetch(`http://localhost:4000/v1/newsletters` , {
+          method: 'POST',
+          headers: {
+              'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify(NewsletterEmail)
+        })
+        const result = await res.json();
+      if(res.ok) {
+        NewsletterInput.value = '';
+        ShowNewsletterAlert.classList.add('text-green-500');
+        ShowNewsletterAlert.innerHTML = ' عضویت شما در خبرنامه با موفقیت انجام شد';
+        setTimeout(() =>{
+          ShowNewsletterAlert.innerHTML = '';
+        }, 3000)
+      }else{
+         ShowNewsletterAlert.classList.add('text-rose-500');
+        ShowNewsletterAlert.innerHTML = 'خطایی در روند عضویت رخ داده است';
+      }
+    }
+  }
+  window.addEventListener('load' , () => {
+    AddNewsletterBtn.addEventListener('click' , (e) => {
+         e.preventDefault();
+        AddUserToNewsletter();
+       })
+  })
   }
 
   static observedAttributes() {
