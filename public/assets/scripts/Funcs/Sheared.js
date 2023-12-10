@@ -1,4 +1,4 @@
-import { GetUrlParam, GetToken } from "../Funcs/Utils.js";
+import { GetUrlParam, GetToken , ShowSwalAlert} from "../Funcs/Utils.js";
 
 const GetAndShowAllCourses = async () => {
   const ShowAllCourses = document.querySelector("#ShowAllCourses");
@@ -689,6 +689,40 @@ const GetSessionDetails = async () => {
   
 }
 
+const SendTicketMessage = async () => {
+  const $ = document;
+  const FullNameInput = $.querySelector('#FullNameInput')
+  const PhoneNumberInput = $.querySelector('#PhoneNumberInput')
+  const EmailInput = $.querySelector('#EmailInput')
+  const MessageTextarea = $.querySelector('#MessageTextarea')
+
+  const NewSendTicketInfos = {
+    name : FullNameInput.value.trim(),
+    phone : PhoneNumberInput.value.trim(),
+    email : EmailInput.value.trim(),
+    body : MessageTextarea.value.trim(),
+  }
+  if (FullNameInput.value === '' || FullNameInput.value === '' || EmailInput.value === '' ||  MessageTextarea.value === ''){
+    ShowSwalAlert("info" , 'لطفا فرم را کامل تکمیل نمایید')
+  }else{
+    const res = await fetch(`http://localhost:4000/v1/contact` , {
+       method: 'POST',
+       headers: {
+           'Content-Type' : 'application/json'
+       },
+       body: JSON.stringify(NewSendTicketInfos)
+   })
+   const result = await res.json();
+   if(res.status === 201) {
+    ShowSwalAlert("success" , ' پیام شما با موفقیت ثبت شد' , 
+      () => location.href = 'index.html')
+   }else{
+    ShowSwalAlert("error" , 'خطایی در ارسال پیام رخ داده است')
+   }
+  }
+
+}
+
 export {
   GetAndShowAllCourses,
   GetAndShowPopularCourses,
@@ -698,4 +732,5 @@ export {
   GetAndShowCourseDetails,
   GetAndShowRelatedCourse,
   GetSessionDetails,
+  SendTicketMessage,
 };
