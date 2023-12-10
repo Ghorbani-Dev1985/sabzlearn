@@ -869,7 +869,103 @@ const SendTicketMessage = async () => {
 }
 
 const GlobalSearchInApp = async () => {
+  const CourseResultBody = document.querySelector('#CourseResultBody')
+  const ArticleResultBody = document.querySelector('#ArticleResultBody')
   const SearchValue = GetUrlParam('value');
+  const res = await fetch(`http://localhost:4000/v1/search/${SearchValue}`)
+  const data = await res.json();
+  
+  if(data.allResultCourses.length){
+    data.allResultCourses.forEach((course) => {
+      CourseResultBody.insertAdjacentHTML('beforeend' ,  `
+      <!-- Courses Box -->
+
+      <a href="course-info.html?name=${course.shortName}" target="_blank"
+        class="flex flex-col overflow-hidden rounded-lg bg-white shadow-lg transition-all ease-linear duration-200 hover:-mt-2"
+      >
+        <img
+         src=${course.cover}
+          alt="ghorbani-dev.ir"
+        />
+        <!-- Course Card Body -->
+        <div class="px-2">
+          <h2 class="font-MorabbaBold text-base md:text-xl my-6 line-clamp-1">${
+            course.name
+          }</h2>
+          <div class="flex-between mb-3">
+
+            </div>
+          </div>
+          <div class="flex-center mb-3">
+     
+            <div> 
+            ${
+              course.price === 0
+                ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>`
+                : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+            }
+             
+            </div>
+          </div>
+        </div>
+        <!-- Line -->
+        <p class="w-full h-px bg-gray-200 my-2"></p>
+        <!-- Link -->
+        <div class="flex-center px-2 py-4 mb-2">
+            <div class="flex-center gap-2 text-sabzlearnGreen font-DanaBold text-sm md:text-xl">
+                مشاهده اطلاعات
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                  </svg>                      
+            </div>
+        </div>
+      </a>
+      `)
+    })
+  }else{
+    CourseResultBody.insertAdjacentHTML('beforeend' , `<div class="col-span-3 text-amber-500 mt-10 text-base md:text-2xl font-DanaBold">
+    دوره ای با کلمه مورد نظر شما یافت نگردید
+    </div>`)
+  }
+  if(data.allResultArticles.length){
+    data.allResultArticles.forEach((article) => {
+      ArticleResultBody.insertAdjacentHTML('beforeend' ,   `
+      <div class="bg-white rounded-lg shadow-light p-3">
+  <div class="before:bg-blog-banner after:bg-blog-banner before:content-[''] before:absolute before:-bottom-3 before:left-0 before:w-full before:h-full after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-full after:h-full relative h-[217px] overflow-hidden">
+    <img src=http://localhost:4000/courses/covers/${article.cover} alt="ghorbani-dev.ir" class="block w-full rounded-lg h-full object-cover"/>
+  </div>
+  <h4 class="font-DanaMd h-14 max-h-14 line-clamp-2 text-zinc-700 dark:text-white mb-2.5">${article.title}
+  </h4>
+  <p class="font-danaLight text-sm h-20 line-clamp-4 text-slate-500 dark:text-slate-400">${article.description}</p>
+  <div class="flex flex-col items-start gap-2.5 text-slate-500 dark:text-slate-400 text-xs my-2">
+    <div class="w-full flex items-center gap-x-1 dir-ltr">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+    </svg>            
+    <span>${article.createdAt.slice(0 , 10)}</span>
+    </div>
+  </div>
+  <!-- line -->
+  <p class="w-full h-px bg-gray-200 my-2"></p>
+  <div class="flex-center py-3.5">
+    <a id="BlogLink" class="flex-center gap-1 text-zinc-700 dark:text-white hover:text-sabzlearnGreen dark:hover:text-sabzlearnGreen space-x-2.5 font-DanaMd transition-colors">
+      مطالعه مقاله
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-4.28 9.22a.75.75 0 000 1.06l3 3a.75.75 0 101.06-1.06l-1.72-1.72h5.69a.75.75 0 000-1.5h-5.69l1.72-1.72a.75.75 0 00-1.06-1.06l-3 3z" clip-rule="evenodd" />
+      </svg>            
+    </a>
+  </div>
+  </div>
+      `)
+    })
+  }else{
+    ArticleResultBody.insertAdjacentHTML('beforeend' , `<div class="col-span-3 text-amber-500 mt-10 text-base md:text-2xl font-DanaBold">
+    مقاله ای با کلمه مورد نظر شما یافت نگردید
+    </div>`)
+  }
+ 
+
+  return data;
 
 }
 

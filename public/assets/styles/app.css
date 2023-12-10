@@ -3085,6 +3085,10 @@ progress::-webkit-progress-value {
   margin-top: auto;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .line-clamp-1 {
   overflow: hidden;
   display: -webkit-box;
@@ -3256,6 +3260,18 @@ progress::-webkit-progress-value {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-\[\] {
+  min-height: ;
+}
+
+.min-h-\[1\] {
+  min-height: 1;
+}
+
+.min-h-\[100px\] {
+  min-height: 100px;
 }
 
 .w-1\/2 {
@@ -3890,13 +3906,14 @@ progress::-webkit-progress-value {
   background-color: rgb(236 72 153 / var(--tw-bg-opacity));
 }
 
+.bg-rose-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 205 211 / var(--tw-bg-opacity));
+}
+
 .bg-rose-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(244 63 94 / var(--tw-bg-opacity));
-}
-
-.bg-rose-500\/30 {
-  background-color: rgb(244 63 94 / 0.3);
 }
 
 .bg-sabzlearnGreen {
@@ -3950,14 +3967,9 @@ progress::-webkit-progress-value {
   background-color: rgb(255 255 255 / 0.3);
 }
 
-.bg-rose-300 {
+.bg-sky-50 {
   --tw-bg-opacity: 1;
-  background-color: rgb(253 164 175 / var(--tw-bg-opacity));
-}
-
-.bg-rose-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 205 211 / var(--tw-bg-opacity));
+  background-color: rgb(240 249 255 / var(--tw-bg-opacity));
 }
 
 .bg-conic-gradient {
@@ -4318,6 +4330,14 @@ progress::-webkit-progress-value {
   padding-top: 1.25rem;
 }
 
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pr-3 {
+  padding-right: 0.75rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -4499,11 +4519,6 @@ progress::-webkit-progress-value {
 .text-zinc-700 {
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
-}
-
-.text-rose-50 {
-  --tw-text-opacity: 1;
-  color: rgb(255 241 242 / var(--tw-text-opacity));
 }
 
 .line-through {
@@ -4766,6 +4781,11 @@ progress::-webkit-progress-value {
   bottom: -0.75rem;
 }
 
+.before\:-right-2::before {
+  content: var(--tw-content);
+  right: -0.5rem;
+}
+
 .before\:-right-5::before {
   content: var(--tw-content);
   right: -1.25rem;
@@ -4794,6 +4814,16 @@ progress::-webkit-progress-value {
 .before\:top-3::before {
   content: var(--tw-content);
   top: 0.75rem;
+}
+
+.before\:right-2::before {
+  content: var(--tw-content);
+  right: 0.5rem;
+}
+
+.before\:right-3::before {
+  content: var(--tw-content);
+  right: 0.75rem;
 }
 
 .before\:h-2::before {
@@ -4859,6 +4889,66 @@ progress::-webkit-progress-value {
 .before\:max-w-\[304px\]::before {
   content: var(--tw-content);
   max-width: 304px;
+}
+
+.before\:max-w-\[185px\]::before {
+  content: var(--tw-content);
+  max-width: 185px;
+}
+
+.before\:max-w-\[18px\]::before {
+  content: var(--tw-content);
+  max-width: 18px;
+}
+
+.before\:max-w-\[1px\]::before {
+  content: var(--tw-content);
+  max-width: 1px;
+}
+
+.before\:max-w-\[px\]::before {
+  content: var(--tw-content);
+  max-width: px;
+}
+
+.before\:max-w-\[2px\]::before {
+  content: var(--tw-content);
+  max-width: 2px;
+}
+
+.before\:max-w-\[20px\]::before {
+  content: var(--tw-content);
+  max-width: 20px;
+}
+
+.before\:max-w-\[200px\]::before {
+  content: var(--tw-content);
+  max-width: 200px;
+}
+
+.before\:max-w-\[250px\]::before {
+  content: var(--tw-content);
+  max-width: 250px;
+}
+
+.before\:max-w-\[280px\]::before {
+  content: var(--tw-content);
+  max-width: 280px;
+}
+
+.before\:max-w-\[240px\]::before {
+  content: var(--tw-content);
+  max-width: 240px;
+}
+
+.before\:max-w-\[230px\]::before {
+  content: var(--tw-content);
+  max-width: 230px;
+}
+
+.before\:max-w-\[220px\]::before {
+  content: var(--tw-content);
+  max-width: 220px;
 }
 
 .before\:bg-amber-500::before {
