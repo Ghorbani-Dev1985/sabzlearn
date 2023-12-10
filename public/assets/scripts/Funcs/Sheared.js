@@ -460,6 +460,8 @@ const GetAndShowCourseDetails = async () => {
 const CourseTeacherEmail = $.querySelector("#CourseTeacherEmail");
  const CourseCommentsCount = $.querySelector("#CourseCommentsCount");
 const TopicsCollapse = $.querySelector("#TopicsCollapse");
+const CommentsBody = $.querySelector('#CommentsBody');
+const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
 
   const res = await fetch(`http://localhost:4000/v1/courses/${courseUrlName}`, {
     method: "POST",
@@ -615,6 +617,149 @@ const TopicsCollapse = $.querySelector("#TopicsCollapse");
        </div>
      </div></details>`)
       }) : TopicsCollapse.innerHTML= "تاکنون سرفصلی ثبت نگردیده است";
+     // Show Comments
+     if(course.comments.length){
+       course.comments.forEach((comment) => {
+       console.log(comment);
+       CommentsBody.insertAdjacentHTML('beforeend' ,  `   <div
+      
+      class="p-3.5 md:p-5 my-4 bg-gray-100 dark:bg-gray-700 rounded-2xl"
+    >
+      <!-- Comment Body -->
+      <div class="flex gap-x-5 items-start">
+        <!-- Comment Right User Picture & flag (desktop version) -->
+        <div class="hidden md:flex flex-col gap-y-2">
+          <img
+            class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full"
+            src="./assets/images/user.png"
+          />
+          <div
+            class="bg-gray-500 text-white px-3 py-0 text-sm rounded-lg"
+          >
+          ${comment.creator.role === "USER" ? 'کاربر' : 'ادمین'}
+            
+          </div>
+        </div>
+        <!-- Comment Left Reply comment, text, author, data, flag, reply btn -->
+        <div class="w-full">
+          <!-- Comment Head -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-x-2">
+              <img
+                class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
+                src="https://secure.gravatar.com/avatar/9f8c9ee94bc617eb7c53756677c52824?s=96&amp;d=mm&amp;r=g"
+              />
+              <div class="shrink-0">
+                <span
+                  class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
+                  >${comment.creator.name}</span
+                >
+                <div class="flex items-center gap-x-1.5 mt-1">
+                  <div
+                    class="bg-gray-500 text-white px-3 py-0 text-sm rounded-lg md:hidden"
+                  >
+                  ${comment.creator.role === "USER" ? 'کاربر' : 'ادمین'}
+                  </div>
+                  <span
+                    class="font-danaLight text-slate-500 dark:text-white text-xs"
+                    >${comment.creator.createdAt.slice(0 , 10)}</span
+                  >
+                </div>
+              </div>
+            </div>
+            <button
+              class="comment__reply-btn w-6 h-5 text-slate-500 dark:text-gray-500"
+              type="button"
+            >
+                <svg id="reply" xmlns="http://www.w3.org/2000/svg" class="w-6 h-5" fill="currentColor"
+                viewBox="0 0 24 20">
+            <path d="M10,7V2.75a.75.75,0,0,0-1.272-.538l-8.5,8.25a.749.749,0,0,0,0,1.076l8.5,8.25A.75.75,0,0,0,10,19.25V15h1.418a12.753,12.753,0,0,1,11.153,6.572l.021.038a.751.751,0,0,0,.658.39.74.74,0,0,0,.186-.023A.75.75,0,0,0,24,21.25,14.267,14.267,0,0,0,10,7Z"
+                  transform="translate(0 -2)"/>
+        </svg>
+              
+            </button>
+          </div>
+          <!-- Comment Text -->
+          <div
+            class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5"
+          >
+          ${comment.body}
+          </div>
+          <!-- Comment Replies -->
+           ${
+            comment.answer ? `     <div class="mt-7 space-y-3.5 md:space-y-5">
+            <div
+              
+              class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl"
+            >
+              <div class="flex gap-x-5 items-start">
+                <!-- Comment Right User Picture & flag (desktop version) -->
+                <div class="hidden md:flex flex-col gap-y-2">
+                  <img
+                    class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full"
+                    src="https://localhost:4000${comment.answerContent.creator.profile}"
+                  />
+                  <div
+                    class="bg-sky-500 text-white text-sm px-2 py-0 rounded-lg"
+                  >
+                  ${comment.answerContent.creator.role === 'ADMIN' ? 'ادمین' : ' کاربر'}
+                  </div>
+                </div>
+                <!-- Comment Left Text, author, data, flag, reply btn -->
+                <div class="w-full">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-x-2">
+                      <img
+                        class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
+                        src="https://secure.gravatar.com/avatar/5872841a47b10069777793cbce83eacf?s=96&amp;d=mm&amp;r=g"
+                      />
+                      <div class="shrink-0">
+                        <span
+                          class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
+                          > ${comment.answerContent.creator.name}</span
+                        >
+                        <div class="flex items-center gap-x-1.5 mt-1">
+                          <div
+                            class="bg-sky-500 text-white text-sm px-2 py-0 rounded-lg md:hidden"
+                          >
+                          ${comment.answerContent.creator.role === 'ADMIN' ? 'ادمین' : 'کاربر'}
+                          </div>
+                          <span
+                            class="font-danaLight text-slate-500 dark:text-white text-xs"
+                            > ${comment.answerContent.creator.createdAt.slice(0 , 10)} </span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Comment Text -->
+                  <div
+                    class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5"
+                  >
+                    ${comment.answerContent.body}
+                  </div>
+                </div>
+              </div>`: `<div class="mt-7 space-y-3.5 md:space-y-5">
+              <div
+                
+                class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl"
+              >تاکنون پاسخی ثبت نگردیده است</div></div>` 
+          
+           }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`)
+     
+     })
+     }else{
+      CommentsBody.innerHTML = "تاکنون نظری ثبت نگردیده است"
+      ShowMoreCommentBtn.classList.remove('flex-center')
+      ShowMoreCommentBtn.classList.add('hidden')
+     }
+    
+
     });
 };
 
