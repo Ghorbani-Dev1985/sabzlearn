@@ -3800,11 +3800,6 @@ progress::-webkit-progress-value {
   border-bottom-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
-.border-b-gray-50 {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(249 250 251 / var(--tw-border-opacity));
-}
-
 .border-t-emerald-300 {
   --tw-border-opacity: 1;
   border-top-color: rgb(110 231 183 / var(--tw-border-opacity));
@@ -3857,6 +3852,11 @@ progress::-webkit-progress-value {
 .bg-green-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+}
+
+.bg-orange-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 115 22 / var(--tw-bg-opacity));
 }
 
 .bg-pink-500 {
@@ -4334,11 +4334,6 @@ progress::-webkit-progress-value {
   line-height: 1.75rem;
 }
 
-.text-xl\/8 {
-  font-size: 1.25rem;
-  line-height: 2rem;
-}
-
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -4390,11 +4385,6 @@ progress::-webkit-progress-value {
 
 .tracking-widest {
   letter-spacing: 0.1em;
-}
-
-.text-amber-400 {
-  --tw-text-opacity: 1;
-  color: rgb(251 191 36 / var(--tw-text-opacity));
 }
 
 .text-amber-500 {
@@ -4902,6 +4892,10 @@ progress::-webkit-progress-value {
 .group:hover .group-hover\:bg-sabzlearnGreen {
   --tw-bg-opacity: 1;
   background-color: rgb(43 195 86 / var(--tw-bg-opacity));
+}
+
+.group:hover .group-hover\:bg-sabzlearnGreen\/10 {
+  background-color: rgb(43 195 86 / 0.1);
 }
 
 .group:hover .group-hover\:text-sabzlearnGreen {
@@ -5576,6 +5570,11 @@ progress::-webkit-progress-value {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-xl\/8 {
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 
   .md\:tracking-\[0\.55rem\] {

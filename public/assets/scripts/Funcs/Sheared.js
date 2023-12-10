@@ -450,6 +450,7 @@ const GetAndShowCourseDetails = async () => {
   const CourseDescription = $.querySelectorAll(".CourseDescription");
   const CoursePrice = $.querySelector("#CoursePrice");
   const CourseActionBtn = $.querySelector("#CourseActionBtn");
+  const CourseVideo = $.querySelector('#CourseVideo');
   const CourseStatus = $.querySelector("#CourseStatus");
   const CourseSupportWay = $.querySelector("#CourseSupportWay");
    const CourseLastUpdated = $.querySelector("#CourseLastUpdated");
@@ -515,6 +516,7 @@ const TopicsCollapse = $.querySelector("#TopicsCollapse");
     </svg>
     شرکت در دوره`
       );
+      CourseVideo.setAttribute('poster' , `${course.cover}`)
       CourseStatus.innerHTML = course.isCompleted ?" تکمیل شده" : "در حال برگزاری";
       CourseSupportWay.innerHTML = course.support;
       CourseLastUpdated.innerHTML = course.updatedAt.slice(0,10);
@@ -530,7 +532,7 @@ const TopicsCollapse = $.querySelector("#TopicsCollapse");
 
       let SessionLen = 1;
 
-       course.sessions.length ?       course.sessions.forEach((session) =>{
+       course.sessions.length ? course.sessions.forEach((session) =>{
         TopicsCollapse.insertAdjacentHTML('beforeend' , ` 
        <div
        tabindex="0"
@@ -559,7 +561,7 @@ const TopicsCollapse = $.querySelector("#TopicsCollapse");
            </h4>
          </a>
          <div class="flex items-center w-full justify-between">
-          ${!session.free ? `<span
+          ${session.free === 0 ? `<span
              class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-sabzlearnGreen/10 group-hover:text-sabzlearnGreen text-xs rounded transition-colors"
              >جلسه رایگان</span
            >`: `<span
@@ -603,6 +605,29 @@ const TopicsCollapse = $.querySelector("#TopicsCollapse");
     });
 };
 
+const GetAndShowRelatedCourse = async () => {
+  const courseUrlName = GetUrlParam("name");
+  const RelatedCourseBody = document.querySelector('#RelatedCourseBody')
+
+  const res = await fetch(`http://localhost:4000/v1/courses/related/${courseUrlName}`)
+  const RelatedCourses = await res.json();
+  if(RelatedCourses.length){
+    RelatedCourses.forEach((related) => {
+      RelatedCourseBody.insertAdjacentHTML('beforeend' , `
+      <a class="flex-between my-2" href="course-info.html?name=${related.shortName}">
+      <img src="${related.cover}" class="w-28 rounded-md" alt="ghorbani-dev.ir"/>
+      <span class="flex flex-1 mr-2">${related.name}</span>
+      </a>
+      `)
+    })
+  }else{
+
+  }
+
+
+  return RelatedCourses;
+}
+
 export {
   GetAndShowAllCourses,
   GetAndShowPopularCourses,
@@ -610,4 +635,5 @@ export {
   GetAndShowArticles,
   GetAndShowCategoryCourses,
   GetAndShowCourseDetails,
+  GetAndShowRelatedCourse,
 };
