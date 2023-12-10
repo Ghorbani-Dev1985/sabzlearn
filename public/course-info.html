@@ -353,13 +353,29 @@
                 </div>
                 <!-- New Comment Button -->
                 <button
-                  class="button-md button-main"
-                  onclick="submitComment(144)"
+                  class="button-md button-main"     
                   type="button"
-                  id="comment-create-btn"
-                >
+                  id="NewCommentCreateBtn"
+                  >
                   ایجاد نظر جدید
                 </button>
+              </div>
+                <!-- New Comment Form -->
+                <div id="comment-form">
+                  <div class="flex gap-x-2 mb-3">
+                      <img class="block w-10 h-10 md:w-14 md:h-14 object-cover rounded-full shrink-0" src="https://secure.gravatar.com/avatar/?s=96&amp;d=mm&amp;r=g">
+                      <div class="flex flex-col">
+                          <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"></span>
+                          <span class="text-slate-500 dark:text-gray-500 text-sm" id="comment-to">ثبت نظر جدید</span>
+                      </div>
+                  </div>
+                  <input type="hidden" value="" id="comment-id">
+                  <input type="hidden" value="" id="comment-is-reply">
+                  <textarea rows="6" id="comment-textarea" class="block w-full p-3 md:p-5 text-sm md:text-base text-slate-500 dark:text-gray-500 focus:text-zinc-700 dark:focus:text-white bg-gray-100 dark:bg-gray-700 border border-transparent focus:border-gray-200 dark:focus:border-slate rounded-2xl placeholder:font-danaLight transition-colors" placeholder="نظر خود را بنویسید ..."></textarea>
+                  <div class="flex gap-x-2 justify-end mt-2.5">
+                      <button class="button-md button-gray" id="comment-cancel-btn">لغو</button>
+                      <button class="button-md button-secondary" id="comment-submit-btn">ثبت</button>
+                  </div>
               </div>
               <!-- Course Comments Body -->
            <div id="CommentsBody"></div>

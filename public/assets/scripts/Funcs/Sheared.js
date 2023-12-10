@@ -754,12 +754,12 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
      
      })
      }else{
-      CommentsBody.innerHTML = "تاکنون نظری ثبت نگردیده است"
+      CommentsBody.insertAdjacentHTML('beforeend' , `
+      <div class="bg-rose-200 my-4 p-3 rounded-lg">تاکنون نظری ثبت نگردیده است</div>
+      `) 
       ShowMoreCommentBtn.classList.remove('flex-center')
       ShowMoreCommentBtn.classList.add('hidden')
      }
-    
-
     });
 };
 
@@ -868,6 +868,12 @@ const SendTicketMessage = async () => {
 
 }
 
+const GlobalSearchInApp = async () => {
+  const SearchValue = GetUrlParam('value');
+
+}
+
+
 export {
   GetAndShowAllCourses,
   GetAndShowPopularCourses,
@@ -878,4 +884,5 @@ export {
   GetAndShowRelatedCourse,
   GetSessionDetails,
   SendTicketMessage,
+  GlobalSearchInApp,
 };

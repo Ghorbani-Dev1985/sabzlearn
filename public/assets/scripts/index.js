@@ -1,8 +1,23 @@
+import {GlobalSearchInApp} from './Funcs/Sheared.js';
 const $ = document
 const MainPageHeaderTitle = $.querySelector('.MainPageHeaderTitle')
 const UsersCountDown = $.querySelector('.UsersCountDown')
 const CoursesCountDown = $.querySelector('.CoursesCountDown')
 const CoursesTimeCountDown = $.querySelector('.CoursesTimeCountDown')
+const GlobalSearchInput = $.querySelector('#GlobalSearchInput');
+const GlobalSearchBtn = $.querySelector('#GlobalSearchBtn');
+
+
+
+
+window.addEventListener('load' , () => {
+    GlobalSearchBtn.addEventListener('click' , (e) => {
+        e.preventDefault();
+        location.href = `search.html?value=${GlobalSearchInput.value.trim()}`;
+       
+    })
+})
+
 
 let HeaderTitleText = 'ما به هر قیمتی دوره آموزشی تولید نمی کنیم'.split("")
 let i =0;
