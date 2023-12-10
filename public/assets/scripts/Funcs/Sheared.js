@@ -533,24 +533,25 @@ const TopicsCollapse = $.querySelector("#TopicsCollapse");
 
        course.sessions.length ? course.sessions.forEach((session , index) =>{
         TopicsCollapse.insertAdjacentHTML('beforeend' , ` 
-       <div
-       tabindex="0"
-       class="collapse collapse-arrow bg-gray-100 border border-gray-100 my-3"
+       <details
+       class="collapse bg-gray-100 border border-gray-100 my-3"
      >
-       <div class="collapse-title flex gap-2 text-xl font-DanaMd font-medium">
-       <span
+       <summary class="collapse-title">
+        <div class="flex gap-2 text-xl font-DanaMd font-medium">
+         <div
        class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-DanaBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-sabzlearnGreen group-hover:text-white rounded-md transition-colors"
-       >${index+1}</span
-     >
-       ${session.title}
-     </div>
+       >${index+1}</div>
+       <div>${session.title}</div>
+        </div>
+      
+     </summary>
      <div class="collapse-content">
        <div
          class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group"
        >
          ${
-          (course.free || course.isUserRegisteredToThisCourse) ? ` <a
-           href="#"
+          (session.free || course.isUserRegisteredToThisCourse) ? ` <a
+           href="episode.html?name=${course.shortName}&id=${session._id}" target="_blank"
            class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]"
          >
           
@@ -612,7 +613,7 @@ const TopicsCollapse = $.querySelector("#TopicsCollapse");
            </div>
          </div>
        </div>
-     </div></div>`)
+     </div></details>`)
       }) : TopicsCollapse.innerHTML= "تاکنون سرفصلی ثبت نگردیده است";
     });
 };
