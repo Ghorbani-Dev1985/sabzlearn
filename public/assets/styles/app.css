@@ -3225,15 +3225,6 @@ progress::-webkit-progress-value {
   height: 100vh;
 }
 
-.h-96 {
-  height: 24rem;
-}
-
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
 .max-h-14 {
   max-height: 3.5rem;
 }
@@ -3250,38 +3241,12 @@ progress::-webkit-progress-value {
   min-height: 415px;
 }
 
-.min-h-screen {
-  min-height: 100vh;
-}
-
 .min-h-full {
   min-height: 100%;
 }
 
-.min-h-max {
-  min-height: -moz-max-content;
-  min-height: max-content;
-}
-
-.min-h-fit {
-  min-height: -moz-fit-content;
-  min-height: fit-content;
-}
-
-.min-h-\[6\] {
-  min-height: 6;
-}
-
-.min-h-\[60px\] {
-  min-height: 60px;
-}
-
-.min-h-\[\] {
-  min-height: ;
-}
-
-.min-h-\[200px\] {
-  min-height: 200px;
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-1\/2 {
@@ -3901,6 +3866,11 @@ progress::-webkit-progress-value {
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
 }
 
+.bg-green-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 253 244 / var(--tw-bg-opacity));
+}
+
 .bg-orange-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 115 22 / var(--tw-bg-opacity));
@@ -3939,14 +3909,9 @@ progress::-webkit-progress-value {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
-.bg-slate-200 {
+.bg-slate-50 {
   --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-}
-
-.bg-slate-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
 }
 
 .bg-slate-800 {
@@ -3970,16 +3935,6 @@ progress::-webkit-progress-value {
 
 .bg-white\/30 {
   background-color: rgb(255 255 255 / 0.3);
-}
-
-.bg-slate-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
-}
-
-.bg-green-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(240 253 244 / var(--tw-bg-opacity));
 }
 
 .bg-conic-gradient {
@@ -4142,6 +4097,10 @@ progress::-webkit-progress-value {
      object-fit: cover;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -4168,10 +4127,6 @@ progress::-webkit-progress-value {
 
 .p-8 {
   padding: 2rem;
-}
-
-.p-1 {
-  padding: 0.25rem;
 }
 
 .px-1 {

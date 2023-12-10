@@ -15,8 +15,8 @@ template.innerHTML = `
       <div>
         <h5 class="font-DanaBold text-base md:text-2xl text-zinc-700 mb-4"> دسترسی سریع</h5>
         <ul class="space-y-4">
-          <li><a href="./">قوانین و مقررات</a></li>
-          <li><a href="./"> ارسال تیکت</a></li>
+          <li><a href="./terms-conditions.html">قوانین و مقررات</a></li>
+          <li><a href="./send-ticket.html"> ارسال تیکت</a></li>
           <li><a href="./"> همه دوره ها </a></li>
         </ul>
       </div>
