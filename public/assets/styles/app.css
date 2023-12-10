@@ -3225,6 +3225,15 @@ progress::-webkit-progress-value {
   height: 100vh;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .max-h-14 {
   max-height: 3.5rem;
 }
@@ -3243,6 +3252,36 @@ progress::-webkit-progress-value {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-full {
+  min-height: 100%;
+}
+
+.min-h-max {
+  min-height: -moz-max-content;
+  min-height: max-content;
+}
+
+.min-h-fit {
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+
+.min-h-\[6\] {
+  min-height: 6;
+}
+
+.min-h-\[60px\] {
+  min-height: 60px;
+}
+
+.min-h-\[\] {
+  min-height: ;
+}
+
+.min-h-\[200px\] {
+  min-height: 200px;
 }
 
 .w-1\/2 {
@@ -3289,6 +3328,10 @@ progress::-webkit-progress-value {
   width: 0.75rem;
 }
 
+.w-30p {
+  width: 30%;
+}
+
 .w-4 {
   width: 1rem;
 }
@@ -3303,6 +3346,10 @@ progress::-webkit-progress-value {
 
 .w-64 {
   width: 16rem;
+}
+
+.w-69p {
+  width: 69%;
 }
 
 .w-7 {
@@ -3892,6 +3939,16 @@ progress::-webkit-progress-value {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
 .bg-slate-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
@@ -3913,6 +3970,16 @@ progress::-webkit-progress-value {
 
 .bg-white\/30 {
   background-color: rgb(255 255 255 / 0.3);
+}
+
+.bg-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
+
+.bg-green-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 253 244 / var(--tw-bg-opacity));
 }
 
 .bg-conic-gradient {
@@ -4101,6 +4168,10 @@ progress::-webkit-progress-value {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .px-1 {
@@ -4437,19 +4508,14 @@ progress::-webkit-progress-value {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-zinc-700 {
-  --tw-text-opacity: 1;
-  color: rgb(63 63 70 / var(--tw-text-opacity));
-}
-
-.text-zinc-500 {
-  --tw-text-opacity: 1;
-  color: rgb(113 113 122 / var(--tw-text-opacity));
-}
-
 .text-zinc-600 {
   --tw-text-opacity: 1;
   color: rgb(82 82 91 / var(--tw-text-opacity));
+}
+
+.text-zinc-700 {
+  --tw-text-opacity: 1;
+  color: rgb(63 63 70 / var(--tw-text-opacity));
 }
 
 .line-through {
@@ -4458,14 +4524,6 @@ progress::-webkit-progress-value {
 
 .opacity-0 {
   opacity: 0;
-}
-
-.opacity-30 {
-  opacity: 0.3;
-}
-
-.opacity-20 {
-  opacity: 0.2;
 }
 
 .opacity-40 {

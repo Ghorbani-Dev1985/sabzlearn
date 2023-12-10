@@ -38,29 +38,31 @@
             </a>
           </div>
           <div class="breadcrumb__item">
-            <a href="https://sabzlearn.ir/courses/" class="breadcrumb__link">
-              دوره ها
-            </a>
-          </div>
-          <div id="CorseCategoryName" class="breadcrumb__item">
             <a
-              href="https://sabzlearn.ir/course-cat/front-end/"
-              class="breadcrumb__link"
+              href="#"
+              class="SessionTitle breadcrumb__link"
             >
-              
-            </a>
-          </div>
-          <div class="breadcrumb__item">
-            <a
-              href="https://sabzlearn.ir/course/tailwind-css/"
-              class="CourseTitle breadcrumb__link"
-            >
-              آموزش جامع و پروژه محور Tailwind css
+
             </a>
           </div>
         </div>
-    <section class="bg-white dark:bg-gray-800 px-3.5 md:px-5 pt-5 md:pt-7 pb-5 md:pb-6 shadow-light dark:shadow-none rounded-2xl mt-3.5 sm:mt-5">
-
+    <section class="bg-white flex-between h-full dark:bg-gray-800 px-3.5 md:px-5 pt-5 md:pt-7 pb-5 md:pb-6 shadow-light dark:shadow-none rounded-2xl mt-3.5 sm:mt-5">
+        <div class="w-30p h-full min-h-full flex flex-col justify-between">
+         <h2 class="flex-center font-MorabbaBold text-xs md:text-xl bg-slate-50 p-1 rounded-lg">لیست جلسات دوره</h2>
+         <div id="SessionsBody"></div>
+        </div>
+        <div class="w-69p">
+          <div
+          class="course_intro_wrap shrink-0 mb-3 sm:mb-6 lg:mb-0 w-full h-auto rounded-2xl sm:rounded-3xl overflow-hidden"
+        >
+          <video
+           id="SessionVideo"
+            poster="./assets/images/videoCover.png"
+            class="w-full rounded-2xl sm:rounded-3xl"
+            controls
+          ></video>
+        </div>
+        </div>
     </section>
 
       </div>
@@ -68,7 +70,7 @@
     <!-- Footer Section -->
     <site-footer></site-footer>
 
-    <script type="module" src="./assets/scripts/CourseInfo.js"></script>
+    <script type="module" src="./assets/scripts/Episode.js"></script>
     <script type="module" src="./assets/scripts/app.js"></script>
   </body>
 </html>

@@ -641,6 +641,45 @@ const GetAndShowRelatedCourse = async () => {
   return RelatedCourses;
 }
 
+const GetSessionDetails = async () => {
+  const CourseShortName = GetUrlParam('name')
+  const SessionID = GetUrlParam('id')
+  const $ = document;
+  const SessionTitle = $.querySelector('.SessionTitle');
+  const SessionVideo = $.querySelector('#SessionVideo');
+  const SessionsBody = $.querySelector('#SessionsBody');
+
+  const res = await fetch(`http://localhost:4000/v1/courses/${CourseShortName}/${SessionID}` , {
+    headers: {
+      Authorization : `Bearer ${GetToken()}`
+    }
+  })
+  const responseData = await res.json();
+  SessionTitle.innerHTML = responseData.session.title
+  console.log(responseData);
+  SessionVideo.setAttribute('src' , `http://localhost:4000/courses/covers/${responseData.session.video}`)
+  responseData.sessions.forEach((session) => {
+    console.log(session);
+    SessionsBody.insertAdjacentHTML('beforeend' , `
+    <div class="flex-between bg-green-50 p-2 my-4 rounded-lg">
+     <div class="flex-center gap-1">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+  <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+</svg>
+     <span class="font-DanaBold">${session.title}</span></div>
+     <div>${session.time}</div>
+    </div>
+    
+    `)
+  })
+
+
+
+
+  return responseData
+  
+}
+
 export {
   GetAndShowAllCourses,
   GetAndShowPopularCourses,
@@ -649,4 +688,5 @@ export {
   GetAndShowCategoryCourses,
   GetAndShowCourseDetails,
   GetAndShowRelatedCourse,
+  GetSessionDetails,
 };
