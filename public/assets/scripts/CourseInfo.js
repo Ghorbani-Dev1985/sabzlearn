@@ -1,9 +1,10 @@
-import {GetAndShowCourseDetails , GetAndShowRelatedCourse} from './Funcs/Sheared.js';
+import {GetAndShowCourseDetails , GetAndShowRelatedCourse , NewCommentForCourse} from './Funcs/Sheared.js';
 window.addEventListener('load' , () => {
     GetAndShowCourseDetails()
     GetAndShowRelatedCourse().then(data => {
         console.log(data);
     })
+    NewCommentForCourse()
 })
 
 const $ = document;

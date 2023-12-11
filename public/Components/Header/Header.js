@@ -261,7 +261,7 @@ class Header extends HTMLElement {
                                    <!-- Logout Link -->
              <div class="mt-2 pt-2 border-t border-t-gray-200 dark:border-t-slate">
                </div>
-            <a href="https://sabzlearn.ir/logout" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
+            <button id="LogoutBtn" class="flex items-center justify-between text-zinc-700 dark:text-white px-2.5 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate transition-colors">
                  <span class="flex items-center gap-x-3">
                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
@@ -269,7 +269,7 @@ class Header extends HTMLElement {
                
                      خروج
                  </span>
-                 </a>
+                 </button>
              </div>
          </div>
          </div>
@@ -279,6 +279,15 @@ class Header extends HTMLElement {
       const ShowProfileDropDown = this.shadowRoot.querySelectorAll('.ShowProfileDropDown')
       const UserProfileDropdown = this.shadowRoot.querySelectorAll('.UserProfileDropdown')
       const Overlay = this.shadowRoot.querySelectorAll(".Overlay");
+      const LogoutBtn = this.shadowRoot.querySelector("#LogoutBtn");
+
+          // Logout
+
+    LogoutBtn.addEventListener('click' , () => {
+      localStorage.clear('user');
+      location.href = './index.html';
+    })
+    
       ShowProfileDropDown.forEach((drop) => {
         drop.addEventListener('click' , ()=> {
         UserProfileDropdown[0].classList.toggle('hidden')
@@ -323,7 +332,8 @@ class Header extends HTMLElement {
       TopBarMenu.innerHTML += `<li><a href=${menu.href}>${menu.title}</a></li>`
     })
     }
-    RenderTopBarMenus()
+    RenderTopBarMenus();
+    
 
 
     MobileNavToggler.addEventListener("click", () => {

@@ -1,4 +1,9 @@
-import { GetUrlParam, GetToken , ShowSwalAlert} from "../Funcs/Utils.js";
+import {
+  GetUrlParam,
+  GetToken,
+  ShowSwalAlert,
+  isLogin,
+} from "../Funcs/Utils.js";
 
 const GetAndShowAllCourses = async () => {
   const ShowAllCourses = document.querySelector("#ShowAllCourses");
@@ -336,7 +341,8 @@ const GetAndShowArticles = async () => {
 const GetAndShowCategoryCourses = async () => {
   const categoryUrlName = GetUrlParam("cat");
   const ShowAllCoursesOfCat = document.querySelector("#ShowAllCoursesOfCat");
-  const res = await fetch(`http://localhost:4000/v1/courses/category/${categoryUrlName}`,
+  const res = await fetch(
+    `http://localhost:4000/v1/courses/category/${categoryUrlName}`,
     {
       method: "GET",
       headers: {
@@ -450,18 +456,18 @@ const GetAndShowCourseDetails = async () => {
   const CourseDescription = $.querySelectorAll(".CourseDescription");
   const CoursePrice = $.querySelector("#CoursePrice");
   const CourseActionBtn = $.querySelector("#CourseActionBtn");
-  const CourseVideo = $.querySelector('#CourseVideo');
+  const CourseVideo = $.querySelector("#CourseVideo");
   const CourseStatus = $.querySelector("#CourseStatus");
   const CourseSupportWay = $.querySelector("#CourseSupportWay");
-   const CourseLastUpdated = $.querySelector("#CourseLastUpdated");
-   const CourseTime = $.querySelector("#CourseTime");
-   const CourseStudentsCount = $.querySelector("#CourseStudentsCount");
- const CourseTeacherName = $.querySelector("#CourseTeacherName");
-const CourseTeacherEmail = $.querySelector("#CourseTeacherEmail");
- const CourseCommentsCount = $.querySelector("#CourseCommentsCount");
-const TopicsCollapse = $.querySelector("#TopicsCollapse");
-const CommentsBody = $.querySelector('#CommentsBody');
-const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
+  const CourseLastUpdated = $.querySelector("#CourseLastUpdated");
+  const CourseTime = $.querySelector("#CourseTime");
+  const CourseStudentsCount = $.querySelector("#CourseStudentsCount");
+  const CourseTeacherName = $.querySelector("#CourseTeacherName");
+  const CourseTeacherEmail = $.querySelector("#CourseTeacherEmail");
+  const CourseCommentsCount = $.querySelector("#CourseCommentsCount");
+  const TopicsCollapse = $.querySelector("#TopicsCollapse");
+  const CommentsBody = $.querySelector("#CommentsBody");
+  const ShowMoreCommentBtn = $.querySelector(".ShowMoreCommentBtn");
 
   const res = await fetch(`http://localhost:4000/v1/courses/${courseUrlName}`, {
     method: "POST",
@@ -477,8 +483,8 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
         title.innerHTML = course.name;
       });
       CourseDescription.forEach((desc) => {
-        desc.innerHTML = course.description
-      })
+        desc.innerHTML = course.description;
+      });
 
       if (course.price !== 0) {
         CoursePrice.innerHTML = `
@@ -518,13 +524,15 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
     </svg>
     شرکت در دوره`
       );
-      CourseVideo.setAttribute('poster' , `${course.cover}`)
-      CourseStatus.innerHTML = course.isCompleted ?" تکمیل شده" : "در حال برگزاری";
+      CourseVideo.setAttribute("poster", `${course.cover}`);
+      CourseStatus.innerHTML = course.isCompleted
+        ? " تکمیل شده"
+        : "در حال برگزاری";
       CourseSupportWay.innerHTML = course.support;
-      CourseLastUpdated.innerHTML = course.updatedAt.slice(0,10);
-       let sum = 0;
+      CourseLastUpdated.innerHTML = course.updatedAt.slice(0, 10);
+      let sum = 0;
       course.sessions.forEach((session) => {
-        sum += +session.time.slice(0 , 2)
+        sum += +session.time.slice(0, 2);
       });
       CourseTime.innerHTML = `${sum} ساعت`;
       CourseStudentsCount.innerHTML = course.courseStudentsCount;
@@ -532,9 +540,11 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
       CourseTeacherEmail.innerHTML = course.creator.email;
       CourseCommentsCount.innerHTML = course.comments.length;
 
-
-       course.sessions.length ? course.sessions.forEach((session , index) =>{
-        TopicsCollapse.insertAdjacentHTML('beforeend' , ` 
+      course.sessions.length
+        ? course.sessions.forEach((session, index) => {
+            TopicsCollapse.insertAdjacentHTML(
+              "beforeend",
+              ` 
        <details
        class="collapse bg-gray-100 border border-gray-100 my-3"
      >
@@ -542,7 +552,7 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
         <div class="flex gap-2 text-xl font-DanaMd font-medium">
          <div
        class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-DanaBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-sabzlearnGreen group-hover:text-white rounded-md transition-colors"
-       >${index+1}</div>
+       >${index + 1}</div>
        <div>${session.title}</div>
         </div>
       
@@ -552,7 +562,8 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
          class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group"
        >
          ${
-          (session.free || course.isUserRegisteredToThisCourse) ? ` <a
+           session.free || course.isUserRegisteredToThisCourse
+             ? ` <a
            href="episode.html?name=${course.shortName}&id=${session._id}" target="_blank"
            class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]"
          >
@@ -562,7 +573,8 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
            >
            ${session.title}
            </h4>
-         </a>` : ` <span
+         </a>`
+             : ` <span
         
          class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]"
        >
@@ -576,16 +588,20 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
          }
         
          <div class="flex items-center w-full justify-between">
-          ${session.free || course.isUserRegisteredToThisCourse ? `<span
+          ${
+            session.free || course.isUserRegisteredToThisCourse
+              ? `<span
              class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-sabzlearnGreen/10 group-hover:text-sabzlearnGreen text-xs rounded transition-colors"
              >جلسه رایگان</span
-           >`: `<span
+           >`
+              : `<span
              class="inline-block leading-[25px] px-2.5 py-2 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-sabzlearnGreen/10 group-hover:text-sabzlearnGreen text-xs rounded transition-colors"
              ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
            </svg>
            </span
-           >`}
+           >`
+          }
            
            <div class="flex items-center gap-x-1.5 md:gap-x-2">
              <span
@@ -615,13 +631,17 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
            </div>
          </div>
        </div>
-     </div></details>`)
-      }) : TopicsCollapse.innerHTML= "تاکنون سرفصلی ثبت نگردیده است";
-     // Show Comments
-     if(course.comments.length){
-       course.comments.forEach((comment) => {
-       console.log(comment);
-       CommentsBody.insertAdjacentHTML('beforeend' ,  `   <div
+     </div></details>`
+            );
+          })
+        : (TopicsCollapse.innerHTML = "تاکنون سرفصلی ثبت نگردیده است");
+      // Show Comments
+      if (course.comments.length) {
+        course.comments.forEach((comment) => {
+          console.log(comment);
+          CommentsBody.insertAdjacentHTML(
+            "beforeend",
+            `   <div
       
       class="p-3.5 md:p-5 my-4 bg-gray-100 dark:bg-gray-700 rounded-2xl"
     >
@@ -636,7 +656,7 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
           <div
             class="bg-gray-500 text-white px-3 py-0 text-sm rounded-lg"
           >
-          ${comment.creator.role === "USER" ? 'کاربر' : 'ادمین'}
+          ${comment.creator.role === "USER" ? "کاربر" : "ادمین"}
             
           </div>
         </div>
@@ -658,11 +678,11 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
                   <div
                     class="bg-gray-500 text-white px-3 py-0 text-sm rounded-lg md:hidden"
                   >
-                  ${comment.creator.role === "USER" ? 'کاربر' : 'ادمین'}
+                  ${comment.creator.role === "USER" ? "کاربر" : "ادمین"}
                   </div>
                   <span
                     class="font-danaLight text-slate-500 dark:text-white text-xs"
-                    >${comment.creator.createdAt.slice(0 , 10)}</span
+                    >${comment.creator.createdAt.slice(0, 10)}</span
                   >
                 </div>
               </div>
@@ -687,7 +707,8 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
           </div>
           <!-- Comment Replies -->
            ${
-            comment.answer ? `     <div class="mt-7 space-y-3.5 md:space-y-5">
+             comment.answerContent !== null
+               ? `     <div class="mt-7 space-y-3.5 md:space-y-5">
             <div
               
               class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl"
@@ -697,12 +718,18 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
                 <div class="hidden md:flex flex-col gap-y-2">
                   <img
                     class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full"
-                    src="https://localhost:4000${comment.answerContent.creator.profile}"
+                    src="https://localhost:4000${
+                      comment.answerContent.creator.profile
+                    }"
                   />
                   <div
                     class="bg-sky-500 text-white text-sm px-2 py-0 rounded-lg"
                   >
-                  ${comment.answerContent.creator.role === 'ADMIN' ? 'ادمین' : ' کاربر'}
+                  ${
+                    comment.answerContent.creator.role === "ADMIN"
+                      ? "ادمین"
+                      : " کاربر"
+                  }
                   </div>
                 </div>
                 <!-- Comment Left Text, author, data, flag, reply btn -->
@@ -722,11 +749,18 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
                           <div
                             class="bg-sky-500 text-white text-sm px-2 py-0 rounded-lg md:hidden"
                           >
-                          ${comment.answerContent.creator.role === 'ADMIN' ? 'ادمین' : 'کاربر'}
+                          ${
+                            comment.answerContent.creator.role === "ADMIN"
+                              ? "ادمین"
+                              : "کاربر"
+                          }
                           </div>
                           <span
                             class="font-danaLight text-slate-500 dark:text-white text-xs"
-                            > ${comment.answerContent.creator.createdAt.slice(0 , 10)} </span
+                            > ${comment.answerContent.creator.createdAt.slice(
+                              0,
+                              10
+                            )} </span
                           >
                         </div>
                       </div>
@@ -739,81 +773,97 @@ const ShowMoreCommentBtn = $.querySelector('.ShowMoreCommentBtn');
                     ${comment.answerContent.body}
                   </div>
                 </div>
-              </div>`: `<div class="mt-7 space-y-3.5 md:space-y-5">
+              </div>`
+               : `<div class="mt-7 space-y-3.5 md:space-y-5">
               <div
                 
                 class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl"
-              >تاکنون پاسخی ثبت نگردیده است</div></div>` 
-          
+              >تاکنون پاسخی ثبت نگردیده است</div></div>`
            }
             </div>
           </div>
         </div>
       </div>
-    </div>`)
-     
-     })
-     }else{
-      CommentsBody.insertAdjacentHTML('beforeend' , `
+    </div>`
+          );
+        });
+      } else {
+        CommentsBody.insertAdjacentHTML(
+          "beforeend",
+          `
       <div class="bg-rose-200 my-4 p-3 rounded-lg">تاکنون نظری ثبت نگردیده است</div>
-      `) 
-      ShowMoreCommentBtn.classList.remove('flex-center')
-      ShowMoreCommentBtn.classList.add('hidden')
-     }
+      `
+        );
+        ShowMoreCommentBtn.classList.remove("flex-center");
+        ShowMoreCommentBtn.classList.add("hidden");
+      }
     });
 };
 
 const GetAndShowRelatedCourse = async () => {
   const courseUrlName = GetUrlParam("name");
-  const RelatedCourseBody = document.querySelector('#RelatedCourseBody')
+  const RelatedCourseBody = document.querySelector("#RelatedCourseBody");
 
-  const res = await fetch(`http://localhost:4000/v1/courses/related/${courseUrlName}`)
+  const res = await fetch(
+    `http://localhost:4000/v1/courses/related/${courseUrlName}`
+  );
   const RelatedCourses = await res.json();
-  if(RelatedCourses.length){
+  if (RelatedCourses.length) {
     RelatedCourses.forEach((related) => {
-      RelatedCourseBody.insertAdjacentHTML('beforeend' , `
+      RelatedCourseBody.insertAdjacentHTML(
+        "beforeend",
+        `
       <a class="flex-between my-2" href="course-info.html?name=${related.shortName}">
       <img src="${related.cover}" class="w-28 rounded-md" alt="ghorbani-dev.ir"/>
       <span class="flex flex-1 mr-2">${related.name}</span>
       </a>
-      `)
-    })
-  }else{
-
+      `
+      );
+    });
+  } else {
   }
 
-
   return RelatedCourses;
-}
+};
 
 const GetSessionDetails = async () => {
-  const CourseShortName = GetUrlParam('name')
-  const SessionID = GetUrlParam('id')
+  const CourseShortName = GetUrlParam("name");
+  const SessionID = GetUrlParam("id");
   const $ = document;
-  const SessionTitle = $.querySelector('.SessionTitle');
-  const SessionVideo = $.querySelector('#SessionVideo');
-  const SessionsBody = $.querySelector('#SessionsBody');
+  const SessionTitle = $.querySelector(".SessionTitle");
+  const SessionVideo = $.querySelector("#SessionVideo");
+  const SessionsBody = $.querySelector("#SessionsBody");
 
-  const res = await fetch(`http://localhost:4000/v1/courses/${CourseShortName}/${SessionID}` , {
-    headers: {
-      Authorization : `Bearer ${GetToken()}`
+  const res = await fetch(
+    `http://localhost:4000/v1/courses/${CourseShortName}/${SessionID}`,
+    {
+      headers: {
+        Authorization: `Bearer ${GetToken()}`,
+      },
     }
-  })
+  );
   const responseData = await res.json();
-  SessionTitle.innerHTML = responseData.session.title
+  SessionTitle.innerHTML = responseData.session.title;
   console.log(responseData);
-  SessionVideo.setAttribute('src' , `http://localhost:4000/courses/covers/${responseData.session.video}`)
+  SessionVideo.setAttribute(
+    "src",
+    `http://localhost:4000/courses/covers/${responseData.session.video}`
+  );
   responseData.sessions.forEach((session) => {
     console.log(session);
-    SessionsBody.insertAdjacentHTML('beforeend' , `
+    SessionsBody.insertAdjacentHTML(
+      "beforeend",
+      `
     ${
-      session.free ? ` <a href="episode.html?name=${CourseShortName}&id=${SessionID}" class="flex-between bg-green-50 p-2 my-4 rounded-lg"><div class="flex-center gap-1">
+      session.free
+        ? ` <a href="episode.html?name=${CourseShortName}&id=${SessionID}" class="flex-between bg-green-50 p-2 my-4 rounded-lg"><div class="flex-center gap-1">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
    <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
  </svg>
       <span class="font-DanaBold">${session.title}</span></div>
       <div>${session.time}</div>
-     </a>`: `<div class="flex-between bg-green-50 p-2 my-4 rounded-lg"><div class="flex-center gap-1">
+     </a>`
+        : `<div class="flex-between bg-green-50 p-2 my-4 rounded-lg"><div class="flex-center gap-1">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
   <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
 </svg>
@@ -824,60 +874,66 @@ const GetSessionDetails = async () => {
      <div>${session.time}</div>
     </div>`
     }
-    `)
-  })
+    `
+    );
+  });
 
-
-
-
-  return responseData
-  
-}
+  return responseData;
+};
 
 const SendTicketMessage = async () => {
   const $ = document;
-  const FullNameInput = $.querySelector('#FullNameInput')
-  const PhoneNumberInput = $.querySelector('#PhoneNumberInput')
-  const EmailInput = $.querySelector('#EmailInput')
-  const MessageTextarea = $.querySelector('#MessageTextarea')
+  const FullNameInput = $.querySelector("#FullNameInput");
+  const PhoneNumberInput = $.querySelector("#PhoneNumberInput");
+  const EmailInput = $.querySelector("#EmailInput");
+  const MessageTextarea = $.querySelector("#MessageTextarea");
 
   const NewSendTicketInfos = {
-    name : FullNameInput.value.trim(),
-    phone : PhoneNumberInput.value.trim(),
-    email : EmailInput.value.trim(),
-    body : MessageTextarea.value.trim(),
+    name: FullNameInput.value.trim(),
+    phone: PhoneNumberInput.value.trim(),
+    email: EmailInput.value.trim(),
+    body: MessageTextarea.value.trim(),
+  };
+  if (
+    FullNameInput.value === "" ||
+    FullNameInput.value === "" ||
+    EmailInput.value === "" ||
+    MessageTextarea.value === ""
+  ) {
+    ShowSwalAlert("info", "لطفا فرم را کامل تکمیل نمایید");
+  } else {
+    const res = await fetch(`http://localhost:4000/v1/contact`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(NewSendTicketInfos),
+    });
+    const result = await res.json();
+    if (res.status === 201) {
+      ShowSwalAlert(
+        "success",
+        " پیام شما با موفقیت ثبت شد",
+        () => (location.href = "index.html")
+      );
+    } else {
+      ShowSwalAlert("error", "خطایی در ارسال پیام رخ داده است");
+    }
   }
-  if (FullNameInput.value === '' || FullNameInput.value === '' || EmailInput.value === '' ||  MessageTextarea.value === ''){
-    ShowSwalAlert("info" , 'لطفا فرم را کامل تکمیل نمایید')
-  }else{
-    const res = await fetch(`http://localhost:4000/v1/contact` , {
-       method: 'POST',
-       headers: {
-           'Content-Type' : 'application/json'
-       },
-       body: JSON.stringify(NewSendTicketInfos)
-   })
-   const result = await res.json();
-   if(res.status === 201) {
-    ShowSwalAlert("success" , ' پیام شما با موفقیت ثبت شد' , 
-      () => location.href = 'index.html')
-   }else{
-    ShowSwalAlert("error" , 'خطایی در ارسال پیام رخ داده است')
-   }
-  }
-
-}
+};
 
 const GlobalSearchInApp = async () => {
-  const CourseResultBody = document.querySelector('#CourseResultBody')
-  const ArticleResultBody = document.querySelector('#ArticleResultBody')
-  const SearchValue = GetUrlParam('value');
-  const res = await fetch(`http://localhost:4000/v1/search/${SearchValue}`)
+  const CourseResultBody = document.querySelector("#CourseResultBody");
+  const ArticleResultBody = document.querySelector("#ArticleResultBody");
+  const SearchValue = GetUrlParam("value");
+  const res = await fetch(`http://localhost:4000/v1/search/${SearchValue}`);
   const data = await res.json();
-  
-  if(data.allResultCourses.length){
+
+  if (data.allResultCourses.length) {
     data.allResultCourses.forEach((course) => {
-      CourseResultBody.insertAdjacentHTML('beforeend' ,  `
+      CourseResultBody.insertAdjacentHTML(
+        "beforeend",
+        `
       <!-- Courses Box -->
 
       <a href="course-info.html?name=${course.shortName}" target="_blank"
@@ -920,29 +976,41 @@ const GlobalSearchInApp = async () => {
             </div>
         </div>
       </a>
-      `)
-    })
-  }else{
-    CourseResultBody.insertAdjacentHTML('beforeend' , `<div class="col-span-3 text-amber-500 mt-10 text-base md:text-2xl font-DanaBold">
+      `
+      );
+    });
+  } else {
+    CourseResultBody.insertAdjacentHTML(
+      "beforeend",
+      `<div class="col-span-3 text-amber-500 mt-10 text-base md:text-2xl font-DanaBold">
     دوره ای با کلمه مورد نظر شما یافت نگردید
-    </div>`)
+    </div>`
+    );
   }
-  if(data.allResultArticles.length){
+  if (data.allResultArticles.length) {
     data.allResultArticles.forEach((article) => {
-      ArticleResultBody.insertAdjacentHTML('beforeend' ,   `
+      ArticleResultBody.insertAdjacentHTML(
+        "beforeend",
+        `
       <div class="bg-white rounded-lg shadow-light p-3">
   <div class="before:bg-blog-banner after:bg-blog-banner before:content-[''] before:absolute before:-bottom-3 before:left-0 before:w-full before:h-full after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-full after:h-full relative h-[217px] overflow-hidden">
-    <img src=http://localhost:4000/courses/covers/${article.cover} alt="ghorbani-dev.ir" class="block w-full rounded-lg h-full object-cover"/>
+    <img src=http://localhost:4000/courses/covers/${
+      article.cover
+    } alt="ghorbani-dev.ir" class="block w-full rounded-lg h-full object-cover"/>
   </div>
-  <h4 class="font-DanaMd h-14 max-h-14 line-clamp-2 text-zinc-700 dark:text-white mb-2.5">${article.title}
+  <h4 class="font-DanaMd h-14 max-h-14 line-clamp-2 text-zinc-700 dark:text-white mb-2.5">${
+    article.title
+  }
   </h4>
-  <p class="font-danaLight text-sm h-20 line-clamp-4 text-slate-500 dark:text-slate-400">${article.description}</p>
+  <p class="font-danaLight text-sm h-20 line-clamp-4 text-slate-500 dark:text-slate-400">${
+    article.description
+  }</p>
   <div class="flex flex-col items-start gap-2.5 text-slate-500 dark:text-slate-400 text-xs my-2">
     <div class="w-full flex items-center gap-x-1 dir-ltr">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
     </svg>            
-    <span>${article.createdAt.slice(0 , 10)}</span>
+    <span>${article.createdAt.slice(0, 10)}</span>
     </div>
   </div>
   <!-- line -->
@@ -956,19 +1024,80 @@ const GlobalSearchInApp = async () => {
     </a>
   </div>
   </div>
-      `)
-    })
-  }else{
-    ArticleResultBody.insertAdjacentHTML('beforeend' , `<div class="col-span-3 text-amber-500 mt-10 text-base md:text-2xl font-DanaBold">
+      `
+      );
+    });
+  } else {
+    ArticleResultBody.insertAdjacentHTML(
+      "beforeend",
+      `<div class="col-span-3 text-amber-500 mt-10 text-base md:text-2xl font-DanaBold">
     مقاله ای با کلمه مورد نظر شما یافت نگردید
-    </div>`)
+    </div>`
+    );
   }
- 
 
   return data;
+};
 
-}
+const NewCommentForCourse = async () => {
+  const $ = document
+  const NewCommentCreateBtn = $.querySelector("#NewCommentCreateBtn");
+  const CommentForm = $.querySelector("#CommentForm");
+const CommentCancelBtn = $.querySelector("#CommentCancelBtn");
+  const CommentTextarea = $.querySelector("#CommentTextarea");
+  const Ratings = $.querySelectorAll('.rating input');
+   const CommentSubmitBtn = $.querySelector("#CommentSubmitBtn");
+  const isUserLogin = isLogin();
+  const courseShortName = GetUrlParam("name");
+  NewCommentCreateBtn.addEventListener("click", () => {
+    isUserLogin
+      ? CommentForm.classList.toggle("hidden")
+      : ShowSwalAlert(
+          "info",
+          "لطفا ابتدا وارد حساب کاربری خود شوید"
+        );
+  });
+  CommentCancelBtn.addEventListener('click' , () => {
+    CommentForm.classList.add('hidden')
+  })
+  CommentSubmitBtn.addEventListener('click' , async () => {
+   let score = 5;
+   const NewCommentInfos = {
+     body : CommentTextarea.value.trim(),
+     courseShortName,
+     score,
+   };
+   Ratings.forEach((rating) => {
+     rating.addEventListener('change' , () => {
+     
+       NewCommentInfos.score = rating.id
+     })
+   });
+   if(CommentTextarea.value === ''){
+    ShowSwalAlert("info", "لطفا  را کامل تکمیل نمایید");
+   }else{
+    console.log(NewCommentInfos);
+    const res = await fetch(`http://localhost:4000/v1/comments`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${GetToken()}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(NewCommentInfos),
+    });
+    const result = await res.json();
+    if (res.status === 201) {
+      ShowSwalAlert(
+        "success",
+        "نظر شما با موفقیت ثبت شد");
+        CommentTextarea.value = '';
+    } else {
+      ShowSwalAlert("error", "خطایی در ثبت نظر رخ داده است");
+    }
+   }
+ })
 
+};
 
 export {
   GetAndShowAllCourses,
@@ -981,4 +1110,5 @@ export {
   GetSessionDetails,
   SendTicketMessage,
   GlobalSearchInApp,
+  NewCommentForCourse,
 };

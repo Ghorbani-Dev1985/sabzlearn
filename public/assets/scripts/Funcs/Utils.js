@@ -31,4 +31,6 @@ const GetUrlParam = key => {
    return urlParams.get(key)
 }
 
+
+
 export { ShowSwalAlert , SaveIntoLocalStorage , GetFromLocalStorage , GetToken , isLogin , GetUrlParam} 
