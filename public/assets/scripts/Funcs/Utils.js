@@ -50,7 +50,7 @@ const PaginationItems = (Array , ItemsPerPage , PaginationParentEle , CurrentPag
     PaginationParentEle.insertAdjacentHTML('beforeend' , ` 
     <li>
     ${
-        i === +CurrentPage ? `<a href="#" onClick="addParamToUrl('page' , ${i})" class="flex-center bg-emerald-50 px-3 h-8 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${i}</a>` : `<a href="#" onClick="addParamToUrl('page' , ${i})" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${i}</a>`
+        i === +CurrentPage ? `<a href="#" onClick="addParamToUrl('page' , ${i})" class="flex-center rounded-md bg-emerald-50 px-3 h-8 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${i}</a>` : `<a href="#" onClick="addParamToUrl('page' , ${i})" class="flex-center rounded-md px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${i}</a>`
     }
       
     </li>
@@ -59,4 +59,4 @@ const PaginationItems = (Array , ItemsPerPage , PaginationParentEle , CurrentPag
   return paginatedItems
 }
 
-export { ShowSwalAlert , SaveIntoLocalStorage , GetFromLocalStorage , GetToken , isLogin , GetUrlParam , PaginationItems} 
+export { ShowSwalAlert , SaveIntoLocalStorage , GetFromLocalStorage , GetToken , isLogin , GetUrlParam , PaginationItems , addParamToUrl} 
