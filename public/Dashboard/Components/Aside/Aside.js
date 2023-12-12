@@ -18,7 +18,7 @@ template.innerHTML = `
 <div class="m-4">
   <ul class="mb-4 flex flex-col gap-1">
     <li>
-      <a href="./index.html" aria-current="page" class="active middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg hover:bg-white/10 text-white active:bg-gradient-to-tr active:from-emerald-600 active:to-emerald-400 active:shadow-md w-full flex items-center gap-4 px-4 capitalize">
+      <a href="./index.html" class="NavLinks middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg hover:bg-white/10 text-white active:bg-gradient-to-tr active:from-emerald-600 active:to-emerald-400 active:shadow-md w-full flex items-center gap-4 px-4 capitalize">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
             <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path>
             <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path>
@@ -27,7 +27,7 @@ template.innerHTML = `
       </a>
     </li>
     <li>
-      <a href="./courses.html" class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg hover:bg-white/10 text-white active:bg-gradient-to-tr active:from-emerald-600 active:to-emerald-400 active:shadow-md w-full flex items-center gap-4 px-4 capitalize">
+      <a href="./courses.html" class="NavLinks focus:bg-emerald-300 middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg hover:bg-white/10 text-white active:bg-gradient-to-tr active:from-emerald-600 active:to-emerald-400 active:shadow-md w-full flex items-center gap-4 px-4 capitalize">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-inherit">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
             </svg>           
@@ -35,14 +35,12 @@ template.innerHTML = `
       </a>
     </li>
     <li>
-      <a class="" href="#">
-        <button class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button">
+      <a href="#" class=" focus:bg-emerald-300 middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg hover:bg-white/10 text-white active:bg-gradient-to-tr active:from-emerald-600 active:to-emerald-400 active:shadow-md w-full flex items-center gap-4 px-4 capitalize">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-inherit">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
             </svg>
             
           <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">جلسه های دوره</p>
-        </button>
       </a>
     </li>
     <li>
@@ -155,7 +153,18 @@ class Aside extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
   connectedCallback() {
-
+    const activePage = window.location.pathname;
+    console.log(activePage);
+    const NavLinks = this.shadowRoot.querySelectorAll(".NavLinks");
+    console.log(NavLinks);
+    window.addEventListener('load' , () => {
+      NavLinks.forEach(link => {
+        if(link.href.includes(`${activePage}`)){
+          console.log("ds");
+          link.classList.add('active')
+        }
+      })
+    })
   }
 
   static observedAttributes() {}

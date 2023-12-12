@@ -3245,6 +3245,11 @@ progress::-webkit-progress-value {
   margin-bottom: 2rem;
 }
 
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .-mr-5 {
   margin-right: -1.25rem;
 }
@@ -6175,6 +6180,11 @@ progress::-webkit-progress-value {
 
 .focus\:border-t-transparent:focus {
   border-top-color: transparent;
+}
+
+.focus\:bg-emerald-300:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(110 231 183 / var(--tw-bg-opacity));
 }
 
 .focus\:text-zinc-700:focus {
