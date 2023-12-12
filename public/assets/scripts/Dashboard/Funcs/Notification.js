@@ -6,6 +6,7 @@ const InsertNotificationTemplate = (notifications) => {
   const ShowCountOfNotification = $.querySelector(".ShowCountOfNotification");
   const NotificationIconBody = $.querySelector(".NotificationIconBody");
   if (notifications.length) {
+    NotificationBody.innerHTML = '';
     ShowCountOfNotification.innerHTML = `${notifications.length}`;
     notifications.forEach((notification) => {
       NotificationBody.insertAdjacentHTML(
@@ -14,7 +15,7 @@ const InsertNotificationTemplate = (notifications) => {
                   <div>
                      <p class="text-sm">${notification.msg}</p>
                      <div class="form-control">
-                     <input type="checkbox" onClick="SeenNotification('${notification._id}')" class="toggle [--tglbg:#f3f4f6] bg-emerald-400 hover:bg-emerald-600 border-emerald-500" />
+                     <input type="checkbox" onClick='SeenNotification(${JSON.stringify(notifications)} , ${JSON.stringify(notification._id)})' class="toggle [--tglbg:#f3f4f6] bg-emerald-400 hover:bg-emerald-600 border-emerald-500" />
             </div>
               </div>
                   </div>
@@ -36,17 +37,21 @@ const InsertNotificationTemplate = (notifications) => {
   }
 };
 
-const SeenNotification = async (NotificationID) => {
-    console.log(NotificationID);
+const SeenNotification = async (Notifications , NotificationID) => {
    const res = await fetch(`http://localhost:4000/v1/notifications/see/${NotificationID}` , {
     method: "PUT",
     headers:{     
         Authorization : `Bearer ${GetToken()}`,
     },
    });
+   RemoveNotification(Notifications , NotificationID)
    const result = await res.json();
-   location.reload();
    
 }
 
-export { InsertNotificationTemplate , SeenNotification};
+const RemoveNotification = (notifications, NotificationID) => {
+   const filteredNotification = notifications.filter( notif => notif._id !== NotificationID)
+   InsertNotificationTemplate(filteredNotification)
+}
+
+export { InsertNotificationTemplate , SeenNotification };
