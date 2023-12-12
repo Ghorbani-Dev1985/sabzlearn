@@ -1,5 +1,8 @@
 
 const $ = document;
+let CategoryID = -1;
+let CourseStatus = 'start';
+let CourseCover = null;
 
 const GetAllCourses = async () => {
    const CountOfAllCourses = $.querySelector('#CountOfAllCourses');
@@ -70,9 +73,13 @@ const GetAllCourses = async () => {
 
 }
 
-const CreateNewCourse = async () => {
+
+const PrepareCreateCourseFrom = async () => {
    const CourseCategoryList = $.querySelector('#CourseCategoryList');
-    let CategoryID = -1;
+   const PresSellCourseRadio = $.querySelector('#PresSellCourseRadio');
+   const StartCourseRadio = $.querySelector('#StartCourseRadio');
+   const CourseCoverUploader = $.querySelector('#CourseCoverUploader');
+    const ShowFileNameUpload = $.querySelector('#ShowFileNameUpload');
     const res = await fetch(`http://localhost:4000/v1/category`)
     const categories = await res.json();
     console.log(categories);
@@ -81,7 +88,32 @@ const CreateNewCourse = async () => {
        <option value=${category._id}>${category.title}</option>
       `)
     })
-   CourseCategoryList.addEventListener('change' , event => CategoryID = event.target.value);
+   CourseCategoryList.addEventListener('change' , event => CategoryID = event.target.value)
+   PresSellCourseRadio.addEventListener('change' , event => CourseStatus = event.target.value)
+   StartCourseRadio.addEventListener('change' , event => CourseStatus = event.target.value)
+   CourseCoverUploader.addEventListener('change' , event =>{
+      ShowFileNameUpload.innerHTML = event.target.files[0].name;
+      CourseCover = event.target.files[0].name;
+      console.log(event);
+   })
 }
 
-export {GetAllCourses , CreateNewCourse}
+
+const CreateNewCourse = async () => {
+   const CourseNameInput = $.querySelector('#CourseNameInput');
+   const CoursePriceInput = $.querySelector('#CoursePriceInput');
+   const CourseDescription = $.querySelector('#CourseDescription');
+   const CourseShortNameInput = $.querySelector('#CourseShortNameInput');
+   const CourseSupportInput = $.querySelector('#CourseSupportInput');
+   const FormData = new FormData();
+   FormData.append('name' , CourseNameInput.value.trim());
+   FormData.append('price' , CoursePriceInput.value.trim());
+   FormData.append('description' , CourseDescription.value.trim());
+   FormData.append('shortName' , CourseShortNameInput.value.trim());
+   FormData.append('support' , CourseSupportInput.value.trim());
+   FormData.append('categoryID' , CategoryID);
+   FormData.append('status' , CourseStatus);
+   FormData.append('cover' , CourseCover);
+}
+
+export {GetAllCourses , CreateNewCourse , PrepareCreateCourseFrom}
