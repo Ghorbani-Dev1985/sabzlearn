@@ -154,13 +154,10 @@ class Aside extends HTMLElement {
   }
   connectedCallback() {
     const activePage = window.location.pathname;
-    console.log(activePage);
     const NavLinks = this.shadowRoot.querySelectorAll(".NavLinks");
-    console.log(NavLinks);
     window.addEventListener('load' , () => {
       NavLinks.forEach(link => {
         if(link.href.includes(`${activePage}`)){
-          console.log("ds");
           link.classList.add('active')
         }
       })
