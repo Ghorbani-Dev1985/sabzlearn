@@ -176,6 +176,9 @@ module.exports = {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");
     },
+    function({ addVariant }) {
+      addVariant('visited', ['&:visited', '&.router-link-visited'])
+    },
     require("tailwind-scrollbar"),
     require("daisyui"),
   ],

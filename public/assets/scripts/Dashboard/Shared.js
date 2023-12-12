@@ -1,5 +1,9 @@
+import { Aside } from "../../../Dashboard/Components/Aside/Aside.js";
 import { InsertNotificationTemplate, SeenNotification } from "./Funcs/Notification.js";
 import { GetAdminInfos } from "./Funcs/Utils.js";
+// Add Components
+window.customElements.define('site-aside' , Aside);
+
 
 window.SeenNotification = SeenNotification;
 

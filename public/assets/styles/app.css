@@ -2993,6 +2993,14 @@ progress::-webkit-progress-value {
   background-color: rgb(14 165 233 / var(--tw-bg-opacity));
 }
 
+.active {
+  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
+  --tw-gradient-from: #059669 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(5 150 105 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #34d399 var(--tw-gradient-to-position);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -5189,11 +5197,6 @@ progress::-webkit-progress-value {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.shadow-emerald-500\/20 {
-  --tw-shadow-color: rgb(16 185 129 / 0.2);
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
 .shadow-emerald-500\/40 {
   --tw-shadow-color: rgb(16 185 129 / 0.4);
   --tw-shadow: var(--tw-shadow-colored);
@@ -5976,6 +5979,34 @@ progress::-webkit-progress-value {
   padding-bottom: 0px;
 }
 
+.visited\:bg-gradient-to-tr:visited {
+  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
+}
+
+.visited\:from-emerald-600:visited {
+  --tw-gradient-from: #059669 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(5 150 105 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.visited\:to-emerald-400:visited {
+  --tw-gradient-to: #34d399 var(--tw-gradient-to-position);
+}
+
+.visited\:bg-gradient-to-tr.router-link-visited {
+  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
+}
+
+.visited\:from-emerald-600.router-link-visited {
+  --tw-gradient-from: #059669 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(5 150 105 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.visited\:to-emerald-400.router-link-visited {
+  --tw-gradient-to: #34d399 var(--tw-gradient-to-position);
+}
+
 .hover\:-mt-2:hover {
   margin-top: -0.5rem;
 }
@@ -6119,17 +6150,6 @@ progress::-webkit-progress-value {
   opacity: 1;
 }
 
-.hover\:shadow-lg:hover {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.hover\:shadow-emerald-500\/40:hover {
-  --tw-shadow-color: rgb(16 185 129 / 0.4);
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
 .focus\:border-0:focus {
   border-width: 0px;
 }
@@ -6192,8 +6212,24 @@ progress::-webkit-progress-value {
   background-color: rgb(255 255 255 / 0.3);
 }
 
-.active\:opacity-\[0\.85\]:active {
-  opacity: 0.85;
+.active\:bg-gradient-to-tr:active {
+  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
+}
+
+.active\:from-emerald-600:active {
+  --tw-gradient-from: #059669 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(5 150 105 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.active\:to-emerald-400:active {
+  --tw-gradient-to: #34d399 var(--tw-gradient-to-position);
+}
+
+.active\:shadow-md:active {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .disabled\:pointer-events-none:disabled {
