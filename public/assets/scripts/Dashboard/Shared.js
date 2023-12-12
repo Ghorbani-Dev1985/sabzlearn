@@ -1,5 +1,7 @@
-import { InsertNotificationTemplate } from "./Funcs/Notification.js";
+import { InsertNotificationTemplate, SeenNotification } from "./Funcs/Notification.js";
 import { GetAdminInfos } from "./Funcs/Utils.js";
+
+window.SeenNotification = SeenNotification;
 
 const $ = document;
 
