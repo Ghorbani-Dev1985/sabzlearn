@@ -1,10 +1,9 @@
-import { GetAllCourses } from "./Funcs/Courses.js"
+import { GetAllCourses , CreateNewCourse} from "./Funcs/Courses.js"
 
  
 
 window.addEventListener("load", () => {
   
-  GetAllCourses().then(courses => {
-    console.log(courses);
-  })
+  GetAllCourses()
+  CreateNewCourse()
 })

@@ -70,6 +70,18 @@ const GetAllCourses = async () => {
 
 }
 
+const CreateNewCourse = async () => {
+   const CourseCategoryList = $.querySelector('#CourseCategoryList');
+    let CategoryID = -1;
+    const res = await fetch(`http://localhost:4000/v1/category`)
+    const categories = await res.json();
+    console.log(categories);
+    categories.forEach(category => {
+      CourseCategoryList.insertAdjacentHTML('beforeend' , `
+       <option value=${category._id}>${category.title}</option>
+      `)
+    })
+   CourseCategoryList.addEventListener('change' , event => CategoryID = event.target.value);
+}
 
-
-export {GetAllCourses}
+export {GetAllCourses , CreateNewCourse}

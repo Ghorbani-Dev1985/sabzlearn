@@ -4671,6 +4671,11 @@ progress::-webkit-progress-value {
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
+.bg-emerald-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(167 243 208 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-60 {
   --tw-bg-opacity: 0.6;
 }
@@ -6360,6 +6365,10 @@ progress::-webkit-progress-value {
   border-width: 1px;
 }
 
+.hover\:border-s:hover {
+  border-inline-start-width: 1px;
+}
+
 .hover\:border-solid:hover {
   border-style: solid;
 }
@@ -6372,6 +6381,11 @@ progress::-webkit-progress-value {
 .hover\:border-white:hover {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.hover\:border-sky-500:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(14 165 233 / var(--tw-border-opacity));
 }
 
 .hover\:bg-emerald-50\/60:hover {
@@ -6494,6 +6508,11 @@ progress::-webkit-progress-value {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-sky-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(14 165 233 / var(--tw-text-opacity));
 }
 
 .hover\:opacity-100:hover {
