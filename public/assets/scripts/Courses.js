@@ -16,12 +16,15 @@ window.addEventListener('load' , () => {
               <!-- Courses Box -->
           
               <a href="course-info.html?name=${course.shortName}" target="_blank"
-                class="flex flex-col overflow-hidden rounded-lg bg-white shadow-lg transition-all ease-linear duration-200 hover:-mt-2"
+                class="relative flex flex-col overflow-hidden rounded-lg bg-white shadow-lg transition-all ease-linear duration-200 hover:-mt-2"
               >
                 <img
-                 src=${course.cover}
+                 src=http://localhost:4000/courses/covers/${course.cover}
                   alt="ghorbani-dev.ir"
                 />
+                ${
+                  course.price === 0 ? `<span class="absolute right-2.5 top-2.5 flex-center w-12 h-6 bg-primary text-white rounded-xl font-danaDemiBold text-sm">100%</span>` : ""
+                }
                 <!-- Course Card Body -->
                 <div class="px-2">
                   <h2 class="font-MorabbaBold text-base md:text-xl my-6 line-clamp-1">${

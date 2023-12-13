@@ -12,14 +12,17 @@ const GetAdminInfos = async () => {
     return admin;
 };
 
-const ShowSwalAlert = ( icon, title , callback) => {
+const ShowSwalAlert =  (title, icon, confirmButtonText, callback) => {
     Swal.fire({
-        position: "top-center",
-        icon: icon,
-        title: title,
-        showConfirmButton: false,
-        timer: 2500
-      }).then(result => callback(result))
-}
+      title,
+      icon,
+      confirmButtonText,
+      timer: 2500
+    }).then((result) => {
+        if(result.isConfirmed){
+          callback() 
+        }
+    })
+  };
 
 export {GetAdminInfos , ShowSwalAlert}
