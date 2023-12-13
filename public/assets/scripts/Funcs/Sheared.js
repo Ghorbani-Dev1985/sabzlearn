@@ -19,7 +19,7 @@ const GetAndShowAllCourses = async () => {
         class="flex flex-col overflow-hidden rounded-lg bg-white shadow-lg transition-all ease-linear duration-200 hover:-mt-2"
       >
         <img
-         src=${course.cover}
+         src=http://localhost:4000/courses/covers/${course.cover}
           alt="ghorbani-dev.ir"
         />
         <!-- Course Card Body -->
@@ -524,7 +524,7 @@ const GetAndShowCourseDetails = async () => {
     </svg>
     شرکت در دوره`
       );
-      CourseVideo.setAttribute("poster", `${course.cover}`);
+      CourseVideo.setAttribute("poster", `http://localhost:4000/courses/covers/${course.cover}`);
       CourseStatus.innerHTML = course.isCompleted
         ? " تکمیل شده"
         : "در حال برگزاری";
