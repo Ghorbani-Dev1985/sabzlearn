@@ -14,18 +14,14 @@ const GetAndShowAllUsers = async () => {
     },
   });
   const users = await res.json();
-  console.log(users);
    users.forEach((user , index) => {
     AllUsersTable.insertAdjacentHTML(
         "beforeend",
         `
-         <tr class="even:bg-gray-50 odd:bg-white child:py-0">
+         <tr class="even:bg-gray-50 odd:bg-white child:py-3">
          <th>
         ${index + 1}
          </th>
-         <td class="whitespace-break-spaces font-DanaMd leading-5">
-         <img src=http://localhost:4000/v1${user.profile} alt="ghorbani.dev.ir" />
-         </td>
          <td>
          ${user.name}
          </td>
@@ -208,4 +204,50 @@ const BanUser = async (userID) => {
         }
       });
 }
-export {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteUser , BanUser}
+
+const CreateNewUser = async () => {
+
+const UserFullNameInput = $.querySelector('#UserFullNameInput')
+const UserNameInput = $.querySelector('#UserNameInput')
+const UserPasswordInput = $.querySelector('#UserPasswordInput')
+const UserPhoneInput = $.querySelector('#UserPhoneInput')
+  const UserEmailInput = $.querySelector('#UserEmailInput')
+  if(UserFullNameInput.value === '' || UserNameInput.value === '' || UserPasswordInput.value === '' || UserPhoneInput.value === '' || UserEmailInput.value === ''){
+    ShowSwalAlert("info" , 'لطفا فرم ثبت نام کاربر را تکمیل نمایید')
+}else{
+  const NewUserInfos = {
+      name: UserFullNameInput.value.trim(),
+      username: UserNameInput.value.trim(),
+      email: UserEmailInput.value.trim(),
+      phone: UserPhoneInput.value.trim(),
+      password: UserPasswordInput.value.trim(),
+      confirmPassword: UserPasswordInput.value.trim(),  
+  };
+  fetch(`http://localhost:4000/v1/auth/register` , {
+      method: 'POST',
+      headers: {
+          'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(NewUserInfos)
+  })
+  .then(res => {
+      if(res.status === 201){
+            ShowSwalAlert("success" , ' کاربر جدید با موفقیت اضافه شد')
+            GetAndShowAllUsers();
+            UserFullNameInput.value = '';
+            UserNameInput.value = '';
+            UserPasswordInput.value = '';
+            UserPhoneInput.value = '';
+            UserEmailInput.value = '';
+      }else if(res.status === 409){
+            ShowSwalAlert("error" , 'نام کاربری یا ایمیل از قبل موجود است')
+      }else if(res.status === 403){
+          ShowSwalAlert("error" ,'مسدود شده', 'شماره موبایل مورد نظر مسدود شده و امکان ثبت نام وجود ندارد')
+      }
+     return res.json()
+  })
+
+}
+}
+
+export {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteUser , BanUser , CreateNewUser}

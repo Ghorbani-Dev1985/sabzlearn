@@ -1,4 +1,4 @@
-import {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteUser , BanUser} from "./Funcs/users.js";
+import {GetAndShowAllUsers, DeleteUser , BanUser , CreateNewUser} from "./Funcs/users.js";
 
 
 window.DeleteUser = DeleteUser;
@@ -6,11 +6,10 @@ window.BanUser = BanUser;
 
 
 window.addEventListener('load' , () => {
-    const AddNewMenuBtn = document.querySelector('#AddNewMenuBtn');
+    const AddNewUserBtn = document.querySelector('#AddNewUserBtn');
     GetAndShowAllUsers()
-    PrepareCreateMenuFor()
-    AddNewMenuBtn.addEventListener('click' , (e) => {
+    AddNewUserBtn.addEventListener('click' , (e) => {
         e.preventDefault();
-        CreateNewMenu();
+        CreateNewUser();
     })
 })
