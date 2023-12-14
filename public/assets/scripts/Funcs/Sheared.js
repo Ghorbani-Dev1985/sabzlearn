@@ -3,13 +3,16 @@ import {
   GetToken,
   ShowSwalAlert,
   isLogin,
+  BaseUrl
 } from "../Funcs/Utils.js";
+
 
 const GetAndShowAllCourses = async () => {
   const ShowAllCourses = document.querySelector("#ShowAllCourses");
-  const res = await fetch(`http://localhost:4000/v1/courses`);
+  const res = await fetch(`${BaseUrl()}courses`);
   const Courses = await res.json();
-  Courses.slice(0, 6).map((course) => {
+  const FilteredNonFreeCourses = Courses.filter((course) => course.price !== 0)
+  FilteredNonFreeCourses.slice(0, 6).map((course) => {
     ShowAllCourses.insertAdjacentHTML(
       "beforeend",
       `
@@ -108,7 +111,7 @@ const GetAndShowAllCourses = async () => {
 
 const GetAndShowPopularCourses = async () => {
   const ShowAllCourses = document.querySelector("#NewCoursesBody");
-  const res = await fetch(`http://localhost:4000/v1/courses/popular`);
+  const res = await fetch(`${BaseUrl()}courses/popular`);
   const Courses = await res.json();
   Courses.slice(0, 6).map((course) => {
     ShowAllCourses.insertAdjacentHTML(
@@ -203,7 +206,7 @@ const GetAndShowPopularCourses = async () => {
 
 const GetAndShowPreSellCourses = async () => {
   const ShowAllCourses = document.querySelector("#PreSellCoursesBody");
-  const res = await fetch(`http://localhost:4000/v1/courses/presell`);
+  const res = await fetch(`${BaseUrl()}courses/presell`);
   const Courses = await res.json();
   const FilteredPresellCourses = Courses.filter((course) => course.status === 'presell')
   FilteredPresellCourses.forEach ((course) => {
@@ -299,7 +302,7 @@ const GetAndShowPreSellCourses = async () => {
 
 const GetAndShowArticles = async () => {
   const ShowAllArticles = document.querySelector("#ShowArticlesBody");
-  const res = await fetch(`http://localhost:4000/v1/articles`);
+  const res = await fetch(`${BaseUrl()}articles`);
   const Articles = await res.json();
   Articles.slice(0, 4).map((article) => {
     ShowAllArticles.insertAdjacentHTML(
@@ -346,7 +349,7 @@ const GetAndShowCategoryCourses = async () => {
   const categoryUrlName = GetUrlParam("cat");
   const ShowAllCoursesOfCat = document.querySelector("#ShowAllCoursesOfCat");
   const res = await fetch(
-    `http://localhost:4000/v1/courses/category/${categoryUrlName}`,
+    `${BaseUrl()}courses/category/${categoryUrlName}`,
     {
       method: "GET",
       headers: {
@@ -473,7 +476,7 @@ const GetAndShowCourseDetails = async () => {
   const CommentsBody = $.querySelector("#CommentsBody");
   const ShowMoreCommentBtn = $.querySelector(".ShowMoreCommentBtn");
 
-  const res = await fetch(`http://localhost:4000/v1/courses/${courseUrlName}`, {
+  const res = await fetch(`${BaseUrl()}courses/${courseUrlName}`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${GetToken()}`,
@@ -809,7 +812,7 @@ const GetAndShowRelatedCourse = async () => {
   const RelatedCourseBody = document.querySelector("#RelatedCourseBody");
 
   const res = await fetch(
-    `http://localhost:4000/v1/courses/related/${courseUrlName}`
+    `${BaseUrl()}courses/related/${courseUrlName}`
   );
   const RelatedCourses = await res.json();
   if (RelatedCourses.length) {
@@ -839,7 +842,7 @@ const GetSessionDetails = async () => {
   const SessionsBody = $.querySelector("#SessionsBody");
 
   const res = await fetch(
-    `http://localhost:4000/v1/courses/${CourseShortName}/${SessionID}`,
+    `${BaseUrl()}courses/${CourseShortName}/${SessionID}`,
     {
       headers: {
         Authorization: `Bearer ${GetToken()}`,
@@ -906,7 +909,7 @@ const SendTicketMessage = async () => {
   ) {
     ShowSwalAlert("info", "لطفا فرم را کامل تکمیل نمایید");
   } else {
-    const res = await fetch(`http://localhost:4000/v1/contact`, {
+    const res = await fetch(`${BaseUrl()}contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -930,7 +933,7 @@ const GlobalSearchInApp = async () => {
   const CourseResultBody = document.querySelector("#CourseResultBody");
   const ArticleResultBody = document.querySelector("#ArticleResultBody");
   const SearchValue = GetUrlParam("value");
-  const res = await fetch(`http://localhost:4000/v1/search/${SearchValue}`);
+  const res = await fetch(`${BaseUrl()}search/${SearchValue}`);
   const data = await res.json();
 
   if (data.allResultCourses.length) {
@@ -1081,7 +1084,7 @@ const CommentCancelBtn = $.querySelector("#CommentCancelBtn");
     ShowSwalAlert("info", "لطفا  را کامل تکمیل نمایید");
    }else{
     console.log(NewCommentInfos);
-    const res = await fetch(`http://localhost:4000/v1/comments`, {
+    const res = await fetch(`${BaseUrl()}comments`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${GetToken()}`,
@@ -1105,14 +1108,14 @@ const CommentCancelBtn = $.querySelector("#CommentCancelBtn");
 
 const GetAllCourses = async () => {
   const ShowAllCoursesBody = document.querySelector('#ShowAllCoursesBody');
- const res = await fetch(`http://localhost:4000/v1/courses`)
+ const res = await fetch(`${BaseUrl()}courses`)
  const courses = await res.json()
  return courses
 
 }
 const GetFreeCourses = async () => {
   const FreeCoursesBody = document.querySelector('#FreeCoursesBody');
- const res = await fetch(`http://localhost:4000/v1/courses`)
+ const res = await fetch(`${BaseUrl()}courses`)
  const courses = await res.json()
  const FilteredFreeCourses = courses.filter(course => course.price === 0)
  console.log(FilteredFreeCourses);

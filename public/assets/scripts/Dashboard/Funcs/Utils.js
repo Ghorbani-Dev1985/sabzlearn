@@ -1,5 +1,9 @@
 import {GetToken} from './../../Funcs/Utils.js';
 
+const BaseUrl = () => {
+  return `http://localhost:4000/v1/`;
+}
+
 const GetAdminInfos = async () => {
    const res = fetch(`http://localhost:4000/v1/auth/me` , {
         headers:{
@@ -25,4 +29,4 @@ const ShowSwalAlert =  (title, icon, confirmButtonText, callback) => {
     })
   };
 
-export {GetAdminInfos , ShowSwalAlert}
+export {GetAdminInfos , ShowSwalAlert , BaseUrl}

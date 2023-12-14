@@ -3539,6 +3539,10 @@ progress::-webkit-progress-value {
   height: 0.875rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .h-4 {
   height: 1rem;
 }
@@ -3609,18 +3613,6 @@ progress::-webkit-progress-value {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-44 {
-  height: 11rem;
-}
-
-.h-36 {
-  height: 9rem;
-}
-
-.h-32 {
-  height: 8rem;
 }
 
 .max-h-14 {
@@ -4468,6 +4460,11 @@ progress::-webkit-progress-value {
   background-color: rgb(236 72 153 / var(--tw-bg-opacity));
 }
 
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
+}
+
 .bg-rose-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(255 228 230 / var(--tw-bg-opacity));
@@ -4532,11 +4529,6 @@ progress::-webkit-progress-value {
 
 .bg-white\/30 {
   background-color: rgb(255 255 255 / 0.3);
-}
-
-.bg-primary {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 }
 
 .bg-opacity-60 {

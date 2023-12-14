@@ -1,5 +1,5 @@
 import { GetMe } from "../../assets/scripts/Funcs/Auth.js";
-import { isLogin } from "../../assets/scripts/Funcs/Utils.js";
+import { isLogin , BaseUrl} from "../../assets/scripts/Funcs/Utils.js";
 const template = document.createElement("template");
 template.innerHTML = `
 <link rel="stylesheet" href="./assets/styles/app.css">
@@ -152,7 +152,7 @@ class Header extends HTMLElement {
     const MobileNavBody = this.shadowRoot.querySelector("#MobileNavBody");
     
     const GetAndShowAllDesktopMenus = async () => {
-      const res = await fetch(`http://localhost:4000/v1/menus`)
+      const res = await fetch(`${BaseUrl()}menus`)
       const menus = await res.json()
       menus.forEach((menu) => {
         DesktopNavBody.insertAdjacentHTML('beforeend' , `
@@ -175,7 +175,7 @@ class Header extends HTMLElement {
     GetAndShowAllDesktopMenus()
 
     const GetAndShowAllMobileMenus = async () => {
-      const res = await fetch(`http://localhost:4000/v1/menus`)
+      const res = await fetch(`${BaseUrl()}menus`)
       const menus = await res.json()
       menus.forEach((menu) => {
         MobileNavBody.insertAdjacentHTML('beforeend' , `
@@ -325,7 +325,7 @@ class Header extends HTMLElement {
     // TopBarMenu
     const RenderTopBarMenus = async () => {
       const TopBarMenu = this.shadowRoot.querySelector("#TopBarMenu"); 
-      const res = await fetch(`http://localhost:4000/v1/menus/topbar`)
+      const res = await fetch(`${BaseUrl()}menus/topbar`)
     const TopBarMenus = await res.json();
     const ShuffledArray = TopBarMenus.sort((a , b) => 0.5 - Math.random());
     ShuffledArray.splice(0 , 5).map((menu) => {

@@ -1,3 +1,7 @@
+const BaseUrl = () => {
+   return `http://localhost:4000/v1/`;
+}
+
 const ShowSwalAlert = ( icon, title , callback) => {
     Swal.fire({
         position: "top-center",
@@ -59,4 +63,4 @@ const PaginationItems = (Array , ItemsPerPage , PaginationParentEle , CurrentPag
   return paginatedItems
 }
 
-export { ShowSwalAlert , SaveIntoLocalStorage , GetFromLocalStorage , GetToken , isLogin , GetUrlParam , PaginationItems , addParamToUrl} 
+export { ShowSwalAlert , SaveIntoLocalStorage , GetFromLocalStorage , GetToken , isLogin , GetUrlParam , PaginationItems , addParamToUrl , BaseUrl} 

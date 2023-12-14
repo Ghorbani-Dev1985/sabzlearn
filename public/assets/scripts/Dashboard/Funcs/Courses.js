@@ -1,4 +1,4 @@
-import { GetToken, ShowSwalAlert } from "../../Funcs/Utils.js";
+import { GetToken, ShowSwalAlert , BaseUrl} from "../../Funcs/Utils.js";
 const $ = document;
 let CategoryID = -1;
 let CourseStatus = "start";
@@ -8,7 +8,7 @@ const GetAllCourses = async () => {
   const CountOfAllCourses = $.querySelector("#CountOfAllCourses");
   const AllCoursesTable = $.querySelector("#AllCoursesTable tbody");
   AllCoursesTable.innerHTML = "";
-  const res = await fetch("http://localhost:4000/v1/courses");
+  const res = await fetch(`${BaseUrl()}courses`);
   const courses = await res.json();
   CountOfAllCourses.innerHTML = courses.length;
   courses.forEach((course, index) => {
@@ -79,7 +79,7 @@ const PrepareCreateCourseFrom = async () => {
   const StartCourseRadio = $.querySelector("#StartCourseRadio");
   const CourseCoverUploader = $.querySelector("#CourseCoverUploader");
   const ShowFileNameUpload = $.querySelector("#ShowFileNameUpload");
-  const res = await fetch(`http://localhost:4000/v1/category`);
+  const res = await fetch(`${BaseUrl()}categor`);
   const categories = await res.json();
   categories.forEach((category) => {
     CourseCategoryList.insertAdjacentHTML(
@@ -122,7 +122,7 @@ const CreateNewCourse = async () => {
   formData.append("categoryID", CategoryID);
   formData.append("status", CourseStatus);
   formData.append("cover", CourseCover);
-  const res = await fetch(`http://localhost:4000/v1/courses`, {
+  const res = await fetch(`${BaseUrl()}courses`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${GetToken()}`,
@@ -170,7 +170,7 @@ const DeleteCourse = async (courseID) => {
       cancelButtonText: "انصراف"
     }).then( async (result) => {
       if (result.isConfirmed) {
-        const res = await fetch(`http://localhost:4000/v1/courses/${courseID}`, {
+        const res = await fetch(`${BaseUrl()}courses${courseID}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${GetToken()}`,
