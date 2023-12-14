@@ -130,9 +130,9 @@ const CreateNewMenu = async () => {
     }
 }
 
-const DeleteMenu = async (menuID) => {
+const DeleteUser = async (userID) => {
     Swal.fire({
-        title: "آیا برای حذف منو مطمعن هستید؟",
+        title: "آیا برای حذف کاربر مطمعن هستید؟",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#f43f5e",
@@ -141,18 +141,18 @@ const DeleteMenu = async (menuID) => {
         cancelButtonText: "انصراف"
       }).then( async (result) => {
         if (result.isConfirmed) {
-          const res = await fetch(`${BaseUrl()}menus/${menuID}`, {
+          const res = await fetch(`${BaseUrl()}users/${userID}`, {
             method: "DELETE",
             headers: {
               Authorization: `Bearer ${GetToken()}`,
             },
           });
           if(res.ok){
-            GetAndShowAllMenus();
+            GetAndShowAllUsers();
             Swal.fire({
               position: "top-center",
               icon: "success",
-              title: "منو مورد نظر با موفقیت حذف گردید",
+              title: "کاربر مورد نظر با موفقیت حذف گردید",
               showConfirmButton: false,
               timer: 1500
             });
@@ -160,7 +160,7 @@ const DeleteMenu = async (menuID) => {
             Swal.fire({
               position: "top-center",
               icon: "error",
-              title: "خطایی در روند حذف منو ایجاد گردید",
+              title: "خطایی در روند حذف کاربر ایجاد گردید",
               showConfirmButton: false,
               timer: 1500
             });
@@ -169,4 +169,4 @@ const DeleteMenu = async (menuID) => {
       });
 }
 
-export {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteMenu}
+export {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteUser}
