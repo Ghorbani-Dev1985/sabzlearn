@@ -1,5 +1,7 @@
-import {GetAndShowAllMenus , CreateNewMenu , PrepareCreateMenuFor} from "./Funcs/menus.js";
+import {GetAndShowAllMenus , CreateNewMenu , PrepareCreateMenuFor , DeleteMenu} from "./Funcs/menus.js";
 
+
+window.DeleteMenu = DeleteMenu;
 
 window.addEventListener('load' , () => {
     const AddNewMenuBtn = document.querySelector('#AddNewMenuBtn');
