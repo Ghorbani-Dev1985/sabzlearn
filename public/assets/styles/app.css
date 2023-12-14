@@ -3615,6 +3615,46 @@ progress::-webkit-progress-value {
   height: 100vh;
 }
 
+.h-60 {
+  height: 15rem;
+}
+
+.h-\[\] {
+  height: ;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.h-30 {
+  height: 7.5rem;
+}
+
+.h-\[29\.5\] {
+  height: 29.5;
+}
+
+.h-\[29\.5rem\] {
+  height: 29.5rem;
+}
+
+.h-\[29\.4rem\] {
+  height: 29.4rem;
+}
+
+.h-\[29\.3rem\] {
+  height: 29.3rem;
+}
+
+.h-\[29\.2rem\] {
+  height: 29.2rem;
+}
+
+.h-\[29rem\] {
+  height: 29rem;
+}
+
 .max-h-14 {
   max-height: 3.5rem;
 }
@@ -3649,6 +3689,22 @@ progress::-webkit-progress-value {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-\[\] {
+  min-height: ;
+}
+
+.min-h-\[5\] {
+  min-height: 5;
+}
+
+.min-h-\[6\] {
+  min-height: 6;
+}
+
+.min-h-\[6rem\] {
+  min-height: 6rem;
 }
 
 .w-1\/2 {

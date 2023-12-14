@@ -163,7 +163,7 @@ class Header extends HTMLElement {
         </svg> 
         <ul class="w-64 p-5 space-y-4 bg-slate-100 dark:bg-zinc-700 rounded-2xl border-b-4 border-sabzlearnGreen opacity-0 invisible absolute z-10 top-full shadow-6 dark:shadow-none group-hover:opacity-100 group-hover:visible transition-all delay-75 child:line-clamp-1">
          ${
-          menu.submenus.map(submenu => ( `<li><a href=''>${submenu.title}</a></li>`)).join('')}       
+          menu.submenus.map(submenu => ( `<li><a href='course-info.html?name=${submenu.href}'>${submenu.title}</a></li>`)).join('')}       
         </ul>` : ""
           }
             </a>

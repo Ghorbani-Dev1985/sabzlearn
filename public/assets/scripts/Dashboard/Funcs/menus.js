@@ -1,12 +1,13 @@
 import { GetToken, ShowSwalAlert , BaseUrl} from "../../Funcs/Utils.js";
 const $ = document;
+let ParentMenuID = undefined;
+
 
 const GetAndShowAllMenus = async () => {
     const AllCoursesTable = $.querySelector("#AllCoursesTable tbody");
     AllCoursesTable.innerHTML = "";
   const res = await fetch(`${BaseUrl()}menus/all`);
   const menus = await res.json();
-  console.log(menus);
    menus.forEach((menu , index) => {
     AllCoursesTable.insertAdjacentHTML(
         "beforeend",
@@ -48,6 +49,64 @@ const GetAndShowAllMenus = async () => {
   return menus;
 }
 
+const PrepareCreateMenuFor = async () => {
+    const ParentMenuList = $.querySelector('#ParentMenuList');
+    ParentMenuList.addEventListener('change' , event => ParentMenuID = event.target.value)
+    const res = await fetch(`${BaseUrl()}menus`);
+    const menus = await res.json();
+    menus.forEach(menu => {
+        ParentMenuList.insertAdjacentHTML('beforeend' , `
+        <option value=${menu._id}>${menu.title}</option>
+        `)
+    })
 
+}
 
-export {GetAndShowAllMenus}
+const CreateNewMenu = async () => {
+    const MenuNameInput = $.querySelector('#MenuNameInput')
+    const MenuShortNameInput = $.querySelector('#MenuShortNameInput')
+    const NewMenuInfos = {
+        title : MenuNameInput.value.trim(),
+        href : MenuShortNameInput.value.trim(),
+        parent: ParentMenuID,
+    }
+    if(MenuNameInput.value !== '' || MenuShortNameInput.value !== ''){
+        const res = await fetch(`${BaseUrl()}menus`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${GetToken()}`,
+              'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(NewMenuInfos),
+          });
+          if(res.ok){
+            MenuNameInput.value = '',
+            MenuShortNameInput.value = '',
+            Swal.fire({
+                icon: "success",
+                title: "منوی جدید با موفقیت ثبت شد",
+                showCancelButton: false,
+                showConfirmButton: true,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "مشاهده کلیه منو ها",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                 GetAndShowAllMenus();
+
+                }
+              });
+          }else{
+            ShowSwalAlert(
+                "error",
+                "خطایی در ثبت منوی جدید رخ داده است"
+                );
+          }
+    }else{
+        ShowSwalAlert(
+            "error",
+            "لطفا فرم را تکمیل نمایید"
+            );
+    }
+}
+
+export {GetAndShowAllMenus , CreateNewMenu , PrepareCreateMenuFor}

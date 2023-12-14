@@ -148,8 +148,7 @@ const CreateNewCourse = async () => {
   } else {
     ShowSwalAlert(
       "error",
-      "خطایی در ثبت دوره جدید رخ داده است",
-      "مشاهده کلیه دوره ها"
+      "خطایی در ثبت دوره جدید رخ داده است"
       );
     }
     // CourseNameInput.value = '';
