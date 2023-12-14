@@ -79,7 +79,7 @@ const PrepareCreateCourseFrom = async () => {
   const StartCourseRadio = $.querySelector("#StartCourseRadio");
   const CourseCoverUploader = $.querySelector("#CourseCoverUploader");
   const ShowFileNameUpload = $.querySelector("#ShowFileNameUpload");
-  const res = await fetch(`${BaseUrl()}categor`);
+  const res = await fetch(`${BaseUrl()}category`);
   const categories = await res.json();
   categories.forEach((category) => {
     CourseCategoryList.insertAdjacentHTML(
