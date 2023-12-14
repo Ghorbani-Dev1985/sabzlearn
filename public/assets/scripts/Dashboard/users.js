@@ -1,7 +1,9 @@
-import {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteUser} from "./Funcs/users.js";
+import {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteUser , BanUser} from "./Funcs/users.js";
 
 
 window.DeleteUser = DeleteUser;
+window.BanUser = BanUser;
+
 
 window.addEventListener('load' , () => {
     const AddNewMenuBtn = document.querySelector('#AddNewMenuBtn');

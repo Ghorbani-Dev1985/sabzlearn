@@ -42,6 +42,8 @@ const Register = () => {
                   )
             }else if(res.status === 409){
                   ShowSwalAlert("error" , 'نام کاربری یا ایمیل از قبل موجود است')
+            }else if(res.status === 403){
+                ShowSwalAlert("error" ,'مسدود شده', 'شماره موبایل مورد نظر مسدود شده و امکان ثبت نام وجود ندارد')
             }
            return res.json()
         })

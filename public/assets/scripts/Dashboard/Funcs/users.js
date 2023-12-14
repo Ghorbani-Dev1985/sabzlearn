@@ -169,4 +169,43 @@ const DeleteUser = async (userID) => {
       });
 }
 
-export {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteUser}
+
+const BanUser = async (userID) => {
+    Swal.fire({
+        title: "آیا برای مسدودسازی کاربر مطمعن هستید؟",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#f43f5e",
+        cancelButtonColor: "#3f3f46",
+        confirmButtonText: "مسدودسازی",
+        cancelButtonText: "انصراف"
+      }).then( async (result) => {
+        if (result.isConfirmed) {
+          const res = await fetch(`${BaseUrl()}users/ban/${userID}`, {
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${GetToken()}`,
+            },
+          });
+          if(res.ok){
+            GetAndShowAllUsers();
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "کاربر مورد نظر با موفقیت مسدود گردید",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }else{
+            Swal.fire({
+              position: "top-center",
+              icon: "error",
+              title: "خطایی در روند مسدودسازی کاربر ایجاد گردید",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        }
+      });
+}
+export {GetAndShowAllUsers , CreateNewMenu , PrepareCreateMenuFor , DeleteUser , BanUser}

@@ -2,11 +2,12 @@ const BaseUrl = () => {
    return `http://localhost:4000/v1/`;
 }
 
-const ShowSwalAlert = ( icon, title , callback) => {
+const ShowSwalAlert = ( icon, title ,text, callback) => {
     Swal.fire({
         position: "top-center",
         icon: icon,
         title: title,
+        text : text,
         showConfirmButton: false,
         timer: 2500
       }).then(result => callback(result))
