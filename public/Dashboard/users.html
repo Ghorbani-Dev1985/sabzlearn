@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منو ها | سبزلرن</title>
+    <title> کاربران | سبزلرن</title>
     <link rel="stylesheet" href="../assets/styles/app.css" />
     <link
     rel="shortcut icon"
@@ -28,11 +28,11 @@
                   <span class="text-gray-500 text-sm antialiased font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
                 </li>
                 <li class="flex items-center text-emerald-900 antialiased text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-emerald-500">
-                  <p class="block antialiased text-sm leading-normal text-emerald-gray-900 font-normal">منو ها </p>
+                  <p class="block antialiased text-sm leading-normal text-emerald-gray-900 font-normal"> کاربران </p>
                 </li>
               </ol>
             </nav>
-            <h6 class="block antialiased tracking-normal text-base font-semibold leading-relaxed text-gray-900"> منو ها</h6>
+            <h6 class="block antialiased tracking-normal text-base font-semibold leading-relaxed text-gray-900">  کاربران</h6>
           </div>
           <div class="flex items-center">
             <div class="mr-auto md:mr-4 md:w-56">
@@ -109,19 +109,23 @@
             </section>
             <div class="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
               <div>
-                <h6 class="block antialiased tracking-normal text-base font-MorabbaBold leading-relaxed text-emerald-gray-900 mb-1">لیست منو ها</h6>
+                <h6 class="block antialiased tracking-normal text-base font-MorabbaBold leading-relaxed text-emerald-gray-900 mb-1">لیست  کاربران</h6>
               </div>
             </div>
             <div class="overflow-x-auto">
-              <table class="table  border-b border-b-gray-200" id="AllMenusTable">
-                <table class="table border-b border-b-gray-200" id="AllMenusTable">
+              <table class="table  border-b border-b-gray-200" id="AllUsersTable">
+                <table class="table border-b border-b-gray-200" id="AllUsersTable">
                 <!-- head -->
                 <thead class="border border-gray-200">
                   <tr class="bg-emerald-50 font-DanaBold text-lg text-zinc-700 text-center">
                     <th>ردیف</th>
-                    <th> عنوان منو</th>
-                    <th>لینک منو </th>
-                    <th>  عنوان منوی والد</th>
+                    <th>   تصویر پروفایل</th>
+                    <th>  نام کامل</th>
+                    <th>  نام کاربری</th>
+                    <th> تلفن تماس </th>
+                    <th>   ایمیل</th>
+                    <th>   نقش کاربری</th>
+                    <th>مسدود سازی</th>
                      <th>ویرایش</th>
                      <th>حذف</th>
                   </tr>
@@ -147,6 +151,6 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="./../assets/scripts/Dashboard/Shared.js"></script>
-  <script type="module" src="./../assets/scripts/Dashboard/menus.js"></script>
+  <script type="module" src="./../assets/scripts/Dashboard/users.js"></script>
 </body>
 </html>

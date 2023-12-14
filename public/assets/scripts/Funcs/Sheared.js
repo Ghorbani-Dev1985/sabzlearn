@@ -348,15 +348,15 @@ const GetAndShowArticles = async () => {
 const GetAndShowCategoryCourses = async () => {
   const categoryUrlName = GetUrlParam("cat");
   const ShowAllCoursesOfCat = document.querySelector("#ShowAllCoursesOfCat");
-  const res = await fetch(
-    `${BaseUrl()}courses/category/${categoryUrlName}`,
-    {
+  const res = await fetch(`${BaseUrl()}courses/category/${categoryUrlName}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${GetToken()}`,
+        'Content-Type' : 'application/json',
       },
     }
   );
+  console.log(res);
   const courses = await res.json();
   console.log(courses);
   courses.forEach((course) => {
