@@ -5,9 +5,9 @@ import {
   ChangeGregorianDateToPersian,
 } from "../../Funcs/Utils.js";
 const $ = document;
-let CategoryID = -1;
-let CourseStatus = "start";
-let CourseCover = null;
+let CourseID = -1;
+let SessionStatus = 0;
+let SessionCover = null;
 
 const GetAllSessions = async () => {
   const CountOfAllSessions = $.querySelector("#CountOfAllSessions");
@@ -71,86 +71,98 @@ const GetAllSessions = async () => {
   return sessions;
 };
 
-const PrepareCreateCourseFrom = async () => {
-  const CourseCategoryList = $.querySelector("#CourseCategoryList");
-  const PresSellCourseRadio = $.querySelector("#PresSellCourseRadio");
-  const StartCourseRadio = $.querySelector("#StartCourseRadio");
-  const CourseCoverUploader = $.querySelector("#CourseCoverUploader");
+const PrepareCreateSessionFrom = async () => {
+  const CourseNameList = $.querySelector("#CourseNameList");
+  const FreeSessionRadio = $.querySelector("#FreeSessionRadio");
+  const NotFreeSessionRadio = $.querySelector("#NotFreeSessionRadio");
+  const SessionCoverUploader = $.querySelector("#SessionCoverUploader");
   const ShowFileNameUpload = $.querySelector("#ShowFileNameUpload");
-  const res = await fetch(`${BaseUrl()}category`);
-  const categories = await res.json();
-  categories.forEach((category) => {
-    CourseCategoryList.insertAdjacentHTML(
+  const res = await fetch(`${BaseUrl()}courses`);
+  const courses = await res.json();
+  console.log(courses);
+  courses.forEach((course) => {
+    CourseNameList.insertAdjacentHTML(
       "beforeend",
       `
-       <option value=${category._id}>${category.title}</option>
+       <option value=${course._id}>${course.name}</option>
       `
     );
   });
-  CourseCategoryList.addEventListener(
+  CourseNameList.addEventListener(
     "change",
-    (event) => (CategoryID = event.target.value)
+    (event) => (CourseID = event.target.value)
   );
-  PresSellCourseRadio.addEventListener(
+  FreeSessionRadio.addEventListener(
     "change",
-    (event) => (CourseStatus = event.target.value)
+    (event) => (SessionStatus = event.target.value)
   );
-  StartCourseRadio.addEventListener(
+  NotFreeSessionRadio.addEventListener(
     "change",
-    (event) => (CourseStatus = event.target.value)
+    (event) => (SessionStatus = event.target.value)
   );
-  CourseCoverUploader.addEventListener("change", (event) => {
+  SessionCoverUploader.addEventListener("change", (event) => {
     ShowFileNameUpload.innerHTML = event.target.files[0].name;
-    CourseCover = event.target.files[0];
+    SessionCover = event.target.files[0];
   });
 };
 
-const CreateNewCourse = async () => {
-  const CourseNameInput = $.querySelector("#CourseNameInput");
-  const CoursePriceInput = $.querySelector("#CoursePriceInput");
-  const CourseDescription = $.querySelector("#CourseDescription");
-  const CourseShortNameInput = $.querySelector("#CourseShortNameInput");
-  const CourseSupportInput = $.querySelector("#CourseSupportInput");
+const CreateNewSession = async () => {
+  const SessionNameInput = $.querySelector("#SessionNameInput");
+  const SessionTimeInput = $.querySelector("#SessionTimeInput");
   const formData = new FormData();
-  formData.append("name", CourseNameInput.value.trim());
-  formData.append("price", CoursePriceInput.value.trim());
-  formData.append("description", CourseDescription.value.trim());
-  formData.append("shortName", CourseShortNameInput.value.trim());
-  formData.append("support", CourseSupportInput.value.trim());
-  formData.append("categoryID", CategoryID);
-  formData.append("status", CourseStatus);
-  formData.append("cover", CourseCover);
-  const res = await fetch(`${BaseUrl()}courses`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${GetToken()}`,
-    },
-    body: formData,
-  });
-  console.log(res);
-
-  if (res.status === 201) {
-    Swal.fire({
-      icon: "success",
-      title: "دوره جدید با موفقیت ثبت شد",
-      showCancelButton: false,
-      showConfirmButton: true,
-      confirmButtonColor: "#3085d6",
-      confirmButtonText: "مشاهده کلیه دوره ها",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log("ok");
-        // GetAllCourses();
-      }
+  formData.append("title", SessionNameInput.value.trim());
+  formData.append("time", SessionTimeInput.value.trim());
+  formData.append("video", SessionCover);
+  formData.append("free", SessionStatus);
+  if(SessionNameInput.value !== '' && SessionTimeInput.value !== '' && SessionCover !== null && CourseID !== -1){
+    const res = await fetch(`${BaseUrl()}courses/${CourseID}/sessions`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${GetToken()}`,
+      },
+      body: formData,
     });
-  } else {
-    ShowSwalAlert("error", "خطایی در ثبت دوره جدید رخ داده است");
+    console.log(res);
+  
+    if (res.ok) {
+      SessionNameInput.value = "",
+      SessionTimeInput.value = "",
+      Swal.fire({
+        icon: "success",
+        title: "جلسه جدید با موفقیت ثبت شد",
+        showCancelButton: false,
+        showConfirmButton: true,
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "مشاهده کلیه جلسه ها",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log("ok");
+           GetAllSessions();
+        }
+      });
+    } else if(res.status === 413){
+      Swal.fire({
+        icon: "warning",
+        title: "حجم فایل بیش از حد مجاز می باشد",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }else {
+      Swal.fire({
+        icon: "error",
+        title: "خطایی در روند ثبت جلسه جدید ایجاد گردید",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  }else{
+    Swal.fire({
+      icon: "error",
+      title: "لطفا  فرم را تکمیل نمایید",
+      showConfirmButton: false,
+      timer: 2000,
+    });
   }
-  // CourseNameInput.value = '';
-  // CoursePriceInput.value = '';
-  // CourseDescription.value = '';
-  // CourseShortNameInput.value = '';
-  // CourseSupportInput.value = '';
 };
 
 const DeleteCourse = async (courseID) => {
@@ -173,7 +185,7 @@ const DeleteCourse = async (courseID) => {
       if (res.ok) {
         GetAllCourses();
         Swal.fire({
-          position: "top-center",
+
           icon: "success",
           title: "دوره مورد نظر با موفقیت حذف گردید",
           showConfirmButton: false,
@@ -181,7 +193,7 @@ const DeleteCourse = async (courseID) => {
         });
       } else {
         Swal.fire({
-          position: "top-center",
+
           icon: "error",
           title: "خطایی در روند حذف دوره ایجاد گردید",
           showConfirmButton: false,
@@ -194,7 +206,7 @@ const DeleteCourse = async (courseID) => {
 
 export {
   GetAllSessions,
-  CreateNewCourse,
-  PrepareCreateCourseFrom,
+  CreateNewSession,
+  PrepareCreateSessionFrom,
   DeleteCourse,
 };

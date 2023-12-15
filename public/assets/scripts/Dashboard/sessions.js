@@ -1,7 +1,7 @@
 import {
   GetAllSessions,
-  CreateNewCourse,
-  PrepareCreateCourseFrom,
+  CreateNewSession,
+  PrepareCreateSessionFrom,
   DeleteCourse
 } from "./Funcs/sessions.js";
 
@@ -10,9 +10,9 @@ window.DeleteCourse = DeleteCourse;
 window.addEventListener("load", () => {
   const AddNewCourseBtn = document.querySelector("#AddNewCourseBtn");
   GetAllSessions();
-  PrepareCreateCourseFrom();
+  PrepareCreateSessionFrom();
   AddNewCourseBtn.addEventListener("click", (event) => {
    event.preventDefault();
-    CreateNewCourse();
+   CreateNewSession();
   });
 });

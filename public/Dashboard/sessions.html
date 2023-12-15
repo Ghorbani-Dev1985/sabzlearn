@@ -80,50 +80,41 @@
             <section class="p-6">
               <p class="font-MorabbaBold text-lg">افزودن جلسه جدید</p>
               <div class="flex-between gap-3 my-10">
-                <div class="flex flex-1 flex-col h-[29rem] justify-between gap-4">
+                <div class="flex flex-1 flex-col h-60 justify-between gap-4">
                   <div class="w-full relative">
-                    <input type="text" id="CourseNameInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
-                    <label for="CourseNameInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> نام دوره</label>
+                    <input type="text" id="SessionNameInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
+                    <label for="SessionNameInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> نام جلسه</label>
                 </div>
-              <textarea id="CourseDescription" rows="10" placeholder="توضیحات دوره" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ></textarea>
 
-                <select id="CourseCategoryList" class="select select-bordered w-full bg-slate-100 focus:outline-none">
-                  <option value="-1" disabled selected>انتخاب دسته بندی دوره</option>
-                </select>
+                <div class="w-full relative">
+                  <input type="text" id="SessionTimeInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
+                  <label for="SessionTimeInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">  مدت زمان جلسه</label>
+              </div>
+              <select id="CourseNameList" class="select select-bordered w-full bg-slate-100 focus:outline-none">
+                <option value="-1" disabled selected>انتخاب  دوره</option>
+              </select>
                 <div class="flex-center gap-3">
                   وضعیت دوره
                   <div class="flex-center">
-                    <input type="radio" name="radio-4" id="PresSellCourseRadio" value="presell" class="radio radio-accent  mx-2 align-middle" />
-                    <label for="PresSellCourseRadio" class="label-text"> پیش فروش </label>
+                    <input type="radio" name="radio-4" id="FreeSessionRadio" value="1" class="radio radio-accent  mx-2 align-middle" />
+                    <label for="FreeSessionRadio" class="label-text"> رایگان  </label>
                   </div>
                   <div class="flex-center">
-                    <input type="radio" name="radio-4" id="StartCourseRadio" value="start" class="radio radio-accent checked:border-emerald-200 mx-2 align-middle" />
-                    <label for="StartCourseRadio" class="label-text"> درحال برگزاری  </label>
+                    <input type="radio" name="radio-4" id="NotFreeSessionRadio" value="0" class="radio radio-accent checked:border-emerald-200 mx-2 align-middle" />
+                    <label for="NotFreeSessionRadio" class="label-text"> غیر رایگان   </label>
                   </div>
                 </div>
                 </div>
-                <div class="flex flex-1 flex-col h-[29rem] justify-between gap-4">
-                  <div class="w-full relative">
-                    <input type="text" id="CoursePriceInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
-                    <label for="CoursePriceInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> قیمت دوره</label>
-                </div>
-                <div class="w-full relative">
-                  <input type="text" id="CourseShortNameInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
-                  <label for="CourseShortNameInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> URL دوره </label>
-              </div>
-              <div class="w-full relative">
-                <input type="text" id="CourseSupportInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
-                <label for="CourseSupportInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> پشتیبانی دوره  </label>
-            </div>
+                <div class="flex flex-1 flex-col h-60 justify-between gap-4">
             <div class="flex items-center justify-center w-full">
-              <label for="CourseCoverUploader" class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <label for="SessionCoverUploader" class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                 <div class="w-full flex flex-col items-center justify-center pt-5">
                   <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                   </svg>
-                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">آپلود فایل عکس دوره</span> یا فایل را کشیده و رها کنید</p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400"> PNG or JPG </p>
-                  <input id="CourseCoverUploader" type="file" class="w-full h-32 opacity-0" accept=".png,.jpg" list="1" />
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">آپلود ودیو عکس دوره</span> یا فایل را کشیده و رها کنید</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-sans"> MP4 , M4V , Webm </p>
+                  <input id="SessionCoverUploader" type="file" class="w-full h-25 opacity-0" accept=".mp4, .m4v , .webm" list="1" />
                           <p id="ShowFileNameUpload" class="my-2"></p>
                       </div>
                   </label>
@@ -157,9 +148,9 @@
                 <thead class="border border-gray-200">
                   <tr class="bg-emerald-50 font-DanaBold text-lg text-zinc-700 text-center">
                     <th>ردیف</th>
-                    <th>عنوان  </th>
+                    <th>نام جلسه  </th>
                     <th> تاریخ انتشار</th>
-                    <th> زمان جلسه</th>
+                    <th> مدت زمان جلسه</th>
                     <th>نام دوره</th>
                     <th>  ویدیو </th>
                      <th> رایگان بودن</th>
