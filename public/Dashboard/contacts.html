@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  کامنت ها | سبزلرن</title>
+    <title>  پیغام ها | سبزلرن</title>
     <link rel="stylesheet" href="../assets/styles/app.css" />
     <link
     rel="shortcut icon"
@@ -28,11 +28,11 @@
                   <span class="text-gray-500 text-sm antialiased font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
                 </li>
                 <li class="flex items-center text-emerald-900 antialiased text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-emerald-500">
-                  <p class="block antialiased text-sm leading-normal text-emerald-gray-900 font-normal"> کامنت ها </p>
+                  <p class="block antialiased text-sm leading-normal text-emerald-gray-900 font-normal"> پیغام ها </p>
                 </li>
               </ol>
             </nav>
-            <h6 class="block antialiased tracking-normal text-base font-semibold leading-relaxed text-gray-900">  کامنت ها</h6>
+            <h6 class="block antialiased tracking-normal text-base font-semibold leading-relaxed text-gray-900">  پیغام ها</h6>
           </div>
           <div class="flex items-center">
             <div class="mr-auto md:mr-4 md:w-56">
@@ -78,7 +78,7 @@
           <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden">
             <!-- Add New Course Section -->
             <section class="p-6">
-              <p class="font-MorabbaBold text-lg">افزودن کامنت جدید</p>
+              <p class="font-MorabbaBold text-lg">افزودن پیغام جدید</p>
               <div class="flex-between gap-3 my-10">
                 <div class="flex flex-1 flex-col gap-4">
                   <div class="w-full relative">
@@ -110,13 +110,16 @@
               </div>
             </div>
             <div class="overflow-x-auto">
-                <table class="table border-b border-b-gray-200" id="AllCategoriesTable">
+                <table class="table border-b border-b-gray-200" id="AllContactsTable">
                 <!-- head -->
                 <thead class="border border-gray-200">
                   <tr class="bg-emerald-50 font-DanaBold text-lg text-zinc-700 text-center">
                     <th>ردیف</th>
-                    <th>  نام دسته بندی </th>
-                    <th>  لینک دسته بندی </th>                  
+                    <th>  نام کامل   </th>
+                    <th>  متن پیغام </th> 
+                    <th>   تلفن تماس </th>     
+                    <th>  ایمیل  </th> 
+                    <th>  پاسخ پیغام </th>                       
                      <th>ویرایش</th>
                      <th>حذف</th>
                   </tr>
@@ -142,6 +145,6 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="./../assets/scripts/Dashboard/Shared.js"></script>
-  <script type="module" src="./../assets/scripts/Dashboard/categories.js"></script>
+  <script type="module" src="./../assets/scripts/Dashboard/contacts.js"></script>
 </body>
 </html>

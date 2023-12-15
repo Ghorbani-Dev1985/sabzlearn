@@ -1,15 +1,15 @@
 import {
-  GetAndShowAllCategories,
+  GetAndShowAllContacts,
   CreateNewCategory,
   DeleteCategory,
-} from "./Funcs/categories.js";
+} from "./Funcs/contacts.js";
 
 window.DeleteCategory = DeleteCategory;
 
 
 window.addEventListener("load", () => {
   const AddNewCategoryBtn = document.querySelector("#AddNewCategoryBtn");
-  GetAndShowAllCategories();
+  GetAndShowAllContacts();
   AddNewCategoryBtn.addEventListener("click", (e) => {
     e.preventDefault();
     CreateNewCategory();
