@@ -3,7 +3,8 @@ import {
   GetToken,
   ShowSwalAlert,
   isLogin,
-  BaseUrl
+  BaseUrl,
+  ChangeGregorianDateToPersian
 } from "../Funcs/Utils.js";
 
 
@@ -304,7 +305,11 @@ const GetAndShowArticles = async () => {
   const ShowAllArticles = document.querySelector("#ShowArticlesBody");
   const res = await fetch(`${BaseUrl()}articles`);
   const Articles = await res.json();
+  let year , month , day;
   Articles.slice(0, 4).map((article) => {
+    year = article.createdAt.slice(0 , 4) 
+    month = article.createdAt.slice(5 , 7) 
+    day = article.createdAt.slice(8 , 10) 
     ShowAllArticles.insertAdjacentHTML(
       "beforeend",
       `
@@ -326,7 +331,7 @@ const GetAndShowArticles = async () => {
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
   </svg>            
-  <span>${article.createdAt}</span>
+  <span>${ChangeGregorianDateToPersian(+year , +month , +day)}</span>
   </div>
 </div>
 <!-- line -->
@@ -475,7 +480,7 @@ const GetAndShowCourseDetails = async () => {
   const TopicsCollapse = $.querySelector("#TopicsCollapse");
   const CommentsBody = $.querySelector("#CommentsBody");
   const ShowMoreCommentBtn = $.querySelector(".ShowMoreCommentBtn");
-
+  
   const res = await fetch(`${BaseUrl()}courses/${courseUrlName}`, {
     method: "POST",
     headers: {
@@ -536,7 +541,10 @@ const GetAndShowCourseDetails = async () => {
         ? " تکمیل شده"
         : "در حال برگزاری";
       CourseSupportWay.innerHTML = course.support;
-      CourseLastUpdated.innerHTML = course.updatedAt.slice(0, 10);
+     let year = course.createdAt.slice(0 , 4) 
+      let month = course.createdAt.slice(5 , 7) 
+      let day = course.createdAt.slice(8 , 10) 
+      CourseLastUpdated.innerHTML = ChangeGregorianDateToPersian(+year , +month , +day);
       let sum = 0;
       course.sessions.forEach((session) => {
         sum += +session.time.slice(0, 2);

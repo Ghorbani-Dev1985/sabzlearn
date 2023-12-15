@@ -1,5 +1,6 @@
-import { GetToken, ShowSwalAlert , BaseUrl} from "../../Funcs/Utils.js";
+import { GetToken, ShowSwalAlert , BaseUrl , ChangeGregorianDateToPersian} from "../../Funcs/Utils.js";
 const $ = document;
+
 
 
 const GetAndShowAllContacts = async () => {
@@ -7,16 +8,24 @@ const GetAndShowAllContacts = async () => {
     AllContactsTable.innerHTML = "";
   const res = await fetch(`${BaseUrl()}contact`);
   const contacts = await res.json();
+  let year , month , day;
   contacts.forEach((contact , index) => {
+   
+    year = contact.createdAt.slice(0 , 4) 
+     month = contact.createdAt.slice(5 , 7) 
+     day = contact.createdAt.slice(8 , 10) 
     AllContactsTable.insertAdjacentHTML(
-        "beforeend",
+      "beforeend",
         `
          <tr class="even:bg-gray-50 odd:bg-white child:py-3">
          <th>
-        ${index + 1}
+         ${index + 1}
          </th>
          <td>
          ${contact.name}
+         </td>
+         <td>
+       ${ChangeGregorianDateToPersian(+year , +month , +day)}
          </td>
          <td>
          ${contact.body}
@@ -53,6 +62,53 @@ const GetAndShowAllContacts = async () => {
 }
 
 
+const AnswerContact = async () => {
+   const ContactEmailInput = $.querySelector('#ContactEmailInput')
+  const ContactAnswerTextarea = $.querySelector('#ContactAnswerTextarea')
+  const AnswerContactInfos = {
+    email: ContactEmailInput.value.trim(),
+    answer: ContactAnswerTextarea.value.trim(),
+  }
+   if(ContactEmailInput.value !== '' || ContactAnswerTextarea.value !== ''){
+    const res = await fetch(`${BaseUrl()}contact/answer`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${GetToken()}`,
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(AnswerContactInfos),
+    });
+    if(res.ok){
+      ContactEmailInput.value = '',
+      ContactAnswerTextarea.value = '',
+      Swal.fire({
+          icon: "success",
+          title: "پاسخ با موفقیت ارسال شد",
+          showCancelButton: false,
+          showConfirmButton: true,
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "مشاهده کلیه پیغام ها",
+        }).then((result) => {
+          if (result.isConfirmed) {
+           GetAndShowAllContacts();
+
+          }
+        });
+    }else{
+      ShowSwalAlert(
+          "error",
+          "خطایی در ارسال پاسخ پیغام رخ داده است"
+          );
+    }
+   }else{
+    ShowSwalAlert(
+      "error",
+      "لطفا فرم پاسخ را تکمیل نمایید"
+      );
+   }
+}
+
+
 const CreateNewCategory = async () => {
    const CategoryNameInput = $.querySelector('#CategoryNameInput')
   const CategoryUrlInput = $.querySelector('#CategoryUrlInput')
@@ -70,7 +126,7 @@ const CreateNewCategory = async () => {
             body: JSON.stringify(NewCategoryInfos),
           });
           if(res.ok){
-            CategoryNameInput.value = '',
+            C.value = '',
             CategoryUrlInput.value = '',
             Swal.fire({
                 icon: "success",
@@ -139,4 +195,4 @@ const DeleteContact = async (contactID) => {
 }
 
 
-export {GetAndShowAllContacts , CreateNewCategory , DeleteContact }
+export {GetAndShowAllContacts , CreateNewCategory , DeleteContact , AnswerContact }

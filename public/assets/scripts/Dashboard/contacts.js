@@ -2,16 +2,17 @@ import {
   GetAndShowAllContacts,
   CreateNewCategory,
   DeleteContact,
+  AnswerContact
 } from "./Funcs/contacts.js";
 
 window.DeleteContact = DeleteContact;
 
 
 window.addEventListener("load", () => {
-  const AddNewCategoryBtn = document.querySelector("#AddNewCategoryBtn");
+  const AnswerContactBtn = document.querySelector("#AnswerContactBtn");
   GetAndShowAllContacts();
-  AddNewCategoryBtn.addEventListener("click", (e) => {
+  AnswerContactBtn.addEventListener('click' , e => {
     e.preventDefault();
-    CreateNewCategory();
-  });
+    AnswerContact();
+  })
 });

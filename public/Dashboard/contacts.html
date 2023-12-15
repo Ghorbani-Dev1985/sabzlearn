@@ -75,38 +75,33 @@
       <div id="WelcomeMsg" class="flex items-center my-4 font-MorabbaBold text-lg"></div>
       <div class="mt-12">       
         <div class="mb-4 grid grid-cols-1 gap-6">
-          <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden">
-            <!-- Add New Course Section -->
-            <section class="p-6">
-              <p class="font-MorabbaBold text-lg">افزودن پیغام جدید</p>
+          <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden p-3">
+             <!-- Answer Contact Section -->
+             <section class="p-6">
+              <p class="font-MorabbaBold text-lg"> پاسخ پیغام</p>
               <div class="flex-between gap-3 my-10">
-                <div class="flex flex-1 flex-col gap-4">
+                <div class="flex flex-1 flex-col h-48 gap-4">
                   <div class="w-full relative">
-                    <input type="text" id="CategoryNameInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
-                    <label for="CategoryNameInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> نام دسته بندی</label>
-                </div>
-                <div class="w-full relative">
-                  <input type="text" id="CategoryUrlInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
-                  <label for="CategoryUrlInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> URL دسته بندی </label>
-              </div>
-          
+                    <input type="text" id="ContactEmailInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
+                    <label for="ContactEmailInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> ایمیل</label>
+                </div>  
                 </div>
                 <div class="flex flex-1 flex-col h-48 gap-4">  
+                  <textarea id="ContactAnswerTextarea" rows="10" placeholder=" متن پاسخ پیغام" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ></textarea>
             </div>
               </div>
               <div class="w-full flex-center">
-                <button id="AddNewCategoryBtn" type="submit" class="flex-center gap-2 bg-sky-500 text-white px-3 py-2 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
-                  </svg>
-                 
-                  افزودن دسته بندی جدید
+                <button id="AnswerContactBtn" type="submit" class="flex-center gap-2 bg-sky-500 text-white px-3 py-2 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>                              
+                 ثبت پاسخ پیغام
                 </button>
               </div>
             </section>
             <div class="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
               <div>
-                <h6 class="block antialiased tracking-normal text-base font-MorabbaBold leading-relaxed text-emerald-gray-900 mb-1">لیست  دسته بندی ها</h6>
+                <h6 class="block antialiased tracking-normal text-base font-MorabbaBold leading-relaxed text-emerald-gray-900 mb-1">لیست   پیغام ها</h6>
               </div>
             </div>
             <div class="overflow-x-auto">
@@ -115,7 +110,8 @@
                 <thead class="border border-gray-200">
                   <tr class="bg-emerald-50 font-DanaBold text-lg text-zinc-700 text-center">
                     <th>ردیف</th>
-                    <th>  نام کامل   </th>
+                    <th>  نام ارسال کننده   </th>
+                    <th>  تاریخ ارسال   </th>
                     <th>  متن پیغام </th> 
                     <th>   تلفن تماس </th>     
                     <th>  ایمیل  </th> 
@@ -143,6 +139,7 @@
       </div>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="./../assets/scripts/Dashboard/Shared.js"></script>
   <script type="module" src="./../assets/scripts/Dashboard/contacts.js"></script>
