@@ -2,10 +2,12 @@ import {
   GetAndShowAllContacts,
   CreateNewCategory,
   DeleteContact,
-  AnswerContact
+  AnswerContact,
+  OpenModal
 } from "./Funcs/contacts.js";
 
 window.DeleteContact = DeleteContact;
+window.OpenModal = OpenModal;
 
 
 window.addEventListener("load", () => {

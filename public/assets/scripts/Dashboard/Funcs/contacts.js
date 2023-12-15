@@ -10,7 +10,6 @@ const GetAndShowAllContacts = async () => {
   const contacts = await res.json();
   let year , month , day;
   contacts.forEach((contact , index) => {
-   
     year = contact.createdAt.slice(0 , 4) 
      month = contact.createdAt.slice(5 , 7) 
      day = contact.createdAt.slice(8 , 10) 
@@ -28,7 +27,7 @@ const GetAndShowAllContacts = async () => {
        ${ChangeGregorianDateToPersian(+year , +month , +day)}
          </td>
          <td>
-         ${contact.body}
+         <label for="my_modal_7" class="flex-center gap-2 bg-sky-500 text-white px-3 py-2 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors" onclick="OpenModal('${contact.body}')"> مشاهده</label>   
          </td>
          <td>
           ${contact.phone}
@@ -61,7 +60,11 @@ const GetAndShowAllContacts = async () => {
   return contacts;
 }
 
-
+const OpenModal = (contactBody) => {
+  console.log(contactBody);
+  const ShowContactBody = $.querySelector('#ShowContactBody');
+  ShowContactBody.innerHTML = contactBody;
+}
 const AnswerContact = async () => {
    const ContactEmailInput = $.querySelector('#ContactEmailInput')
   const ContactAnswerTextarea = $.querySelector('#ContactAnswerTextarea')
@@ -195,4 +198,4 @@ const DeleteContact = async (contactID) => {
 }
 
 
-export {GetAndShowAllContacts , CreateNewCategory , DeleteContact , AnswerContact }
+export {GetAndShowAllContacts , CreateNewCategory , DeleteContact , AnswerContact, OpenModal  }
