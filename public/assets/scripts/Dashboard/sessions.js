@@ -2,10 +2,10 @@ import {
   GetAllSessions,
   CreateNewSession,
   PrepareCreateSessionFrom,
-  DeleteCourse
+  DeleteSession
 } from "./Funcs/sessions.js";
 
-window.DeleteCourse = DeleteCourse;
+window.DeleteSession = DeleteSession;
 
 window.addEventListener("load", () => {
   const AddNewCourseBtn = document.querySelector("#AddNewCourseBtn");

@@ -3955,6 +3955,10 @@ progress::-webkit-progress-value {
   width: min-content;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .min-w-\[200px\] {
   min-width: 200px;
 }
@@ -4982,6 +4986,10 @@ progress::-webkit-progress-value {
 
 .p-8 {
   padding: 2rem;
+}
+
+.\!p-4 {
+  padding: 1rem !important;
 }
 
 .px-0 {
