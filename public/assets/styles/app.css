@@ -3428,6 +3428,11 @@ progress::-webkit-progress-value {
   margin-bottom: 2rem;
 }
 
+.my-11 {
+  margin-top: 2.75rem;
+  margin-bottom: 2.75rem;
+}
+
 .-mr-5 {
   margin-right: -1.25rem;
 }
@@ -3791,6 +3796,30 @@ progress::-webkit-progress-value {
 
 .h-25 {
   height: 6.25rem;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
+.h-\[26rem\] {
+  height: 26rem;
+}
+
+.h-\[28rem\] {
+  height: 28rem;
+}
+
+.h-\[32rem\] {
+  height: 32rem;
+}
+
+.h-72 {
+  height: 18rem;
+}
+
+.h-80 {
+  height: 20rem;
 }
 
 .max-h-14 {

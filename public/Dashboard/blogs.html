@@ -80,54 +80,47 @@
             <section class="p-6">
               <p class="font-MorabbaBold text-lg">افزودن مقاله جدید</p>
               <div class="flex-between gap-3 my-10">
-                <div class="flex flex-1 flex-col h-60 justify-between gap-4">
+                <div class="flex flex-1 flex-col h-80 justify-between gap-4">
                   <div class="w-full relative">
-                    <input type="text" id="SessionNameInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
-                    <label for="SessionNameInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> نام جلسه</label>
+                    <input type="text" id="BlogNameInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
+                    <label for="BlogNameInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"> عنوان مقاله </label>
                 </div>
-
-                <div class="w-full relative">
-                  <input type="text" id="SessionTimeInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
-                  <label for="SessionTimeInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">  مدت زمان جلسه</label>
+                <textarea id="BlogDescription" rows="10" placeholder="توضیح مقاله" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ></textarea>
+                <select id="BlogCategoryList" class="select select-bordered w-full bg-slate-100 focus:outline-none">
+                  <option value="-1" disabled selected>انتخاب  دوره</option>
+                </select>
               </div>
-              <select id="CourseNameList" class="select select-bordered w-full bg-slate-100 focus:outline-none">
-                <option value="-1" disabled selected>انتخاب  دوره</option>
-              </select>
-                <div class="flex-center gap-3">
-                  وضعیت دوره
-                  <div class="flex-center">
-                    <input type="radio" name="radio-4" id="FreeSessionRadio" value="1" class="radio radio-accent  mx-2 align-middle" />
-                    <label for="FreeSessionRadio" class="label-text"> رایگان  </label>
-                  </div>
-                  <div class="flex-center">
-                    <input type="radio" name="radio-4" id="NotFreeSessionRadio" value="0" class="radio radio-accent checked:border-emerald-200 mx-2 align-middle" />
-                    <label for="NotFreeSessionRadio" class="label-text"> غیر رایگان   </label>
-                  </div>
-                </div>
-                </div>
-                <div class="flex flex-1 flex-col h-60 justify-between gap-4">
+              <div class="flex flex-1 flex-col h-80 justify-between gap-4">
+                <div class="w-full relative">
+                  <input type="text" id="BlogShortNameInput" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " />
+                  <label for="BlogShortNameInput" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">  لینک مقاله </label>
+              </div>
+                 
             <div class="flex items-center justify-center w-full">
-              <label for="SessionCoverUploader" class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <label for="BlogCoverUploader" class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                 <div class="w-full flex flex-col items-center justify-center pt-5">
                   <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                   </svg>
-                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">آپلود ودیو عکس دوره</span> یا فایل را کشیده و رها کنید</p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400 font-sans"> MP4 , M4V , Webm </p>
-                  <input id="SessionCoverUploader" type="file" class="w-full h-25 opacity-0" accept=".mp4, .m4v , .webm" list="1" />
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">آپلود عکس مقاله</span> یا فایل را کشیده و رها کنید</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-sans"> JPG , PNG </p>
+                  <input id="BlogCoverUploader" type="file" class="w-full h-25 opacity-0" accept=".jpg, .png" list="1" />
                           <p id="ShowFileNameUpload" class="my-2"></p>
                       </div>
                   </label>
               </div> 
                 </div>
               </div>
-              <div class="w-full flex-center">
+              <p class="mb-3 text-lg">  بدنه مقاله</p>
+              <div id="editor"></div>
+
+              <div class="w-full flex-center my-12">
                 <button id="AddNewCourseBtn" type="submit" class="flex-center gap-2 bg-sky-500 text-white px-3 py-2 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                     <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
                   </svg>
                  
-                  ثبت جلسه جدید
+                  ثبت مقاله جدید
                 </button>
               </div>
             </section>
@@ -181,6 +174,7 @@
       </div>
     </div>
   </div>
+  <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="./../assets/scripts/Dashboard/Shared.js"></script>
   <script type="module" src="./../assets/scripts/Dashboard/blogs.js"></script>

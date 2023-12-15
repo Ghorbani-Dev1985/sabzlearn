@@ -5,7 +5,7 @@ import {
   ChangeGregorianDateToPersian,
 } from "../../Funcs/Utils.js";
 const $ = document;
-let CourseID = -1;
+let CategoryID = -1;
 let SessionStatus = 0;
 let SessionCover = null;
 
@@ -91,36 +91,27 @@ const ShowBlogBody = (blogBody) => {
   });
 };
 
-const PrepareCreateSessionFrom = async () => {
-  const CourseNameList = $.querySelector("#CourseNameList");
-  const FreeSessionRadio = $.querySelector("#FreeSessionRadio");
-  const NotFreeSessionRadio = $.querySelector("#NotFreeSessionRadio");
-  const SessionCoverUploader = $.querySelector("#SessionCoverUploader");
+const PrepareCreateBlogFrom = async () => {
+  const BlogCategoryList = $.querySelector("#BlogCategoryList");
+
+  const BlogCoverUploader = $.querySelector("#BlogCoverUploader");
   const ShowFileNameUpload = $.querySelector("#ShowFileNameUpload");
-  const res = await fetch(`${BaseUrl()}courses`);
-  const courses = await res.json();
-  console.log(courses);
-  courses.forEach((course) => {
-    CourseNameList.insertAdjacentHTML(
+  const res = await fetch(`${BaseUrl()}category`);
+  const categories = await res.json();
+  console.log(categories);
+  categories.forEach((category) => {
+    BlogCategoryList.insertAdjacentHTML(
       "beforeend",
       `
-       <option value=${course._id}>${course.name}</option>
+       <option value=${category._id}>${category.title}</option>
       `
     );
   });
-  CourseNameList.addEventListener(
+  BlogCategoryList.addEventListener(
     "change",
-    (event) => (CourseID = event.target.value)
+    (event) => (CategoryID = event.target.value)
   );
-  FreeSessionRadio.addEventListener(
-    "change",
-    (event) => (SessionStatus = event.target.value)
-  );
-  NotFreeSessionRadio.addEventListener(
-    "change",
-    (event) => (SessionStatus = event.target.value)
-  );
-  SessionCoverUploader.addEventListener("change", (event) => {
+  BlogCoverUploader.addEventListener("change", (event) => {
     ShowFileNameUpload.innerHTML = event.target.files[0].name;
     SessionCover = event.target.files[0];
   });
@@ -231,6 +222,6 @@ export {
   GetAllBlogs,
   ShowBlogBody,
   CreateNewSession,
-  PrepareCreateSessionFrom,
+  PrepareCreateBlogFrom,
   DeleteSession,
 };
