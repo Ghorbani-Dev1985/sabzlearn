@@ -49,21 +49,9 @@ const GetAndShowAllContacts = async () => {
       )
    });
 
-  return categories;
+  return contacts;
 }
 
-const PrepareCreateMenuFor = async () => {
-    const ParentMenuList = $.querySelector('#ParentMenuList');
-    ParentMenuList.addEventListener('change' , event => ParentMenuID = event.target.value)
-    const res = await fetch(`${BaseUrl()}menus`);
-    const menus = await res.json();
-    menus.forEach(menu => {
-        ParentMenuList.insertAdjacentHTML('beforeend' , `
-        <option value=${menu._id}>${menu.title}</option>
-        `)
-    })
-
-}
 
 const CreateNewCategory = async () => {
    const CategoryNameInput = $.querySelector('#CategoryNameInput')
@@ -111,9 +99,9 @@ const CreateNewCategory = async () => {
     }
 }
 
-const DeleteCategory = async (categoryID) => {
+const DeleteContact = async (contactID) => {
     Swal.fire({
-        title: "آیا برای حذف دسته بندی مطمعن هستید؟",
+        title: "آیا برای حذف پیغام مطمعن هستید؟",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#f43f5e",
@@ -122,18 +110,18 @@ const DeleteCategory = async (categoryID) => {
         cancelButtonText: "انصراف"
       }).then( async (result) => {
         if (result.isConfirmed) {
-          const res = await fetch(`${BaseUrl()}category/${categoryID}`, {
+          const res = await fetch(`${BaseUrl()}contact/${contactID}`, {
             method: "DELETE",
-            headers: {
-              Authorization: `Bearer ${GetToken()}`,
-            },
+            // headers: {
+            //   Authorization: `Bearer ${GetToken()}`,
+            // },
           });
           if(res.ok){
-            GetAndShowAllCategories();
+            GetAndShowAllContacts();
             Swal.fire({
               position: "top-center",
               icon: "success",
-              title: "دسته بندی مورد نظر با موفقیت حذف گردید",
+              title: "پیغام  مورد نظر با موفقیت حذف گردید",
               showConfirmButton: false,
               timer: 1500
             });
@@ -141,7 +129,7 @@ const DeleteCategory = async (categoryID) => {
             Swal.fire({
               position: "top-center",
               icon: "error",
-              title: "خطایی در روند حذف دسته بندی ایجاد گردید",
+              title: "خطایی در روند حذف  پیغام ایجاد گردید",
               showConfirmButton: false,
               timer: 1500
             });
@@ -151,4 +139,4 @@ const DeleteCategory = async (categoryID) => {
 }
 
 
-export {GetAndShowAllContacts , CreateNewCategory , PrepareCreateMenuFor , DeleteCategory }
+export {GetAndShowAllContacts , CreateNewCategory , DeleteContact }

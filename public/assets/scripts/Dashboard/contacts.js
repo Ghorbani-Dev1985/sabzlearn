@@ -1,10 +1,10 @@
 import {
   GetAndShowAllContacts,
   CreateNewCategory,
-  DeleteCategory,
+  DeleteContact,
 } from "./Funcs/contacts.js";
 
-window.DeleteCategory = DeleteCategory;
+window.DeleteContact = DeleteContact;
 
 
 window.addEventListener("load", () => {

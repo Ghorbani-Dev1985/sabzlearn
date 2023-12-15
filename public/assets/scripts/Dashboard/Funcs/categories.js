@@ -44,18 +44,6 @@ const GetAndShowAllCategories = async () => {
   return categories;
 }
 
-const PrepareCreateMenuFor = async () => {
-    const ParentMenuList = $.querySelector('#ParentMenuList');
-    ParentMenuList.addEventListener('change' , event => ParentMenuID = event.target.value)
-    const res = await fetch(`${BaseUrl()}menus`);
-    const menus = await res.json();
-    menus.forEach(menu => {
-        ParentMenuList.insertAdjacentHTML('beforeend' , `
-        <option value=${menu._id}>${menu.title}</option>
-        `)
-    })
-
-}
 
 const CreateNewCategory = async () => {
    const CategoryNameInput = $.querySelector('#CategoryNameInput')
