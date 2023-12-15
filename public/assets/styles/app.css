@@ -4759,6 +4759,11 @@ progress::-webkit-progress-value {
   background-color: rgb(125 211 252 / var(--tw-bg-opacity));
 }
 
+.bg-rose-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 241 242 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-60 {
   --tw-bg-opacity: 0.6;
 }

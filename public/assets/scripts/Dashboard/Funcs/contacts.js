@@ -16,7 +16,7 @@ const GetAndShowAllContacts = async () => {
     AllContactsTable.insertAdjacentHTML(
       "beforeend",
         `
-         <tr class="even:bg-gray-50 odd:bg-white child:py-3">
+         <tr class='${contact.answer === 1 ? 'bg-emerald-100' : 'bg-rose-50'}'>
          <th>
          ${index + 1}
          </th>
@@ -90,9 +90,13 @@ console.log(contactEmail);
           Swal.fire({
               icon: "success",
               title: "پاسخ با موفقیت ارسال شد",
-              timer: 2000,
-              showConfirmButton: false,
+              showConfirmButton: true,
               showCancelButton: false,
+              confirmButtonText: 'تایید'
+            }).then((result) => {
+              if(result.isConfirmed){
+                GetAndShowAllContacts();
+              }
             })
         }else{
           Swal.fire({
