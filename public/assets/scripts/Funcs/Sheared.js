@@ -926,11 +926,13 @@ const SendTicketMessage = async () => {
     });
     const result = await res.json();
     if (res.status === 201) {
-      ShowSwalAlert(
-        "success",
-        " پیام شما با موفقیت ثبت شد",
-        () => (location.href = "index.html")
-      );
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title:  " پیام شما با موفقیت ثبت شد",
+        showConfirmButton: false,
+        timer: 2500,
+      }).then(() => (location.href = "./index.html"));
     } else {
       ShowSwalAlert("error", "خطایی در ارسال پیام رخ داده است");
     }

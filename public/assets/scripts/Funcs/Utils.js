@@ -26,15 +26,15 @@ function ChangeGregorianDateToPersian(gy, gm, gd) {
 }
 
 
-const ShowSwalAlert = ( icon, title ,text, callback) => {
+const ShowSwalAlert = ( icon, title ,text , callback) => {
     Swal.fire({
         position: "top-center",
         icon: icon,
         title: title,
         text : text,
         showConfirmButton: false,
-        timer: 2500
-      }).then(result => callback(result))
+        timer: 2500,
+      }).then((result) => callback(result));
 }
 
 const SaveIntoLocalStorage = (key , value) => {

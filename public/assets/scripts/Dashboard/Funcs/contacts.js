@@ -27,24 +27,17 @@ const GetAndShowAllContacts = async () => {
        ${ChangeGregorianDateToPersian(+year , +month , +day)}
          </td>
          <td>
-         <label for="my_modal_7" class="flex-center gap-2 bg-sky-500 text-white px-3 py-2 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors" onclick="OpenModal('${contact.body}')"> مشاهده</label>   
+         ${contact.phone}
          </td>
          <td>
-          ${contact.phone}
+         ${contact.email}
          </td>
          <td>
-          ${contact.email}
+         <label for="my_modal_7" class="flex-center gap-2 bg-sky-500 text-white p-1 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors" onclick='ShowContactBodyInModal(${JSON.stringify(contact.body)})'> مشاهده</label>   
          </td>
          <td>
-          ${contact.answer ? 'پاسخ داده شده' : 'بدون پاسخ'}
+         <button class="flex-center gap-2 bg-sky-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors" onclick='AnswerContact(${JSON.stringify(contact.email)})'> پاسخ</button>
          </td>
-          <td>
-          <div class="text-sky-500 cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-        </svg>
-          </div>
-          </td>
           <td>
           <div onClick="DeleteContact('${contact._id}')" class="text-rose-500 cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -60,55 +53,71 @@ const GetAndShowAllContacts = async () => {
   return contacts;
 }
 
-const OpenModal = (contactBody) => {
+const ShowContactBodyInModal = (contactBody) => {
   console.log(contactBody);
   const ShowContactBody = $.querySelector('#ShowContactBody');
   ShowContactBody.innerHTML = contactBody;
 }
-const AnswerContact = async () => {
-   const ContactEmailInput = $.querySelector('#ContactEmailInput')
-  const ContactAnswerTextarea = $.querySelector('#ContactAnswerTextarea')
-  const AnswerContactInfos = {
-    email: ContactEmailInput.value.trim(),
-    answer: ContactAnswerTextarea.value.trim(),
-  }
-   if(ContactEmailInput.value !== '' || ContactAnswerTextarea.value !== ''){
-    const res = await fetch(`${BaseUrl()}contact/answer`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${GetToken()}`,
-        'Content-Type' : 'application/json',
-      },
-      body: JSON.stringify(AnswerContactInfos),
-    });
-    if(res.ok){
-      ContactEmailInput.value = '',
-      ContactAnswerTextarea.value = '',
-      Swal.fire({
-          icon: "success",
-          title: "پاسخ با موفقیت ارسال شد",
-          showCancelButton: false,
-          showConfirmButton: true,
-          confirmButtonColor: "#3085d6",
-          confirmButtonText: "مشاهده کلیه پیغام ها",
-        }).then((result) => {
-          if (result.isConfirmed) {
-           GetAndShowAllContacts();
 
-          }
+
+const AnswerContact = async (contactEmail) => {
+console.log(contactEmail);
+  Swal.fire({
+    title: "ارسال پاسخ",
+    input: 'textarea',
+    inputPlaceholder: 'متن پاسخ پیغام',
+    showCancelButton: false,
+    showConfirmButton: true,
+    confirmButtonColor: "#3085d6",
+    confirmButtonText: "   ثبت پاسخ پیام",
+  }).then(async (result) => {
+    if (result.isConfirmed && result.value !== '') {
+        const AnswerContactInfos = {
+    email: contactEmail,
+    answer: result.value,
+  };
+        const res = await fetch(`${BaseUrl()}contact/answer`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${GetToken()}`,
+            'Content-Type' : 'application/json',
+          },
+          body: JSON.stringify(AnswerContactInfos),
         });
-    }else{
-      ShowSwalAlert(
-          "error",
-          "خطایی در ارسال پاسخ پیغام رخ داده است"
-          );
+
+        const AnswerResult = await res.json();
+        if(res.ok){
+          Swal.fire({
+              icon: "success",
+              title: "پاسخ با موفقیت ارسال شد",
+              timer: 2000,
+              showConfirmButton: false,
+              showCancelButton: false,
+            })
+        }else{
+          Swal.fire({
+            icon: "error",
+            title:   "خطایی در ارسال پاسخ پیغام رخ داده است",
+            timer: 2000,
+            showConfirmButton: false,
+            showCancelButton: false,
+          })
+        }
+
     }
-   }else{
-    ShowSwalAlert(
-      "error",
-      "لطفا فرم پاسخ را تکمیل نمایید"
-      );
-   }
+  });
+
+  //  const ContactEmailInput = $.querySelector('#ContactEmailInput')
+  // const ContactAnswerTextarea = $.querySelector('#ContactAnswerTextarea')
+  // ContactEmailInput.value = contactEmail;
+
+  //  if(ContactEmailInput.value !== '' || ContactAnswerTextarea.value !== ''){
+  //  }else{
+  //   ShowSwalAlert(
+  //     "error",
+  //     "لطفا فرم پاسخ را تکمیل نمایید"
+  //     );
+  //  }
 }
 
 
@@ -198,4 +207,4 @@ const DeleteContact = async (contactID) => {
 }
 
 
-export {GetAndShowAllContacts , CreateNewCategory , DeleteContact , AnswerContact, OpenModal  }
+export {GetAndShowAllContacts , CreateNewCategory , DeleteContact , ShowContactBodyInModal , AnswerContact  }

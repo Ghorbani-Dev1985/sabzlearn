@@ -2,19 +2,16 @@ import {
   GetAndShowAllContacts,
   CreateNewCategory,
   DeleteContact,
-  AnswerContact,
-  OpenModal
+  ShowContactBodyInModal,
+  AnswerContact
 } from "./Funcs/contacts.js";
 
 window.DeleteContact = DeleteContact;
-window.OpenModal = OpenModal;
+window.ShowContactBodyInModal = ShowContactBodyInModal;
+window.AnswerContact = AnswerContact;
 
 
 window.addEventListener("load", () => {
   const AnswerContactBtn = document.querySelector("#AnswerContactBtn");
   GetAndShowAllContacts();
-  AnswerContactBtn.addEventListener('click' , e => {
-    e.preventDefault();
-    AnswerContact();
-  })
 });
