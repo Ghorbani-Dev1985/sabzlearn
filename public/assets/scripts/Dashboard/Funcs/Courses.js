@@ -122,40 +122,25 @@ const CreateNewCourse = async () => {
   formData.append("categoryID", CategoryID);
   formData.append("status", CourseStatus);
   formData.append("cover", CourseCover);
-  const res = await fetch(`${BaseUrl()}courses`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${GetToken()}`,
-    },
-    body: formData,
-  });
-   console.log(res);
-  
-  if (res.status === 201) {
+ if(CourseNameInput.value !== '' && CoursePriceInput.value !== '' && CourseDescription.value !== '' && CourseShortNameInput.value !== '' && CourseSupportInput.value !== '' && CategoryID !== -1 && CourseCover !== null){
+   const res = await fetch(`${BaseUrl()}courses`, {
+     method: "POST",
+     headers: {
+       Authorization: `Bearer ${GetToken()}`,
+     },
+     body: formData,
+   });
+
+
+ }else{
   Swal.fire({
-    icon: "success",
-    title: "دوره جدید با موفقیت ثبت شد",
-    showCancelButton: false,
-    showConfirmButton: true,
-    confirmButtonColor: "#3085d6",
-    confirmButtonText: "مشاهده کلیه دوره ها",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      console.log("ok");
-     // GetAllCourses();
-    }
+    position: "top-center",
+    icon: "error",
+    title: "لطفا فرم را تکمیل نمایید ",
+    showConfirmButton: false,
+    timer: 1500,
   });
-  } else {
-    ShowSwalAlert(
-      "error",
-      "خطایی در ثبت دوره جدید رخ داده است"
-      );
-    }
-    // CourseNameInput.value = '';
-    // CoursePriceInput.value = '';
-    // CourseDescription.value = '';
-    // CourseShortNameInput.value = '';
-    // CourseSupportInput.value = '';
+ }
 };
 
 const DeleteCourse = async (courseID) => {
