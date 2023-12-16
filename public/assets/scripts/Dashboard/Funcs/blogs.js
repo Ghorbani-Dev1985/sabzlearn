@@ -33,14 +33,10 @@ const GetAllBlogs = async () => {
         ${article.title}
        </td>
        <td class="font-DanaMd leading-5">
-       <button class="flex-center gap-2 bg-amber-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-amber-500 border hover:border-amber-500 transition-colors" onclick='ShowBlogDescription(${JSON.stringify(
-        article.description
-      )})'> مشاهده</button>
+       <button class="flex-center gap-2 bg-amber-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-amber-500 border hover:border-amber-500 transition-colors" onclick='ShowBlogDescription(${JSON.stringify(article.description)})'> مشاهده</button>
       </td>
       <td class="font-DanaMd leading-5">
-      <button class="flex-center gap-2 bg-sky-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors" onclick='ShowBlogBody(${JSON.stringify(
-        article.body
-      )})'> مشاهده</button>
+      <button class="flex-center gap-2 bg-sky-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors" onclick='ShowBlogBody(${JSON.stringify(article.body)})'> مشاهده</button>
       </td>
        <td class="font-DanaMd leading-5">
       <img src=http://localhost:4000/courses/covers/${
@@ -69,7 +65,7 @@ const GetAllBlogs = async () => {
     ${article.publish === 1 ? " منتشر شده" : "پیش نویس "}
    </td>
         <td>
-        <div onClick="DeleteArticle('${
+        <div onClick="DeleteBlog('${
           article._id
         }')" class="text-rose-500 cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -183,17 +179,10 @@ const CreateNewBlog = async () => {
             GetAllBlogs();
           }
         });
-    } else if (res.status === 413) {
-      Swal.fire({
-        icon: "warning",
-        title: "حجم فایل بیش از حد مجاز می باشد",
-        showConfirmButton: false,
-        timer: 2000,
-      });
     } else {
       Swal.fire({
         icon: "error",
-        title: "خطایی در روند ثبت جلسه جدید ایجاد گردید",
+        title: "خطایی در روند ثبت مقاله جدید ایجاد گردید",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -208,9 +197,72 @@ const CreateNewBlog = async () => {
   }
 };
 
-const DeleteSession = async (sessionID) => {
+const DraftNewBlog = async () => {
+  const BlogNameInput = $.querySelector("#BlogNameInput");
+  const BlogDescription = $.querySelector("#BlogDescription");
+  const BlogShortNameInput = $.querySelector("#BlogShortNameInput");
+  const formData = new FormData();
+  formData.append("title", BlogNameInput.value.trim());
+  formData.append("description", BlogDescription.value.trim());
+  formData.append("shortName", BlogShortNameInput.value.trim());
+  formData.append("body", ArticleBodyEditor.getData());
+  formData.append("categoryID", CategoryID);
+  formData.append("cover", BlogCover);
+  if (
+    BlogNameInput.value !== "" &&
+    BlogDescription.value !== "" &&
+    BlogShortNameInput.value !== '' &&
+    ArticleBodyEditor.getData() !== '' &&
+    BlogCover !== null &&
+    CategoryID !== -1
+  ) {
+    const res = await fetch(`${BaseUrl()}articles/draft`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${GetToken()}`,
+      },
+      body: formData,
+    });
+    console.log(res);
+
+    if (res.ok) {
+      BlogNameInput.value = ""
+      BlogDescription.value = ""
+      BlogShortNameInput.value = ""
+        Swal.fire({
+          icon: "success",
+          title: "مقاله جدید با موفقیت پیش نویس شد",
+          showCancelButton: false,
+          showConfirmButton: true,
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "مشاهده کلیه مقاله ها",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            console.log("ok");
+            GetAllBlogs();
+          }
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "خطایی در روند پیش نویس مقاله جدید ایجاد گردید",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "لطفا  فرم را تکمیل نمایید",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+  }
+};
+
+const DeleteBlog = async (blogID) => {
   Swal.fire({
-    title: "آیا برای حذف جلسه مطمعن هستید؟",
+    title: "آیا برای حذف مقاله مطمعن هستید؟",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#f43f5e",
@@ -219,26 +271,26 @@ const DeleteSession = async (sessionID) => {
     cancelButtonText: "انصراف",
   }).then(async (result) => {
     if (result.isConfirmed) {
-      const res = await fetch(`${BaseUrl()}courses/sessions/${sessionID}`, {
+      const res = await fetch(`${BaseUrl()}articles/${blogID}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${GetToken()}`,
         },
       });
       if (res.ok) {
-        GetAllSessions();
+        GetAllBlogs();
         Swal.fire({
           icon: "success",
-          title: "جلسه مورد نظر با موفقیت حذف گردید",
+          title: "مقاله مورد نظر با موفقیت حذف گردید",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
       } else {
         Swal.fire({
           icon: "error",
-          title: "خطایی در روند حذف جلسه ایجاد گردید",
+          title: "خطایی در روند حذف مقاله ایجاد گردید",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
       }
     }
@@ -250,6 +302,7 @@ export {
   ShowBlogBody,
   ShowBlogDescription,
   CreateNewBlog,
+  DraftNewBlog,
   PrepareCreateBlogFrom,
-  DeleteSession,
+  DeleteBlog,
 };
