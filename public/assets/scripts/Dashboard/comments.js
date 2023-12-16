@@ -1,8 +1,9 @@
-import {GetAndShowAllComments , CreateNewMenu , PrepareCreateMenuFor, ShowCommentBody , AcceptComment , RejectComment , DeleteMenu} from "./Funcs/comments.js";
+import {GetAndShowAllComments , CreateNewMenu , PrepareCreateMenuFor, ShowCommentBody ,AnswerComment, AcceptComment , RejectComment , DeleteMenu} from "./Funcs/comments.js";
 
 
 window.DeleteMenu = DeleteMenu;
 window.ShowCommentBody = ShowCommentBody;
+window.AnswerComment = AnswerComment;
 window.AcceptComment = AcceptComment;
 window.RejectComment = RejectComment;
 

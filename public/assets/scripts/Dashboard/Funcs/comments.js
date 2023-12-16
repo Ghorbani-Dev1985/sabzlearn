@@ -54,9 +54,7 @@ const GetAndShowAllComments = async () => {
           )})'> مشاهده</button>
           </td>
           <td>
-           <button class="flex-center gap-2 bg-orange-700 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-orange-700 border hover:border-orange-700 transition-colors" onclick='AnswerComment(${JSON.stringify(
-             comment.body
-           )})'> مشاهده</button>
+           <button class="flex-center gap-2 bg-orange-700 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-orange-700 border hover:border-orange-700 transition-colors" onclick='AnswerComment(${JSON.stringify(comment._id)})'> پاسخ</button>
           </td>
           <td>
           <div onClick="AcceptComment('${comment._id}')" class="text-sky-500 cursor-pointer flex-center">
@@ -177,57 +175,61 @@ const RejectComment = (commentID) => {
 };
 
 
-const AnswerComment = async (commentEmail) => {
-  console.log(commentEmail);
-  // console.log(contactEmail);
-  //   Swal.fire({
-  //     title: "ارسال پاسخ",
-  //     input: 'textarea',
-  //     inputPlaceholder: 'متن پاسخ پیغام',
-  //     showCancelButton: false,
-  //     showConfirmButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     confirmButtonText: "   ثبت پاسخ پیام",
-  //   }).then(async (result) => {
-  //     if (result.isConfirmed && result.value !== '') {
-  //         const AnswerContactInfos = {
-  //     email: contactEmail,
-  //     answer: result.value,
-  //   };
-  //         const res = await fetch(`${BaseUrl()}contact/answer`, {
-  //           method: "POST",
-  //           headers: {
-  //             Authorization: `Bearer ${GetToken()}`,
-  //             'Content-Type' : 'application/json',
-  //           },
-  //           body: JSON.stringify(AnswerContactInfos),
-  //         });
+const AnswerComment = async (commentID) => {
+    Swal.fire({
+      title: "ارسال پاسخ",
+      input: 'textarea',
+      inputPlaceholder: 'متن پاسخ کامنت',
+      showCancelButton: false,
+      showConfirmButton: true,
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "   ثبت پاسخ کامنت",
+    }).then(async (result) => {
+      if (result.isConfirmed && result.value !== '') {
+          const AnswerCommentInfos = {
+      body: result.value,
+    };
+           await fetch(`${BaseUrl()}comments/answer/${commentID}`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${GetToken()}`,
+              'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(AnswerCommentInfos),
+          }).then(res => {
+            if(res.ok){
+              Swal.fire({
+                  icon: "success",
+                  title: "پاسخ کامنت با موفقیت ارسال شد",
+                  showConfirmButton: true,
+                  showCancelButton: false,
+                  confirmButtonText: 'تایید'
+                }).then((result) => {
+                  if(result.isConfirmed){
+                    GetAndShowAllComments();
+                  }
+                })
+            }else{
+              Swal.fire({
+                icon: "error",
+                title:   "خطایی در ارسال پاسخ کامنت رخ داده است",
+                timer: 2000,
+                showConfirmButton: false,
+                showCancelButton: false,
+              })
+            }
+          })
 
-  //         const AnswerResult = await res.json();
-  //         if(res.ok){
-  //           Swal.fire({
-  //               icon: "success",
-  //               title: "پاسخ با موفقیت ارسال شد",
-  //               showConfirmButton: true,
-  //               showCancelButton: false,
-  //               confirmButtonText: 'تایید'
-  //             }).then((result) => {
-  //               if(result.isConfirmed){
-  //                 GetAndShowAllContacts();
-  //               }
-  //             })
-  //         }else{
-  //           Swal.fire({
-  //             icon: "error",
-  //             title:   "خطایی در ارسال پاسخ پیغام رخ داده است",
-  //             timer: 2000,
-  //             showConfirmButton: false,
-  //             showCancelButton: false,
-  //           })
-  //         }
-
-  //     }
-  //});
+      }else{
+        Swal.fire({
+          icon: "error",
+          title:   "لطفا پاسخ کامنت را وارد نمایید",
+          timer: 2000,
+          showConfirmButton: false,
+          showCancelButton: false,
+        })
+      }
+  });
 };
 
 const PrepareCreateMenuFor = async () => {
@@ -331,6 +333,7 @@ export {
   GetAndShowAllComments,
   CreateNewMenu,
   ShowCommentBody,
+  AnswerComment,
   AcceptComment,
   RejectComment,
   PrepareCreateMenuFor,

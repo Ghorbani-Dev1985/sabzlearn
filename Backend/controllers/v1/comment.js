@@ -76,6 +76,7 @@ exports.answer = async (req, res) => {
     answer: 1,
     isAnswer: 1,
     mainCommendID: req.params.id,
+    score: 5,
   });
 
   res.json(answerToComment);
