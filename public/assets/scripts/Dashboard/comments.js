@@ -1,8 +1,10 @@
-import {GetAndShowAllComments , CreateNewMenu , PrepareCreateMenuFor, ShowCommentBody , DeleteMenu} from "./Funcs/comments.js";
+import {GetAndShowAllComments , CreateNewMenu , PrepareCreateMenuFor, ShowCommentBody , AcceptComment , RejectComment , DeleteMenu} from "./Funcs/comments.js";
 
 
 window.DeleteMenu = DeleteMenu;
 window.ShowCommentBody = ShowCommentBody;
+window.AcceptComment = AcceptComment;
+window.RejectComment = RejectComment;
 
 
 window.addEventListener('load' , () => {
