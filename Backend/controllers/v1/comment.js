@@ -38,7 +38,7 @@ exports.getAll = async (req, res) => {
     if (!comment.mainCommendID) {
       comments.push({
         ...comment,
-        course: comment.course.name,
+      //  course: comment.course.name,
         answerContent: mainCommentAnswerInfo,
       });
     }
