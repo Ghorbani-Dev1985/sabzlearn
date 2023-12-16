@@ -1,6 +1,7 @@
 import {
   GetAllBlogs,
-  CreateNewSession,
+  CreateNewBlog,
+  ShowBlogDescription,
   ShowBlogBody,
   PrepareCreateBlogFrom,
   DeleteSession
@@ -8,19 +9,15 @@ import {
 
 window.DeleteSession = DeleteSession;
 window.ShowBlogBody = ShowBlogBody;
+window.ShowBlogDescription = ShowBlogDescription;
 
 
 window.addEventListener("load", () => {
-  const AddNewCourseBtn = document.querySelector("#AddNewCourseBtn");
+  const AddNewBlogBtn = document.querySelector("#AddNewBlogBtn");
   GetAllBlogs();
-  ClassicEditor
-  .create( document.querySelector( '#editor' ) )
-  .catch( error => {
-      console.error( error );
-  } )
   PrepareCreateBlogFrom();
-  AddNewCourseBtn.addEventListener("click", (event) => {
+  AddNewBlogBtn.addEventListener("click", (event) => {
    event.preventDefault();
-   //CreateNewSession();
+   CreateNewBlog();
   });
 });

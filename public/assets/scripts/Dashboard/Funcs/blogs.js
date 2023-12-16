@@ -6,16 +6,17 @@ import {
 } from "../../Funcs/Utils.js";
 const $ = document;
 let CategoryID = -1;
-let SessionStatus = 0;
-let SessionCover = null;
+let BlogCover = null;
+let ArticleBodyEditor = null;
+
 
 const GetAllBlogs = async () => {
-  const CountOfAllSessions = $.querySelector("#CountOfAllSessions");
+  const CountOfAllBlogs = $.querySelector("#CountOfAllBlogs");
   const AllBlogsTable = $.querySelector("#AllBlogsTable tbody");
   AllBlogsTable.innerHTML = "";
   const res = await fetch(`${BaseUrl()}articles`);
   const articles = await res.json();
-  CountOfAllSessions.innerHTML = articles.length;
+ CountOfAllBlogs.innerHTML = articles.length;
   let year, month, day;
   articles.forEach((article, index) => {
     year = article.createdAt.slice(0, 4);
@@ -32,7 +33,9 @@ const GetAllBlogs = async () => {
         ${article.title}
        </td>
        <td class="font-DanaMd leading-5">
-       ${article.description}
+       <button class="flex-center gap-2 bg-amber-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-amber-500 border hover:border-amber-500 transition-colors" onclick='ShowBlogDescription(${JSON.stringify(
+        article.description
+      )})'> مشاهده</button>
       </td>
       <td class="font-DanaMd leading-5">
       <button class="flex-center gap-2 bg-sky-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors" onclick='ShowBlogBody(${JSON.stringify(
@@ -82,10 +85,19 @@ const GetAllBlogs = async () => {
   return articles;
 };
 
+const ShowBlogDescription = (blogDescription) => {
+  Swal.fire({
+    text: blogDescription,
+    inputPlaceholder: "متن توضیحات مقاله",
+    showCancelButton: false,
+    showConfirmButton: false,
+  });
+}
+
 const ShowBlogBody = (blogBody) => {
   Swal.fire({
     text: blogBody,
-    inputPlaceholder: "متن پاسخ پیغام",
+    inputPlaceholder: "متن بدنه مقاله",
     showCancelButton: false,
     showConfirmButton: false,
   });
@@ -93,9 +105,18 @@ const ShowBlogBody = (blogBody) => {
 
 const PrepareCreateBlogFrom = async () => {
   const BlogCategoryList = $.querySelector("#BlogCategoryList");
-
   const BlogCoverUploader = $.querySelector("#BlogCoverUploader");
   const ShowFileNameUpload = $.querySelector("#ShowFileNameUpload");
+  ClassicEditor
+  .create( document.querySelector( '#editor' ) , {
+    language: 'fa',
+  }).then(editor => {
+   ArticleBodyEditor = editor
+  }).catch( error => {
+      console.error( error );
+  });
+
+
   const res = await fetch(`${BaseUrl()}category`);
   const categories = await res.json();
   console.log(categories);
@@ -113,25 +134,30 @@ const PrepareCreateBlogFrom = async () => {
   );
   BlogCoverUploader.addEventListener("change", (event) => {
     ShowFileNameUpload.innerHTML = event.target.files[0].name;
-    SessionCover = event.target.files[0];
+    BlogCover = event.target.files[0];
   });
 };
 
-const CreateNewSession = async () => {
-  const SessionNameInput = $.querySelector("#SessionNameInput");
-  const SessionTimeInput = $.querySelector("#SessionTimeInput");
+const CreateNewBlog = async () => {
+  const BlogNameInput = $.querySelector("#BlogNameInput");
+  const BlogDescription = $.querySelector("#BlogDescription");
+  const BlogShortNameInput = $.querySelector("#BlogShortNameInput");
   const formData = new FormData();
-  formData.append("title", SessionNameInput.value.trim());
-  formData.append("time", SessionTimeInput.value.trim());
-  formData.append("video", SessionCover);
-  formData.append("free", SessionStatus);
+  formData.append("title", BlogNameInput.value.trim());
+  formData.append("description", BlogDescription.value.trim());
+  formData.append("shortName", BlogShortNameInput.value.trim());
+  formData.append("body", ArticleBodyEditor.getData());
+  formData.append("categoryID", CategoryID);
+  formData.append("cover", BlogCover);
   if (
-    SessionNameInput.value !== "" &&
-    SessionTimeInput.value !== "" &&
-    SessionCover !== null &&
-    CourseID !== -1
+    BlogNameInput.value !== "" &&
+    BlogDescription.value !== "" &&
+    BlogShortNameInput.value !== '' &&
+    ArticleBodyEditor.getData() !== '' &&
+    BlogCover !== null &&
+    CategoryID !== -1
   ) {
-    const res = await fetch(`${BaseUrl()}courses/${CourseID}/sessions`, {
+    const res = await fetch(`${BaseUrl()}articles`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${GetToken()}`,
@@ -141,19 +167,20 @@ const CreateNewSession = async () => {
     console.log(res);
 
     if (res.ok) {
-      (SessionNameInput.value = ""),
-        (SessionTimeInput.value = ""),
+      BlogNameInput.value = ""
+      BlogDescription.value = ""
+      BlogShortNameInput.value = ""
         Swal.fire({
           icon: "success",
-          title: "جلسه جدید با موفقیت ثبت شد",
+          title: "مقاله جدید با موفقیت ثبت شد",
           showCancelButton: false,
           showConfirmButton: true,
           confirmButtonColor: "#3085d6",
-          confirmButtonText: "مشاهده کلیه جلسه ها",
+          confirmButtonText: "مشاهده کلیه مقاله ها",
         }).then((result) => {
           if (result.isConfirmed) {
             console.log("ok");
-            GetAllSessions();
+            GetAllBlogs();
           }
         });
     } else if (res.status === 413) {
@@ -221,7 +248,8 @@ const DeleteSession = async (sessionID) => {
 export {
   GetAllBlogs,
   ShowBlogBody,
-  CreateNewSession,
+  ShowBlogDescription,
+  CreateNewBlog,
   PrepareCreateBlogFrom,
   DeleteSession,
 };
