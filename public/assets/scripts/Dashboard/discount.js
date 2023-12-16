@@ -2,10 +2,10 @@ import {
   GetAndShowAllDiscount,
   PrepareCreateDiscountForm,
   CreateNewDiscount,
-  DeleteComment,
+  DeleteDiscount,
 } from "./Funcs/discount.js";
 
-window.DeleteComment = DeleteComment;
+window.DeleteDiscount = DeleteDiscount;
 
 window.addEventListener("load", () => {
   const AddNewDiscountBtn = document.querySelector("#AddNewDiscountBtn");

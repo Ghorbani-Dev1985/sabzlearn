@@ -81,7 +81,8 @@ const PrepareCreateDiscountForm = async () => {
   );
   const res = await fetch(`${BaseUrl()}courses`);
   const courses = await res.json();
-  courses.forEach((course) => {
+  const NotFreeCourses = courses.filter(course => course.price !== 0);
+  NotFreeCourses.forEach((course) => {
     CoursesList.insertAdjacentHTML(
       "beforeend",
       `
@@ -162,19 +163,18 @@ const DeleteDiscount = async (offID) => {
         },
       });
       if (res.ok) {
-        ();
+        GetAndShowAllDiscount();
         Swal.fire({
           position: "top-center",
           icon: "success",
-          title: "کامنت مورد نظر با موفقیت حذف گردید",
+          title: "کد تخفیف مورد نظر با موفقیت حذف گردید",
           showConfirmButton: false,
           timer: 2000,
         });
       } else {
         Swal.fire({
-          position: "top-center",
           icon: "error",
-          title: "خطایی در روند حذف کامنت ایجاد گردید",
+          title: "خطایی در روند حذف کد تخفیف رخ داده است",
           showConfirmButton: false,
           timer: 2000,
         });
@@ -187,5 +187,5 @@ export {
   GetAndShowAllDiscount,
   PrepareCreateDiscountForm,
   CreateNewDiscount,
-  DeleteComment,
+  DeleteDiscount,
 };
