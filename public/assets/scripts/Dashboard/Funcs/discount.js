@@ -56,7 +56,7 @@ const GetAndShowAllDiscount = async () => {
          ${off.uses === 0 ? 'استفاده نشده' : off.uses}
          </td>
           <td>
-          <div onClick="DeleteComment('${off._id}')" class="text-rose-500 cursor-pointer flex-center">
+          <div onClick="DeleteDiscount('${off._id}')" class="text-rose-500 cursor-pointer flex-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
         </svg>
@@ -73,67 +73,80 @@ const GetAndShowAllDiscount = async () => {
 
 
 
-const PrepareCreateMenuFor = async () => {
+const PrepareCreateDiscountForm = async () => {
   const CoursesList = $.querySelector("#CoursesList");
   CoursesList.addEventListener(
     "change",
     (event) => (CourseID = event.target.value)
   );
   const res = await fetch(`${BaseUrl()}courses`);
-  const menus = await res.json();
-  menus.forEach((menu) => {
+  const courses = await res.json();
+  courses.forEach((course) => {
     CoursesList.insertAdjacentHTML(
       "beforeend",
       `
-        <option value=${menu._id}>${menu.title}</option>
+        <option value=${course._id}>${course.name}</option>
         `
     );
   });
 };
 
 const CreateNewDiscount = async () => {
-  const MenuNameInput = $.querySelector("#MenuNameInput");
-  const MenuShortNameInput = $.querySelector("#MenuShortNameInput");
-  const NewMenuInfos = {
-    title: MenuNameInput.value.trim(),
-    href: MenuShortNameInput.value.trim(),
-    parent: CourseID,
+   const DiscountCodeInput = $.querySelector('#DiscountCodeInput')
+   const DiscountPercentInput = $.querySelector('#DiscountPercentInput')
+   const DiscountMaxInput = $.querySelector('#DiscountMaxInput')
+  const NewDiscountInfos = {
+    code: DiscountCodeInput.value.trim(),
+    percent: DiscountPercentInput.value.trim(),
+    max: DiscountMaxInput.value.trim(),
+    course: CourseID,
   };
-  if (MenuNameInput.value !== "" || MenuShortNameInput.value !== "") {
-    const res = await fetch(`${BaseUrl()}menus`, {
+  if (DiscountCodeInput.value !== "" && DiscountPercentInput.value !== "" && DiscountMaxInput.value !== "" ) {
+    const res = await fetch(`${BaseUrl()}offs`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${GetToken()}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(NewMenuInfos),
+      body: JSON.stringify(NewDiscountInfos),
     });
     if (res.ok) {
-      (MenuNameInput.value = ""),
-        (MenuShortNameInput.value = ""),
+      DiscountCodeInput.value = '',
+      DiscountPercentInput.value = '',
+      DiscountMaxInput.value = ''
         Swal.fire({
           icon: "success",
-          title: "منوی جدید با موفقیت ثبت شد",
+          title: "کد تخفیف جدید با موفقیت ثبت شد",
           showCancelButton: false,
           showConfirmButton: true,
           confirmButtonColor: "#3085d6",
-          confirmButtonText: "مشاهده کلیه منو ها",
+          confirmButtonText: "مشاهده کلیه کد تخفیف ها",
         }).then((result) => {
           if (result.isConfirmed) {
-            GetAndShowAllMenus();
+            GetAndShowAllDiscount();
           }
         });
     } else {
-      ShowSwalAlert("error", "خطایی در ثبت منوی جدید رخ داده است");
+      Swal.fire({
+      icon: "error",
+      title: "خطایی در ایجاد کد تخفیف رخ داده است",
+      showConfirmButton: false,
+      timer: 2000,
+    });
     }
   } else {
-    ShowSwalAlert("error", "لطفا فرم را تکمیل نمایید");
+    Swal.fire({
+      icon: "error",
+      title: "خطایی در روند ایجاد کد تخفیف رخ داده است",
+      showConfirmButton: false,
+      timer: 2000,
+    });
   }
 };
 
-const DeleteComment = async (commentID) => {
+const DeleteDiscount = async (offID) => {
   Swal.fire({
-    title: "آیا برای حذف کامنت مطمعن هستید؟",
+    title: "آیا برای حذف کد تخفیف مطمعن هستید؟",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#f43f5e",
@@ -142,14 +155,14 @@ const DeleteComment = async (commentID) => {
     cancelButtonText: "انصراف",
   }).then(async (result) => {
     if (result.isConfirmed) {
-      const res = await fetch(`${BaseUrl()}comments/${commentID}`, {
+      const res = await fetch(`${BaseUrl()}offs/${offID}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${GetToken()}`,
         },
       });
       if (res.ok) {
-        GetAndShowAllComments();
+        ();
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -172,6 +185,7 @@ const DeleteComment = async (commentID) => {
 
 export {
   GetAndShowAllDiscount,
+  PrepareCreateDiscountForm,
   CreateNewDiscount,
   DeleteComment,
 };
