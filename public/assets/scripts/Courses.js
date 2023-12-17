@@ -25,6 +25,9 @@ window.addEventListener('load' , () => {
                 ${
                   course.price === 0 ? `<span class="absolute right-2.5 top-2.5 flex-center w-12 h-6 bg-primary text-white rounded-xl font-danaDemiBold text-sm">100%</span>` : ""
                 }
+                ${
+                  course.discount ? `<span class="absolute right-2.5 top-2.5 flex-center w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-danaDemiBold text-sm">${course.discount}%</span>` : ""
+                }
                 <!-- Course Card Body -->
                 <div class="px-2">
                   <h2 class="font-MorabbaBold text-base md:text-xl my-6 line-clamp-1">${
@@ -81,11 +84,23 @@ window.addEventListener('load' , () => {
                     </div>
                     <div> 
                     ${
-                      course.price === 0
+                      course.price === 0 
                         ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>`
-                        : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+                        : ''
                     }
-                     
+                    ${
+                      course.discount && course.price !== 0 ? `
+                      <div class="flex flex-col gap-2">
+                      <div class="flex-center gap-1 text-gray-300 line-through font-DanaMd text-lg">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman-gray.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+                      <div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${(course.price - (course.price * course.discount) / 100).toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+                      </div>
+                      
+                      ` : ''
+                     }
+                     ${
+                      course.discount === 0 && course.price !== 0 ? `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>` : 
+                      ''
+                     }
                     </div>
                   </div>
                 </div>
