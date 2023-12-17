@@ -1,4 +1,5 @@
 import {GlobalSearchInApp} from './Funcs/Sheared.js';
+import {BaseUrl} from  "./Funcs/Utils.js";
 const $ = document
 const MainPageHeaderTitle = $.querySelector('.MainPageHeaderTitle')
 const UsersCountDown = $.querySelector('.UsersCountDown')
@@ -11,6 +12,7 @@ const GlobalSearchBtn = $.querySelector('#GlobalSearchBtn');
 
 
 window.addEventListener('load' , () => {
+  GetAndShowIndexPageInfos()
     GlobalSearchBtn.addEventListener('click' , (e) => {
         e.preventDefault();
         location.href = `search.html?value=${GlobalSearchInput.value.trim()}`;
@@ -47,6 +49,13 @@ function GenerateCounter(max ,ElementName, delay){
     counter++
   },delay);
 }
-GenerateCounter(4500 , UsersCountDown , 1)
-GenerateCounter(40 , CoursesCountDown , 25)
-GenerateCounter(3132, CoursesTimeCountDown , 1)
+
+
+const GetAndShowIndexPageInfos = async () => {
+  const res = await fetch('http://localhost:4000/v1/infos/index')
+  const IndexInfos = await res.json();
+  console.log(IndexInfos);
+  GenerateCounter(IndexInfos.usersCount , UsersCountDown , 100)
+  GenerateCounter(IndexInfos.coursesCount , CoursesCountDown , 100)
+  GenerateCounter(IndexInfos.totalTime , CoursesTimeCountDown , 100)
+}

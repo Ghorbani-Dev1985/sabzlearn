@@ -14,7 +14,6 @@ const GetAndShowAllCourses = async () => {
   const Courses = await res.json();
   const FilteredNonFreeCourses = Courses.filter((course) => course.price !== 0)
   FilteredNonFreeCourses.slice(0, 6).map((course) => {
-    console.log(course.discount);
     ShowAllCourses.insertAdjacentHTML(
       "beforeend",
       `
@@ -1329,7 +1328,6 @@ const GetFreeCourses = async () => {
  const res = await fetch(`${BaseUrl()}courses`)
  const courses = await res.json()
  const FilteredFreeCourses = courses.filter(course => course.price === 0)
- console.log(FilteredFreeCourses);
  FilteredFreeCourses.forEach((course) => {
   FreeCoursesBody.insertAdjacentHTML("beforeend",
     `
