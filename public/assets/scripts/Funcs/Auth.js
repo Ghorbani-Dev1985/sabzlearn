@@ -71,15 +71,12 @@ const Login = () => {
     if(res.status === 401){
         ShowSwalAlert("error" , 'کاربری با چنین اطلاعات یافت نگردید')
     }else if(res.status === 200){
-        // ShowSwalAlert("success" , ' ورود با موفقیت انجام شد' , 
-        // 
-        // )
         Swal.fire({
             icon: "success",
             title: ' ورود با موفقیت انجام شد',
             showCancelButton: false,
             showConfirmButton: false,
-            confirmButtonColor: "#3085d6",
+            timer: 1500
           })
         location.href = 'index.html'
   }

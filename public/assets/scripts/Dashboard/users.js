@@ -1,8 +1,9 @@
-import {GetAndShowAllUsers, DeleteUser , BanUser , CreateNewUser} from "./Funcs/users.js";
+import {GetAndShowAllUsers, DeleteUser , BanUser , CreateNewUser , ChangeUserRole} from "./Funcs/users.js";
 
 
 window.DeleteUser = DeleteUser;
 window.BanUser = BanUser;
+window.ChangeUserRole = ChangeUserRole;
 
 
 window.addEventListener('load' , () => {

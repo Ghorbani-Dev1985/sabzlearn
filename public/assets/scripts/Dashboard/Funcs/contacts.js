@@ -142,7 +142,7 @@ const CreateNewCategory = async () => {
             body: JSON.stringify(NewCategoryInfos),
           });
           if(res.ok){
-            C.value = '',
+            CategoryNameInput.value = '',
             CategoryUrlInput.value = '',
             Swal.fire({
                 icon: "success",
