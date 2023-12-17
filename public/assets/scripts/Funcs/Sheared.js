@@ -14,6 +14,7 @@ const GetAndShowAllCourses = async () => {
   const Courses = await res.json();
   const FilteredNonFreeCourses = Courses.filter((course) => course.price !== 0)
   FilteredNonFreeCourses.slice(0, 6).map((course) => {
+    console.log(course.discount);
     ShowAllCourses.insertAdjacentHTML(
       "beforeend",
       `
@@ -28,6 +29,9 @@ const GetAndShowAllCourses = async () => {
         />
         ${
           course.price === 0 ? `<span class="absolute right-2.5 top-2.5 flex-center w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-DanaBold text-sm">100%</span>`: ""
+        }
+        ${
+          course.discount ? `<span class="absolute right-2.5 top-2.5 flex-center w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-danaDemiBold text-sm">${course.discount}%</span>` : ""
         }
         <!-- Course Card Body -->
         <div class="px-2">
@@ -87,9 +91,17 @@ const GetAndShowAllCourses = async () => {
             ${
               course.price === 0
                 ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>`
-                : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+                : ''
             }
-             
+             ${
+              course.discount ? `
+              <div class="flex flex-col gap-2">
+              <div class="flex-center gap-1 text-gray-300 line-through font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman-gray.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+              <div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${(course.price - (course.price * course.discount) / 100).toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+              </div>
+              
+              ` : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+             }
             </div>
           </div>
         </div>
@@ -188,7 +200,16 @@ const GetAndShowPopularCourses = async () => {
                      ${
                        course.price === 0
                          ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>`
-                         : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+                         : ''
+                     }
+                     ${
+                      course.discount ? `
+                      <div class="flex flex-col gap-2">
+                      <div class="flex-center gap-1 text-gray-300 line-through font-DanaMd text-lg">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman-gray.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+                      <div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${(course.price - (course.price * course.discount) / 100).toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+                      </div>
+                      
+                      ` : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
                      }
                      </span>
                      </div>
@@ -219,9 +240,9 @@ const GetAndShowPreSellCourses = async () => {
     <div class="relative">
       <a id="NewCourseLink" class="w-full h-full block">
         <img src=http://localhost:4000/courses/covers/${course.cover} alt="ghorbani-dev.ir" />
-        <span class="absolute right-2.5 top-2.5 hidden w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-DanaBold text-sm"> ${
-          course.price === 0 && "100%"
-        }</span>
+        ${
+          course.discount ? `<span class="absolute right-2.5 top-2.5 flex-center w-12 h-6 bg-sabzlearnGreen text-white rounded-xl font-danaDemiBold text-sm">${course.discount}%</span>` : ""
+        }
         <div class="px-5 pt-3.5 pb-2.5">
        
         <a id="NewCourseTagOne" href="" class="inline-flex items-center justify-center text-xs text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 py-1 px-1.5 mb-2.5 rounded">
@@ -284,7 +305,16 @@ const GetAndShowPreSellCourses = async () => {
                      ${
                        course.price === 0
                          ? `<span class='text-sabzlearnGreen font-DanaMd text-xl space-x-1.5'>رایگان!</span>`
-                         : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+                         : ''
+                     }
+                     ${
+                      course.discount ? `
+                      <div class="flex flex-col gap-2">
+                      <div class="flex-center gap-1 text-gray-300 line-through font-DanaMd text-lg">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman-gray.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+                      <div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${(course.price - (course.price * course.discount) / 100).toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+                      </div>
+                      
+                      ` : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
                      }
                      </span>
                      </div>
@@ -500,13 +530,15 @@ const GetAndShowCourseDetails = async () => {
 
       if (course.price !== 0) {
         CoursePrice.innerHTML = `
-         <span  class="font-DanaBold font-bold text-base md:text-3xl"
-         >${course.price.toLocaleString()}
-       </span>
-       <img
-         src="./assets/images/svg/toman-black.svg"
-         class="w-6 h-6 object-cover"
-       />
+        ${
+          course.discount ? `
+          <div class="flex flex-col gap-2">
+          <div class="flex-center gap-1 text-gray-300 line-through font-DanaMd text-lg">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman-gray.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+          <div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${(course.price - (course.price * course.discount) / 100).toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>
+          </div>
+          
+          ` : `<div class="flex-center gap-1 text-sabzlearnGreen font-DanaMd text-xl">${course.price.toLocaleString()}<img id="TomanSvg" src="./assets/images/svg/toman.svg" alt="ghorbani-dev.ir" class="w-5 h-5 null"></div>`
+         }
          `;
       } else {
         CoursePrice.innerHTML = `<span class="text-sabzlearnGreen font-DanaBold text-base md:text-3xl space-x-1.5">رایگان!</span>`;
@@ -576,6 +608,127 @@ CourseActionBtn.insertAdjacentHTML(
                 }
               })
              }
+            }
+          });
+         }else{
+          Swal.fire({
+            icon: "success",
+            title: "  برای ثبت نام در دوره مطمعن هستید؟",
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: '#1f2937',
+            confirmButtonText: "  ثبت نام ",
+            cancelButtonText: "انصراف",
+          }).then(async (result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                icon: "info",
+                title: " آیا کد تخفیف دارید؟",
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: '#1f2937',
+                confirmButtonText: "   بله ",
+                cancelButtonText: "خیر",
+              }).then(async (result) => {
+                if(result.isConfirmed){
+               Swal.fire({
+                title: 'کد تخفیف را وارد نمایید',
+                input: 'text',
+                showCancelButton: false,
+                showConfirmButton: true,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "   خرید با کد تخفیف ",
+               }).then(async(code) => {
+                if (code.value !== '') {
+                  console.log(result.value);
+                  await fetch(`${BaseUrl()}offs/${code.value}` , {
+                    method: "POST",
+                    headers: {
+                      Authorization: `Bearer ${GetToken()}`,
+                      'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify({course : course._id})
+                   })
+                   .then((res) => {
+                    if(res.status === 404){
+                      Swal.fire({
+                        icon: "error",
+                        showConfirmButton: false,
+                        title: " کد تخفیف معتبر نمی باشد",
+                         timer: 2000,
+                      })
+                    }else if(res.status === 409){
+                      Swal.fire({
+                        icon: "info",
+                        showConfirmButton: false,
+                        title: " مهلت استفاده از کد تخفیف به اتمام رسیده است",
+                         timer: 2000,
+                      })
+                    }
+                  return res.json()
+                   })
+                   .then((code) => {
+                    fetch(`${BaseUrl()}courses/${course._id}/register` , {
+                      method: "POST",
+                      headers: {
+                        Authorization: `Bearer ${GetToken()}`,
+                        'Content-Type' : 'application/json'
+                      },
+                      body: JSON.stringify({price : course.price - (course.price * code.percent) / 100})
+                     }).then((res => {
+                      if(res.ok){
+                        Swal.fire({
+                          icon: "success",
+                          title: " ثبت نام شما در دوره با موفقیت انجام شد",
+                          showCancelButton: false,
+                          showConfirmButton: true,
+                          confirmButtonColor: "#3085d6",
+                          confirmButtonText: "   تایید ",
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+                            location.reload()
+                          }
+                        })
+                       }
+                     }))
+                   })
+                }else{
+                  Swal.fire({
+                    icon: "error",
+                    title: " کد تخفیف وارد نشده",
+                     showConfirmButton: false,
+                     timer: 2000,
+                  })
+                }
+               })
+                }else{
+                  const res = await fetch(`${BaseUrl()}courses/${course._id}/register` , {
+                    method: "POST",
+                    headers: {
+                      Authorization: `Bearer ${GetToken()}`,
+                      'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify({price : course.price})
+                   })
+                   if(res.ok){
+                    Swal.fire({
+                      icon: "success",
+                      title: " ثبت نام شما در دوره با موفقیت انجام شد",
+                      showCancelButton: false,
+                      showConfirmButton: true,
+                      confirmButtonColor: "#3085d6",
+                      confirmButtonText: "   تایید ",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        location.reload()
+                      }
+                    })
+                   } 
+                }
+
+              })
             }
           });
          }

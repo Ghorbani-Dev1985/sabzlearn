@@ -5444,6 +5444,11 @@ progress::-webkit-progress-value {
   color: rgb(24 24 27 / var(--tw-text-opacity));
 }
 
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
 .line-through {
   text-decoration-line: line-through;
 }

@@ -19,13 +19,6 @@ const GetAndShowAllDiscount = async () => {
   const offs = await res.json();
   console.log(offs);
   let year, month, day;
-  // <th>   ایجاد کننده</th>
-  //                   <th>  تاریخ ایجاد </th>
-  //                   <th>   کد تخفیف</th>
-  //                   <th>درصد تخفیف</th>
-  //                   <th>دفعات مجاز</th>
-  //                   <th>تعداد استفاده</th>
-  //                    <th>حذف</th>
   offs.forEach((off, index) => {
     year = off.createdAt.slice(0, 4);
     month = off.createdAt.slice(5, 7);
