@@ -3165,11 +3165,11 @@ progress::-webkit-progress-value {
 }
 
 .active {
-  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
-  --tw-gradient-from: #059669 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(5 150 105 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: #34d399 var(--tw-gradient-to-position);
+  background-color: rgb(110 231 183 / 0.3);
+}
+
+.active:hover {
+  background-color: rgb(110 231 183 / 0.4) !important;
 }
 
 .sr-only {
@@ -5355,6 +5355,11 @@ progress::-webkit-progress-value {
   color: rgb(6 78 59 / var(--tw-text-opacity));
 }
 
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -5442,11 +5447,6 @@ progress::-webkit-progress-value {
 .text-zinc-900 {
   --tw-text-opacity: 1;
   color: rgb(24 24 27 / var(--tw-text-opacity));
-}
-
-.text-gray-300 {
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .line-through {
@@ -6466,6 +6466,10 @@ progress::-webkit-progress-value {
   background-color: rgb(255 255 255 / 0.1);
 }
 
+.hover\:bg-white\/30:hover {
+  background-color: rgb(255 255 255 / 0.3);
+}
+
 .hover\:text-amber-500:hover {
   --tw-text-opacity: 1;
   color: rgb(245 158 11 / var(--tw-text-opacity));
@@ -6570,6 +6574,11 @@ progress::-webkit-progress-value {
 
 .focus\:border-t-transparent:focus {
   border-top-color: transparent;
+}
+
+.focus\:bg-emerald-100:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 250 229 / var(--tw-bg-opacity));
 }
 
 .focus\:bg-emerald-300:focus {

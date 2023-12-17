@@ -277,7 +277,7 @@
     background-color: rgb(78 129 251 / var(--tw-bg-opacity));
   }
   .active{
-    @apply bg-gradient-to-tr from-emerald-600 to-emerald-400;
+    @apply bg-emerald-300/30 hover:!bg-emerald-300/40;
   }
 }
 
