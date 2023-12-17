@@ -13,6 +13,7 @@ const GetAdminInfos = async () => {
     return admin;
 };
 
+
 const ShowSwalAlert =  (title, icon, confirmButtonText, callback) => {
     Swal.fire({
       title,

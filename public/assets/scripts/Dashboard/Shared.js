@@ -1,7 +1,7 @@
 import { Aside } from "../../../Dashboard/Components/Aside/Aside.js";
 import { InsertNotificationTemplate, SeenNotification } from "./Funcs/Notification.js";
-import { GetAdminInfos } from "./Funcs/Utils.js";
-// Add Components
+import { GetAdminInfos} from "./Funcs/Utils.js";
+// Add Component
 window.customElements.define('site-aside' , Aside);
 
 
@@ -13,7 +13,6 @@ const $ = document;
 
 window.addEventListener("load", () => {
   const ShowUserFullName = $.querySelector("#ShowUserFullName");
-
   GetAdminInfos().then((admin) => {
     // Protect Panel Route
     if (admin.role === "ADMIN") {

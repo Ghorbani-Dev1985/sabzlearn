@@ -119,7 +119,7 @@ template.innerHTML = `
           <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">  پیغام ها</p>
       </a>
     </li>
-    <li class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-rose-500 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 cursor-pointer capitalize">
+    <li id="LogoutBtn" class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-rose-500 hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 cursor-pointer capitalize">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-inherit">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
             </svg>
@@ -141,12 +141,40 @@ class Aside extends HTMLElement {
   connectedCallback() {
     const activePage = window.location.pathname;
     const NavLinks = this.shadowRoot.querySelectorAll(".NavLinks");
+    const LogoutBtn = this.shadowRoot.querySelector("#LogoutBtn");
     window.addEventListener('load' , () => {
       NavLinks.forEach(link => {
         if(link.href.includes(`${activePage}`)){
           link.classList.add('active')
         }
       })
+    })
+    LogoutBtn.addEventListener('click' , () => {
+      Swal.fire({
+        icon: "warning",
+        title: " آیا برای خروج مطمعن هستید؟",
+        showCancelButton: true,
+        showConfirmButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#27272a",
+        confirmButtonText: "  خروج ",
+        cancelButtonText: "انصراف"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: "success",
+            title: " خروج با موفقیت انجام شد",
+            showCancelButton: false,
+            showConfirmButton: false,
+            timer: 1500
+          }).then(result => {
+            localStorage.removeItem('user')
+            location.href = './../index.html';
+            return true;
+          })
+        }
+      });
+     
     })
   }
 
