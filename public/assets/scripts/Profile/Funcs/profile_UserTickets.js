@@ -7,6 +7,24 @@ import {
 const $ = document;
 let year, month, day;
 
+const ShowNewTicketFormBtn = $.querySelector('#ShowNewTicketFormBtn')
+const NewTicketForm = $.querySelector('#NewTicketForm')
+
+ShowNewTicketFormBtn.addEventListener('click' , (e) =>{
+  e.preventDefault()
+  NewTicketForm.classList.toggle('hidden')
+})
+
+
+
+const PrepareSendTicketForm = async () => {
+    const DepartmentList = $.querySelector('#DepartmentList');
+    const res = await fetch(`${BaseUrl()}tickets/departments`);
+    const Departments = await res.json();
+
+    console.log(Departments);
+}
+
 
 
 const ShowAllTickets = async () => {
@@ -52,4 +70,5 @@ const ShowAllTickets = async () => {
 
 export {
   ShowAllTickets,
+  PrepareSendTicketForm,
 };
