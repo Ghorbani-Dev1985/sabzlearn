@@ -3893,13 +3893,6 @@ progress::-webkit-progress-value {
   -webkit-line-clamp: 2;
 }
 
-.line-clamp-3 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
 .line-clamp-4 {
   overflow: hidden;
   display: -webkit-box;
@@ -4027,10 +4020,6 @@ progress::-webkit-progress-value {
   height: 20rem;
 }
 
-.h-\[150rem\] {
-  height: 150rem;
-}
-
 .h-\[190px\] {
   height: 190px;
 }
@@ -4113,18 +4102,6 @@ progress::-webkit-progress-value {
 
 .min-h-screen {
   min-height: 100vh;
-}
-
-.min-h-\[150rem\] {
-  min-height: 150rem;
-}
-
-.min-h-\[10rem\] {
-  min-height: 10rem;
-}
-
-.min-h-\[100rem\] {
-  min-height: 100rem;
 }
 
 .w-1\/2 {
@@ -4401,16 +4378,12 @@ progress::-webkit-progress-value {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-cols-9 {
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-}
-
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-rows-1 {
@@ -4730,6 +4703,11 @@ progress::-webkit-progress-value {
   border-top-right-radius: 0.5rem;
 }
 
+.rounded-t {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
 .rounded-br-none {
   border-bottom-right-radius: 0px;
 }
@@ -4744,6 +4722,10 @@ progress::-webkit-progress-value {
 
 .rounded-tr-3xl {
   border-top-right-radius: 1.5rem;
+}
+
+.rounded-tl {
+  border-top-left-radius: 0.25rem;
 }
 
 .border {
@@ -4839,6 +4821,11 @@ progress::-webkit-progress-value {
 
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .border-b-emerald-300 {

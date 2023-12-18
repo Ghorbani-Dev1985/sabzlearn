@@ -52,7 +52,6 @@ const ShowAllRegisterIsNotefreeCourses = $.querySelector('#ShowAllRegisterIsNote
     const UserOrdersNoteFree = UserOrders.filter(UserOrder => UserOrder.course.price !== 0)
     const UserOrdersIsComplete = UserOrders.filter(UserOrder => UserOrder.course.isComplete === 1)
     const UserOrdersStarted = UserOrders.filter(UserOrder => UserOrder.course.status === 'start')
-    console.log(UserOrdersStarted);
     if(UserOrders.length){
           UserOrders.forEach(UserOrder => {
        ShowAllRegisterCourses.insertAdjacentHTML('beforeend' , `
