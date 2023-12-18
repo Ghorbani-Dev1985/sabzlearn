@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جزییات حساب | سبزلرن</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo/Logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./assets/styles/app.css" />
+  </head>
+  <body>
+    <!-- Header Component -->
+    <site-header></site-header>
+    <!-- Main Section -->
+    <main>
+      <div class="container">
+        <section class="h-full min-h-screen">
+          <div
+            class="bg-white flex-center dark:bg-gray-800 px-3.5 md:px-5 pt-5 md:pt-7 pb-5 md:pb-6 shadow-light dark:shadow-none rounded-2xl mt-3.5 sm:mt-5"
+          >
+            <div class="w-20p min-h-screen p-1">
+              <profile-menu></profile-menu>
+            </div>
+            <div class="w-80p min-h-screen px-3 py-1">
+              <!-- Show Order Table -->
+              <div class="w-full flex flex-col gap-8 max-w-xl mx-auto">
+                <div class="w-full relative">
+                  <input
+                    type="text"
+                    id="UserFullNameInput"
+                    class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
+                    placeholder=" "
+                  />
+                  <label
+                    for="UserFullNameInput"
+                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  >
+                    نام کامل</label
+                  >
+                </div>
+                <div class="w-full relative">
+                  <input
+                    type="text"
+                    id="UserNameInput"
+                    class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
+                    placeholder=" "
+                  />
+                  <label
+                    for="UserNameInput"
+                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  >
+                    نام کاربری</label
+                  >
+                </div>
+                <div class="w-full relative">
+                  <input
+                    type="text"
+                    id="UserPhoneInput"
+                    class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
+                    placeholder=" "
+                  />
+                  <label
+                    for="UserPhoneInput"
+                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  >
+                    تلفن تماس
+                  </label>
+                </div>
+                <div class="w-full relative">
+                  <input
+                    type="text"
+                    id="UserEmailInput"
+                    class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
+                    placeholder=" "
+                  />
+                  <label
+                    for="UserEmailInput"
+                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  >
+                    ایمیل
+                  </label>
+                </div>
+                <div class="w-full relative">
+                  <input
+                    type="text"
+                    id="UserPasswordInput"
+                    class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
+                    placeholder=" "
+                  />
+                  <label
+                    for="UserPasswordInput"
+                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  >
+                    کلمه عبور جدید
+                  </label>
+                </div>
+                <div class="w-full flex-center">
+                  <button id="EditUserDetailsBtn" type="submit" class="flex-center gap-2 bg-sky-500 text-white px-3 py-2 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                    </svg>
+              ذخیره تغییرات
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Footer Section -->
+    <site-footer></site-footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      type="module"
+      src="./assets/scripts/Profile/profile_UserDetails.js"
+    ></script>
+    <script type="module" src="./assets/scripts/app.js"></script>
+  </body>
+</html>
