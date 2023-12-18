@@ -25,21 +25,21 @@ const GetAllSessions = async () => {
     AllSessionsTable.insertAdjacentHTML(
       "beforeend",
       `
-       <tr class="even:bg-gray-50 odd:bg-white">
-       <th>
+       <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 child:text-center even:dark:bg-gray-800 border-b dark:border-gray-700">
+       <td class="px-6 py-4">
       ${index + 1}
-       </th>
-       <td class="font-DanaMd leading-5">
+       </td>
+       <td class="px-6 py-4" class="font-DanaMd leading-5">
         ${session.title}
        </td>
-       <td>
+       <td class="px-6 py-4">
         ${ChangeGregorianDateToPersian(+year, +month, +day)}
        </td>
-       <td>
+       <td class="px-6 py-4">
         ${session.time}
        </td>
-       <td>         ${session.course.name}        </td>
-       <td class="p-4">
+       <td class="px-6 py-4">         ${session.course.name}        </td>
+       <td class="px-6 py-4" class="p-4">
        <a href="http://localhost:4000/courses/covers/${session.video}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0ea5e9" class="w-6 h-6">
        <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
      </svg>
@@ -47,7 +47,7 @@ const GetAllSessions = async () => {
        </video>
        
        </td>
-       <td>
+       <td class="px-6 py-4">
        ${
          session.free === 1
            ? `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#10b981" class="w-5 h-5">
@@ -60,7 +60,7 @@ const GetAllSessions = async () => {
    `
        }
        </td>
-        <td>
+        <td class="px-6 py-4">
         <div onClick="DeleteSession('${
           session._id
         }')" class="text-rose-500 cursor-pointer">

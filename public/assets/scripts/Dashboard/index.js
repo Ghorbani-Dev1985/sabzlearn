@@ -51,18 +51,18 @@ AdminPanelInfos.lastUsers.forEach((lastUser , index) => {
   month = lastUser.createdAt.slice(5, 7);
   day = lastUser.createdAt.slice(8, 10);
   LastUserTable.insertAdjacentHTML('beforeend' , `
-  <tr class='even:bg-gray-50 odd:bg-white'>
-    <td>${index + 1}</td>
-    <td>${lastUser.name}</td>
-    <th>${ChangeGregorianDateToPersian(+year , +month , +day)}</th>
-    <th>${lastUser.username}</th>
-    <th>${lastUser.phone}</th>
-    <th>${lastUser.email}</th>
-    <th>
+  <tr class='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 child:text-center even:dark:bg-gray-800 border-b dark:border-gray-700'>
+    <td class="px-6 py-4">${index + 1}</td>
+    <td class="px-6 py-4">${lastUser.name}</td>
+    <td class="px-6 py-4">${ChangeGregorianDateToPersian(+year , +month , +day)}</td>
+    <td class="px-6 py-4">${lastUser.username}</td>
+    <td class="px-6 py-4">${lastUser.phone}</td>
+    <td class="px-6 py-4">${lastUser.email}</td>
+    <td class="px-6 py-4">
     ${
       lastUser.role === "ADMIN" ? 'مدیرسایت' : 'کاربر'
     }
-    </th>
+    </td>
 
     
   </tr> 

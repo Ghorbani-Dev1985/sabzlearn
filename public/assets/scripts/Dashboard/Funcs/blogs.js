@@ -25,17 +25,17 @@ const GetAllBlogs = async () => {
     AllBlogsTable.insertAdjacentHTML(
       "beforeend",
       `
-       <tr class="even:bg-gray-50 odd:bg-white">
-       <th>
+       <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 child:text-center even:dark:bg-gray-800 border-b dark:border-gray-700">
+       <td class="px-6 py-4">
       ${index + 1}
-       </th>
-       <td class="font-DanaMd leading-5">
+       </td>
+       <td class="font-DanaMd whitespace-nowrap leading-5 px-6 py-4">
         ${article.title}
        </td>
-       <td class="font-DanaMd leading-5">
+       <td class="font-DanaMd leading-5 px-6 py-4">
        <button class="flex-center gap-2 bg-amber-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-amber-500 border hover:border-amber-500 transition-colors" onclick='ShowBlogDescription(${JSON.stringify(article.description)})'> مشاهده</button>
       </td>
-      <td class="font-DanaMd leading-5">
+      <td class="font-DanaMd leading-5 px-6 py-4">
       <button class="flex-center gap-2 bg-sky-500 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors" onclick='ShowBlogBody(${JSON.stringify(article.body)})'> مشاهده</button>
       </td>
        <td class="font-DanaMd leading-5">
@@ -43,28 +43,28 @@ const GetAllBlogs = async () => {
         article.cover
       } alt="ghorbani.dev.ir" />
       </td>
-       <td>
+       <td class="px-6 py-4">
         ${ChangeGregorianDateToPersian(+year, +month, +day)}
        </td>
-       <td>
+       <td class="px-6 py-4">
         ${article.creator.name}
        </td>
-       <td>
+       <td class="px-6 py-4">
        ${article.creator.username}
       </td>
-      <td>
+      <td class="px-6 py-4">
       ${article.creator.phone}
      </td>
-     <td>
+     <td class="px-6 py-4">
      ${article.creator.email}
     </td>
-    <td>
+    <td class="px-6 py-4">
      ${article.creator.role === "ADMIN" ? "مدیر سایت" : "کاربر"}
     </td>
-    <td>
+    <td class="px-6 py-4">
     ${article.publish === 1 ? " منتشر شده" : "پیش نویس "}
    </td>
-        <td>
+        <td class="px-6 py-4">
         <div onClick="DeleteBlog('${
           article._id
         }')" class="text-rose-500 cursor-pointer">
