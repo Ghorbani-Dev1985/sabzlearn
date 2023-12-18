@@ -26,15 +26,21 @@
             </div>
             <div class="w-80p min-h-screen px-3 py-1">
              <h2 class="font-MorabbaBold text-xl">دوره های خریداری شده</h2>
-             <div role="tablist" class="tabs tabs-bordered grid-cols-9 my-8">
+             <div role="tablist" class="tabs tabs-bordered grid-cols-12 my-8">
               <input type="radio" name="my_tabs_1" role="tab" class="tab col-span-3" aria-label="همه دوره ها" checked/>
               <div role="tabpanel" id="ShowAllRegisterCourses" class="tab-content p-10"></div>
+             
+              <input type="radio" name="my_tabs_1" role="tab" class="tab col-span-3" aria-label="دوره های  رایگان"  />
+              <div role="tabpanel" id="ShowAllRegisterIsFreeCourses" class="tab-content p-10"></div>
+
+              <input type="radio" name="my_tabs_1" role="tab" class="tab col-span-3" aria-label="دوره های  پولی"  />
+              <div role="tabpanel" id="ShowAllRegisterIsNotefreeCourses" class="tab-content p-10"></div>
+               
+              <input type="radio" name="my_tabs_1" role="tab" class="tab col-span-3" aria-label="دوره های تکمیل شده"  />
+              <div role="tabpanel" id="ShowAllRegisterIsCompleteCourses" class="tab-content p-10"></div>
             
-              <input type="radio" name="my_tabs_1" role="tab" class="tab col-span-3" aria-label="دوره های فعال"  />
-              <div role="tabpanel" class="tab-content p-10">Tab content 2</div>
-            
-              <input type="radio" name="my_tabs_1" role="tab" class="tab col-span-3" aria-label=" دوره های تکمیل شده" />
-              <div role="tabpanel" class="tab-content p-10">Tab content 3</div>
+              <input type="radio" name="my_tabs_1" role="tab" class="tab col-span-3" aria-label=" دوره های فعال " />
+              <div role="tabpanel" id="ShowAllRegisterStartCourses" class="tab-content p-10"> </div>
             </div>
              <div class="w-full max-w-lg flex flex-col gap-5"></div>
             </div>

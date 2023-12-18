@@ -4409,6 +4409,10 @@ progress::-webkit-progress-value {
   grid-template-columns: repeat(9, minmax(0, 1fr));
 }
 
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
 .grid-rows-1 {
   grid-template-rows: repeat(1, minmax(0, 1fr));
 }
