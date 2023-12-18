@@ -41,15 +41,13 @@
               <th scope="col" class="px-6 py-3">
                 نام دوره
             </th>
-              <th scope="col" class="px-6 py-3">
-                  وضعیت دوره
-              </th>
+
               <th scope="col" class="px-6 py-3">
                 قیمت دوره
             </th>
-            <th scope="col" class="px-6 py-3">
-              پشتیبانی دوره
-          </th>
+          <th scope="col" class="px-6 py-3">
+             جزییات
+        </th>
           </tr>
       </thead>
       <tbody>
@@ -69,7 +67,42 @@
     </main>
     <!-- Footer Section -->
     <site-footer></site-footer>
-
+    <input type="checkbox" id="my_modal_7" class="modal-toggle" />
+    <div class="modal" role="dialog">
+      <div class="modal-box bg-white shadow-lg border-gray-400 max-w-4xl">
+        <p id="OrderTitle" class="text-lg my-3"></p>
+        <h2 class="font-MorabbaBold text-lg my-2">مشخصات سفارش</h2>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table id="ShowOneOrderTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr class="child:text-center">
+                      <th scope="col" class="px-6 py-3">
+                         کدکوتاه دوره
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                           وضعیت تکمیل
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                           وضعیت دوره
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                         نوع پشتیبانی
+                    </th>
+                  <th scope="col" class="px-6 py-3">
+                     درصد تخفیف
+                </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  
+        
+        
+              </tbody>
+          </table>
+        </div>
+      </div>
+      <label class="modal-backdrop" for="my_modal_7">Close</label>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="./assets/scripts/Profile/profile_orders.js"></script>
     <script type="module" src="./assets/scripts/app.js"></script>
