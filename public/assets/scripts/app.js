@@ -7,6 +7,7 @@ import { NewCourse } from "../../Components/NewCourse/NewCourse.js";
 import { Blog } from "../../Components/Blog/Blog.js";
 import { Footer } from "../../Components/Footer/Footer.js";
 import { Pagination } from "../../Components/Pagination/Pagination.js";
+import { Aside } from "../../Components/ProfileMenu/Aside.js";
 window.customElements.define('site-header' , Header);
 window.customElements.define('course-card' , CourseCard);
 window.customElements.define('help-card' , HelpCard);
@@ -16,7 +17,7 @@ window.customElements.define('new-course' , NewCourse);
 window.customElements.define('blog-card' , Blog);
 window.customElements.define('site-footer' , Footer);
 window.customElements.define('site-pagination' , Pagination);
-
+window.customElements.define('profile-menu' , Aside);
 //-----
 
 

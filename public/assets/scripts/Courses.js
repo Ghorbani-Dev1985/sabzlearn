@@ -8,7 +8,7 @@ window.addEventListener('load' , () => {
         const PaginationBody = document.querySelector('#PaginationBody')
         const ShowAllCoursesBody = document.querySelector('#ShowAllCoursesBody');
         const currentPage = GetUrlParam('page')
-       let shownCourses = PaginationItems([...courses] , 3 , PaginationBody , currentPage);
+       let shownCourses = PaginationItems([...courses] , 15 , PaginationBody , currentPage);
        shownCourses.map((course) => {
             ShowAllCoursesBody.insertAdjacentHTML(
               "beforeend",
