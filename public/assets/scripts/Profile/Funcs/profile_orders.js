@@ -9,6 +9,7 @@ const $ = document;
 
 const SetCampaign = async () => {
   const CampaignDiscountInput = $.querySelector("#ShowAllOrdersTable tbody");
+  const NullData = $.querySelector('.NullData');
   const res = await fetch(`${BaseUrl()}orders` , {
     method: "GET",
     headers: {
@@ -19,7 +20,8 @@ const SetCampaign = async () => {
   console.log(res);
   console.log(Orders);
   let year, month, day;
-  Orders.forEach((order , index) => {
+  if(Orders.length){
+      Orders.forEach((order , index) => {
     year = order.createdAt.slice(0, 4);
     month = order.createdAt.slice(5, 7);
     day = order.createdAt.slice(8, 10);
@@ -50,6 +52,10 @@ const SetCampaign = async () => {
     `)
 
   })
+  }else{
+    NullData.innerHTML = `اطلاعاتی برای نمایش وجود ندارد`
+  }
+  
 
 
 };
