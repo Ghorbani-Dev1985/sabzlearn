@@ -3769,6 +3769,22 @@ progress::-webkit-progress-value {
   height: 100vh;
 }
 
+.h-28 {
+  height: 7rem;
+}
+
+.h-30 {
+  height: 7.5rem;
+}
+
+.h-36 {
+  height: 9rem;
+}
+
+.h-44 {
+  height: 11rem;
+}
+
 .max-h-14 {
   max-height: 3.5rem;
 }
@@ -3811,10 +3827,6 @@ progress::-webkit-progress-value {
 
 .w-10 {
   width: 2.5rem;
-}
-
-.w-10\/12 {
-  width: 83.333333%;
 }
 
 .w-12 {
@@ -3931,10 +3943,6 @@ progress::-webkit-progress-value {
   min-width: 200px;
 }
 
-.min-w-\[640px\] {
-  min-width: 640px;
-}
-
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -3969,10 +3977,6 @@ progress::-webkit-progress-value {
 
 .flex-grow {
   flex-grow: 1;
-}
-
-.table-auto {
-  table-layout: auto;
 }
 
 .origin-\[0\] {
@@ -4316,10 +4320,6 @@ progress::-webkit-progress-value {
 
 .overflow-y-auto {
   overflow-y: auto;
-}
-
-.overflow-x-scroll {
-  overflow-x: scroll;
 }
 
 .truncate {
@@ -4792,18 +4792,6 @@ progress::-webkit-progress-value {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-green-600 {
-  --tw-gradient-from: #16a34a var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(22 163 74 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.from-orange-600 {
-  --tw-gradient-from: #ea580c var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(234 88 12 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
 .from-pink-500\/30 {
   --tw-gradient-from: rgb(236 72 153 / 0.3) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(236 72 153 / 0) var(--tw-gradient-to-position);
@@ -4875,16 +4863,8 @@ progress::-webkit-progress-value {
   --tw-gradient-to: #111827 var(--tw-gradient-to-position);
 }
 
-.to-green-400 {
-  --tw-gradient-to: #4ade80 var(--tw-gradient-to-position);
-}
-
 .to-green-500 {
   --tw-gradient-to: #22c55e var(--tw-gradient-to-position);
-}
-
-.to-orange-400 {
-  --tw-gradient-to: #fb923c var(--tw-gradient-to-position);
 }
 
 .to-pink-400 {
@@ -5131,10 +5111,6 @@ progress::-webkit-progress-value {
   padding-right: 1.75rem;
 }
 
-.pt-0 {
-  padding-top: 0px;
-}
-
 .pt-1 {
   padding-top: 0.25rem;
 }
@@ -5157,10 +5133,6 @@ progress::-webkit-progress-value {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.text-left {
-  text-align: left;
 }
 
 .text-center {
@@ -5498,11 +5470,6 @@ progress::-webkit-progress-value {
 
 .shadow-emerald-500\/40 {
   --tw-shadow-color: rgb(16 185 129 / 0.4);
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-.shadow-orange-500\/40 {
-  --tw-shadow-color: rgb(249 115 22 / 0.4);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
@@ -7085,10 +7052,6 @@ progress::-webkit-progress-value {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .md\:flex-row {
     flex-direction: row;
   }
@@ -7314,10 +7277,6 @@ progress::-webkit-progress-value {
 }
 
 @media (min-width: 1280px) {
-  .xl\:col-span-2 {
-    grid-column: span 2 / span 2;
-  }
-
   .xl\:col-span-3 {
     grid-column: span 3 / span 3;
   }
@@ -7343,10 +7302,6 @@ progress::-webkit-progress-value {
 
   .xl\:flex {
     display: flex;
-  }
-
-  .xl\:grid {
-    display: grid;
   }
 
   .xl\:hidden {
@@ -7376,10 +7331,6 @@ progress::-webkit-progress-value {
   .xl\:translate-x-0 {
     --tw-translate-x: 0px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .xl\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .xl\:grid-cols-4 {

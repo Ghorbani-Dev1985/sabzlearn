@@ -46,13 +46,6 @@ TitleBoxTwo.innerHTML = AdminPanelInfos.infos[1].title;
 CountBoxTwo.innerHTML = AdminPanelInfos.infos[1].count;
 TitleBoxThree.innerHTML = AdminPanelInfos.infos[2].title;
 CountBoxThree.innerHTML = AdminPanelInfos.infos[2].count;
-
-{/* <th>نام کاربر</th>
-<th>تاریخ ثبت نام</th>
-<th>نام کاربری</th>
-<th> تلفن تماس</th>
-<th>  ایمیل</th>
-<th>نقش کاربری </th> */}
 AdminPanelInfos.lastUsers.forEach((lastUser , index) => {
   year = lastUser.createdAt.slice(0, 4);
   month = lastUser.createdAt.slice(5, 7);
