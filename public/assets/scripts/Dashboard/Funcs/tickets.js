@@ -7,7 +7,7 @@ import {
 const $ = document;
 let ParentMenuID = undefined;
 
-const GetAndShowAllComments = async () => {
+const GetAndShowAllTickets = async () => {
   const AllTicketsTable = $.querySelector("#AllTicketsTable tbody");
   AllTicketsTable.innerHTML = "";
   const res = await fetch(`${BaseUrl()}tickets` , {
@@ -26,7 +26,7 @@ const GetAndShowAllComments = async () => {
     AllTicketsTable.insertAdjacentHTML(
       "beforeend",
       `
-         <tr class='${ticket.answer === 1 ? "bg-emerald-100" : "bg-rose-50"}'>
+         <tr class='${ticket.answer === 1 ? "bg-emerald-100" : "bg-rose-50"} child:text-center'>
          <td class="px-6 py-4">
         ${index + 1}
          </td>
@@ -46,10 +46,12 @@ const GetAndShowAllComments = async () => {
        ${ticket.departmentSubID}
        </td>
        <td class="px-6 py-4">
-       ${ticket.course === null ? "--" : `${ticket.course.name}`}
+       ${ticket.course ? `${ticket.course}` : "--"}
        </td>
             <td class="px-6 py-4">
-           ی
+              ${ticket.priority === 1 ? 'بالا' : ''}
+              ${ticket.priority === 2 ? 'متوسط' : ''}
+              ${ticket.priority === 3 ? 'کم' : ''}
                 </td>
           <td class="px-6 py-4">
           <button class="flex-center gap-2 bg-violet-700 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-violet-700 border hover:border-violet-700 transition-colors" onclick='ShowTicketBody(${JSON.stringify(
@@ -57,7 +59,7 @@ const GetAndShowAllComments = async () => {
           )})'> مشاهده</button>
           </td>
           <td class="px-6 py-4">
-           <button class="flex-center gap-2 bg-orange-700 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-orange-700 border hover:border-orange-700 transition-colors" onclick='AnswerComment(${JSON.stringify(ticket._id)})'> پاسخ</button>
+           <button class="flex-center gap-2 bg-orange-700 text-white px-3 py-1 rounded-lg hover:bg-white hover:text-orange-700 border hover:border-orange-700 transition-colors" onclick='AnswerTicket(${JSON.stringify(ticket._id)})'> پاسخ</button>
           </td>
           
           <td class="px-6 py-4">
@@ -84,123 +86,47 @@ const ShowTicketBody = (ticketBody) => {
   });
 };
 
-const AcceptComment = (commentID) => {
-  Swal.fire({
-    title: "آیا برای تایید کامنت مطمعن هستید؟",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#10b981",
-    cancelButtonColor: "#3f3f46",
-    confirmButtonText: "تایید",
-    cancelButtonText: "انصراف",
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      const res = await fetch(`${BaseUrl()}comments/accept/${commentID}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${GetToken()}`,
-        },
-      });
-      if (res.ok) {
-        GetAndShowAllComments();
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: " کامنت مورد نظر با موفقیت تایید گردید",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-      } else {
-        Swal.fire({
-          position: "top-center",
-          icon: "error",
-          title: "خطایی در روند تایید کامنت ایجاد گردید",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-      }
-    }
-  });
-};
-
-const RejectComment = (commentID) => {
-  Swal.fire({
-    title: "آیا برای رد کامنت مطمعن هستید؟",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#ef4444",
-    cancelButtonColor: "#3f3f46",
-    confirmButtonText: "رد کردن",
-    cancelButtonText: "انصراف",
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      const res = await fetch(`${BaseUrl()}comments/reject/${commentID}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${GetToken()}`,
-        },
-      });
-      if (res.ok) {
-        GetAndShowAllComments();
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: " کامنت مورد نظر با موفقیت رد گردید",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-      } else {
-        Swal.fire({
-          position: "top-center",
-          icon: "error",
-          title: "خطایی در روند رد کامنت ایجاد گردید",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-      }
-    }
-  });
-};
 
 
-const AnswerComment = async (commentID) => {
+const AnswerTicket = async (ticketID) => {
     Swal.fire({
       title: "ارسال پاسخ",
       input: 'textarea',
-      inputPlaceholder: 'متن پاسخ کامنت',
+      inputPlaceholder: 'متن پاسخ تیکت',
       showCancelButton: false,
       showConfirmButton: true,
       confirmButtonColor: "#3085d6",
-      confirmButtonText: "   ثبت پاسخ کامنت",
+      confirmButtonText: "   ثبت پاسخ تیکت",
     }).then(async (result) => {
       if (result.isConfirmed && result.value !== '') {
-          const AnswerCommentInfos = {
+          const AnswerTicketInfos = {
+      ticketID : ticketID,    
       body: result.value,
     };
-           await fetch(`${BaseUrl()}comments/answer/${commentID}`, {
+           await fetch(`${BaseUrl()}tickets/answer`, {
             method: "POST",
             headers: {
               Authorization: `Bearer ${GetToken()}`,
               'Content-Type' : 'application/json',
             },
-            body: JSON.stringify(AnswerCommentInfos),
+            body: JSON.stringify(AnswerTicketInfos),
           }).then(res => {
             if(res.ok){
               Swal.fire({
                   icon: "success",
-                  title: "پاسخ کامنت با موفقیت ارسال شد",
+                  title: "پاسخ تیکت با موفقیت ارسال شد",
                   showConfirmButton: true,
                   showCancelButton: false,
                   confirmButtonText: 'تایید'
                 }).then((result) => {
                   if(result.isConfirmed){
-                    GetAndShowAllComments();
+                    GetAndShowAllTickets();
                   }
                 })
             }else{
               Swal.fire({
                 icon: "error",
-                title:   "خطایی در ارسال پاسخ کامنت رخ داده است",
+                title:   "خطایی در ارسال پاسخ تیکت رخ داده است",
                 timer: 2000,
                 showConfirmButton: false,
                 showCancelButton: false,
@@ -211,7 +137,7 @@ const AnswerComment = async (commentID) => {
       }else{
         Swal.fire({
           icon: "error",
-          title:   "لطفا پاسخ کامنت را وارد نمایید",
+          title:   "لطفا پاسخ تیکت را وارد نمایید",
           timer: 2000,
           showConfirmButton: false,
           showCancelButton: false,
@@ -220,23 +146,6 @@ const AnswerComment = async (commentID) => {
   });
 };
 
-const PrepareCreateMenuFor = async () => {
-  const ParentMenuList = $.querySelector("#ParentMenuList");
-  ParentMenuList.addEventListener(
-    "change",
-    (event) => (ParentMenuID = event.target.value)
-  );
-  const res = await fetch(`${BaseUrl()}menus`);
-  const menus = await res.json();
-  menus.forEach((menu) => {
-    ParentMenuList.insertAdjacentHTML(
-      "beforeend",
-      `
-        <option value=${menu._id}>${menu.title}</option>
-        `
-    );
-  });
-};
 
 const CreateNewMenu = async () => {
   const MenuNameInput = $.querySelector("#MenuNameInput");
@@ -318,12 +227,9 @@ const DeleteComment = async (commentID) => {
 };
 
 export {
-  GetAndShowAllComments,
+  GetAndShowAllTickets,
   CreateNewMenu,
   ShowTicketBody,
-  AnswerComment,
-  AcceptComment,
-  RejectComment,
-  PrepareCreateMenuFor,
+  AnswerTicket,
   DeleteComment,
 };

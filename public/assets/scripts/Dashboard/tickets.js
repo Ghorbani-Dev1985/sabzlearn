@@ -1,17 +1,14 @@
-import {GetAndShowAllComments , CreateNewMenu , PrepareCreateMenuFor, ShowTicketBody ,AnswerComment, AcceptComment , RejectComment , DeleteComment} from "./Funcs/tickets.js";
+import {GetAndShowAllTickets , CreateNewMenu , ShowTicketBody ,AnswerTicket , DeleteComment} from "./Funcs/tickets.js";
 
 
 window.DeleteComment = DeleteComment;
 window.ShowTicketBody = ShowTicketBody;
-window.AnswerComment = AnswerComment;
-window.AcceptComment = AcceptComment;
-window.RejectComment = RejectComment;
+window.AnswerTicket = AnswerTicket;
 
 
 window.addEventListener('load' , () => {
     const AddNewMenuBtn = document.querySelector('#AddNewMenuBtn');
-    GetAndShowAllComments()
-    PrepareCreateMenuFor()
+    GetAndShowAllTickets()
     AddNewMenuBtn.addEventListener('click' , (e) => {
         e.preventDefault();
         CreateNewMenu();
