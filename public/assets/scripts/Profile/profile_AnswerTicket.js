@@ -1,13 +1,13 @@
 import {
-  ShowAllTickets,
+  ShowAllAnswerTickets,
   PrepareSendTicketForm,
   SendNewTicket,
-} from "./Funcs/profile_UserTickets.js";
+} from "./Funcs/profile_AnswerTicket.js";
 
 
 window.addEventListener("load", () => {
   const SendNewTicketBtn = document.querySelector("#SendNewTicketBtn");
-  ShowAllTickets();
+  ShowAllAnswerTickets();
   PrepareSendTicketForm();
   SendNewTicketBtn.addEventListener("click", (e) => {
     e.preventDefault();

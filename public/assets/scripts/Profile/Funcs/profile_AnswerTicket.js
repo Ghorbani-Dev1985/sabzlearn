@@ -2,7 +2,7 @@ import {
   GetToken,
   ShowSwalAlert,
   BaseUrl,
-  ChangeGregorianDateToPersian,
+  GetUrlParam
 } from "../../Funcs/Utils.js";
 const $ = document;
 let year, month, day;
@@ -133,57 +133,30 @@ const PrepareSendTicketForm = async () => {
   }
 
 
-const ShowAllTickets = async () => {
-  const ShowAllTicketsBody = $.querySelector('#ShowAllTicketsBody');
- const CountOfAllTickets = $.querySelector('#CountOfAllTickets');
- let year , month , day;
-  const res = await fetch(`${BaseUrl()}tickets/user` , {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${GetToken()}`,
-    },
-  });
-  const UserTickets = await res.json();
-  console.log(UserTickets);
-  CountOfAllTickets.innerHTML = UserTickets.length;  
-  if(UserTickets.length){
-    UserTickets.forEach(UserTicket => {
-      year = UserTicket.createdAt.slice(0, 4);
-      month = UserTicket.createdAt.slice(5, 7);
-      day = UserTicket.createdAt.slice(8, 10);
+const ShowAllAnswerTickets = async () => {
+  const ShowAllTicketsBody = $.querySelector('#AnswerTicketsBody');
+  const TicketID = GetUrlParam('id');
+  const res =  await fetch(`${BaseUrl()}tickets/answer/${TicketID}`, {
+   method: "GET",
+   headers: {
+     Authorization: `Bearer ${GetToken()}`,
+   },
+  })
+  const TicketAnswer = await res.json();
+   console.log(TicketAnswer);
       ShowAllTicketsBody.insertAdjacentHTML('beforeend' , `
-      <div class="flex-between p-3 bg-gray-100 my-5 shadow-md rounded-lg">
-      <div  class="flex flex-col gap-4">
-              <a href="./profile_AnswerTicket.html?id=${UserTicket._id}" class="font-DanaBold cursor-pointer"> ${UserTicket.title}</a>
-              <p class="font-DanaBold">${UserTicket.user}</p>
-              <p class="bg-white px-4 py-3 rounded-lg text-center">${UserTicket.departmentID}</p>
-              <p class="bg-gray-200 px-4 py-3 rounded-lg text-center">${UserTicket.departmentSubID}</p>
-      </div>
-      <div class="flex-center gap-3">
-          ${
-            UserTicket.answer ? `<p class="flex-center gap-2 bg-white border border-gray-100 px-3 py-1 rounded-lg rounded-tl-none">
-            <span class="bg-emerald-500 w-2 h-2 rounded-full"></span>
-            پاسخ داده شده</p>`: `<p class="flex-center gap-2 bg-white border border-gray-100 px-3 py-1 rounded-lg rounded-tl-none">
-            <span class="bg-rose-500 w-2 h-2 rounded-full"></span>
-            بدون پاسخ  </p>`
-          }
-          
-            <div>
-              <p>${ChangeGregorianDateToPersian(+year , +month , +day)}</p>
-            </div>
-      </div>
- </div>
+      <div class="chat chat-start mb-5">
+      <div class="chat-bubble bg-gray-100 text-zinc-700 font-DanaMd text-base">${TicketAnswer.ticket}</div>
+    </div>
+    <div class="chat chat-end">
+      <div class="chat-bubble bg-emerald-200 text-emerald-600 font-DanaMd text-base">${
+        TicketAnswer.answer ? `${TicketAnswer.answer}` : 'بدون پاسخ'}</div>
+    </div>
       `)
-    })
-  }else{
-    ShowAllTicketsBody.innerHTML = `<div class="font-DanaMd font-bold text-center text-amber-500 my-8 text-xl">کاربر گرامی تاکنون تیکتی ثبت نکرده اید.</div>`
-  }
-
-
 }
 
 export {
-  ShowAllTickets,
+  ShowAllAnswerTickets,
   PrepareSendTicketForm,
   SendNewTicket,
 };
