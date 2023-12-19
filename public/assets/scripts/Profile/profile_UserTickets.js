@@ -1,13 +1,13 @@
-import {  ShowAllTickets , PrepareSendTicketForm} from "./Funcs/profile_UserTickets.js";
+import {  ShowAllTickets , PrepareSendTicketForm , SendNewTicket} from "./Funcs/profile_UserTickets.js";
 
 
 
 window.addEventListener("load", () => {
-  const EditUserDetailsBtn = document.querySelector("#EditUserDetailsBtn");
+  const SendNewTicketBtn = document.querySelector("#SendNewTicketBtn");
   ShowAllTickets();
   PrepareSendTicketForm();
-  EditUserDetailsBtn.addEventListener("click", (e) => {
+  SendNewTicketBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    EditUserDetails();
+    SendNewTicket();
   });
 });
