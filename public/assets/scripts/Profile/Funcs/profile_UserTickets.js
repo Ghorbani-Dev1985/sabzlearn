@@ -154,7 +154,7 @@ const ShowAllTickets = async () => {
       ShowAllTicketsBody.insertAdjacentHTML('beforeend' , `
       <div class="flex-between p-3 bg-gray-100 my-5 shadow-md rounded-lg">
       <div  class="flex flex-col gap-4">
-              <a href="./profile_AnswerTicket.html?id=${UserTicket._id}" class="font-DanaBold cursor-pointer"> ${UserTicket.title}</a>
+              <a href="./profile_AnswerTicket.html?id=${UserTicket._id}" class="font-DanaBold cursor-pointer line-clamp-1"> ${UserTicket.title}</a>
               <p class="font-DanaBold">${UserTicket.user}</p>
               <p class="bg-white px-4 py-3 rounded-lg text-center">${UserTicket.departmentID}</p>
               <p class="bg-gray-200 px-4 py-3 rounded-lg text-center">${UserTicket.departmentSubID}</p>
