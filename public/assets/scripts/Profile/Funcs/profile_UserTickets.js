@@ -9,6 +9,7 @@ let year, month, day;
 let DepartmentID = null;
 let SubDepartmentID = null;
 let TicketPriorityID = 2;
+let CourseName = undefined;
 
 const ShowNewTicketFormBtn = $.querySelector('#ShowNewTicketFormBtn')
 const NewTicketForm = $.querySelector('#NewTicketForm')
@@ -24,6 +25,8 @@ const PrepareSendTicketForm = async () => {
     const DepartmentList = $.querySelector('#DepartmentList');
     const SubDepartmentList = $.querySelector('#SubDepartmentList');
     const TicketPriorityList = $.querySelector('#TicketPriorityList')
+    const CoursesList = $.querySelector('#CoursesList')
+
 
     const res = await fetch(`${BaseUrl()}tickets/departments`);
     const Departments = await res.json();
@@ -51,8 +54,29 @@ const PrepareSendTicketForm = async () => {
         })
       })
     })
-    SubDepartmentList.addEventListener('change' , event =>  SubDepartmentID = event.target.value)
+    SubDepartmentList.addEventListener('change' , event =>  {
+      SubDepartmentID = event.target.value;
+      if(event.target.value === '658162ed4c3cb0798da17a17'){
+        CoursesList.classList.remove('hidden')
+      }else{
+        CoursesList.classList.add('hidden')
+      }
+    })
     TicketPriorityList.addEventListener('change' , event => TicketPriorityID = event.target.value)
+    const courseRes = await fetch(`${BaseUrl()}users/courses` , {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${GetToken()}`,
+      },
+    });
+    const UserCourses = await courseRes.json();
+     UserCourses.forEach(UserCourse => {
+      CoursesList.insertAdjacentHTML('beforeend' , `
+      <option value="${UserCourse.course._id}">${UserCourse.course.name}</option>
+      `)
+     })
+     CoursesList.addEventListener('change' , event => CourseName = event.target.value)
+
   }
   
   
@@ -65,7 +89,8 @@ const PrepareSendTicketForm = async () => {
       body: TicketDescription.value.trim(),
       departmentID: DepartmentID,
       departmentSubID: SubDepartmentID,
-      priority: TicketPriorityID
+      priority: TicketPriorityID,
+      course: CourseName,
     }
     if(TicketTitleInput.value !== '' && TicketDescription.value !== '' && DepartmentID !== null && SubDepartmentID !== null){
       const res = await fetch(`${BaseUrl()}tickets` , {
@@ -77,12 +102,18 @@ const PrepareSendTicketForm = async () => {
         body: JSON.stringify(SendNewTicketInfos),
       });
       if(res.ok){
+        TicketTitleInput.value = '',
+        TicketDescription.value = '',
+        DepartmentID = null,
+        SubDepartmentID = null,
+        CoursesList.classList.add('hidden'),
         Swal.fire({
           icon: "success",
           title: "  تیکت جدید با موفقیت انجام شد",
           showConfirmButton: false,
           timer: 2000,
         });
+        ShowAllTickets()
       }else{
         Swal.fire({
           icon: "error",
@@ -121,10 +152,10 @@ const ShowAllTickets = async () => {
       month = UserTicket.createdAt.slice(5, 7);
       day = UserTicket.createdAt.slice(8, 10);
       ShowAllTicketsBody.insertAdjacentHTML('beforeend' , `
-      <div class="flex-between p-3">
+      <div class="flex-between p-3 bg-gray-100 my-5 shadow-md rounded-lg">
       <div  class="flex flex-col gap-4">
-              <p> ${UserTicket.title}</p>
-              <p>${UserTicket.user}</p>
+              <p class="font-DanaBold"> ${UserTicket.title}</p>
+              <p class="font-DanaBold">${UserTicket.user}</p>
               <p class="bg-white px-4 py-3 rounded-lg text-center">${UserTicket.departmentID}</p>
               <p class="bg-gray-200 px-4 py-3 rounded-lg text-center">${UserTicket.departmentSubID}</p>
       </div>
