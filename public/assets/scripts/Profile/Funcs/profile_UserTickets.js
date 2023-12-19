@@ -23,6 +23,11 @@ const PrepareSendTicketForm = async () => {
     const Departments = await res.json();
 
     console.log(Departments);
+    Departments.forEach(Department => {
+      DepartmentList.insertAdjacentHTML('beforeend' , `
+       <option>${Department.title}</option>
+      `)
+    })
 }
 
 

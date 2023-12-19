@@ -4703,11 +4703,6 @@ progress::-webkit-progress-value {
   border-top-right-radius: 0.5rem;
 }
 
-.rounded-t {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
-
 .rounded-br-none {
   border-bottom-right-radius: 0px;
 }
@@ -4722,10 +4717,6 @@ progress::-webkit-progress-value {
 
 .rounded-tr-3xl {
   border-top-right-radius: 1.5rem;
-}
-
-.rounded-tl {
-  border-top-left-radius: 0.25rem;
 }
 
 .border {
@@ -4821,11 +4812,6 @@ progress::-webkit-progress-value {
 
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
-}
-
-.border-white {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .border-b-emerald-300 {
@@ -6710,6 +6696,11 @@ progress::-webkit-progress-value {
 .hover\:border-amber-500:hover {
   --tw-border-opacity: 1;
   border-color: rgb(245 158 11 / var(--tw-border-opacity));
+}
+
+.hover\:border-emerald-500:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(16 185 129 / var(--tw-border-opacity));
 }
 
 .hover\:border-orange-700:hover {
