@@ -43,15 +43,15 @@
                 <div class="w-full relative">
                   <input
                     type="text"
-                    id="UserFullNameInput"
+                    id="TicketTitleInput"
                     class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
                     placeholder=" "
                   />
                   <label
-                    for="UserFullNameInput"
+                    for="TicketTitleInput"
                     class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                   >
-                    نام کامل</label
+                    عنوان تیکت </label
                   >
                 </div>
                 <div class="w-full relative">
@@ -70,37 +70,18 @@
                 </div>
                   </div>
                   <div class="flex flex-1 flex-col gap-3">
-                     <div class="w-full relative">
-                  <input
-                    type="text"
-                    id="UserNameInput"
-                    class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
-                    placeholder=" "
-                  />
-                  <label
-                    for="UserNameInput"
-                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-                  >
-                    نام کاربری</label
-                  >
-                </div>
-                    <div class="w-full relative">
-                  <input
-                    type="text"
-                    id="UserPhoneInput"
-                    class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
-                    placeholder=" "
-                  />
-                  <label
-                    for="UserPhoneInput"
-                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-                  >
-                    تلفن تماس
-                  </label>
-                </div>
-
+                    <select id="SubDepartmentList" class="select select-bordered w-full bg-slate-100 focus:outline-none">
+                      <option value="-1" disabled selected>نوع تیکت را انتخاب نمایید</option>
+                    </select>
+                    <select id="TicketPriorityList" class="select select-bordered w-full bg-slate-100 focus:outline-none">
+                      <option value="-1" disabled selected>  اولویت تیکت را انتخاب نمایید </option>
+                      <option value="1">زیاد</option>
+                      <option value="2" selected>متوسط</option>
+                      <option value="3">کم</option>
+                    </select>
                   </div>
                 </div>
+                <textarea id="TicketDescription" rows="15" placeholder=" محتوای تیکت" class="block my-4 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ></textarea>
                 <div class="w-full flex-center my-6">
                   <button id="EditUserDetailsBtn" type="submit" class="flex-center gap-2 bg-sky-500 text-white px-3 py-2 rounded-lg hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

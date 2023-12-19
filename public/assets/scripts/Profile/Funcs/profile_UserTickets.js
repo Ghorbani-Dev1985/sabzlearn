@@ -6,6 +6,9 @@ import {
 } from "../../Funcs/Utils.js";
 const $ = document;
 let year, month, day;
+let DepartmentID = null;
+let SubDepartmentID = null;
+let TicketPriority = 2;
 
 const ShowNewTicketFormBtn = $.querySelector('#ShowNewTicketFormBtn')
 const NewTicketForm = $.querySelector('#NewTicketForm')
@@ -19,16 +22,35 @@ ShowNewTicketFormBtn.addEventListener('click' , (e) =>{
 
 const PrepareSendTicketForm = async () => {
     const DepartmentList = $.querySelector('#DepartmentList');
+    const SubDepartmentList = $.querySelector('#SubDepartmentList');
+    const TicketPriorityList = $.querySelector('#TicketPriorityList')
+
     const res = await fetch(`${BaseUrl()}tickets/departments`);
     const Departments = await res.json();
-
+    
     console.log(Departments);
     Departments.forEach(Department => {
       DepartmentList.insertAdjacentHTML('beforeend' , `
-       <option>${Department.title}</option>
+       <option value="${Department._id}">${Department.title}</option>
       `)
     })
-}
+    DepartmentList.addEventListener('change' , event => {
+      event.preventDefault();
+      DepartmentID = event.target.value;
+      fetch(`${BaseUrl()}tickets/departments-subs/${event.target.value}`)
+      .then(res => res.json())
+      .then(subDepartments => {
+        SubDepartmentList.innerHTML = '';
+        subDepartments.forEach(subDepartment => {
+          SubDepartmentList.insertAdjacentHTML('beforeend' , `
+          <option value="${subDepartment._id}">${subDepartment.title}</option>
+          `)
+        })
+      })
+    })
+    SubDepartmentList.addEventListener('change' , event =>  SubDepartmentID = event.target.value)
+    TicketPriorityList.addEventListener('change' , event => TicketPriority = event.target.value)
+  }
 
 
 
